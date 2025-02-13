@@ -43,7 +43,7 @@
   <meta name="description" content="Explora nuestra página para conocer al Staff, las Patrullas, ver Fotos y descubrir nuestros Himnos." />
   <meta property="og:title" content="Bienvenidos a la Tropa San Luis ♥️" />
   <meta property="og:description" content="Explora nuestra página para conocer al Staff, las Patrullas, ver Fotos y descubrir nuestros Himnos." />
-  <meta property="og:image" content="/logo-stl.png" />
+  <meta property="og:image" content="/portada.webp" />
   <meta property="og:url" content="https://tropasanluis.cl/" />
   <meta name="twitter:card" content="summary_large_image" />
 </svelte:head>
