@@ -1,6 +1,10 @@
+
 <script>
-	// Código para la página de Himnos (si es necesario)
+  // Código para la página de Himnos (si es necesario)
 </script>
 
-<h1 class="text-3xl font-bold mb-4">Himnos</h1>
-<p class="text-lg">Escucha y disfruta de los himnos que nos inspiran.</p> 
+<section class="text-center">
+  <h1 class="text-4xl font-bold mb-6 text-red-600">Himnos</h1>
+  <p class="text-lg text-gray-700">Escucha y disfruta de los himnos que nos inspiran.</p>
+</section>
+    

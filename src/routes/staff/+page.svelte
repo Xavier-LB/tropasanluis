@@ -1,6 +1,10 @@
+
 <script>
-	// Código para la página del Staff (si es necesario)
+  // Código para la página del Staff (si es necesario)
 </script>
 
-<h1 class="text-3xl font-bold mb-4">Equipo Staff</h1>
-<p class="text-lg">Conoce a los miembros que hacen posible el funcionamiento de la tropa.</p>
+<section class="text-center">
+  <h1 class="text-4xl font-bold mb-6 text-red-600">Equipo Staff</h1>
+  <p class="text-lg text-gray-700">Conoce a los miembros que hacen posible el funcionamiento de la tropa.</p>
+</section>
+    
