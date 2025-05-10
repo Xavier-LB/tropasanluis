@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from 'svelte';
+  import PruebaTimer from '$lib/PruebaTimer.svelte';
   /**
    * @typedef {Object} Test
    * @property {string} name - Name of the test
@@ -169,12 +171,52 @@
     { tipo: "AA", primero: 2000, segundo: 1250, tercero: 750, cuarto: 300, quinto: 0, noParticipa: -500 },
     { tipo: "A", primero: 1000, segundo: 750, tercero: 300, cuarto: 100, quinto: 0, noParticipa: -250 }
   ];
+
+  // FECHA GENERAL DEL SABADO 7 DE JUNIO 2025, 00:00:00
+  const fechaSabado = new Date('2025-06-07T00:00:00-04:00');
+  let tiempoSabado = '';
+  let intervaloSabado;
+
+  function calcularTiempoRestante(fechaLimite) {
+    const ahora = new Date();
+    const diferencia = fechaLimite - ahora;
+    if (diferencia <= 0) return null;
+    const dias = Math.floor(diferencia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((diferencia / (1000 * 60 * 60)) % 24);
+    const minutos = Math.floor((diferencia / (1000 * 60)) % 60);
+    const segundos = Math.floor((diferencia / 1000) % 60);
+    return `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+  }
+
+  onMount(() => {
+    intervaloSabado = setInterval(() => {
+      const tiempo = calcularTiempoRestante(fechaSabado);
+      tiempoSabado = tiempo ? tiempo : '¡Tiempo finalizado!';
+    }, 1000);
+  });
+
+  // Utilidad para obtener la fecha límite de cada prueba
+  function obtenerFechaLimite(fechaStr) {
+    if (!fechaStr) return null;
+    // Buscar fecha y hora en el string
+    // Ejemplo: "Lunes 2 de junio hasta las 18:00"
+    const match = fechaStr.match(/(\d{1,2}) de junio.*?(\d{1,2}:\d{2})/i);
+    if (!match) return null;
+    const dia = match[1].padStart(2, '0');
+    const hora = match[2];
+    // Asumimos año 2025 y zona horaria -04:00
+    return new Date(`2025-06-${dia}T${hora}:00-04:00`);
+  }
 </script>
 
 <div class="container mx-auto px-4 py-8">
   <div class="mb-6 text-center">
     <span class="inline-block text-3xl font-extrabold text-primary animate-bounce">🎉🔥 ¡La semana empieza ya! 🚀🏕️</span>
     <div class="mt-2 text-xl font-semibold text-primary">⏳ Tienen 3 semanas para preparar las pruebas, ¡así que empiecen ya! 💪😎</div>
+    <div class="mt-4 text-2xl font-bold text-red-600 bg-yellow-100 rounded-xl px-6 py-3 inline-block shadow animate-pulse">
+      ⏰ Cuenta regresiva para el Día Final (Sábado 7 de Junio):<br>
+      <span class="text-3xl">{tiempoSabado}</span>
+    </div>
   </div>
   <h1 class="text-4xl font-bold mb-8 text-center">Pruebas Semana San Luisina</h1>
 
@@ -243,6 +285,7 @@
             <div class="mb-4">
               <h4 class="font-semibold mb-2">Fecha de subida:</h4>
               <p class="text-gray-700">{test.fecha}</p>
+              <PruebaTimer fechaStr={test.fecha} />
             </div>
           {/if}
 
