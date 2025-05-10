@@ -1,4 +1,3 @@
-
 <script>
   import { onMount, onDestroy } from 'svelte';
 
@@ -73,5 +72,11 @@
   <p class="text-lg text-gray-700 max-w-2xl mx-auto">
     Explora nuestra página para conocer al Staff, las Patrullas, ver Fotos y descubrir nuestros Himnos.
   </p>
+
+  <a href="/semana-sanluisina"
+     class="block mx-auto mb-8 w-fit px-10 py-6 text-5xl font-extrabold text-white bg-gradient-to-r from-red-600 via-yellow-400 to-red-600 rounded-3xl shadow-2xl transition-transform transform hover:scale-105 hover:shadow-yellow-400/60 hover:rotate-1 animate-pulse border-4 border-white drop-shadow-lg"
+     style="letter-spacing: 0.05em; text-shadow: 0 4px 24px #0008;">
+    Semana San Luisina
+  </a>
 </section>
     
