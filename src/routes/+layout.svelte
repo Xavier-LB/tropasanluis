@@ -44,10 +44,11 @@
       </div>
       <nav class="mt-3 md:mt-0 space-x-4 flex flex-wrap justify-center">
         <a href="/" class="hover:underline hover:text-gray-200 transition">Inicio</a>
-        <a href="/staff" class="hover:underline hover:text-gray-200 transition">Staff</a>
-        <a href="/patrullas" class="hover:underline hover:text-gray-200 transition">Patrullas</a>
-        <a href="/fotos" class="hover:underline hover:text-gray-200 transition">Fotos</a>
-        <a href="/himnos" class="hover:underline hover:text-gray-200 transition">Himnos</a>
+        <!-- <a href="/staff" class="hover:underline hover:text-gray-200 transition">Staff</a> -->
+        <!-- <a href="/patrullas" class="hover:underline hover:text-gray-200 transition">Patrullas</a> -->
+        <!-- <a href="/fotos" class="hover:underline hover:text-gray-200 transition">Fotos</a> -->
+        <!-- <a href="/himnos" class="hover:underline hover:text-gray-200 transition">Himnos</a> -->
+        <a href="/semana-sanluisina" class="hover:underline hover:text-gray-200 transition">Semana Sanluisina</a>
       </nav>
     </div>
   </header>

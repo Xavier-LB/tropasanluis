@@ -232,28 +232,28 @@
       📅 El sábado 7 de junio tendremos una reunión extendida con las pruebas presenciales cuyas bases serán subidas el 17 de mayo.
     </div>
     <div class="overflow-x-auto">
-      <table class="min-w-full bg-white rounded-lg shadow text-center">
+      <table class="min-w-full w-full bg-white rounded-lg shadow text-center text-xs sm:text-sm md:text-base">
         <thead class="bg-primary text-white">
           <tr>
-            <th class="py-2 px-4">Tipo</th>
-            <th class="py-2 px-4">1 Lugar</th>
-            <th class="py-2 px-4">2 Lugar</th>
-            <th class="py-2 px-4">3 Lugar</th>
-            <th class="py-2 px-4">4 Lugar</th>
-            <th class="py-2 px-4">5 Lugar</th>
-            <th class="py-2 px-4">No participación</th>
+            <th class="py-2 px-1 sm:px-2">Tipo</th>
+            <th class="py-2 px-1 sm:px-2">1°</th>
+            <th class="py-2 px-1 sm:px-2">2°</th>
+            <th class="py-2 px-1 sm:px-2">3°</th>
+            <th class="py-2 px-1 sm:px-2">4°</th>
+            <th class="py-2 px-1 sm:px-2">5°</th>
+            <th class="py-2 px-1 sm:px-2 whitespace-nowrap">No participación</th>
           </tr>
         </thead>
         <tbody>
           {#each puntajes as p}
-            <tr class="border-b">
-              <td class="py-2 px-4 font-bold">{p.tipo}</td>
-              <td class="py-2 px-4">{p.primero}</td>
-              <td class="py-2 px-4">{p.segundo}</td>
-              <td class="py-2 px-4">{p.tercero}</td>
-              <td class="py-2 px-4">{p.cuarto}</td>
-              <td class="py-2 px-4">{p.quinto}</td>
-              <td class="py-2 px-4">{p.noParticipa}</td>
+            <tr class="border-b even:bg-gray-50">
+              <td class="py-2 px-1 sm:px-2 font-bold text-primary text-xs sm:text-base">{p.tipo}</td>
+              <td class="py-2 px-1 sm:px-2">{p.primero}</td>
+              <td class="py-2 px-1 sm:px-2">{p.segundo}</td>
+              <td class="py-2 px-1 sm:px-2">{p.tercero}</td>
+              <td class="py-2 px-1 sm:px-2">{p.cuarto}</td>
+              <td class="py-2 px-1 sm:px-2">{p.quinto}</td>
+              <td class="py-2 px-1 sm:px-2 text-red-600 font-semibold">{p.noParticipa}</td>
             </tr>
           {/each}
         </tbody>
@@ -331,5 +331,23 @@
   
   .bg-primary {
     background-color: #1a365d;
+  }
+
+  @media (max-width: 640px) {
+    table {
+      font-size: 0.85rem;
+    }
+    th, td {
+      padding-left: 0.25rem;
+      padding-right: 0.25rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+    th {
+      font-size: 0.95em;
+    }
+    td {
+      font-size: 0.95em;
+    }
   }
 </style>
