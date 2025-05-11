@@ -25,6 +25,7 @@
     spotifyEmbed?: string;
     composers?: string;
     youtubeEmbed?: string;
+    embed?: string;
   };
 
   /**
@@ -1865,7 +1866,7 @@ Traigo por montón
 Al andar… (bis)`,
       chords: true,
       composers: "Marcelo Garcés",
-      youtubeLink: "https://www.youtube.com/watch?v=tVV0jpRoJaQ",
+      embed: '<iframe style="border-radius:12px; border: 2px solid #e2e8f0; margin: 10px 0;" src="https://www.youtube.com/embed/tVV0jpRoJaQ" width="100%" height="250" frameBorder="0" title="Himno Campamento de Verano 2025 - Chonchi, Chiloé - Tropa San Luis" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" loading="lazy"></iframe>',
       chordData: [
         { line: 0, chord: "D", position: 5 },
         { line: 0, chord: "C", position: 27 },
@@ -2099,6 +2100,15 @@ Pendejo weón.`,
    */
   function toggleSong(index: number) {
     expandedSong = expandedSong === index ? null : index;
+    
+    // Debug YouTube embed for Chonchi (2025)
+    if (expandedSong !== null) {
+      const song = songs[expandedSong];
+      if (song.title === "Chonchi, Chiloé") {
+        console.log("Chonchi YouTube embed:", song.youtubeEmbed ? "exists" : "missing");
+        console.log("Chonchi data:", song);
+      }
+    }
   }
   
   /**
@@ -2182,6 +2192,9 @@ Pendejo weón.`,
         >
           <div>
             <h2 class="text-xl font-bold">{song.title} {song.year ? `(${song.year})` : ''}</h2>
+            {#if song.composers}
+              <p class="text-sm opacity-90">{song.composers}</p>
+            {/if}
           </div>
           <div class="text-xl">
             {expandedSong === index ? '−' : '+'}
@@ -2192,16 +2205,16 @@ Pendejo weón.`,
         {#if expandedSong === index}
           <div id="song-content-{index}" class="p-5 font-mono text-gray-800 transition-all duration-500 ease-in-out">
             <!-- Display composers if available -->
-            {#if song.composers}
+            {#if false && song.composers}
               <div class="text-sm text-gray-600 mb-3 italic">
                 Escrito por: {song.composers}
               </div>
             {/if}
 
             <!-- Display YouTube and Spotify links if available -->
-            {#if song.youtubeLink || song.spotifyLink || song.spotifyEmbed}
+            {#if song.youtubeLink || song.spotifyLink || song.spotifyEmbed || song.youtubeEmbed}
               <div class="mb-4 flex flex-wrap gap-2">
-                {#if song.youtubeLink}
+                {#if song.youtubeLink && !song.youtubeEmbed}
                   <a href={song.youtubeLink} target="_blank" rel="noopener noreferrer" 
                     class="inline-flex items-center px-2 py-1 mb-2 text-xs bg-gray-100 text-gray-700 rounded hover:bg-gray-200 transition-colors">
                     <svg class="w-4 h-4 mr-1 text-red-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -2225,6 +2238,27 @@ Pendejo weón.`,
                   {@html song.spotifyEmbed}
                 </div>
               {/if}
+              {#if song.youtubeEmbed}
+                <div class="mb-4">
+                  <p class="text-xs text-gray-500 mb-1">YouTube Video:</p>
+                  {@html song.youtubeEmbed}
+                </div>
+              {/if}
+            {/if}
+            
+            <!-- Display YouTube embed separately -->
+            {#if song.youtubeEmbed && !song.youtubeLink && !song.spotifyLink && !song.spotifyEmbed}
+              <div class="mb-4">
+                <p class="text-xs text-gray-500 mb-1">YouTube Video:</p>
+                {@html song.youtubeEmbed}
+              </div>
+            {/if}
+
+            <!-- Display generic embed -->
+            {#if song.embed}
+              <div class="mb-4">
+                {@html song.embed}
+              </div>
             {/if}
             
             <br>
