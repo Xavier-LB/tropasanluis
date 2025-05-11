@@ -246,8 +246,11 @@
     <div class="mb-12 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8">
       <p class="mb-6 text-lg text-gray-700 leading-relaxed">
         🏁 Las pruebas se dividen en dos categorías: las pruebas de la <span class="font-semibold text-primary">"Previa"</span> y las del <span class="font-semibold text-primary">"Día Final"</span> (sábado 7 de junio).<br>
+        <br>
         📸 Las pruebas de la <span class="font-semibold text-primary">"Previa"</span> deben ser subidas al Instagram de cada patrulla utilizando el <span class="font-semibold text-primary">#semanasanluisina2025</span> en el día indicado. <span class="font-semibold text-red-800">No antes ni después.</span><br>
+        <br>
         ⏰ El atraso en la entrega implica pérdida de puntaje.<br>
+        <br>
         🤝 Se evalúa en términos generales la participación de la patrulla.
       </p>
       <div class="mb-8 text-xl text-center font-bold text-primary bg-orange-50 rounded-xl p-4 border-2 border-orange-200">
