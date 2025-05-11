@@ -158,13 +158,21 @@
       
       <div class="bg-white rounded-lg p-6 shadow-md">
         <h3 class="text-xl font-semibold text-red-600 mb-3">El Himno de la Tropa</h3>
-        <p class="text-sm mb-4 italic">Coro:</p>
-        <p class="mb-1 text-center font-medium text-gray-700">Tropa San Luis (bis x3)</p>
-        <p class="mb-3 text-center font-medium text-gray-700">¡San Luis!</p>
-        <p class="text-center text-gray-700">Venceremos siempre en un Raid<br>
-        Con ferviente, Entusiasmo y Ardor</p>
-        <div class="mt-3 text-center">
-          <a href="/himnos" class="text-red-600 hover:underline">Escuchar el himno completo</a>
+        <div class="text-gray-700 space-y-2">
+          <p class="text-center">Aquí estamos marchando y buscando la luz</p>
+          <p class="text-center">Que siempre nos ha de guiar</p>
+          <p class="text-center">Con la frente en alto y el paso marcial</p>
+          <p class="text-center">No tememos a la adversidad</p>
+          <p class="text-center">Porque somos Sanluisinos y scouts de verdad</p>
+          <p class="text-center">Nadie en la lucha nos vencerá</p>
+          <p class="text-center font-semibold">Tropa San Luis</p>
+          <p class="text-center font-semibold">Tropa San Luis (bis x3)</p>
+          <p class="text-center font-semibold">¡San Luis!</p>
+          <p class="text-center">Venceremos siempre en un Raid</p>
+          <p class="text-center">Con ferviente, Entusiasmo y Ardor</p>
+          <p class="text-center font-semibold">Tropa San Luis</p>
+          <p class="text-center font-semibold">Tropa San Luis (bis x3)</p>
+          <p class="text-center font-semibold">¡San Luis!</p>
         </div>
       </div>
     </div>
@@ -221,21 +229,21 @@
       <!-- Línea vertical central -->
       <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-red-200"></div>
       
-      <div class="space-y-12">
+      <div class="space-y-8 md:space-y-12">
         {#each timelineEvents as event, i}
           <div class={`flex flex-col md:flex-row items-center ${i % 2 === 0 ? 'md:flex-row-reverse' : ''} relative transition-all duration-500 ${isIntersecting ? 'opacity-100' : 'opacity-0'}`}
-               style={`transition-delay: ${i * 100}ms`}>
+               style={`transition-delay: ${Math.min(i * 50, 1000)}ms`}>
             
             <!-- Círculo central -->
-            <div class="absolute left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-red-600 shadow-lg z-10 flex items-center justify-center text-white font-bold border-4 border-white">
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-red-600 shadow-lg z-10 flex items-center justify-center text-white font-bold text-xs md:text-sm border-2 md:border-4 border-white">
               {event.year}
             </div>
             
             <!-- Contenido -->
-            <div class="w-full md:w-5/12 md:mx-4 mt-12 md:mt-0">
-              <div class={`bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition border-l-4 ${i % 2 === 0 ? 'border-red-600' : 'border-orange-500'}`}>
-                <h3 class="text-xl font-bold text-gray-800">{event.year}</h3>
-                <p class="text-gray-700 mt-2">{event.event}</p>
+            <div class="w-full md:w-5/12 md:mx-4 mt-8 md:mt-0 z-20">
+              <div class={`bg-white p-3 md:p-4 rounded-lg shadow-md hover:shadow-lg transition border-l-4 ${i % 2 === 0 ? 'border-red-600' : 'border-orange-500'}`}>
+                <h3 class="text-lg md:text-xl font-bold text-gray-800">{event.year}</h3>
+                <p class="text-sm md:text-base text-gray-700 mt-2">{event.event}</p>
               </div>
             </div>
             
