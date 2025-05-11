@@ -47,7 +47,7 @@
         <!-- <a href="/staff" class="hover:underline hover:text-gray-200 transition">Staff</a> -->
         <!-- <a href="/patrullas" class="hover:underline hover:text-gray-200 transition">Patrullas</a> -->
         <!-- <a href="/fotos" class="hover:underline hover:text-gray-200 transition">Fotos</a> -->
-        <!-- <a href="/himnos" class="hover:underline hover:text-gray-200 transition">Himnos</a> -->
+        <a href="/himnos" class="hover:underline hover:text-gray-200 transition">Himnos</a>
         <a href="/semana-sanluisina" class="hover:underline hover:text-gray-200 transition">Semana Sanluisina</a>
       </nav>
     </div>

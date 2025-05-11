@@ -17,7 +17,7 @@
   const tests = {
     previa: [
       {
-        name: "Promo Semana San Luisina",
+        name: "Promo STL",
         score: "AA",
         inCharge: ["Pao", "Chopi", "Marcelo"],
         description: "Hacer un video promocional de la Tropa San Luis en general (no la patrulla).",
