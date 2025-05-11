@@ -235,7 +235,7 @@
                style={`transition-delay: ${Math.min(i * 50, 1000)}ms`}>
             
             <!-- Círculo central -->
-            <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 md:w-10 md:h-10 rounded-full bg-red-600 shadow-lg z-10 flex items-center justify-center text-white font-bold text-xs md:text-sm border-2 md:border-4 border-white">
+            <div class="absolute left-1/2 transform -translate-x-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-red-600 shadow-lg z-10 flex items-center justify-center text-white font-bold text-sm md:text-base border-2 md:border-4 border-white">
               {event.year}
             </div>
             
@@ -256,43 +256,391 @@
   </section>
 
   <!-- Sitios de Campamento -->
-  <section class="mb-16 bg-white rounded-lg p-8 shadow-md">
-    <h2 class="text-3xl font-bold text-red-600 mb-6">Campamentos Emblemáticos</h2>
-    <p class="mb-6">A lo largo de nuestra historia, hemos realizado campamentos en diversos lugares de Chile, cada uno con sus propias experiencias y memorias:</p>
+  <section class="mb-16 bg-white rounded-lg p-6 md:p-8 shadow-md">
+    <h2 class="text-3xl font-bold text-red-600 mb-6">Listado Campamentos de Verano ⛺️</h2>
+    <p class="mb-6">A lo largo de nuestra historia, hemos realizado campamentos en diversos lugares de Chile y el extranjero, cada uno con su propia historia y experiencias únicas:</p>
     
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-8">
-      <div class="p-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
-        <h4 class="font-semibold text-red-600">Primer Campamento</h4>
-        <p>San Fabian (1953)</p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">San Fabián</p>
+        <p class="text-sm text-gray-700">1953</p>
       </div>
       
-      <div class="p-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
-        <h4 class="font-semibold text-red-600">Lago Calafquén</h4>
-        <p>Varios años (1967, 1970, 1975, 1979, 1980)</p>
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Cucha-Cucha</p>
+        <p class="text-sm text-gray-700">1954</p>
       </div>
       
-      <div class="p-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
-        <h4 class="font-semibold text-red-600">Puerto Fonk</h4>
-        <p>1959, 1968, 1982</p>
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Villarica</p>
+        <p class="text-sm text-gray-700">1955</p>
       </div>
       
-      <div class="p-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
-        <h4 class="font-semibold text-red-600">Villarica</h4>
-        <p>1954, 1965, 1975, 1978, 1981</p>
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Ñuble</p>
+        <p class="text-sm text-gray-700">1956</p>
       </div>
-      
-      <div class="p-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
-        <h4 class="font-semibold text-red-600">Rupanco</h4>
-        <p>1969, 2006, 2010, 2015</p>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Puerto Montt</p>
+        <p class="text-sm text-gray-700">1957</p>
       </div>
-      
-      <div class="p-4 bg-gray-50 rounded-lg shadow-sm border border-gray-200">
-        <h4 class="font-semibold text-red-600">Más Reciente</h4>
-        <p>Quillayes de Tomé (2024)</p>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Loncoche</p>
+        <p class="text-sm text-gray-700">1958</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lago Ranco</p>
+        <p class="text-sm text-gray-700">1959</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Puerto Fonck</p>
+        <p class="text-sm text-gray-700">1960</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Ayacara</p>
+        <p class="text-sm text-gray-700">1961</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Panguipulli</p>
+        <p class="text-sm text-gray-700">1962</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Puyehue</p>
+        <p class="text-sm text-gray-700">1963</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Perquilauquén</p>
+        <p class="text-sm text-gray-700">1964</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Ñuble</p>
+        <p class="text-sm text-gray-700">1965</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Villarica</p>
+        <p class="text-sm text-gray-700">1966</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lanalhue</p>
+        <p class="text-sm text-gray-700">1967</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Calafquén</p>
+        <p class="text-sm text-gray-700">1968</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Puerto Fonck</p>
+        <p class="text-sm text-gray-700">1969</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Rupanco</p>
+        <p class="text-sm text-gray-700">1970</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Calafquén</p>
+        <p class="text-sm text-gray-700">1971</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Loncoche</p>
+        <p class="text-sm text-gray-700">1972</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Los Ángeles</p>
+        <p class="text-sm text-gray-700">1973</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Chillán</p>
+        <p class="text-sm text-gray-700">1974</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Calafquén</p>
+        <p class="text-sm text-gray-700">1975</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Villarica</p>
+        <p class="text-sm text-gray-700">1976</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Chillán</p>
+        <p class="text-sm text-gray-700">1977</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Villarica</p>
+        <p class="text-sm text-gray-700">1978</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Calafquén</p>
+        <p class="text-sm text-gray-700">1979</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Calafquén</p>
+        <p class="text-sm text-gray-700">1980</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Villarica</p>
+        <p class="text-sm text-gray-700">1981</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Puerto Fonck</p>
+        <p class="text-sm text-gray-700">1982</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Puerto Fonck</p>
+        <p class="text-sm text-gray-700">1983</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Río Muco Temuco</p>
+        <p class="text-sm text-gray-700">1984</p>
+        <p class="text-xs text-gray-500 mt-1">Jamboree Scout Nacional</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Panguipulli</p>
+        <p class="text-sm text-gray-700">1985</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Salto de la Princesa</p>
+        <p class="text-sm text-gray-700">1985</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Ayacara Puerto Buill</p>
+        <p class="text-sm text-gray-700">1986</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Calafquén</p>
+        <p class="text-sm text-gray-700">1987</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Ensenada</p>
+        <p class="text-sm text-gray-700">1988</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Cascadas</p>
+        <p class="text-sm text-gray-700">1989</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lago 7 Islas Calbuco</p>
+        <p class="text-sm text-gray-700">1990</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lago Maihue</p>
+        <p class="text-sm text-gray-700">1991</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Salto de la Princesa</p>
+        <p class="text-sm text-gray-700">1992</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lechagua Chiloé</p>
+        <p class="text-sm text-gray-700">1993</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Mantilhue Lago Puyehue</p>
+        <p class="text-sm text-gray-700">1994</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lago Rupanco</p>
+        <p class="text-sm text-gray-700">1995</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Sin registro</p>
+        <p class="text-sm text-gray-700">1996</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Mantilhue Lago Puyehue</p>
+        <p class="text-sm text-gray-700">1997</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Anticura Parque Nacional Puyehue</p>
+        <p class="text-sm text-gray-700">1998</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">San Francisco de Mostazal</p>
+        <p class="text-sm text-gray-700">1999</p>
+        <p class="text-xs text-gray-500 mt-1">19° Jamboree Scout Mundial Picarquín</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Calfuco Niebla Valdivia</p>
+        <p class="text-sm text-gray-700">1999</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Isla Huar</p>
+        <p class="text-sm text-gray-700">2000</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Río Carihueico</p>
+        <p class="text-sm text-gray-700">2001</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lago Riñihue</p>
+        <p class="text-sm text-gray-700">2002</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Picarquín</p>
+        <p class="text-sm text-gray-700">2002</p>
+        <p class="text-xs text-gray-500 mt-1">Jamboree Nacional</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Nahuelhuapi</p>
+        <p class="text-sm text-gray-700">2003</p>
+        <p class="text-xs text-gray-500 mt-1">Argentina</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Vilches</p>
+        <p class="text-sm text-gray-700">2004</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Enco Panguipulli</p>
+        <p class="text-sm text-gray-700">2005</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Rupanco</p>
+        <p class="text-sm text-gray-700">2006</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Puelo</p>
+        <p class="text-sm text-gray-700">2007</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Bullileo</p>
+        <p class="text-sm text-gray-700">2008</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Las Compuertas Chiloé</p>
+        <p class="text-sm text-gray-700">2009</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Rupanco</p>
+        <p class="text-sm text-gray-700">2010</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Ranco</p>
+        <p class="text-sm text-gray-700">2011</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Malalcahuello</p>
+        <p class="text-sm text-gray-700">2012</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Atacalco</p>
+        <p class="text-sm text-gray-700">2013</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Río Pedregoso</p>
+        <p class="text-sm text-gray-700">2014</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Rupanco</p>
+        <p class="text-sm text-gray-700">2015</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Cholguán</p>
+        <p class="text-sm text-gray-700">2016</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Las Compuertas Chiloé</p>
+        <p class="text-sm text-gray-700">2017</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lago Icalma</p>
+        <p class="text-sm text-gray-700">2018</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lago Maihue</p>
+        <p class="text-sm text-gray-700">2019</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Lircay</p>
+        <p class="text-sm text-gray-700">2020</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Suspensión presencialidad</p>
+        <p class="text-sm text-gray-700">2021-2022</p>
+        <p class="text-xs text-gray-500 mt-1">Pandemia mundial Covid-19</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Cachapoal</p>
+        <p class="text-sm text-gray-700">2023</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Quillayes de Tomé</p>
+        <p class="text-sm text-gray-700">2024</p>
+      </div>
+
+      <div class="p-3 bg-gray-50 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition">
+        <p class="font-semibold text-red-600">Chonchi</p>
+        <p class="text-sm text-gray-700">2025</p>
       </div>
     </div>
-    
-    <p class="mt-6 text-sm text-gray-600 text-center">Para una lista completa de todos nuestros campamentos, consulta nuestros archivos históricos.</p>
   </section>
 
   <!-- Botón para volver -->
