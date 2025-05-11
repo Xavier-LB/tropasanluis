@@ -2050,7 +2050,29 @@ Al andar… (bis)`,
 
 <svelte:head>
   <title>Cancionero - Tropa San Luis</title>
-  <meta name="description" content="Cancionero de la Tropa San Luis con las canciones de nuestros campamentos a través de los años." />
+  <meta name="description" content="Cancionero de la Tropa San Luis con las canciones de nuestros campamentos a través de los años desde 1998 hasta 2025." />
+  <meta name="keywords" content="Tropa San Luis, cancionero, himnos scout, canciones scout, campamento, música scout" />
+  <meta name="author" content="Tropa San Luis" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://tropasanluis.cl/himnos/" />
+  <meta property="og:title" content="Cancionero - Tropa San Luis" />
+  <meta property="og:description" content="Colección de himnos y canciones de los campamentos de la Tropa San Luis desde 1998. Descubre las melodías que han acompañado nuestras aventuras." />
+  <meta property="og:image" content="https://tropasanluis.cl/images/og-cancionero.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://tropasanluis.cl/himnos/" />
+  <meta name="twitter:title" content="Cancionero - Tropa San Luis" />
+  <meta name="twitter:description" content="Colección de himnos y canciones de los campamentos de la Tropa San Luis desde 1998. Descubre las melodías que han acompañado nuestras aventuras." />
+  <meta name="twitter:image" content="https://tropasanluis.cl/images/og-cancionero.jpg" />
+  
+  <!-- Additional metadata -->
+  <meta name="robots" content="index, follow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="canonical" href="https://tropasanluis.cl/himnos/" />
+  
   <style>
     .chord-line {
       position: relative;
