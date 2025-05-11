@@ -72,6 +72,7 @@ Sacar el hacha, el cáñamo y el bidón
 La tropa está en el lugar 
 Es la San Luis que empieza a trabajar.`,
       chords: true,
+      composers: "Pablo Cáceres",
       chordData: [
         { line: 0, chord: "Re", position: 0 },
         { line: 1, chord: "La", position: 19 },
@@ -151,6 +152,7 @@ por eso me voy para Huar.
 Feroces e invencibles guerreros…`,
       chords: true,
       youtubeLink: "https://www.youtube.com/watch?v=LS3V_u-KfsQ",
+      composers: "Francisco Orchard",
       chordData: [
         { line: 0, chord: "C", position: 0 },
         { line: 0, chord: "G", position: 41 },
@@ -232,6 +234,7 @@ Estarás muy cochino, tendrás muy mal olor
 Se te mojará la ropa y tus zapatos
 Y diez mil coliguachos serán lo peor.`,
       chords: true,
+      composers: "Francisco Orchard",
       chordData: [
         { line: 0, chord: "DoM", position: 0 },
         { line: 0, chord: "Faad9", position: 22 },
@@ -341,6 +344,7 @@ Para iluminar lo que este bosque esconde,
 los secretos que el viento nos quiere contar. 
 (bis)`,
       chords: true,
+      composers: "Oscar Lazo",
       chordData: [
         { line: 0, chord: "Em", position: 0 },
         { line: 0, chord: "D", position: 47 },
@@ -412,6 +416,7 @@ El campamento fue abandonado,
 y la lluvia es mi único cantar.`,
       chords: true,
       youtubeLink: "https://www.youtube.com/watch?v=ZK1Xj7P5QU0",
+      composers: "Francisco Orchard",
       chordData: [
         { line: 0, chord: "Am", position: 0 },
         { line: 0, chord: "G", position: 36 },
@@ -501,6 +506,7 @@ Y su voz se enciende y tiene nuevas fuerzas
 Es porque ahora tengo fuego en la mirada… (BIS)`,
       chords: true,
       youtubeLink: "https://www.youtube.com/watch?v=fXkrFe-WT3g",
+      composers: "Oscar Lazo",
       chordData: [
         { line: 0, chord: "D", position: 0 },
         { line: 0, chord: "C", position: 38 },
@@ -571,6 +577,7 @@ Haré así nuevos cuentos de lo que aquí viví
 No me iré, sin tener, otra vez
 Una historia que recordar…`,
       chords: true,
+      composers: "Pablo Durán",
       chordData: [
         { line: 0, chord: "La", position: 0 },
         { line: 0, chord: "Re", position: 40 },
@@ -669,7 +676,8 @@ Abrazaremos nuestra canción
 Daremos un giro libre
 
 Entre el árbol y el fogón`,
-      chords: false
+      chords: false,
+      composers: "Patricio Jérez"
     },
     {
       title: "Puelo",
@@ -720,6 +728,7 @@ La voz del río
 Y hechizos en la oscuridad 
 (BIS).`,
       chords: true,
+      composers: "Pablo Durán",
       chordData: [
         { line: 0, chord: "G", position: 0 },
         { line: 1, chord: "D", position: 28 },
@@ -943,6 +952,7 @@ Haré de este paisaje un lugar por conquistar.
 Esta historia…
 (bis)`,
       chords: true,
+      composers: "Pablo Pacheco",
       chordData: [
         { line: 0, chord: "E", position: 0 },
         { line: 0, chord: "F#", position: 39 },
@@ -1111,6 +1121,7 @@ cuando junto a mi patrulla aprenda a caminar.
 
 He venido aquí…`,
       chords: true,
+      composers: "Salvador Sacur",
       chordData: [
         { line: 0, chord: "F#m", position: 0 },
         { line: 0, chord: "E", position: 15 },
@@ -1380,7 +1391,7 @@ El canto del lago debemos salvar
 Y cuando todos dejen de estar
 Nuestro pasado podremos recordar.`,
       chords: true,
-      composers: "",
+      composers: "Vicente Espinoza",
       chordData: [
         { line: 0, chord: "G", position: 0 },
         { line: 0, chord: "Bm7", position: 26 },
@@ -1991,6 +2002,59 @@ Al andar… (bis)`,
         { line: 55, chord: "F", position: 28 },
         { line: 55, chord: "G", position: 32 }
       ]
+    },
+    {
+      title: "Pendejo Mala Onda",
+      year: "",
+      location: "",
+      lyrics: `Yo era un pendejo mala onda
+No me reía con nada
+¿Por qué tan mala onda?
+Terrible de amargao    
+Pendejo culiao'.
+
+Un día mis jefes me dijeron
+Disfrázate de caracol
+¿Por qué no te poni la conchadetumadre 
+Y te vai caminando despacito?
+    
+De ahí que soy feliz
+Me río con su mierda de humor
+Pendejo weón.`,
+      chords: true,
+      composers: "Ignacio Sierra",
+      chordData: [
+        { line: 0, chord: "D", position: 0 },
+        { line: 0, chord: "C", position: 38 },
+        { line: 1, chord: "G", position: 0 },
+        { line: 1, chord: "D", position: 33 },
+        { line: 2, chord: "F", position: 9 },
+        { line: 2, chord: "G", position: 25 },
+        { line: 2, chord: "D", position: 41 },
+        { line: 3, chord: "F", position: 5 },
+        { line: 3, chord: "G", position: 25 },
+        { line: 3, chord: "D", position: 46 },
+        { line: 3, chord: "F", position: 50 },
+        { line: 3, chord: "G", position: 54 },
+        { line: 4, chord: "D", position: 22 },
+        { line: 6, chord: "D", position: 7 },
+        { line: 6, chord: "C", position: 39 },
+        { line: 7, chord: "G", position: 7 },
+        { line: 7, chord: "D", position: 32 },
+        { line: 8, chord: "D", position: 9 },
+        { line: 8, chord: "C", position: 47 },
+        { line: 9, chord: "G", position: 9 },
+        { line: 9, chord: "D", position: 45 },
+        { line: 11, chord: "F", position: 2 },
+        { line: 11, chord: "G", position: 22 },
+        { line: 11, chord: "D", position: 35 },
+        { line: 12, chord: "F", position: 7 },
+        { line: 12, chord: "G", position: 32 },
+        { line: 12, chord: "D", position: 46 },
+        { line: 12, chord: "F", position: 50 },
+        { line: 12, chord: "G", position: 54 },
+        { line: 13, chord: "D", position: 20 }
+      ]
     }
   ];
 
@@ -2117,7 +2181,7 @@ Al andar… (bis)`,
           aria-controls="song-content-{index}"
         >
           <div>
-            <h2 class="text-xl font-bold">{song.title} ({song.year})</h2>
+            <h2 class="text-xl font-bold">{song.title} {song.year ? `(${song.year})` : ''}</h2>
           </div>
           <div class="text-xl">
             {expandedSong === index ? '−' : '+'}
