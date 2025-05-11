@@ -22,9 +22,9 @@
         inCharge: ["Pao", "Chopi", "Marcelo"],
         description: "Deben promocionar la Tropa San Luis",
         criteria: [
-          "5 integrantes minimo",
-          "Edicion del video",
-          "Calidad del video (Imagen y audio)",
+          "5 integrantes mínimo",
+          "Edición del video",
+          "Calidad del video (imagen y audio)",
           "Creatividad"
         ],
         fecha: "Lunes 2 de junio hasta las 18:00"
@@ -33,7 +33,7 @@
         name: "Brain Rot",
         score: "A",
         inCharge: ["Pelao", "Pedro", "Chopi"],
-        description: "Hacer un Brain Rot con el animal de la patrulla, debera ser subido a Instagram y se considerara cantidad de likes. Debe ser subido el lunes 2 de junio hasta las 18:00. Los likes se contarán hasta el viernes 6 de junio a las 12 PM.",
+        description: "Hacer un Brain Rot con el animal de la patrulla, deberá ser subido a Instagram y se considerará la cantidad de likes. Debe ser subido el lunes 2 de junio hasta las 18:00. Los likes se contarán hasta el viernes 6 de junio a las 12 PM.",
         criteria: [
           "Likes de Instagram",
           "Originalidad",
@@ -45,14 +45,14 @@
         name: "Doblaje",
         score: "AAA",
         inCharge: ["Marcelo", "Pelao", "Xavier"],
-        description: "Deberan recrear el video clip de una cancion",
+        description: "Deberán recrear el videoclip de una canción",
         criteria: [
-          "Participacion de la patrulla",
+          "Participación de la patrulla",
           "Vestimenta",
           "Localizaciones",
-          "Calidad del video (Imagen y audio)",
+          "Calidad del video (imagen y audio)",
           "Similitud al video original",
-          "Edicion del video"
+          "Edición del video"
         ],
         fecha: "Martes 3 de junio hasta las 18:00"
       },
@@ -60,13 +60,13 @@
         name: "Lucho Furro",
         score: "AAA",
         inCharge: ["Pedro", "Fu", "Marti"],
-        description: "Un integrante de la patrulla debera personificar al animal de su patrulla con vestimenta y maquillaje, debera ser subida como una secion de fotos con una escenografia. Deben describir los valores que transmite el animal.",
+        description: "Un integrante de la patrulla deberá personificar al animal de su patrulla con vestimenta y maquillaje. Deberá ser subida como una sesión de fotos con una escenografía. Deben describir los valores que transmite el animal.",
         criteria: [
           "Maquillaje",
           "Vestimenta",
           "Calidad de fotos",
           "Uso de colores",
-          "Cratividad",
+          "Creatividad",
           "Uso de materiales reciclados",
           "Escenografía"
         ],
@@ -76,13 +76,13 @@
         name: "Lucho en 100 Palabras",
         score: "AA",
         inCharge: ["Marcelo", "Pelao", "Viky"],
-        description: "Invitar un cuento con tematica de la Tropa San Luis en 100 palabras (Imitando Santiago en 100 palabras)",
+        description: "Inventar un cuento con temática de la Tropa San Luis en 100 palabras (imitando 'Santiago en 100 palabras')",
         criteria: [
           "Originalidad",
           "Ortografía",
           "Pertinencia San Luisina",
           "Coherencia",
-          "Coheción",
+          "Cohesión",
           "Estructura"
         ],
         fecha: "Miércoles 4 de junio hasta las 18:00"
@@ -91,28 +91,28 @@
         name: "Lienzo",
         score: "AA",
         inCharge: ["Renato (MA)", "Marti", "Browne"],
-        description: "En una hoja de Block (34x48), hacer un lienzo que represente la tropa (No a la patrulla)",
+        description: "En una hoja de block (34x48), hacer un lienzo que represente la tropa (no a la patrulla)",
         criteria: [
           "Originalidad",
-          "Tecnica",
+          "Técnica",
           "Mensaje",
-          "Comprención",
+          "Comprensión",
           "Uso de colores",
-          "Tecnica"
+          "Técnica"
         ],
         fecha: "Miércoles 4 de junio hasta las 18:00"
       },
       {
-        name: "Fotografia",
+        name: "Fotografía",
         score: "A",
         inCharge: ["Browne", "Marcelo", "Dani"],
-        description: "Tomar una foto artisica de un entorno natural, la foto debe tener un título",
+        description: "Tomar una foto artística de un entorno natural. La foto debe tener un título.",
         criteria: [
           "Calidad de la imagen",
           "Originalidad",
           "Encuadre",
           "Enfoque",
-          "Luminocidad"
+          "Luminosidad"
         ],
         fecha: "Jueves 5 de junio hasta las 18:00"
       },
@@ -120,12 +120,13 @@
         name: "Saludos",
         score: "AA",
         inCharge: ["Chopi", "Pao", "Pedro"],
-        description: "Deberan conseguir los saludos de las siguientes personas. El del presidente ganan todo, si hay empate se desempata con la del Papa",
+        description: "Deberán conseguir los saludos de las siguientes personas. El del presidente gana todo, si hay empate se desempata con el del Papa.",
         criteria: [
-          "2 Musicos",
-          "2 Politicos",
-          "2 Influencer",
+          "2 Músicos",
+          "2 Políticos",
+          "2 Influencers",
           "2 Futbolistas",
+          "1 Chofer de micro",
           "El Papa",
           "El presidente de Chile (Boric)"
         ],
@@ -135,10 +136,10 @@
         name: "Cantar un himno con una patrulla de otro grupo (con guitarra)",
         score: "AA",
         inCharge: ["Marcelo", "Chopi", "Xavier"],
-        description: "Deberan grabarse cantando un himno de la tropa con una patrulla de otro grupo scout",
+        description: "Deberán grabarse cantando un himno de la tropa con toda la patrulla y una patrulla de otro grupo scout (con guitarra).",
         criteria: [
-          "Intrerpretacion Musical",
-          "5 integrantes de una patrulla de otro grupo Scout",
+          "Interpretación musical",
+          "Toda la patrulla y 5 integrantes de una patrulla de otro grupo scout",
           "Pañolines (de la STL y del otro grupo)"
         ],
         fecha: "Viernes 6 de junio hasta las 18:00"
@@ -147,14 +148,14 @@
         name: "Recrear la escena de los 80",
         score: "AAA",
         inCharge: ["Marcelo", "Pelao", "Xavier"],
-        description: "Deberen recrear la escena de los 80, cambiando los dialogos con tematica de la tropa, con una familia de la patrulla, incluyendo al patrullero o patrullera (https://www.youtube.com/watch?v=0NIS5BsywKY&ab_channel=El13)",
+        description: "Deberán recrear la escena de los 80, cambiando los diálogos con temática de la tropa, con una familia de la patrulla, incluyendo al patrullero o patrullera (https://www.youtube.com/watch?v=0NIS5BsywKY&ab_channel=El13)",
         criteria: [
           "Fidelidad a la escena original",
-          "Originalidad de los dialogos",
+          "Originalidad de los diálogos",
           "Vestuario",
           "Escenario",
-          "Actuacion",
-          "Calidad Audio y video"
+          "Actuación",
+          "Calidad de audio y video"
         ],
         fecha: "Viernes 6 de junio hasta las 18:00"
       }
