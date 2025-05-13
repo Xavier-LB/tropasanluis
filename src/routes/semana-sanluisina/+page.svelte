@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import PruebaTimer from '$lib/PruebaTimer.svelte';
+  import DiscreteTimer from '$lib/DiscreteTimer.svelte';
   /**
    * @typedef {Object} Test
    * @property {string} name - Name of the test
@@ -32,7 +33,7 @@
       {
         name: "Brain Rot",
         score: "A",
-        inCharge: ["Pelao", "Pedro", "Chopi"],
+        inCharge: ["Pelao", "Pedro", "Chopi", "Flaxo"],
         description: "Hacer un Brain Rot con el animal de la patrulla, deberá ser subido a Instagram y se considerará la cantidad de likes. Los likes se contarán hasta el viernes 6 de junio a las 12:00.",
         criteria: [
           "Likes de Instagram",
@@ -44,7 +45,7 @@
       {
         name: "Doblaje",
         score: "AAA",
-        inCharge: ["Marcelo", "Pelao", "Xavier"],
+        inCharge: ["Marcelo", "Pelao", "Xavier", "Flaxo"],
         description: "Deberán recrear el videoclip de una canción.",
         criteria: [
           "Participación de la patrulla",
@@ -88,7 +89,7 @@
         name: "Lucho en 100 Palabras",
         score: "AA",
         inCharge: ["Marcelo", "Pelao", "Viky"],
-        description: "Inventar un cuento con temática de la Tropa San Luis en 100 palabras (imitando 'Santiago en 100 palabras').",
+        description: "Inventar un cuento con temática de la Tropa San Luis en 100 palabras (imitando 'Santiago en 100 palabras'). Los cuentos deben ser subidos a través del formulario disponible en <a href='/lucho-en-100-palabras' class='text-red-600 font-bold hover:underline'>la página del concurso →</a>",
         criteria: [
           "Originalidad",
           "Ortografía",
@@ -117,7 +118,7 @@
       {
         name: "Fotografía",
         score: "A",
-        inCharge: ["Browne", "Marcelo", "Dani"],
+        inCharge: ["Browne", "Marcelo", "Dani", "Flaxo"],
         description: "Tomar una foto artística de un entorno natural. La foto debe tener un título.",
         criteria: [
           "Calidad de la imagen",
@@ -214,6 +215,9 @@
   function toggleIndex() {
     showIndex = !showIndex;
   }
+
+  // Fecha para la publicación de las pruebas del día final
+  const fechaPublicacionPruebasFinal = "viernes 17 de mayo a las 12:00";
 </script>
 
 <main class="relative">
@@ -340,7 +344,7 @@
 
             <div class="mb-6">
               <h4 class="font-semibold mb-2 text-primary">Descripción:</h4>
-              <p class="text-gray-700 leading-relaxed">{test.description}</p>
+              <p class="text-gray-700 leading-relaxed">{@html test.description}</p>
               {#if test.name === "Recrear la escena de Los 80"}
                 <div class="mt-4 aspect-video w-full">
                   <iframe width="100%" height="100%" src="https://www.youtube.com/embed/0NIS5BsywKY" title="Los 80 - &quot;En esta casa no hay ni comunistas ni pinochetistas&quot;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -360,8 +364,8 @@
             {#if test.fecha}
               <div class="mt-12 border-t border-gray-200 pt-6">
                 <h4 class="font-semibold mb-2 text-primary">Fecha de subida:</h4>
-                <p class="text-gray-700">{test.fecha}</p>
-                <PruebaTimer fechaStr={test.fecha} />
+                <p class="text-gray-700 mb-2">{test.fecha}</p>
+                <DiscreteTimer fechaStr={test.fecha} label="Tiempo restante:" />
               </div>
             {/if}
           </div>
@@ -380,6 +384,9 @@
       <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-12 text-center transform hover:scale-[1.02] transition-all duration-300">
         <p class="text-3xl font-bold text-primary">Próximamente</p>
         <p class="text-gray-500 mt-4 text-xl">Las pruebas de la semana serán publicadas próximamente</p>
+        <div class="mt-4">
+          <DiscreteTimer fechaStr={fechaPublicacionPruebasFinal} label="Publicación:" />
+        </div>
       </div>
     </section>
   </div>
