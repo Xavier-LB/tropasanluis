@@ -40,7 +40,7 @@
         </a>
 
         <a href="/" class="hover:text-gray-200 transition">
-          <h1 class="font-bold text-2xl md:text-3xl tracking-wide">Tropa San Luis</h1>
+          <h1 class="font-bold text-2xl md:text-3xl tracking-wide pl-4">Tropa San Luis</h1>
         </a>
       </div>
       <nav class="mt-3 md:mt-0 space-x-4 flex flex-wrap justify-center">
