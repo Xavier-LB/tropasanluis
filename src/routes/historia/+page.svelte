@@ -117,7 +117,7 @@
       Desde su fundación en 1952, la Tropa San Luis ha forjado una rica historia de tradiciones, servicio y hermandad scout.
     </p>
     <div class="flex justify-center mt-8">
-      <img src="/logo-stl-2.png" alt="Logo Tropa San Luis" class="w-32 h-32 object-contain" />
+      <img src="/logo-stl.svg" alt="Logo Tropa San Luis" class="w-32 h-32" />
     </div>
   </div>
 

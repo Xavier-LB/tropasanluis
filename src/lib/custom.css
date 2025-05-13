@@ -1,28 +1,28 @@
-/* Sobrescribir colores rojos con #C00000 */
+/* Sobrescribir colores rojos con #C1272D */
 .text-red-600, .text-red-700, .text-red-800, .text-red-900 {
-    color: #C00000 !important;
+    color: #C1272D !important;
 }
 
 .bg-red-600, .bg-red-700, .bg-red-800, .bg-red-900 {
-    background-color: #C00000 !important;
+    background-color: #C1272D !important;
 }
 
 .border-red-600, .border-red-700, .border-red-800, .border-red-900 {
-    border-color: #C00000 !important;
+    border-color: #C1272D !important;
 }
 
 .hover\:bg-red-600:hover, .hover\:bg-red-700:hover, .hover\:bg-red-800:hover, .hover\:bg-red-900:hover {
-    background-color: #C00000 !important;
+    background-color: #C1272D !important;
 }
 
 .from-red-600, .from-red-700, .from-red-800, .from-red-900 {
-    --tw-gradient-from: #C00000 !important;
+    --tw-gradient-from: #C1272D !important;
 }
 
 .to-red-600, .to-red-700, .to-red-800, .to-red-900 {
-    --tw-gradient-to: #C00000 !important;
+    --tw-gradient-to: #C1272D !important;
 }
 
 .via-red-600, .via-red-700, .via-red-800, .via-red-900 {
-    --tw-gradient-stops: var(--tw-gradient-from), #C00000, var(--tw-gradient-to) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), #C1272D, var(--tw-gradient-to) !important;
 } 

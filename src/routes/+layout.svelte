@@ -32,11 +32,11 @@
 
 <div class="min-h-screen flex flex-col bg-white text-gray-900">
   <!-- Header -->
-  <header class="bg-red-600 text-white py-4 shadow-md">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
-      <div class="flex items-center space-x-4">
-        <a href="/" class="w-20 h-20 flex items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300">
-          <img src="/logo-stl-2.png" alt="Logo" class="object-contain w-14" />
+  <header class="bg-[#C1272D] text-white py-4 shadow-md">
+    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
+      <div class="flex items-center ">
+        <a href="/">
+          <img src="/logo-stl.svg" alt="Logo" class="w-20 h-20" />
         </a>
 
         <a href="/" class="hover:text-gray-200 transition">
@@ -50,7 +50,7 @@
         <!-- <a href="/fotos" class="hover:underline hover:text-gray-200 transition">Fotos</a> -->
         <a href="/himnos" class="hover:underline hover:text-gray-200 transition">Himnos</a>
         <a href="https://map.tropasanluis.cl" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-gray-200 transition">Mapa</a>
-        <a href="/semana-sanluisina" class="px-3 py-1 bg-red-700 rounded-lg font-semibold hover:bg-red-800 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform">Semana Sanluisina</a>
+        <a href="/semana-sanluisina" class="px-3 py-1 bg-[#A11F25] rounded-lg font-semibold hover:bg-[#8A1B20] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform">Semana Sanluisina</a>
       </nav>
     </div>
   </header>
@@ -61,7 +61,7 @@
   </main>
 
   <!-- Fun Footer -->
-  <footer class="bg-red-600 text-white text-center py-6 text-sm relative">
+  <footer class="bg-[#C1272D] text-white text-center py-6 text-sm relative">
     <div class="container mx-auto">
       <p>Porque somos Sanluisinos y Scouts de verdad!</p>
       <p class="mt-2 italic">"{randomQuote.phrase}" — {randomQuote.song}</p>
