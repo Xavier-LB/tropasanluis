@@ -1,15 +1,9 @@
 <script lang="ts">
   /**
-   * URL del Google Form embedido
+   * URL del Google Form
    * Nota: Deberás reemplazar esta URL con tu formulario real de Google
    */
-//   let googleFormUrl = "https://docs.google.com/forms/d/e/AQUI_TU_ID_DE_FORMULARIO/viewform?embedded=true";
-  let googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd1szUobTn94UkDnWOolPMXxVCmxzIdSHO9sKsC31jVWQD1ng/viewform?embedded=true";
-  
-  /**
-   * Altura del iframe para mostrar el formulario
-   */
-  let iframeHeight = "1500px";
+  let googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd1szUobTn94UkDnWOolPMXxVCmxzIdSHO9sKsC31jVWQD1ng/viewform?usp=header";
 </script>
 
 <div class="prose max-w-4xl mx-auto">
@@ -44,18 +38,15 @@
     </div>
   </div>
   
-  <div class="bg-white shadow-lg rounded-lg overflow-hidden">
-    <!-- Google Form iframe -->
-    <iframe 
-      src={googleFormUrl} 
-      width="100%" 
-      height={iframeHeight}
-      frameborder="0" 
-      marginheight="0" 
-      marginwidth="0"
-      title="Formulario de envío de cuentos"
-      class="w-full">
-      Cargando formulario...
-    </iframe>
+  <div class="bg-white shadow-lg rounded-lg overflow-hidden p-6 text-center">
+    <!-- Botón para enviar cuento -->
+    <a 
+      href={googleFormUrl} 
+      target="_blank" 
+      rel="noopener noreferrer" 
+      class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+      Enviar mi cuento
+    </a>
+
   </div>
 </div> 

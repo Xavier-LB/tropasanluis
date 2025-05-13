@@ -68,14 +68,14 @@
     </div>
     
     <!-- Botón Lucho cuentero -->
-    <div class="text-center mb-12">
+    <!-- <div class="text-center mb-12">
       <a href="/lucho-cuentero"
          class="inline-block px-8 py-5 text-3xl font-bold text-white bg-gradient-to-r from-orange-600 via-red-700 to-orange-600 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-red-400/60 hover:rotate-1 border-2 border-white drop-shadow-md relative overflow-hidden group"
          style="letter-spacing: 0.05em; text-shadow: 0 2px 12px #0008;">
         <span class="relative z-10">Lucho cuentero</span>
         <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
       </a>
-    </div>
+    </div> -->
 
     <!-- Texto de bienvenida -->
     <div class="max-w-3xl mx-auto space-y-8 mb-16">
