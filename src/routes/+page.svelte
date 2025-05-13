@@ -19,12 +19,28 @@
   let currentIndex = 0;
   let interval: number;
 
+  /**
+   * Moves to the next image and restarts interval
+   */
   const next = () => {
     currentIndex = (currentIndex + 1) % photos.length;
+    restartInterval();
   };
 
+  /**
+   * Moves to the previous image and restarts interval
+   */
   const prev = () => {
     currentIndex = (currentIndex - 1 + photos.length) % photos.length;
+    restartInterval();
+  };
+
+  /**
+   * Restarts the carousel interval
+   */
+  const restartInterval = () => {
+    clearInterval(interval);
+    interval = setInterval(next, 5000);
   };
 
   onMount(() => {
