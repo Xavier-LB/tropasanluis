@@ -13,12 +13,12 @@
 </script>
 
 <div class="prose max-w-4xl mx-auto">
-  <h1 class="text-3xl font-bold text-center mb-6 text-red-600">Para Lucho en 100 Palabras</h1>
+  <h1 class="text-3xl font-bold text-center mb-6 text-red-600">Lucho cuentero</h1>
   
   <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
     <h2 class="text-xl font-semibold mb-4">Envía tu cuento</h2>
     <p class="mb-6">
-      Comparte tu historia para el concurso "Para Lucho en 100 Palabras". Tu cuento debe tener un máximo de 100 palabras
+      Comparte tu historia para el concurso "Lucho cuentero". Tu cuento debe tener un máximo de 100 palabras
       y estar relacionado con experiencias scout en la Tropa San Luis.
     </p>
     

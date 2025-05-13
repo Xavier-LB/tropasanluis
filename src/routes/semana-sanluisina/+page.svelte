@@ -86,10 +86,10 @@
         fecha: "Viernes 6 de junio hasta las 18:00"
       },
       {
-        name: "Lucho en 100 Palabras",
+        name: "Lucho cuentero",
         score: "AA",
         inCharge: ["Marcelo", "Pelao", "Viky"],
-        description: "Inventar un cuento con temática de la Tropa San Luis en 100 palabras (imitando 'Santiago en 100 palabras'). Los cuentos deben ser subidos a través del formulario disponible en <a href='/lucho-en-100-palabras' class='text-red-600 font-bold hover:underline'>la página del concurso →</a>",
+        description: "Inventar un cuento con temática de la Tropa San Luis en 100 palabras. Los cuentos deben ser subidos a través del formulario disponible en <a href='/lucho-cuentero' class='text-red-600 font-bold hover:underline'>la página del concurso →</a>",
         criteria: [
           "Originalidad",
           "Ortografía",

@@ -93,29 +93,32 @@
 
 {#if fechaLimite}
   <div class="timer-container {tiempoFinalizado ? 'finalizado' : timerColor}">
-    <span class="timer-icon" aria-hidden="true">
-      {#if tiempoFinalizado}
-        🏁
-      {:else}
-        ⏱️
-      {/if}
-    </span>
-    <span class="timer-label">{label}</span>
-    {#if !tiempoFinalizado}
-      <span class="timer-value">{tiempo}</span>
-      <span class="pulse-dot"></span>
-    {:else}
-      <span class="timer-finalizado">¡Finalizado!</span>
-    {/if}
+    <div class="timer-content">
+      <div class="timer-header">
+        <span class="timer-icon" aria-hidden="true">
+          {#if tiempoFinalizado}
+            🏁
+          {:else}
+            ⏱️
+          {/if}
+        </span>
+        <span class="timer-label">{label}</span>
+      </div>
+      <div class="timer-body">
+        {#if !tiempoFinalizado}
+          <span class="timer-value">{tiempo}</span>
+          <span class="pulse-dot"></span>
+        {:else}
+          <span class="timer-finalizado">¡Finalizado!</span>
+        {/if}
+      </div>
+    </div>
   </div>
 {/if}
 
 <style>
   .timer-container {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.875rem;
+    display: inline-block;
     color: #666;
     background-color: #f9fafb;
     border: 1px solid #e5e7eb;
@@ -125,6 +128,25 @@
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     position: relative;
     overflow: hidden;
+    max-width: 100%;
+  }
+  
+  .timer-content {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+  }
+  
+  .timer-header {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+  }
+  
+  .timer-body {
+    display: flex;
+    align-items: center;
   }
   
   .timer-container:hover {
@@ -235,10 +257,37 @@
     background-color: #d1fae5;
   }
 
+  /* Diseño responsive para pantallas angostas */
   @media (max-width: 640px) {
     .timer-container {
       font-size: 0.75rem;
-      padding: 0.3rem 0.5rem;
+      padding: 0.4rem 0.6rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .timer-content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+    }
+    
+    .timer-header {
+      width: 100%;
+      justify-content: center;
+    }
+    
+    .timer-body {
+      width: 100%;
+      justify-content: center;
+    }
+    
+    .timer-label {
+      font-size: 0.7rem;
+    }
+    
+    .timer-value {
+      font-size: 0.8rem;
     }
   }
 </style> 
