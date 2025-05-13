@@ -35,20 +35,22 @@
   <header class="bg-red-600 text-white py-4 shadow-md">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4">
       <div class="flex items-center space-x-4">
-        <div class="w-20 h-20 flex items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm overflow-hidden">
+        <a href="/" class="w-20 h-20 flex items-center justify-center rounded-full bg-white border border-gray-200 shadow-sm overflow-hidden hover:shadow-lg transition-shadow duration-300">
           <img src="/logo-stl-2.png" alt="Logo" class="object-contain w-14" />
-        </div>
+        </a>
 
-        <h1 class="font-bold text-2xl md:text-3xl tracking-wide">Tropa San Luis</h1>
+        <a href="/" class="hover:text-gray-200 transition">
+          <h1 class="font-bold text-2xl md:text-3xl tracking-wide">Tropa San Luis</h1>
+        </a>
       </div>
       <nav class="mt-3 md:mt-0 space-x-4 flex flex-wrap justify-center">
-        <a href="/" class="hover:underline hover:text-gray-200 transition">Inicio</a>
         <a href="/historia" class="hover:underline hover:text-gray-200 transition">Historia</a>
         <!-- <a href="/staff" class="hover:underline hover:text-gray-200 transition">Staff</a> -->
         <!-- <a href="/patrullas" class="hover:underline hover:text-gray-200 transition">Patrullas</a> -->
         <!-- <a href="/fotos" class="hover:underline hover:text-gray-200 transition">Fotos</a> -->
         <a href="/himnos" class="hover:underline hover:text-gray-200 transition">Himnos</a>
-        <a href="/semana-sanluisina" class="hover:underline hover:text-gray-200 transition">Semana Sanluisina</a>
+        <a href="https://map.tropasanluis.cl" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-gray-200 transition">Mapa</a>
+        <a href="/semana-sanluisina" class="px-3 py-1 bg-red-700 rounded-lg font-semibold hover:bg-red-800 transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform">Semana Sanluisina</a>
       </nav>
     </div>
   </header>

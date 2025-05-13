@@ -73,26 +73,6 @@
   </div>
 
   <div class="container mx-auto px-4 py-8 relative z-10">
-    <!-- Botón Semana San Luisina -->
-    <div class="text-center mb-6">
-      <a href="/semana-sanluisina"
-         class="inline-block px-12 py-8 text-5xl font-extrabold text-white bg-gradient-to-r from-red-800 via-orange-600 to-red-800 rounded-3xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-orange-400/60 hover:rotate-1 animate-pulse border-4 border-white drop-shadow-lg relative overflow-hidden group"
-         style="letter-spacing: 0.05em; text-shadow: 0 4px 24px #0008;">
-        <span class="relative z-10">Semana San Luisina</span>
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-      </a>
-    </div>
-    
-    <!-- Botón Lucho cuentero -->
-    <!-- <div class="text-center mb-12">
-      <a href="/lucho-cuentero"
-         class="inline-block px-8 py-5 text-3xl font-bold text-white bg-gradient-to-r from-orange-600 via-red-700 to-orange-600 rounded-2xl shadow-xl transition-all duration-300 hover:scale-105 hover:shadow-red-400/60 hover:rotate-1 border-2 border-white drop-shadow-md relative overflow-hidden group"
-         style="letter-spacing: 0.05em; text-shadow: 0 2px 12px #0008;">
-        <span class="relative z-10">Lucho cuentero</span>
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-      </a>
-    </div> -->
-
     <!-- Texto de bienvenida -->
     <div class="max-w-3xl mx-auto space-y-8 mb-16">
       <h1 class="text-5xl font-bold mb-6 text-center relative inline-block bg-gradient-to-r from-red-800 to-orange-600 bg-clip-text text-transparent">
@@ -103,6 +83,49 @@
       <p class="text-xl text-gray-700 leading-relaxed text-center">
         Explora nuestra página para conocer al Staff, las Patrullas, ver Fotos y descubrir nuestros Himnos.
       </p>
+    </div>
+
+    <!-- Botón Semana San Luisina -->
+    <div class="text-center mb-6">
+      <a href="/semana-sanluisina"
+         class="inline-block px-12 py-8 text-5xl font-extrabold text-white bg-gradient-to-r from-red-800 via-orange-600 to-red-800 rounded-3xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-orange-400/60 hover:rotate-1 animate-pulse border-4 border-white drop-shadow-lg relative overflow-hidden group"
+         style="letter-spacing: 0.05em; text-shadow: 0 4px 24px #0008;">
+        <span class="relative z-10">Semana San Luisina</span>
+        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+      </a>
+    </div>
+    
+    <!-- Botón Mapa de Campamentos -->
+    <div class="max-w-4xl mx-auto mb-10 p-6 rounded-xl bg-gradient-to-br from-white/80 to-white/40 shadow-xl backdrop-blur-sm border border-white/50">
+      <div class="flex flex-col md:flex-row gap-6 items-center">
+        <div class="flex-1 space-y-4">
+          <h2 class="text-3xl font-bold text-red-800">Mapa de Campamentos</h2>
+          <p class="text-lg text-gray-700">
+            Descubre todos nuestros campamentos de verano a través de un mapa interactivo con sus geolocalizaciones. 
+            Próximamente incluiremos fotos de cada campamento para revivir nuestras mejores aventuras.
+          </p>
+          <p class="text-sm text-gray-600 italic">
+            Agradecimientos especiales a Alonso Valdes "Oso" por la creación de este increíble mapa interactivo.
+          </p>
+          <div class="mt-4">
+            <a href="https://map.tropasanluis.cl" target="_blank" rel="noopener noreferrer"
+              class="inline-block px-6 py-3 text-xl font-bold text-white bg-gradient-to-r from-red-700 to-orange-500 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-orange-400/40 hover:rotate-1 border-2 border-white/80 relative overflow-hidden group">
+              <span class="relative z-10">Ver Mapa de Campamentos</span>
+              <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
+            </a>
+          </div>
+        </div>
+        <div class="flex-shrink-0">
+          <div class="w-40 h-40 md:w-48 md:h-48 rounded-full bg-gradient-to-br from-red-700 to-orange-500 p-1 shadow-lg overflow-hidden">
+            <div class="w-full h-full rounded-full bg-white/90 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-20 w-20 text-red-800" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Carrusel de fotos -->
