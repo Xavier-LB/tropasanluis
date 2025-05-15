@@ -1,9 +1,25 @@
 <script lang="ts">
+  import { onMount } from 'svelte';
+  import DiscreteTimer from '$lib/DiscreteTimer.svelte';
+  
   /**
    * URL del Google Form
    * Nota: Deberás reemplazar esta URL con tu formulario real de Google
    */
   let googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSd1szUobTn94UkDnWOolPMXxVCmxzIdSHO9sKsC31jVWQD1ng/viewform?usp=header";
+  
+  /**
+   * Fecha de lanzamiento del formulario
+   */
+  const fechaLanzamiento = "24 de mayo de 2025 a las 00:00";
+  let formularioActivo = false;
+  
+  onMount(() => {
+    // Verificar si ya pasó la fecha de lanzamiento
+    const fechaLimite = new Date("2025-05-24T00:00:00-04:00");
+    const ahora = new Date();
+    formularioActivo = ahora >= fechaLimite;
+  });
 </script>
 
 <div class="prose max-w-4xl mx-auto">
@@ -47,14 +63,25 @@
   </div>
   
   <div class="bg-white shadow-lg rounded-lg overflow-hidden p-6 text-center">
-    <!-- Botón para enviar cuento -->
-    <a 
-      href={googleFormUrl} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
-      Enviar mi cuento
-    </a>
-
+    {#if formularioActivo}
+      <!-- Botón para enviar cuento -->
+      <a 
+        href={googleFormUrl} 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
+        Enviar mi cuento
+      </a>
+    {:else}
+      <div class="mb-4">
+        <p class="font-medium text-gray-700">El formulario estará disponible a partir del 24 de mayo de 2025</p>
+      </div>
+      
+      <DiscreteTimer 
+        fechaStr={fechaLanzamiento}
+        customDate="2025-05-24T00:00:00-04:00" 
+        label="Tiempo para abrir el formulario:" 
+      />
+    {/if}
   </div>
 </div> 
