@@ -1,6 +1,7 @@
 <script lang="ts">
   import '../app.css';
   import { onMount, onDestroy } from 'svelte';
+  import { browser } from '$app/environment';
 
   // Array de frases extraídas de los coros de cada canción
   const quotes = [
@@ -32,11 +33,14 @@
 
   let isHeaderVisible = true;
   let lastScrollPosition = 0;
+  let scrollListener: () => void;
   
   /**
    * Controls the header visibility on scroll
    */
   const handleScroll = () => {
+    if (!browser) return;
+    
     const currentScrollPosition = window.scrollY;
     
     // If we're scrolling down more than 50px, hide the header
@@ -52,9 +56,11 @@
   };
 
   onMount(() => {
+    if (!browser) return;
+    
     // Add scroll event listener with throttling
     let ticking = false;
-    window.addEventListener('scroll', () => {
+    scrollListener = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           handleScroll();
@@ -62,11 +68,15 @@
         });
         ticking = true;
       }
-    });
+    };
+    
+    window.addEventListener('scroll', scrollListener);
   });
 
   onDestroy(() => {
-    window.removeEventListener('scroll', handleScroll);
+    if (browser && scrollListener) {
+      window.removeEventListener('scroll', scrollListener);
+    }
   });
 </script>
 
@@ -96,6 +106,7 @@
   </header>
 
   <!-- Show header button when hidden (mobile) -->
+  {#if browser}
   <button 
     class="fixed z-50 top-2 right-2 bg-[#C1272D] text-white p-2 rounded-full md:hidden {isHeaderVisible ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300"
     on:click={() => isHeaderVisible = true}
@@ -106,6 +117,7 @@
       <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 6a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 6a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
     </svg>
   </button>
+  {/if}
 
   <!-- Main Content -->
   <main class="flex-grow container mx-auto px-6 py-10">
