@@ -32,7 +32,7 @@
 
 <div class="min-h-screen flex flex-col bg-white text-gray-900">
   <!-- Header -->
-  <header class="bg-[#C1272D] text-white py-4 shadow-md">
+  <header class="bg-[#C1272D] text-white py-4 shadow-md sticky top-0 z-50 w-full">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
       <div class="flex items-center ">
         <a href="/">
