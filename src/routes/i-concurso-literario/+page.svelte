@@ -24,7 +24,7 @@
   /**
    * Metadatos para SEO y redes sociales
    */
-  const pageTitle = "Lucho Cuentero | Concurso de Cuentos | Tropa San Luis";
+  const pageTitle = "Concurso literario STL";
   const pageDescription = "Participa en el concurso Lucho Cuentero de la Tropa San Luis. Comparte tu historia de máximo 100 palabras sobre experiencias scout.";
   const pageImage = "/bases-i-concurso-literario.webp";
   const pageUrl = "https://tropasanluis.cl/i-concurso-literario";
