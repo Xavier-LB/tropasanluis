@@ -1,5 +1,6 @@
 <script lang="ts">
   import '../app.css';
+  import { onMount, onDestroy } from 'svelte';
 
   // Array de frases extraídas de los coros de cada canción
   const quotes = [
@@ -28,11 +29,50 @@
   ];
 
   let randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+
+  let isHeaderVisible = true;
+  let lastScrollPosition = 0;
+  
+  /**
+   * Controls the header visibility on scroll
+   */
+  const handleScroll = () => {
+    const currentScrollPosition = window.scrollY;
+    
+    // If we're scrolling down more than 50px, hide the header
+    if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 50) {
+      isHeaderVisible = false;
+    } 
+    // If we're scrolling up, show the header
+    else if (currentScrollPosition < lastScrollPosition) {
+      isHeaderVisible = true;
+    }
+    
+    lastScrollPosition = currentScrollPosition;
+  };
+
+  onMount(() => {
+    // Add scroll event listener with throttling
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+  });
+
+  onDestroy(() => {
+    window.removeEventListener('scroll', handleScroll);
+  });
 </script>
 
 <div class="min-h-screen flex flex-col bg-white text-gray-900">
   <!-- Header -->
-  <header class="bg-[#C1272D] text-white py-4 shadow-md sticky top-0 z-50 w-full">
+  <header class="bg-[#C1272D] text-white py-4 shadow-md sticky top-0 z-50 w-full transition-transform duration-300 ease-in-out" style="transform: {isHeaderVisible ? 'translateY(0)' : 'translateY(-100%)'}">
     <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
       <div class="flex items-center ">
         <a href="/">
@@ -54,6 +94,18 @@
       </nav>
     </div>
   </header>
+
+  <!-- Show header button when hidden (mobile) -->
+  <button 
+    class="fixed z-50 top-2 right-2 bg-[#C1272D] text-white p-2 rounded-full md:hidden {isHeaderVisible ? 'opacity-0' : 'opacity-100'} transition-opacity duration-300"
+    on:click={() => isHeaderVisible = true}
+    aria-label="Show header"
+    style="visibility: {isHeaderVisible ? 'hidden' : 'visible'}"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path d="M3 4a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 6a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm0 6a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" />
+    </svg>
+  </button>
 
   <!-- Main Content -->
   <main class="flex-grow container mx-auto px-6 py-10">

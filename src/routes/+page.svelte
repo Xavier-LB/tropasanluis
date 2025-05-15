@@ -102,6 +102,7 @@
         <span class="text-4xl ml-2">♥️</span>
         <div class="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-red-800 via-orange-600 to-red-800 rounded-full"></div>
       </h1>
+      
       <p class="text-xl text-gray-700 leading-relaxed text-center">
         Explora nuestra página para conocer al Staff, las Patrullas, ver Fotos y descubrir nuestros Himnos.
       </p>
@@ -134,9 +135,9 @@
       </div>
     </div>
 
-    <!-- Carrusel de fotos (movido después del texto) -->
+    <!-- Carrusel de fotos -->
     <div class="relative mx-auto max-w-4xl mb-16 overflow-hidden">
-      <div class="bg-white p-4 rounded-3xl flex flex-col">
+      <div class="bg-white p-2 rounded-3xl flex flex-col">
         <!-- Image container -->
         <div class="relative overflow-hidden rounded-2xl aspect-[16/9]">
           <!-- Main image with transition -->
@@ -151,42 +152,44 @@
                   alt="{photo.caption}" 
                   class="w-full h-full object-cover" 
                 />
-                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent py-6 px-6">
-                  <p class="text-white text-xl font-semibold drop-shadow-xl">
-                    {photo.caption}
-                  </p>
-                </div>
               </div>
             {/each}
           </div>
 
-          <!-- Botones de navegación mejorados -->
+          <!-- Botones de navegación más discretos -->
           <button 
             on:click={prev} 
-            class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/70 text-[#C1272D] p-3 h-12 w-12 flex items-center justify-center rounded-full hover:bg-white focus:outline-none transition-all duration-300 hover:scale-110 shadow-lg backdrop-blur-sm"
+            class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/30 text-white/90 p-2 h-8 w-8 flex items-center justify-center rounded-full hover:bg-white/50 focus:outline-none transition-all duration-300 backdrop-blur-sm"
             aria-label="Imagen anterior"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           
           <button 
             on:click={next} 
-            class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/70 text-[#C1272D] p-3 h-12 w-12 flex items-center justify-center rounded-full hover:bg-white focus:outline-none transition-all duration-300 hover:scale-110 shadow-lg backdrop-blur-sm"
+            class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/30 text-white/90 p-2 h-8 w-8 flex items-center justify-center rounded-full hover:bg-white/50 focus:outline-none transition-all duration-300 backdrop-blur-sm"
             aria-label="Imagen siguiente"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
           </button>
         </div>
 
+        <!-- Caption text moved outside the photo -->
+        <div class="mt-2 text-center px-1">
+          <p class="text-gray-800 text-sm md:text-base font-medium">
+            {photos[currentIndex].caption}
+          </p>
+        </div>
+
         <!-- Progress bar + indicators - improved to fix gray corners -->
-        <div class="px-2 mt-4">
+        <div class="px-2 mt-2">
           <div class="flex justify-between items-center">
             <!-- Progress number -->
-            <div class="text-gray-500 font-medium">
+            <div class="text-gray-500 text-xs md:text-sm font-medium">
               {currentIndex + 1} / {photos.length}
             </div>
             
@@ -194,21 +197,21 @@
             <div class="flex space-x-2">
               <button 
                 on:click={pauseCarousel}
-                class="text-xs px-3 py-1.5 rounded-full transition {!isPlaying ? 'bg-[#C1272D] text-white shadow-md' : 'bg-white hover:bg-gray-100 text-gray-700 border border-gray-200'}"
+                class="text-xs px-2 py-1 rounded-full transition {!isPlaying ? 'bg-[#C1272D] text-white shadow-md' : 'bg-white hover:bg-gray-100 text-gray-700 border border-gray-200'}"
                 aria-label="Pausar carrusel"
                 aria-pressed={!isPlaying}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </button>
               <button 
                 on:click={playCarousel}
-                class="text-xs px-3 py-1.5 rounded-full transition {isPlaying ? 'bg-[#C1272D] text-white shadow-md' : 'bg-white hover:bg-gray-100 text-gray-700 border border-gray-200'}"
+                class="text-xs px-2 py-1 rounded-full transition {isPlaying ? 'bg-[#C1272D] text-white shadow-md' : 'bg-white hover:bg-gray-100 text-gray-700 border border-gray-200'}"
                 aria-label="Reanudar carrusel"
                 aria-pressed={isPlaying}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 md:h-4 md:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
@@ -217,7 +220,7 @@
           </div>
           
           <!-- Progress bar -->
-          <div class="w-full bg-gray-100 rounded-full h-1 mt-2 overflow-hidden">
+          <div class="w-full bg-gray-100 rounded-full h-1 mt-1 overflow-hidden">
             <div 
               class="bg-gradient-to-r from-[#C1272D] to-[#D25B5D] h-1 rounded-full transition-all duration-300 ease-out"
               style="width: {(currentIndex / (photos.length - 1)) * 100}%"
@@ -225,12 +228,12 @@
           </div>
         </div>
         
-        <!-- Thumbnails slider - modified to fix bottom gray corners -->
-        <div class="mt-4 overflow-x-auto hide-scrollbar pb-2 rounded-b-2xl">
-          <div class="flex space-x-2 px-4 py-2">
+        <!-- Thumbnails slider - modified to be more compact -->
+        <div class="mt-2 overflow-x-auto hide-scrollbar pb-1 rounded-b-2xl">
+          <div class="flex space-x-1 px-2 py-1">
             {#each photos as photo, i}
               <button 
-                class="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden transition-all duration-300 {i === currentIndex ? 'ring-2 ring-[#C1272D] ring-offset-2' : 'opacity-60 hover:opacity-100'}"
+                class="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden transition-all duration-300 {i === currentIndex ? 'ring-2 ring-[#C1272D] ring-offset-1' : 'opacity-60 hover:opacity-100'}"
                 on:click={() => {
                   currentIndex = i;
                   restartInterval();
