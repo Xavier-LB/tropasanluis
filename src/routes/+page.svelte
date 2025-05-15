@@ -157,7 +157,29 @@
           </svg>
         </a>
       </div>
-    </div>
+      
+      <!-- Botón para el Concurso Literario -->
+      <!-- <div class="mt-8 relative group">
+        <div class="absolute -inset-0.5 bg-gradient-to-r from-[#C1272D] to-amber-500 opacity-70 group-hover:opacity-100 blur rounded-2xl transition duration-1000 group-hover:duration-200 animate-pulse-slow"></div>
+        <a href="/i-concurso-literario" class="relative flex items-center justify-center bg-white px-8 py-4 rounded-xl leading-none">
+          <div class="flex flex-col items-center gap-3">
+            <div class="bg-gradient-to-r from-[#C1272D] to-amber-500 bg-clip-text text-transparent text-3xl font-extrabold">
+              I Concurso Literario Tropa San Luis
+            </div>
+            <div class="bg-gradient-to-r from-[#C1272D] to-amber-500 p-px rounded-lg">
+              <div class="px-4 py-1 bg-white rounded-lg text-sm font-medium text-[#A11F25]">
+                Descubre cómo participar
+              </div>
+            </div>
+          </div>
+          <div class="ml-6">
+            <svg class="w-8 h-8 text-[#C1272D] transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </div>
+        </a>
+      </div>
+    </div> -->
 
     <!-- Carrusel de fotos -->
     <div class="relative mx-auto max-w-4xl mb-16 overflow-hidden">
@@ -367,6 +389,20 @@
   
   .hide-scrollbar::-webkit-scrollbar {
     display: none;             /* Chrome, Safari and Opera */
+  }
+
+  /* Custom animation for the literary contest button */
+  @keyframes pulse-slow {
+    0%, 100% {
+      opacity: 0.7;
+    }
+    50% {
+      opacity: 0.9;
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
   @media (max-width: 640px) {

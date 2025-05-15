@@ -2,6 +2,7 @@
   import '../app.css';
   import { onMount, onDestroy } from 'svelte';
   import { browser } from '$app/environment';
+  import { page } from '$app/stores';
 
   // Array de frases extraídas de los coros de cada canción
   const quotes = [
@@ -93,14 +94,40 @@
           <h1 class="font-bold text-2xl md:text-3xl tracking-wide pl-4">Tropa San Luis</h1>
         </a>
       </div>
-      <nav class="mt-3 md:mt-0 space-x-4 flex flex-wrap justify-center">
-        <a href="/historia" class="hover:underline hover:text-gray-200 transition">Historia</a>
+      <nav class="mt-3 md:mt-0 space-x-4 flex flex-wrap justify-center gap-y-2">
+        <!-- <a 
+          href="/i-concurso-literario" 
+          class="{$page.url.pathname === '/i-concurso-literario' 
+            ? 'px-3 py-1 bg-[#A11F25] rounded-lg font-semibold hover:bg-[#8A1B20] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform' 
+            : 'px-3 py-1 border border-white/20 rounded-lg hover:underline hover:text-gray-200 transition'}"
+        >I Concurso Literario</a> -->
+        <a 
+          href="/historia" 
+          class="{$page.url.pathname === '/historia' 
+            ? 'px-3 py-1 bg-[#A11F25] rounded-lg font-semibold hover:bg-[#8A1B20] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform' 
+            : 'px-3 py-1 border border-white/20 rounded-lg hover:underline hover:text-gray-200 transition'}"
+        >Historia</a>
         <!-- <a href="/staff" class="hover:underline hover:text-gray-200 transition">Staff</a> -->
         <!-- <a href="/patrullas" class="hover:underline hover:text-gray-200 transition">Patrullas</a> -->
         <!-- <a href="/fotos" class="hover:underline hover:text-gray-200 transition">Fotos</a> -->
-        <a href="/himnos" class="hover:underline hover:text-gray-200 transition">Himnos</a>
-        <a href="https://map.tropasanluis.cl" target="_blank" rel="noopener noreferrer" class="hover:underline hover:text-gray-200 transition">Mapa</a>
-        <a href="/semana-sanluisina" class="px-3 py-1 bg-[#A11F25] rounded-lg font-semibold hover:bg-[#8A1B20] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform">Semana Sanluisina</a>
+        <a 
+          href="/himnos" 
+          class="{$page.url.pathname === '/himnos' 
+            ? 'px-3 py-1 bg-[#A11F25] rounded-lg font-semibold hover:bg-[#8A1B20] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform' 
+            : 'px-3 py-1 border border-white/20 rounded-lg hover:underline hover:text-gray-200 transition'}"
+        >Himnos</a>
+        <a 
+          href="https://map.tropasanluis.cl" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="px-3 py-1 border border-white/20 rounded-lg hover:underline hover:text-gray-200 transition"
+        >Mapa</a>
+        <a 
+          href="/semana-sanluisina" 
+          class="{$page.url.pathname === '/semana-sanluisina' 
+            ? 'px-3 py-1 bg-[#A11F25] rounded-lg font-semibold hover:bg-[#8A1B20] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform' 
+            : 'px-3 py-1 border border-white/20 rounded-lg hover:underline hover:text-gray-200 transition'}"
+        >Semana Sanluisina</a>
       </nav>
     </div>
   </header>

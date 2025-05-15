@@ -20,24 +20,51 @@
     const ahora = new Date();
     formularioActivo = ahora >= fechaLimite;
   });
+
+  /**
+   * Metadatos para SEO y redes sociales
+   */
+  const pageTitle = "Lucho Cuentero | Concurso de Cuentos | Tropa San Luis";
+  const pageDescription = "Participa en el concurso Lucho Cuentero de la Tropa San Luis. Comparte tu historia de máximo 100 palabras sobre experiencias scout.";
+  const pageImage = "/bases-i-concurso-literario.webp";
+  const pageUrl = "https://tropasanluis.cl/i-concurso-literario";
 </script>
 
+<svelte:head>
+  <!-- Metadatos básicos -->
+  <title>{pageTitle}</title>
+  <meta name="description" content={pageDescription} />
+  <meta name="keywords" content="lucho cuentero, scouts, tropa san luis, concurso, cuento, relato, scout" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={pageUrl} />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDescription} />
+  <meta property="og:image" content={pageImage} />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={pageUrl} />
+  <meta property="twitter:title" content={pageTitle} />
+  <meta property="twitter:description" content={pageDescription} />
+  <meta property="twitter:image" content={pageImage} />
+  
+  <!-- Información adicional -->
+  <meta name="author" content="Tropa San Luis" />
+  <link rel="canonical" href={pageUrl} />
+</svelte:head>
+
 <div class="prose max-w-4xl mx-auto">
-  <h1 class="text-3xl font-bold text-center mb-6 text-red-600">Lucho cuentero</h1>
+  <h1 class="text-3xl font-bold text-center mb-6 text-red-600">I CONCURSO LITERARIO TROPA SAN LUIS</h1>
   
   <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
-    <h2 class="text-xl font-semibold mb-4">Envía tu cuento</h2>
-    <p class="mb-6">
-      Comparte tu historia para el concurso "Lucho cuentero". Tu cuento debe tener un máximo de 100 palabras
-      y estar relacionado con experiencias scout en la Tropa San Luis.
-    </p>
-    
     <div class="bg-gray-50 p-4 border border-gray-200 rounded-md mb-6">
       
       <!-- Imagen de las bases -->
       <div class="mb-6">
         <img 
-          src="/bases-lucho-cuentero.webp" 
+          src="/bases-i-concurso-literario.webp" 
           alt="Bases del concurso Lucho Cuentero" 
           class="w-full rounded-md shadow-sm" 
         />
@@ -45,7 +72,7 @@
       
       <div class="text-center">
         <a 
-          href="/bases-lucho-cuentero.pdf" 
+          href="/bases-i-concurso-literario.pdf" 
           download
           class="inline-flex items-center justify-center bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300 shadow-md hover:shadow-lg">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">

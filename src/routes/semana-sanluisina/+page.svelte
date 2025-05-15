@@ -394,7 +394,7 @@
   const fechaPublicacionPruebasFinal = "17 de mayo a las 14:00";
   
   // Fecha exacta para la publicación automática (UTC -3, Santiago de Chile)
-  const fechaPublicacionExacta = new Date('2025-05-17T14:00:00-03:00');
+  const fechaPublicacionExacta = new Date('2024-05-17T14:00:00-03:00');
   
   // Determinar si ya se deben mostrar las pruebas del día final
   let mostrarPruebasFinal = false;
