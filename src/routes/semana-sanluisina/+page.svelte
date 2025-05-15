@@ -13,6 +13,7 @@
    * @property {string} [inicio] - Hora de inicio (opcional)
    * @property {string} [fin] - Hora de fin (opcional)
    * @property {string} [lugar] - Lugar de la prueba (opcional)
+   * @property {boolean} [talvez] - Indica si la prueba es tentativa (opcional)
    */
 
   /**
@@ -195,11 +196,12 @@
         name: "Guatazo Vikingo",
         score: "AA",
         inCharge: ["Xavier", "Chopi", "Pao"],
-        description: "Competencia de fuerza y coordinación entre patrullas.",
+        description: "Un patrullero deberá deslizarse en un plástico jabonoso, este deberá intentar llegar lo más lejos posible. <div class='mt-2 text-sm bg-red-50 border border-red-200 p-2 rounded-md text-red-800 italic'>⚠️ <strong>Cláusula no negociable:</strong> Patrulleros lesionados serán descalificados y obligados a explicar a sus padres por qué creyeron que deslizarse a toda velocidad era una buena idea.</div>",
         criteria: [
-          "Trabajo en equipo",
-          "Estrategia",
-          "Fuerza"
+          "Distancia alcanzada",
+          "Estilo al deslizarse",
+          "Caída épica (puntos extra)",
+          "Técnica de impulso"
         ],
         inicio: "11:00",
         fin: "12:00",
@@ -248,7 +250,7 @@
       },
       {
         name: "Almuerzo",
-        score: "A",
+        score: "ooooooooooK",
         inCharge: ["Pedro"],
         description: "Pausa para almorzar todos juntos.",
         criteria: [],
@@ -690,9 +692,11 @@
         {#each tests.previa as test, i}
           <div id="prueba-{i}" class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300">
             <div class="flex justify-between items-start mb-6">
-              <h3 class="text-2xl font-bold text-primary">{test.name}</h3>
+              <h3 class="text-2xl font-bold text-primary">
+                {test.name}
+              </h3>
               <div class="text-right">
-                <span class="bg-gradient-to-r from-red-800 to-orange-600 text-white px-6 py-2 rounded-full font-bold shadow-lg">
+                <span class="bg-gradient-to-r {test.score === 'B' ? 'from-yellow-500 to-amber-600' : 'from-red-800 to-orange-600'} text-white px-6 py-2 rounded-full font-bold shadow-lg">
                   {test.score}
                 </span>
               </div>
@@ -797,7 +801,7 @@
           
           <div class="relative">
             <!-- Línea de tiempo vertical -->
-            <div class="absolute left-14 top-0 h-full w-0.5 bg-gradient-to-b from-red-500 to-yellow-500"></div>
+            <div class="absolute left-16 top-0 h-full w-0.5 bg-gradient-to-b from-red-500 to-yellow-500"></div>
             
             <!-- Eventos -->
             <div class="space-y-6 relative">
@@ -806,7 +810,7 @@
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
                   <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">11:00</span>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">11:00</span>
                 <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-red-400">
                   <div class="flex justify-between items-center mb-2">
                     <h4 class="font-bold text-primary">
@@ -835,7 +839,7 @@
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
                   <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">12:00</span>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">12:00</span>
                 <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-red-400">
                   <div class="flex justify-between items-center">
                     <h4 class="font-bold text-primary">
@@ -859,7 +863,7 @@
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
                   <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">13:00</span>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">13:00</span>
                 <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-orange-400">
                   <div class="flex justify-between items-center">
                     <h4 class="font-bold text-primary">
@@ -884,7 +888,7 @@
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
                   <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">14:00</span>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">14:00</span>
                 <div class="grid md:grid-cols-2 gap-3">
                   <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-red-400">
                     <div class="flex justify-between items-center mb-2">
@@ -931,7 +935,7 @@
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
                   <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">15:00</span>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">15:00</span>
                 <div class="bg-gradient-to-r from-blue-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-blue-400 md:ml-[calc(50%+0.375rem)]">
                   <div class="flex justify-between items-center">
                     <h4 class="font-bold text-primary">
@@ -956,7 +960,7 @@
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-green-600 z-10 flex items-center justify-center">
                   <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">16:00</span>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">16:00</span>
                 <div class="bg-gradient-to-r from-green-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-green-400">
                   <div class="flex justify-between items-center">
                     <h4 class="font-bold text-primary flex items-center">
@@ -976,7 +980,7 @@
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
                   <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">16:00</span>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">16:00</span>
                 <div class="bg-gradient-to-r from-blue-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-blue-400 md:ml-[calc(50%+0.375rem)]">
                   <div class="flex justify-between items-center">
                     <h4 class="font-bold text-primary">
@@ -1000,7 +1004,7 @@
                 <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
                   <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">17:00</span>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">17:00</span>
                 <div class="bg-gradient-to-r from-yellow-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-yellow-400">
                   <div class="flex justify-between items-center">
                     <h4 class="font-bold text-primary">
@@ -1028,7 +1032,13 @@
           {#each tests.semana as test, i}
             <div id="prueba-final-{i}" class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300 {test.score === 'B' ? 'border-4 border-yellow-400 ring-2 ring-yellow-300' : ''}">
               <div class="flex justify-between items-start mb-6">
-                <h3 class="text-2xl font-bold text-primary">{test.name}</h3>
+                <h3 class="text-2xl font-bold text-primary">
+                  {#if test.name === "Guatazo Vikingo"}
+                    {test.name} <span class="ml-2 inline-block bg-yellow-100 border border-yellow-400 px-3 py-1 rounded-full text-yellow-800 text-xs font-bold transform -rotate-2">¡Talvez! 🤔</span>
+                  {:else}
+                    {test.name}
+                  {/if}
+                </h3>
                 <div class="text-right">
                   <span class="bg-gradient-to-r {test.score === 'B' ? 'from-yellow-500 to-amber-600' : 'from-red-800 to-orange-600'} text-white px-6 py-2 rounded-full font-bold shadow-lg">
                     {test.score}
