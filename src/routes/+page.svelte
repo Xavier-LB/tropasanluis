@@ -273,6 +273,12 @@
           <p class="text-sm text-gray-600 italic">
             Agradecimientos especiales a Alonso Valdes "Oso" por la creación de este increíble mapa interactivo.
           </p>
+          <p class="text-sm font-medium text-[#C1272D]/80 bg-white/50 p-2 rounded-lg border border-[#C1272D]/20 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 flex-shrink-0" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" />
+            </svg>
+            Para visualizar correctamente el mapa, debe ser abierto desde un computador.
+          </p>
           <div class="mt-4">
             <a href="https://map.tropasanluis.cl" target="_blank" rel="noopener noreferrer"
               class="inline-block px-6 py-3 text-xl font-bold text-white bg-gradient-to-r from-[#C1272D] to-[#D25B5D] rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-[#C1272D]/40 hover:rotate-1 border-2 border-white/80 relative overflow-hidden group">
