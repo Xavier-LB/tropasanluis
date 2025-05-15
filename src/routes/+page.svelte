@@ -3,7 +3,8 @@
 
   // Lista de fotos para el carrusel
   const photos = [
-    { src: "/2013.webp", caption: "2013" },
+    { src: "/alta-patrulla.webp", caption: "Campamento de Otoño 2025 - Peñaflor - Alta Patrulla" },
+    { src: "/2013.webp", caption: "Inicio de año - 2013" },
     { src: "/Campamento de Invierno 2001.webp", caption: "Campamento de Invierno 2001" },
     { src: "/Campamento de Invierno 2004 - Olmue.webp", caption: "Campamento de Invierno 2004 - Olmué" },
     { src: "/Campamento de Otono 2005 - Reserva Nacional Rio Cipreses.webp", caption: "Campamento de Otoño 2005 - Reserva Nacional Río Cipreses" },
@@ -18,13 +19,16 @@
 
   let currentIndex = 0;
   let interval: number;
+  let isPlaying = true;
 
   /**
    * Moves to the next image and restarts interval
    */
   const next = () => {
     currentIndex = (currentIndex + 1) % photos.length;
-    restartInterval();
+    if (isPlaying) {
+      restartInterval();
+    }
   };
 
   /**
@@ -32,7 +36,9 @@
    */
   const prev = () => {
     currentIndex = (currentIndex - 1 + photos.length) % photos.length;
-    restartInterval();
+    if (isPlaying) {
+      restartInterval();
+    }
   };
 
   /**
@@ -41,6 +47,22 @@
   const restartInterval = () => {
     clearInterval(interval);
     interval = setInterval(next, 5000);
+  };
+
+  /**
+   * Pauses the carousel auto-rotation
+   */
+  const pauseCarousel = () => {
+    clearInterval(interval);
+    isPlaying = false;
+  };
+
+  /**
+   * Starts the carousel auto-rotation
+   */
+  const playCarousel = () => {
+    isPlaying = true;
+    restartInterval();
   };
 
   onMount(() => {
@@ -113,43 +135,116 @@
     </div>
 
     <!-- Carrusel de fotos (movido después del texto) -->
-    <div class="relative mx-auto max-w-4xl mb-16">
-      <div class="overflow-hidden rounded-2xl shadow-2xl transform transition-all duration-500 hover:scale-[1.02]">
-        <img 
-          src="{photos[currentIndex].src}" 
-          alt="{photos[currentIndex].caption}" 
-          class="w-full object-cover transition-opacity duration-500" 
-          style="height: 600px;" 
-        />
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent py-6 px-6">
-          <p class="text-white text-xl font-semibold drop-shadow-2xl">
-            {photos[currentIndex].caption}
-          </p>
-        </div>
-      </div>
+    <div class="relative mx-auto max-w-4xl mb-16 overflow-hidden">
+      <div class="bg-white p-4 rounded-3xl flex flex-col">
+        <!-- Image container -->
+        <div class="relative overflow-hidden rounded-2xl aspect-[16/9]">
+          <!-- Main image with transition -->
+          <div class="relative h-full">
+            {#each photos as photo, i}
+              <div 
+                class="absolute inset-0 transition-all duration-700 ease-in-out"
+                style="opacity: {i === currentIndex ? '1' : '0'}; transform: {i === currentIndex ? 'scale(1)' : 'scale(1.05)'}"
+              >
+                <img 
+                  src="{photo.src}" 
+                  alt="{photo.caption}" 
+                  class="w-full h-full object-cover" 
+                />
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent py-6 px-6">
+                  <p class="text-white text-xl font-semibold drop-shadow-xl">
+                    {photo.caption}
+                  </p>
+                </div>
+              </div>
+            {/each}
+          </div>
 
-      <!-- Botones de navegación -->
-      <button 
-        on:click={prev} 
-        class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-[#C1272D]/90 text-white p-3 rounded-full hover:bg-[#A11F25] focus:outline-none transition-all duration-300 hover:scale-110 shadow-lg"
-      >
-        &#8592;
-      </button>
-      <button 
-        on:click={next} 
-        class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-[#C1272D]/90 text-white p-3 rounded-full hover:bg-[#A11F25] focus:outline-none transition-all duration-300 hover:scale-110 shadow-lg"
-      >
-        &#8594;
-      </button>
-
-      <!-- Indicadores -->
-      <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-        {#each photos as _, i}
+          <!-- Botones de navegación mejorados -->
           <button 
-            class="w-3 h-3 rounded-full transition-all duration-300 {i === currentIndex ? 'bg-white scale-125' : 'bg-white/50'}"
-            on:click={() => currentIndex = i}
-          />
-        {/each}
+            on:click={prev} 
+            class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/70 text-[#C1272D] p-3 h-12 w-12 flex items-center justify-center rounded-full hover:bg-white focus:outline-none transition-all duration-300 hover:scale-110 shadow-lg backdrop-blur-sm"
+            aria-label="Imagen anterior"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <button 
+            on:click={next} 
+            class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/70 text-[#C1272D] p-3 h-12 w-12 flex items-center justify-center rounded-full hover:bg-white focus:outline-none transition-all duration-300 hover:scale-110 shadow-lg backdrop-blur-sm"
+            aria-label="Imagen siguiente"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Progress bar + indicators - improved to fix gray corners -->
+        <div class="px-2 mt-4">
+          <div class="flex justify-between items-center">
+            <!-- Progress number -->
+            <div class="text-gray-500 font-medium">
+              {currentIndex + 1} / {photos.length}
+            </div>
+            
+            <!-- Custom controls with active state indication -->
+            <div class="flex space-x-2">
+              <button 
+                on:click={pauseCarousel}
+                class="text-xs px-3 py-1.5 rounded-full transition {!isPlaying ? 'bg-[#C1272D] text-white shadow-md' : 'bg-white hover:bg-gray-100 text-gray-700 border border-gray-200'}"
+                aria-label="Pausar carrusel"
+                aria-pressed={!isPlaying}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 9v6m4-6v6m7-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+              <button 
+                on:click={playCarousel}
+                class="text-xs px-3 py-1.5 rounded-full transition {isPlaying ? 'bg-[#C1272D] text-white shadow-md' : 'bg-white hover:bg-gray-100 text-gray-700 border border-gray-200'}"
+                aria-label="Reanudar carrusel"
+                aria-pressed={isPlaying}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          
+          <!-- Progress bar -->
+          <div class="w-full bg-gray-100 rounded-full h-1 mt-2 overflow-hidden">
+            <div 
+              class="bg-gradient-to-r from-[#C1272D] to-[#D25B5D] h-1 rounded-full transition-all duration-300 ease-out"
+              style="width: {(currentIndex / (photos.length - 1)) * 100}%"
+            ></div>
+          </div>
+        </div>
+        
+        <!-- Thumbnails slider - modified to fix bottom gray corners -->
+        <div class="mt-4 overflow-x-auto hide-scrollbar pb-2 rounded-b-2xl">
+          <div class="flex space-x-2 px-4 py-2">
+            {#each photos as photo, i}
+              <button 
+                class="flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden transition-all duration-300 {i === currentIndex ? 'ring-2 ring-[#C1272D] ring-offset-2' : 'opacity-60 hover:opacity-100'}"
+                on:click={() => {
+                  currentIndex = i;
+                  restartInterval();
+                }}
+              >
+                <img 
+                  src="{photo.src}" 
+                  alt="Miniatura de {photo.caption}" 
+                  class="w-full h-full object-cover"
+                />
+              </button>
+            {/each}
+          </div>
+        </div>
       </div>
     </div>
 
@@ -229,6 +324,16 @@
     min-height: 100vh;
     width: 100%;
     position: relative;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;     /* Firefox */
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;             /* Chrome, Safari and Opera */
   }
 
   @media (max-width: 640px) {
