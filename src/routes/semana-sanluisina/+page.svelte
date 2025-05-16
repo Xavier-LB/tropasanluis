@@ -49,7 +49,7 @@
       {
         name: "Lucho City Tour",
         score: "AA",
-        inCharge: [],
+        inCharge: ["Marcelo", "Pelao", "Xavier"],
         description: "Deberán sacarse fotos de la patrulla en lugares históricos de la ciudad de Santiago. Los lugares a visitar son los siguientes:",
         criteria: [
           "Mayor número de lugares visitados",
