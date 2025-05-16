@@ -47,6 +47,63 @@
         fecha: "Lunes 2 de junio hasta las 18:00 (likes hasta viernes 6 de junio, 12:00)"
       },
       {
+        name: "Lucho City Tour",
+        score: "AA",
+        inCharge: [],
+        description: "Deberán sacarse fotos de la patrulla en lugares históricos de la ciudad de Santiago. Los lugares a visitar son los siguientes:",
+        criteria: [
+          "Mayor número de lugares visitados",
+          "Mayor porcentaje de integrantes de la patrulla en cada foto"
+        ],
+        fecha: "Miércoles 4 de junio hasta las 18:00",
+        locations: [
+          {
+            name: "Museo Nacional de Bellas Artes",
+            description: "Este museo, inaugurado en 1910, fue diseñado por el arquitecto franco-chileno Emilio Jéquier, quien también diseñó la Estación Mapocho y el Palacio de los Tribunales de Justicia. El edificio está inspirado en el Petit Palais de París y alberga más de 3,000 obras de arte, incluyendo una destacada colección de esculturas africanas."
+          },
+          {
+            name: "Museo de Historia Natural",
+            description: "Fundado en 1830 por el naturalista francés Claudio Gay, este museo es uno de los más antiguos de América. Su colección incluye una réplica de un Diplodocus y la momia chinchorro más antigua del mundo, de más de 7,000 años de antigüedad."
+          },
+          {
+            name: "Palacio de La Moneda",
+            description: "Originalmente construido en 1805 como casa de acuñación de monedas, el Palacio de La Moneda se convirtió en sede del gobierno en 1846. Durante el golpe de Estado de 1973, fue bombardeado, lo que causó la pérdida de importantes documentos históricos, incluida el Acta de Independencia de 1818."
+          },
+          {
+            name: "Castillo Hidalgo (Cerro Santa Lucía)",
+            description: "Construido en 1816 como fortaleza militar, el Castillo Hidalgo se encuentra en el Cerro Santa Lucía, lugar donde Pedro de Valdivia fundó Santiago en 1541. En 1971, se instaló un mural de cerámica en honor a Gabriela Mistral, que aún puede ser visitado."
+          },
+          {
+            name: "Virgen del Cerro San Cristóbal",
+            description: "La estatua de la Inmaculada Concepción, de 14 metros de altura y 36 toneladas de peso, fue inaugurada en 1908. En su pedestal se encuentra una pequeña capilla donde el Papa Juan Pablo II oró y bendijo la ciudad en 1987."
+          },
+          {
+            name: "Templo Bahai",
+            description: "Inaugurado en 2016, este templo es uno de los ocho Bahá'ís en el mundo y el único en Sudamérica. Diseñado por el arquitecto canadiense Siamak Hariri, su estructura de nueve pétalos permite el paso de la luz natural, simbolizando la unidad y la iluminación espiritual."
+          },
+          {
+            name: "Estatua Condorito",
+            description: "Ubicada en el Parque del Cómic de San Miguel, esta estatua rinde homenaje al icónico personaje creado por Pepo. El parque fue inaugurado en 2006 y cuenta con diversas esculturas y viñetas que celebran la historia del cómic chileno."
+          },
+          {
+            name: "Ex Congreso Nacional",
+            description: "El edificio del ex Congreso Nacional, inaugurado en 1876, fue construido en el terreno donde se encontraba la Iglesia de la Compañía de Jesús, destruida por un incendio en 1863. En sus jardines se instalaron faroles y una fuente traídos desde Francia en el siglo XIX."
+          },
+          {
+            name: "Casa Valdés Bustamante",
+            description: "Construida en 1906 y adquirida en 1909 por el historiador y diplomático Francisco Valdés Vergara, ex estudiante del Colegio San Ignacio. Fue diseñada por el renombrado arquitecto Ricardo Larraín Bravo, una de las figuras más importantes de la arquitectura chilena de principios del siglo XX. De estilo neogótico, fue declarada Monumento Nacional en 2018. Próximamente albergará un café que rendirá homenaje a la obra arquitectónica de Larraín Bravo."
+          },
+          {
+            name: "La Casa Colorada",
+            description: "Construida entre 1769 y 1779 por el arquitecto portugués Joseph de la Vega, esta casa fue la residencia de Mateo de Toro y Zambrano, presidente de la Primera Junta Nacional de Gobierno. Actualmente, funciona como museo y es uno de los mejores ejemplos de arquitectura colonial en Santiago."
+          },
+          {
+            name: "Iglesia San Francisco",
+            description: "La Iglesia San Francisco, construida en 1618, es el edificio más antiguo de Santiago que ha resistido múltiples terremotos. En su museo se encuentra la Sala Gabriela Mistral, que alberga objetos personales de la poeta, incluyendo réplicas de su medalla y diploma del Premio Nobel de Literatura."
+          }
+        ]
+      },
+      {
         name: "Doblaje",
         score: "AAA",
         inCharge: ["Marcelo", "Pelao", "Xavier", "Flaxo"],
@@ -613,6 +670,11 @@
                     <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
                     Lienzo <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
                   </span>
+                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center border-2 border-green-500 ring-1 ring-green-300">
+                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                    Lucho City Tour <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    <span class="ml-1 bg-green-100 text-green-800 px-1 rounded text-[10px] font-bold animate-pulse">¡NUEVA!</span>
+                  </span>
                 </div>
               </div>
             </div>
@@ -690,7 +752,12 @@
 
       <div class="grid gap-8">
         {#each tests.previa as test, i}
-          <div id="prueba-{i}" class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300">
+          <div id="prueba-{i}" class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300 relative {test.name === 'Lucho City Tour' ? 'border-2 border-green-300 ring-2 ring-green-200' : ''}">
+            {#if test.name === 'Lucho City Tour'}
+              <div class="absolute -top-3 -right-3 bg-green-500 text-white px-4 py-1 rounded-full font-bold shadow-lg transform rotate-12 z-10 animate-pulse">
+                ¡NUEVA!
+              </div>
+            {/if}
             <div class="flex justify-between items-start mb-6">
               <h3 class="text-2xl font-bold text-primary">
                 {test.name}
@@ -718,6 +785,32 @@
               </div>
             </div>
 
+            {#if test.name === "Lucho City Tour"}
+              <div class="mb-6 relative bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r-lg shadow-sm overflow-hidden">
+                <img src="dia-de-los-patrimonios.webp" alt="Día de los Patrimonios 2025" class="absolute inset-0 w-full h-full object-cover opacity-10">
+                <div class="relative flex items-start z-10">
+                  <div class="flex-shrink-0 mt-0.5">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  </div>
+                  <div class="ml-3">
+                    <div class="text-sm text-gray-700">
+                      <p>
+                        Este <span class="font-medium">sábado 24 y domingo 25 de mayo</span>
+                      </p>
+                      <p>
+                        Día de los Patrimonios con miles de actividades <span class="font-medium text-blue-700">gratuitas</span> en museos, archivos y espacios culturales.
+                      </p>
+                      <p class="mt-3 text-xs text-blue-700 italic">
+                        ¡Perfecto para realizar la prueba Lucho City Tour!
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {/if}
+
             <div class="mb-6 bg-gradient-to-r from-gray-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-orange-300">
               <h4 class="font-semibold mb-2 text-primary flex items-center gap-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -729,6 +822,25 @@
               {#if test.name === "Recrear la escena de Los 80"}
                 <div class="mt-4 aspect-video w-full">
                   <iframe width="100%" height="100%" src="https://www.youtube.com/embed/0NIS5BsywKY" title="Los 80 - &quot;En esta casa no hay ni comunistas ni pinochetistas&quot;" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+              {/if}
+              {#if test.name === "Lucho City Tour" && test.locations}
+                <div class="mt-4 space-y-2">
+                  <h5 class="font-semibold text-primary">Lugares a visitar:</h5>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {#each test.locations as location}
+                      <div class="bg-white p-2 rounded-lg shadow-sm border border-orange-100 hover:border-orange-300 transition-colors duration-200">
+                        <h6 class="font-semibold text-orange-700 mb-1 flex items-center text-sm">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          {location.name}
+                        </h6>
+                        <p class="text-gray-600 text-xs">{location.description}</p>
+                      </div>
+                    {/each}
+                  </div>
                 </div>
               {/if}
             </div>
@@ -1035,6 +1147,8 @@
                 <h3 class="text-2xl font-bold text-primary">
                   {#if test.name === "Guatazo Vikingo"}
                     {test.name} <span class="ml-2 inline-block bg-yellow-100 border border-yellow-400 px-3 py-1 rounded-full text-yellow-800 text-xs font-bold transform -rotate-2">¡Talvez! 🤔</span>
+                  {:else if test.name === "Lucho City Tour"}
+                    {test.name} <span class="ml-2 inline-block bg-green-100 border border-green-400 px-3 py-1 rounded-full text-green-800 text-xs font-bold animate-pulse">¡NUEVA! 🆕</span>
                   {:else}
                     {test.name}
                   {/if}
