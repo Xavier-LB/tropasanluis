@@ -3,7 +3,7 @@
 
   // Lista de fotos para el carrusel
   const photos = [
-    { src: "/alta-patrulla.webp", caption: "Campamento de Otoño 2025 - Peñaflor - Alta Patrulla" },
+    { src: "/campamento-otono-2025-penaflor-corte-de-honor.webp", caption: "Campamento de Otoño 2025 - Peñaflor - Corte de Honor" },
     { src: "/2013.webp", caption: "Inicio de año - 2013" },
     { src: "/Campamento de Invierno 2001.webp", caption: "Campamento de Invierno 2001" },
     { src: "/Campamento de Invierno 2004 - Olmue.webp", caption: "Campamento de Invierno 2004 - Olmué" },
@@ -169,29 +169,7 @@
           </svg>
         </a>
       </div>
-      
-      <!-- Botón para el Concurso Literario -->
-      <!-- <div class="mt-8 relative group">
-        <div class="absolute -inset-0.5 bg-gradient-to-r from-[#C1272D] to-amber-500 opacity-70 group-hover:opacity-100 blur rounded-2xl transition duration-1000 group-hover:duration-200 animate-pulse-slow"></div>
-        <a href="/i-concurso-literario" class="relative flex items-center justify-center bg-white px-8 py-4 rounded-xl leading-none">
-          <div class="flex flex-col items-center gap-3">
-            <div class="bg-gradient-to-r from-[#C1272D] to-amber-500 bg-clip-text text-transparent text-3xl font-extrabold">
-              I Concurso Literario Tropa San Luis
-            </div>
-            <div class="bg-gradient-to-r from-[#C1272D] to-amber-500 p-px rounded-lg">
-              <div class="px-4 py-1 bg-white rounded-lg text-sm font-medium text-[#A11F25]">
-                Descubre cómo participar
-              </div>
-            </div>
-          </div>
-          <div class="ml-6">
-            <svg class="w-8 h-8 text-[#C1272D] transform group-hover:translate-x-1 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-            </svg>
-          </div>
-        </a>
-      </div>
-    </div> -->
+    </div>
 
     <!-- Carrusel de fotos -->
     <div class="relative mx-auto max-w-4xl mb-16 overflow-hidden">
@@ -307,6 +285,17 @@
           </div>
         </div>
       </div>
+    </div>
+
+    <!-- Poster del Concurso Literario -->
+    <div class="max-w-4xl mx-auto mb-16">
+      <a href="/i-concurso-literario" class="block transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
+        <img 
+          src="/afiche-concurso-literario.jpeg" 
+          alt="I Concurso Literario Tropa San Luis" 
+          class="w-full h-auto rounded-2xl shadow-xl"
+        />
+      </a>
     </div>
 
     <!-- Botón Semana San Luisina -->

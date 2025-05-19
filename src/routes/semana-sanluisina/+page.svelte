@@ -486,9 +486,6 @@
 
   <div class="container mx-auto px-4 py-8 relative z-10">
     <div class="mb-12 text-center">
-      <span class="inline-block text-4xl font-extrabold text-primary animate-bounce bg-gradient-to-r from-red-800 to-orange-600 bg-clip-text text-transparent">
-        🎉🔥 ¡La semana empieza ya! 🚀🏕️
-      </span>
       <div class="mt-4 text-xl font-semibold text-primary">
         ⏳ Tienen 3 semanas para preparar las pruebas, ¡así que empiecen ya! 💪😎
       </div>
@@ -571,6 +568,13 @@
           <a href="#pruebas-final" class="text-base font-medium text-gray-700 hover:text-red-800 transition-colors duration-200">
             Pruebas del Día Final
           </a>
+          <div class="flex flex-wrap justify-center gap-2 text-sm">
+            {#each tests.semana as test, i}
+              <a href="#prueba-final-{i}" class="text-gray-600 hover:text-red-800 transition-colors duration-200 px-3 py-1.5 bg-white/50 hover:bg-white/80 rounded-lg shadow-sm">
+                {test.name}
+              </a>
+            {/each}
+          </div>
         </div>
       </div>
     </div>

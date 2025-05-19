@@ -56,6 +56,15 @@
 </svelte:head>
 
 <div class="prose max-w-4xl mx-auto">
+  <!-- Poster del Concurso -->
+  <div class="mb-8">
+    <img 
+      src="/afiche-concurso-literario.jpeg" 
+      alt="Afiche del I Concurso Literario Tropa San Luis" 
+      class="w-full rounded-lg shadow-xl"
+    />
+  </div>
+
   <h1 class="text-3xl font-bold text-center mb-6 text-red-600">I CONCURSO LITERARIO TROPA SAN LUIS</h1>
   
   <div class="bg-white shadow-lg rounded-lg p-6 mb-8">
