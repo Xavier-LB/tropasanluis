@@ -486,9 +486,6 @@
 
   <div class="container mx-auto px-4 py-8 relative z-10">
     <div class="mb-12 text-center">
-      <div class="mt-4 text-xl font-semibold text-primary">
-        ⏳ Tienen 3 semanas para preparar las pruebas, ¡así que empiecen ya! 💪😎
-      </div>
       <div class="mt-6 text-lg font-bold text-white bg-gradient-to-r from-red-800 via-orange-600 to-red-800 rounded-2xl px-8 py-4 inline-block shadow-lg transform hover:scale-105 transition-transform duration-300">
         ⏰ Cuenta regresiva para el Día Final (Sábado 7 de Junio):<br>
         <span class="text-3xl font-black tracking-wider">{tiempoSabado}</span>
