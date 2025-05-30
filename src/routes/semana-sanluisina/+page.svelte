@@ -342,7 +342,7 @@
       {
         name: "Caricaturiza a tu Staff",
         score: "A",
-        inCharge: ["Marti", "Fu", "Chopi"],
+        inCharge: ["Marti", "Viky", "Chopi"],
         description: "Uno por patrulla deberá dibujar una caricatura de cualquier Staff. Deberán hacerlo en menos de 10 minutos.",
         criteria: [
           "Humor",
@@ -552,6 +552,16 @@
     <div class="mb-12 flex justify-center">
       <div class="bg-white/40 backdrop-blur-sm rounded-xl p-4 max-w-2xl w-full">
         <div class="flex flex-col items-center space-y-4">
+          <!-- Enlace destacado a criterios -->
+          <div class="mb-4">
+            <a href="/semana-sanluisina/criterios" class="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              Ver Todos los Criterios de Evaluación
+            </a>
+          </div>
+          
           <a href="#pruebas-previa" class="text-base font-medium text-gray-700 hover:text-red-800 transition-colors duration-200">
             Pruebas de la Previa
           </a>
@@ -671,10 +681,9 @@
                     <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
                     Lienzo <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
                   </span>
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center border-2 border-green-500 ring-1 ring-green-300">
+                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
                     <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
                     Lucho City Tour <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                    <span class="ml-1 bg-green-100 text-green-800 px-1 rounded text-[10px] font-bold animate-pulse">¡NUEVA!</span>
                   </span>
                 </div>
               </div>
@@ -753,12 +762,7 @@
 
       <div class="grid gap-8">
         {#each tests.previa as test, i}
-          <div id="prueba-{i}" class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300 relative {test.name === 'Lucho City Tour' ? 'border-2 border-green-300 ring-2 ring-green-200' : ''}">
-            {#if test.name === 'Lucho City Tour'}
-              <div class="absolute -top-3 -right-3 bg-green-500 text-white px-4 py-1 rounded-full font-bold shadow-lg transform rotate-12 z-10 animate-pulse">
-                ¡NUEVA!
-              </div>
-            {/if}
+          <div id="prueba-{i}" class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 transform hover:scale-[1.02] transition-all duration-300 relative">
             <div class="flex justify-between items-start mb-6">
               <h3 class="text-2xl font-bold text-primary">
                 {test.name}
@@ -1148,8 +1152,6 @@
                 <h3 class="text-2xl font-bold text-primary">
                   {#if test.name === "Guatazo Vikingo"}
                     {test.name} <span class="ml-2 inline-block bg-yellow-100 border border-yellow-400 px-3 py-1 rounded-full text-yellow-800 text-xs font-bold transform -rotate-2">¡Talvez! 🤔</span>
-                  {:else if test.name === "Lucho City Tour"}
-                    {test.name} <span class="ml-2 inline-block bg-green-100 border border-green-400 px-3 py-1 rounded-full text-green-800 text-xs font-bold animate-pulse">¡NUEVA! 🆕</span>
                   {:else}
                     {test.name}
                   {/if}
