@@ -2,6 +2,7 @@
   import { onMount } from 'svelte';
   import PruebaTimer from '$lib/PruebaTimer.svelte';
   import DiscreteTimer from '$lib/DiscreteTimer.svelte';
+  
   /**
    * @typedef {Object} Test
    * @property {string} name - Name of the test
@@ -14,7 +15,285 @@
    * @property {string} [fin] - Hora de fin (opcional)
    * @property {string} [lugar] - Lugar de la prueba (opcional)
    * @property {boolean} [talvez] - Indica si la prueba es tentativa (opcional)
+   * @property {string} [instagram] - Enlace de Instagram (opcional)
    */
+
+  // Tipos para TypeScript
+  type TipoPrueba = 'AAA' | 'AA' | 'A';
+  type PruebaId = 'promo' | 'doblaje' | 'furro' | 'cuentero' | 'lienzo' | 'cityTour' | 'foto' | 'saludos' | 'musical' | 'escena80' | 'brainRot';
+  
+  interface Prueba {
+    id: PruebaId;
+    nombre: string;
+    tipo: TipoPrueba;
+  }
+
+  interface PuntajePrueba {
+    puntaje: number | null;
+    link?: string;
+  }
+
+  interface Puntajes {
+    [key: string]: PuntajePrueba;
+  }
+
+  interface Patrulla {
+    nombre: string;
+    emoji: string;
+    colors: {
+      bg: string;
+      cardBg: string;
+      text: string;
+      labelText: string;
+    };
+    puntajes: Puntajes;
+    total: number;
+    lider?: boolean;
+  }
+
+  // Datos de las pruebas y sus tipos
+  const pruebas: Prueba[] = [
+    { id: 'promo', nombre: 'Promo STL', tipo: 'AA' },
+    { id: 'doblaje', nombre: 'Doblaje', tipo: 'AAA' },
+    { id: 'furro', nombre: 'L. Furro', tipo: 'AAA' },
+    { id: 'cuentero', nombre: 'L. Cuentero', tipo: 'AA' },
+    { id: 'lienzo', nombre: 'Lienzo', tipo: 'AA' },
+    { id: 'cityTour', nombre: 'City Tour', tipo: 'AA' },
+    { id: 'foto', nombre: 'Fotografía', tipo: 'A' },
+    { id: 'saludos', nombre: 'Saludos', tipo: 'AA' },
+    { id: 'musical', nombre: 'Musical', tipo: 'AA' },
+    { id: 'escena80', nombre: 'Escena 80', tipo: 'AAA' },
+    { id: 'brainRot', nombre: 'Brain Rot', tipo: 'A' }
+  ];
+
+  // Datos de las patrullas con sus puntajes
+  const patrullas: Patrulla[] = [
+    {
+      nombre: 'ANTÍLOPES',
+      emoji: '🦌',
+      colors: {
+        bg: 'bg-gradient-to-r from-blue-600 to-blue-800',
+        cardBg: 'bg-white/20',
+        text: 'text-white',
+        labelText: 'text-white/80'
+      },
+      puntajes: {
+        promo: { puntaje: 300, link: 'https://www.instagram.com/p/DKahiySAqDh/' },
+        doblaje: { puntaje: 515, link: 'https://www.instagram.com/p/DKdRIEGgXid/' },
+        furro: { puntaje: -1000 },
+        cuentero: { puntaje: 250, link: 'https://www.instagram.com/p/DKfpoKiP1hp/' },
+        lienzo: { puntaje: -125, link: 'https://www.instagram.com/p/DKf0tqGAmmi/' },
+        cityTour: { puntaje: 300, link: 'https://www.instagram.com/p/DKfoE4QvRJR' },
+        foto: { puntaje: null },
+        saludos: { puntaje: null },
+        musical: { puntaje: null },
+        escena80: { puntaje: null },
+        brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKaij_jAxU3/' }
+      },
+      total: 240
+    },
+    {
+      nombre: 'BÚFALOS',
+      emoji: '🐃',
+      colors: {
+        bg: 'bg-white border-l-8 border-red-600',
+        cardBg: 'bg-red-50 border border-red-200',
+        text: 'text-black',
+        labelText: 'text-red-500'
+      },
+      puntajes: {
+        promo: { puntaje: 2000, link: 'https://www.instagram.com/p/DKaioWJAbko/' },
+        doblaje: { puntaje: 500, link: 'https://www.instagram.com/p/DKdGaaBA1Sp/' },
+        furro: { puntaje: 1975, link: 'https://www.instagram.com/p/DKdGM_6A_Q5' },
+        cuentero: { puntaje: 750, link: 'https://www.instagram.com/p/DKfqpJQg7BI/' },
+        lienzo: { puntaje: 1250, link: 'https://www.instagram.com/p/DKfrD4TAGv5/' },
+        cityTour: { puntaje: 0, link: 'https://www.instagram.com/p/DKfq8_JghB5' },
+        foto: { puntaje: null },
+        saludos: { puntaje: null },
+        musical: { puntaje: null },
+        escena80: { puntaje: null },
+        brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKag7hRvR-z/' }
+      },
+      total: 6475
+    },
+    {
+      nombre: 'CASTORES',
+      emoji: '🦫',
+      colors: {
+        bg: 'bg-gradient-to-r from-blue-500 to-yellow-400 border-4 border-yellow-500',
+        cardBg: 'bg-yellow-200 border border-yellow-300',
+        text: 'text-black',
+        labelText: 'text-yellow-800'
+      },
+      puntajes: {
+        promo: { puntaje: 1250, link: 'https://www.instagram.com/p/DKahYBmvP0p/' },
+        doblaje: { puntaje: 3000, link: 'https://www.instagram.com/p/DKdFQgbyOWL/' },
+        furro: { puntaje: 3000, link: 'https://www.instagram.com/p/DKdGCD-AMfZ' },
+        cuentero: { puntaje: 2000, link: 'https://www.instagram.com/p/DKfqoOvyjkK/' },
+        lienzo: { puntaje: 300, link: 'https://www.instagram.com/p/DKfph9tP8Sy/' },
+        cityTour: { puntaje: 1250, link: 'https://www.instagram.com/p/DKfnihtvW2x' },
+        foto: { puntaje: null },
+        saludos: { puntaje: null },
+        musical: { puntaje: null },
+        escena80: { puntaje: null },
+        brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKahLlAybTk/' }
+      },
+      total: 10800,
+      lider: true
+    },
+    {
+      nombre: 'HALCONES',
+      emoji: '🦅',
+      colors: {
+        bg: 'bg-gradient-to-r from-amber-800 to-amber-600',
+        cardBg: 'bg-amber-200 border border-amber-300',
+        text: 'text-black',
+        labelText: 'text-amber-800'
+      },
+          puntajes: {
+      promo: { puntaje: 0, link: 'https://www.instagram.com/p/DKahEG6JbMz/' },
+      doblaje: { puntaje: 1775, link: 'https://www.instagram.com/p/DKdLJ9JpxxX/' },
+      furro: { puntaje: 1000, link: 'https://www.instagram.com/p/DKcxga0JIuv' },
+      cuentero: { puntaje: 0, link: 'https://www.instagram.com/p/DKfoeLDJell/' },
+      lienzo: { puntaje: 2000, link: 'https://www.instagram.com/p/DKeiSsbOna7' },
+      cityTour: { puntaje: 615, link: 'https://www.instagram.com/p/DKft8SCJZad' },
+      foto: { puntaje: null },
+      saludos: { puntaje: null },
+      musical: { puntaje: null },
+      escena80: { puntaje: null },
+              brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKZqh25tMPB/' }
+    },
+      total: 5390
+    },
+    {
+      nombre: 'TIGRES',
+      emoji: '🐅',
+      colors: {
+        bg: 'bg-gradient-to-r from-purple-600 to-purple-800',
+        cardBg: 'bg-white/20',
+        text: 'text-white',
+        labelText: 'text-white/80'
+      },
+      puntajes: {
+        promo: { puntaje: 750, link: 'https://www.instagram.com/p/DKajXCxxjx_/' },
+        doblaje: { puntaje: 3000, link: 'https://www.instagram.com/p/DKdGBx4AqLV/' },
+        furro: { puntaje: 500, link: 'https://www.instagram.com/p/DKcw0XWA8l6' },
+        cuentero: { puntaje: 1250, link: 'https://www.instagram.com/p/DKfl_GUvEKf/' },
+        lienzo: { puntaje: 750, link: 'https://www.instagram.com/p/DKfT8eVvSRu' },
+        cityTour: { puntaje: 2000, link: 'https://www.instagram.com/p/DKfmc-2vlfu' },
+        foto: { puntaje: null },
+        saludos: { puntaje: null },
+        musical: { puntaje: null },
+        escena80: { puntaje: null },
+        brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKZgk5nAAGs/' }
+      },
+      total: 8250
+    }
+  ];
+
+  // Ordenar patrullas por puntaje total (mayor a menor)
+  const patrullasOrdenadas = [...patrullas].sort((a, b) => b.total - a.total);
+
+  /**
+   * Obtiene las penalizaciones aplicadas para una prueba específica
+   * @param {string} testName - Nombre de la prueba
+   * @returns {Array} Array de penalizaciones
+   */
+  function getPenalizaciones(testName: string) {
+    switch (testName) {
+      case "Doblaje":
+        return [
+          { patrulla: "HALCONES", monto: -225, razon: "Retraso en la entrega" },
+          { patrulla: "ANTÍLOPES", monto: -485, razon: "Retraso en la entrega" }
+        ];
+      case "Lucho Furro":
+        return [
+          { patrulla: "BÚFALOS", monto: -50, razon: "Retraso en la entrega" }
+        ];
+      case "Lucho cuentero":
+        return [
+          { patrulla: "ANTÍLOPES", monto: -50, razon: "Se pasaron de las 100 palabras" }
+        ];
+      case "Lienzo":
+        return [
+          { patrulla: "ANTÍLOPES", monto: -425, razon: "Retraso en la entrega" }
+        ];
+      case "Lucho City Tour":
+        return [
+          { patrulla: "HALCONES", monto: -135, razon: "Retraso en la entrega" }
+        ];
+      default:
+        return [];
+    }
+  }
+
+  /**
+   * Obtiene la penalización específica de una patrulla para una prueba
+   * @param {string} testName - Nombre de la prueba
+   * @param {string} patrullaName - Nombre de la patrulla
+   * @returns {Object|null} Penalización o null si no existe
+   */
+  function getPenalizacionPatrulla(testName: string, patrullaName: string) {
+    const penalizaciones = getPenalizaciones(testName);
+    return penalizaciones.find(p => p.patrulla === patrullaName) || null;
+  }
+
+  /**
+   * Verifica si han pasado más de 24 horas desde la fecha límite de una prueba
+   * @param {string} fechaStr - Fecha en formato "Día X de mes hasta las HH:MM"
+   * @returns {boolean} True si han pasado más de 24 horas desde la fecha límite
+   */
+  function pruebaExpirada(fechaStr: string): boolean {
+    if (!fechaStr) return false;
+    
+    try {
+      // Extraer información de la fecha
+      const fechaRegex = /(\w+)\s+(\d+)\s+de\s+(\w+)\s+hasta\s+las\s+(\d+):(\d+)/i;
+      const match = fechaStr.match(fechaRegex);
+      
+      if (!match) return false;
+      
+      const [, dia, fecha, mes, hora, minuto] = match;
+      
+      // Mapear nombres de meses a números
+      const meses: { [key: string]: number } = {
+        'enero': 0, 'febrero': 1, 'marzo': 2, 'abril': 3,
+        'mayo': 4, 'junio': 5, 'julio': 6, 'agosto': 7,
+        'septiembre': 8, 'octubre': 9, 'noviembre': 10, 'diciembre': 11
+      };
+      
+      const mesNum = meses[mes.toLowerCase()];
+      if (mesNum === undefined) return false;
+      
+      // Crear fecha límite (asumiendo año 2025)
+      const fechaLimite = new Date(2025, mesNum, parseInt(fecha), parseInt(hora), parseInt(minuto));
+      
+      // Agregar 24 horas a la fecha límite
+      const fechaLimiteMas24h = new Date(fechaLimite.getTime() + 7 * 60 * 60 * 1000);
+      
+      // Comparar con la fecha actual
+      const ahora = new Date();
+      
+      return ahora > fechaLimiteMas24h;
+    } catch (error) {
+      console.error('Error al parsear fecha:', error);
+      return false;
+    }
+  }
+
+  /**
+   * Función para obtener el color del tipo de prueba
+   * @param {TipoPrueba} tipo - Tipo de prueba (AAA, AA, A)
+   * @returns {string} Clase CSS para el color
+   */
+  function getColorTipo(tipo: TipoPrueba): string {
+    switch(tipo) {
+      case 'AAA': return 'text-red-400';
+      case 'AA': return 'text-yellow-400';
+      case 'A': return 'text-green-400';
+      default: return 'text-gray-400';
+    }
+  }
 
   /**
    * @type {Object.<string, Test[]>}
@@ -32,7 +311,8 @@
           "Calidad del video (imagen y audio)",
           "Creatividad"
         ],
-        fecha: "Lunes 2 de junio hasta las 18:00"
+        fecha: "Lunes 2 de junio hasta las 18:00",
+        instagram: "https://www.instagram.com/p/DKahEG6JbMz/"
       },
       {
         name: "Brain Rot",
@@ -44,7 +324,8 @@
           "Originalidad",
           "Coherencia de la historia"
         ],
-        fecha: "Lunes 2 de junio hasta las 18:00 (likes hasta viernes 6 de junio, 12:00)"
+        fecha: "Lunes 2 de junio hasta las 18:00 (likes hasta viernes 6 de junio, 12:00)",
+        fechaLikes: "Viernes 6 de junio hasta las 12:00"
       },
       {
         name: "Lucho City Tour",
@@ -56,6 +337,7 @@
           "Mayor porcentaje de integrantes de la patrulla en cada foto"
         ],
         fecha: "Miércoles 4 de junio hasta las 18:00",
+        instagram: "https://www.instagram.com/p/DKft8SCJZad",
         locations: [
           {
             name: "Museo Nacional de Bellas Artes",
@@ -116,7 +398,8 @@
           "Similitud al video original",
           "Edición del video"
         ],
-        fecha: "Martes 3 de junio hasta las 18:00"
+        fecha: "Martes 3 de junio hasta las 18:00",
+        instagram: "https://www.instagram.com/p/DKdLJ9JpxxX/"
       },
       {
         name: "Lucho Furro",
@@ -132,7 +415,8 @@
           "Uso de materiales reciclados",
           "Escenografía"
         ],
-        fecha: "Martes 3 de junio hasta las 18:00"
+        fecha: "Martes 3 de junio hasta las 18:00",
+        instagram: "https://www.instagram.com/p/DKcxga0JIuv"
       },
       {
         name: "Lucho Musical",
@@ -159,7 +443,8 @@
           "Cohesión",
           "Estructura"
         ],
-        fecha: "Miércoles 4 de junio hasta las 18:00"
+        fecha: "Miércoles 4 de junio hasta las 18:00",
+        instagram: "https://www.instagram.com/p/DKfoeLDJell/"
       },
       {
         name: "Lienzo",
@@ -174,7 +459,8 @@
           "Uso de colores",
           "Técnica"
         ],
-        fecha: "Miércoles 4 de junio hasta las 18:00"
+        fecha: "Miércoles 4 de junio hasta las 18:00",
+        instagram: "https://www.instagram.com/p/DKeiSsbOna7"
       },
       {
         name: "Fotografía",
@@ -446,6 +732,9 @@
   function toggleIndex() {
     showIndex = !showIndex;
   }
+  
+  // Variable para controlar el toggle de lugares a visitar
+  let mostrarLugares = false;
 
   // Fecha para la publicación de las pruebas del día final
   const fechaPublicacionPruebasFinal = "17 de mayo a las 14:00";
@@ -495,6 +784,60 @@
     <h1 class="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-red-800 to-orange-600 bg-clip-text text-transparent">
       Pruebas Semana San Luisina
     </h1>
+
+    <!-- Tabla de Posiciones Actuales -->
+    <div class="mb-12 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8">
+      <h2 class="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-red-800 to-orange-600 bg-clip-text text-transparent flex items-center justify-center">
+        🏆 Tabla de Posiciones Actuales
+      </h2>
+
+      
+            <!-- Tabla de puntajes optimizada para móvil -->
+      <div class="space-y-3">
+        {#each patrullasOrdenadas as patrulla, index}
+          <div class="{patrulla.colors.bg} rounded-lg shadow-md overflow-hidden">
+            <div class="p-3">
+              <!-- Header de la patrulla -->
+              <div class="flex justify-between items-center mb-3">
+                <div class="flex items-center space-x-2">
+                  <span class="text-xl">{patrulla.emoji}</span>
+                  <h3 class="text-base font-bold {patrulla.colors.text}">{patrulla.nombre}</h3>
+                  {#if patrulla.lider}
+                    <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">🏆 1°</span>
+                  {/if}
+                </div>
+                <div class="{patrulla.lider ? 'bg-green-500 text-white' : 'bg-yellow-400 text-black'} px-3 py-1 rounded-lg font-bold text-base">
+                  {patrulla.total.toLocaleString()} pts
+                </div>
+              </div>
+              
+              <!-- Puntajes por prueba -->
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 {patrulla.colors.text}">
+                {#each pruebas.slice(0, 6) as prueba}
+                  {#if patrulla.puntajes[prueba.id].puntaje !== null}
+                    <div class="{patrulla.colors.cardBg} rounded-md p-2 text-center relative">
+                      <div class="text-xs {patrulla.colors.labelText} flex items-center justify-center gap-1">
+                        <span>{prueba.nombre}</span>
+                        <span class="{getColorTipo(prueba.tipo)} font-bold">{prueba.tipo}</span>
+                      </div>
+                      <div class="font-semibold text-sm">{patrulla.puntajes[prueba.id].puntaje}</div>
+                    </div>
+                  {/if}
+                {/each}
+              </div>
+            </div>
+          </div>
+        {/each}
+      </div>
+
+
+
+      <div class="mt-6 text-center">
+        <p class="text-sm text-gray-600 italic">
+          📅 Última actualización: Miércoles 4 de junio, 2025 | 🔄 Los puntajes se actualizan después de cada prueba
+        </p>
+      </div>
+    </div>
 
     <div class="mb-12 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8">
       <p class="mb-6 text-lg text-gray-700 leading-relaxed">
@@ -790,31 +1133,7 @@
               </div>
             </div>
 
-            {#if test.name === "Lucho City Tour"}
-              <div class="mb-6 relative bg-blue-50 border-l-4 border-blue-400 p-3 rounded-r-lg shadow-sm overflow-hidden">
-                <img src="dia-de-los-patrimonios.webp" alt="Día de los Patrimonios 2025" class="absolute inset-0 w-full h-full object-cover opacity-10">
-                <div class="relative flex items-start z-10">
-                  <div class="flex-shrink-0 mt-0.5">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  </div>
-                  <div class="ml-3">
-                    <div class="text-sm text-gray-700">
-                      <p>
-                        Este <span class="font-medium">sábado 24 y domingo 25 de mayo</span>
-                      </p>
-                      <p>
-                        Día de los Patrimonios con miles de actividades <span class="font-medium text-blue-700">gratuitas</span> en museos, archivos y espacios culturales.
-                      </p>
-                      <p class="mt-3 text-xs text-blue-700 italic">
-                        ¡Perfecto para realizar la prueba Lucho City Tour!
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            {/if}
+
 
             <div class="mb-6 bg-gradient-to-r from-gray-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-orange-300">
               <h4 class="font-semibold mb-2 text-primary flex items-center gap-2">
@@ -831,21 +1150,32 @@
               {/if}
               {#if test.name === "Lucho City Tour" && test.locations}
                 <div class="mt-4 space-y-2">
-                  <h5 class="font-semibold text-primary">Lugares a visitar:</h5>
-                  <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                    {#each test.locations as location}
-                      <div class="bg-white p-2 rounded-lg shadow-sm border border-orange-100 hover:border-orange-300 transition-colors duration-200">
-                        <h6 class="font-semibold text-orange-700 mb-1 flex items-center text-sm">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          {location.name}
-                        </h6>
-                        <p class="text-gray-600 text-xs">{location.description}</p>
-                      </div>
-                    {/each}
-                  </div>
+                  <button 
+                    class="flex items-center gap-2 font-semibold text-primary hover:text-orange-600 transition-colors duration-200 cursor-pointer"
+                    on:click={() => mostrarLugares = !mostrarLugares}
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-200 {mostrarLugares ? 'rotate-90' : ''}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                    Lugares a visitar ({test.locations.length})
+                  </button>
+                  
+                  {#if mostrarLugares}
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3 animate-in slide-in-from-top duration-300">
+                      {#each test.locations as location}
+                        <div class="bg-white p-2 rounded-lg shadow-sm border border-orange-100 hover:border-orange-300 transition-colors duration-200">
+                          <h6 class="font-semibold text-orange-700 mb-1 flex items-center text-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 mr-1 text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            {location.name}
+                          </h6>
+                          <p class="text-gray-600 text-xs">{location.description}</p>
+                        </div>
+                      {/each}
+                    </div>
+                  {/if}
                 </div>
               {/if}
             </div>
@@ -866,11 +1196,86 @@
               </div>
             </div>
 
-            {#if test.fecha}
+            <!-- Resultados por patrulla -->
+            {#if test.name === "Promo STL" || test.name === "Doblaje" || test.name === "Lucho Furro" || test.name === "Lucho cuentero" || test.name === "Lienzo" || test.name === "Lucho City Tour" || test.name === "Fotografía" || test.name === "Saludos" || test.name === "Lucho Musical" || test.name === "Recrear la escena de Los 80" || test.name === "Brain Rot"}
+              {@const pruebaKey = test.name === "Promo STL" ? "promo" : 
+                                test.name === "Doblaje" ? "doblaje" :
+                                test.name === "Lucho Furro" ? "furro" :
+                                test.name === "Lucho cuentero" ? "cuentero" :
+                                test.name === "Lienzo" ? "lienzo" :
+                                test.name === "Lucho City Tour" ? "cityTour" :
+                                test.name === "Fotografía" ? "foto" :
+                                test.name === "Saludos" ? "saludos" :
+                                test.name === "Lucho Musical" ? "musical" :
+                                test.name === "Recrear la escena de Los 80" ? "escena80" :
+                                "brainRot"}
+              {@const patrullasConPuntaje = patrullas.filter(p => p.puntajes[pruebaKey]?.puntaje !== null || (test.name === "Brain Rot" && p.puntajes[pruebaKey]?.link))}
+              {#if patrullasConPuntaje.length > 0}
+                <div class="bg-gradient-to-r from-emerald-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-emerald-300 mb-6">
+                  <h4 class="font-semibold mb-3 text-primary flex items-center gap-2">
+                    <span class="text-2xl">🏆</span>
+                    Resultados por patrulla:
+                  </h4>
+                  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    {#each patrullasConPuntaje.sort((a, b) => (b.puntajes[pruebaKey]?.puntaje || 0) - (a.puntajes[pruebaKey]?.puntaje || 0)) as patrulla, index}
+                      {@const puntajeData = patrulla.puntajes[pruebaKey]}
+                      {#if puntajeData}
+                        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 hover:shadow-md transition-shadow duration-200">
+                          <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                              <span class="text-lg">{patrulla.emoji}</span>
+                              <span class="font-semibold text-sm {patrulla.colors.text === 'text-white' ? 'text-gray-800' : patrulla.colors.text}">{patrulla.nombre}</span>
+                              {#if index === 0 && puntajeData.puntaje !== null}
+                                <span class="text-yellow-500">👑</span>
+                              {/if}
+                            </div>
+                            {#if puntajeData.puntaje !== null}
+                              <span class="font-bold text-lg {(puntajeData.puntaje || 0) < 0 ? 'text-red-600' : (puntajeData.puntaje || 0) === 0 ? 'text-gray-500' : 'text-green-600'}">
+                                {(puntajeData.puntaje || 0) >= 0 ? '+' : ''}{puntajeData.puntaje || 0} pts
+                              </span>
+                                                          {:else if test.name === "Brain Rot"}
+                                <span class="font-medium text-xs text-gray-400 italic">
+                                  Pendiente evaluación
+                                </span>
+                            {/if}
+                          </div>
+                          
+                          {#if puntajeData.link}
+                            <a 
+                              href={puntajeData.link} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              class="inline-flex items-center gap-2 px-3 py-1.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-md hover:from-pink-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 text-sm w-full justify-center mb-2"
+                            >
+                              <span class="text-sm">📸</span>
+                              Ver en Instagram
+                              <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                              </svg>
+                            </a>
+                          {/if}
+                          
+                          <!-- Mostrar penalización si existe -->
+                          {#if getPenalizacionPatrulla(test.name, patrulla.nombre)}
+                            <div class="text-xs text-red-600 italic">
+                              ⚠️ Penalización: {getPenalizacionPatrulla(test.name, patrulla.nombre)?.monto} pts ({getPenalizacionPatrulla(test.name, patrulla.nombre)?.razon})
+                            </div>
+                          {/if}
+                        </div>
+                      {/if}
+                    {/each}
+                  </div>
+                </div>
+              {/if}
+            {/if}
+
+
+
+            {#if test.fecha && !pruebaExpirada(test.fecha)}
               <div class="bg-gradient-to-r from-indigo-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-indigo-300">
                 <h4 class="font-semibold mb-3 text-primary flex items-center gap-2">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2z" />
                   </svg>
                   Fecha de subida:
                 </h4>
@@ -885,6 +1290,30 @@
                     <span class="text-gray-700">{test.fecha}</span>
                   </div>
                   <DiscreteTimer fechaStr={test.fecha} label="Tiempo restante:" />
+                </div>
+              </div>
+            {/if}
+            
+            <!-- Temporizador especial para Brain rot (conteo de likes) -->
+            {#if test.name === "Brain Rot" && test.fechaLikes && !pruebaExpirada(test.fechaLikes)}
+              <div class="bg-gradient-to-r from-pink-50 to-red-50 rounded-lg p-4 shadow-sm border-l-4 border-pink-400">
+                <h4 class="font-semibold mb-3 text-primary flex items-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                  Límite para conteo de likes:
+                </h4>
+                <div class="flex flex-col space-y-4">
+                  <div class="flex items-center">
+                    <span class="inline-flex items-center bg-pink-100 text-pink-800 px-2 py-0.5 rounded mr-2 text-xs">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                      </svg>
+                      Likes
+                    </span>
+                    <span class="text-gray-700">{test.fechaLikes}</span>
+                  </div>
+                  <DiscreteTimer fechaStr={test.fechaLikes} label="Tiempo restante para likes:" />
                 </div>
               </div>
             {/if}
@@ -995,6 +1424,29 @@
                       </span>
                     {/each}
                   </div>
+                </div>
+              {/if}
+
+              {#if test?.instagram}
+                <div class="bg-gradient-to-r from-pink-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-pink-300">
+                  <h4 class="font-semibold mb-3 text-primary flex items-center gap-2">
+                    <span class="text-2xl">📸</span>
+                    Ver entrega en Instagram:
+                  </h4>
+                  <a 
+                    href={test.instagram} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white rounded-lg hover:from-pink-600 hover:to-purple-700 transition-all duration-200 transform hover:scale-105 shadow-md hover:shadow-lg"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Ver en Instagram
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
                 </div>
               {/if}
             </div>
