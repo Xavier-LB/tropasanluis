@@ -736,6 +736,47 @@
   // Variable para controlar el toggle de lugares a visitar
   let mostrarLugares = false;
 
+  /**
+   * Determina el estado de un día en el cronograma considerando fecha y hora límite
+   * @param {number} indiceDia - Índice del día (0-5)
+   * @returns {'pasado' | 'actual' | 'futuro'} Estado del día
+   */
+  function getEstadoDia(indiceDia: number): 'pasado' | 'actual' | 'futuro' {
+    const ahora = new Date();
+    const año = 2025;
+    
+    // Definir las fechas del cronograma con hora límite (18:00)
+    const fechasLimite = [
+      new Date(año, 5, 2, 18, 0), // Lunes 2 junio 18:00
+      new Date(año, 5, 3, 18, 0), // Martes 3 junio 18:00
+      new Date(año, 5, 4, 18, 0), // Miércoles 4 junio 18:00
+      new Date(año, 5, 5, 18, 0), // Jueves 5 junio 18:00
+      new Date(año, 5, 6, 18, 0), // Viernes 6 junio 18:00
+      new Date(año, 5, 7, 18, 0)  // Sábado 7 junio 18:00
+    ];
+    
+    // Verificar si el índice es válido
+    if (indiceDia < 0 || indiceDia >= fechasLimite.length) {
+      return 'futuro';
+    }
+    
+    const fechaLimiteDia = fechasLimite[indiceDia];
+    const fechaInicioDia = new Date(fechaLimiteDia.getFullYear(), fechaLimiteDia.getMonth(), fechaLimiteDia.getDate(), 0, 0, 0);
+    
+    // Si ya pasó la hora límite del día, está en el pasado
+    if (ahora > fechaLimiteDia) {
+      return 'pasado';
+    }
+    
+    // Si estamos dentro del día (después del inicio pero antes de la hora límite), es actual
+    if (ahora >= fechaInicioDia && ahora <= fechaLimiteDia) {
+      return 'actual';
+    }
+    
+    // Si aún no llegamos al día, es futuro
+    return 'futuro';
+  }
+
   // Fecha para la publicación de las pruebas del día final
   const fechaPublicacionPruebasFinal = "17 de mayo a las 14:00";
   
@@ -948,157 +989,477 @@
           <!-- Línea de tiempo vertical -->
           <div class="absolute left-14 top-0 h-full w-0.5 bg-gradient-to-b from-purple-500 to-pink-500"></div>
           
+
+          
           <!-- Cronograma -->
           <div class="space-y-6 relative">
             <!-- Lunes -->
-            <div class="pl-20 relative">
-              <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">2 Jun</span>
-              <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
-                <div class="flex justify-between items-center mb-2">
-                  <h4 class="font-bold text-primary">Lunes 2 de junio</h4>
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                    Hasta las 18:00
-                  </span>
+            {#if getEstadoDia(0) === 'pasado'}
+              <div class="pl-20 relative opacity-50">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-400 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Promo STL <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                  </span>
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Brain Rot <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
-                  </span>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-gray-500">2 Jun</span>
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-3 rounded-lg shadow-sm border-l-4 border-gray-300">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-gray-600">Lunes 2 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Promo STL <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Brain Rot <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">A</span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            {:else if getEstadoDia(0) === 'actual'}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-green-600 z-10 flex items-center justify-center animate-pulse">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-green-600">2 Jun</span>
+                <div class="bg-gradient-to-r from-green-50 to-white p-3 rounded-lg shadow-lg border-l-4 border-green-500 ring-2 ring-green-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary flex items-center">
+                      Lunes 2 de junio
+                      <span class="ml-2 bg-green-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">HOY</span>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Promo STL <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Brain Rot <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {:else}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">2 Jun</span>
+                <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary">Lunes 2 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Promo STL <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Brain Rot <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {/if}
             
             <!-- Martes -->
-            <div class="pl-20 relative">
-              <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">3 Jun</span>
-              <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
-                <div class="flex justify-between items-center mb-2">
-                  <h4 class="font-bold text-primary">Martes 3 de junio</h4>
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                    Hasta las 18:00
-                  </span>
+            {#if getEstadoDia(1) === 'pasado'}
+              <div class="pl-20 relative opacity-50">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-400 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Doblaje <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
-                  </span>
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Lucho Furro <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
-                  </span>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-gray-500">3 Jun</span>
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-3 rounded-lg shadow-sm border-l-4 border-gray-300">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-gray-600">Martes 3 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Doblaje <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">AAA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Lucho Furro <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">AAA</span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            {:else if getEstadoDia(1) === 'actual'}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-green-600 z-10 flex items-center justify-center animate-pulse">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-green-600">3 Jun</span>
+                <div class="bg-gradient-to-r from-green-50 to-white p-3 rounded-lg shadow-lg border-l-4 border-green-500 ring-2 ring-green-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary flex items-center">
+                      Martes 3 de junio
+                      <span class="ml-2 bg-green-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">HOY</span>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Doblaje <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lucho Furro <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {:else}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">3 Jun</span>
+                <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary">Martes 3 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Doblaje <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lucho Furro <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {/if}
             
             <!-- Miércoles -->
-            <div class="pl-20 relative">
-              <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">4 Jun</span>
-              <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
-                <div class="flex justify-between items-center mb-2">
-                  <h4 class="font-bold text-primary">Miércoles 4 de junio</h4>
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                    Hasta las 18:00
-                  </span>
+            {#if getEstadoDia(2) === 'pasado'}
+              <div class="pl-20 relative opacity-50">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-400 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Lucho cuentero <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                  </span>
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Lienzo <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                  </span>
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Lucho City Tour <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                  </span>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-gray-500">4 Jun</span>
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-3 rounded-lg shadow-sm border-l-4 border-gray-300">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-gray-600">Miércoles 4 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Lucho cuentero <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Lienzo <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Lucho City Tour <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">AA</span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            {:else if getEstadoDia(2) === 'actual'}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-green-600 z-10 flex items-center justify-center animate-pulse">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-green-600">4 Jun</span>
+                <div class="bg-gradient-to-r from-green-50 to-white p-3 rounded-lg shadow-lg border-l-4 border-green-500 ring-2 ring-green-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary flex items-center">
+                      Miércoles 4 de junio
+                      <span class="ml-2 bg-green-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">HOY</span>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lucho cuentero <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lienzo <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lucho City Tour <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {:else}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">4 Jun</span>
+                <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary">Miércoles 4 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lucho cuentero <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lienzo <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lucho City Tour <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {/if}
             
             <!-- Jueves -->
-            <div class="pl-20 relative">
-              <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">5 Jun</span>
-              <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
-                <div class="flex justify-between items-center mb-2">
-                  <h4 class="font-bold text-primary">Jueves 5 de junio</h4>
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                    Hasta las 18:00
-                  </span>
+            {#if getEstadoDia(3) === 'pasado'}
+              <div class="pl-20 relative opacity-50">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-400 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Fotografía <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
-                  </span>
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Saludos <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                  </span>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-gray-500">5 Jun</span>
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-3 rounded-lg shadow-sm border-l-4 border-gray-300">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-gray-600">Jueves 5 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Fotografía <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">A</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Saludos <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">AA</span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            {:else if getEstadoDia(3) === 'actual'}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-green-600 z-10 flex items-center justify-center animate-pulse">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-green-600">5 Jun</span>
+                <div class="bg-gradient-to-r from-green-50 to-white p-3 rounded-lg shadow-lg border-l-4 border-green-500 ring-2 ring-green-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary flex items-center">
+                      Jueves 5 de junio
+                      <span class="ml-2 bg-green-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">HOY</span>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Fotografía <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Saludos <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {:else}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">5 Jun</span>
+                <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary">Jueves 5 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Fotografía <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Saludos <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {/if}
             
             <!-- Viernes -->
-            <div class="pl-20 relative">
-              <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">6 Jun</span>
-              <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
-                <div class="flex justify-between items-center mb-2">
-                  <h4 class="font-bold text-primary">Viernes 6 de junio</h4>
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                    Hasta las 18:00
-                  </span>
+            {#if getEstadoDia(4) === 'pasado'}
+              <div class="pl-20 relative opacity-50">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-400 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
                 </div>
-                <div class="flex flex-wrap gap-1.5">
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Lucho Musical <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                  </span>
-                  <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
-                    <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
-                    Recrear la escena de Los 80 <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
-                  </span>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-gray-500">6 Jun</span>
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-3 rounded-lg shadow-sm border-l-4 border-gray-300">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-gray-600">Viernes 6 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Lucho Musical <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-gray-200 rounded shadow-sm flex items-center text-gray-600">
+                      <span class="w-2 h-2 bg-gray-400 rounded-full mr-1"></span>
+                      Recrear la escena de Los 80 <span class="ml-1 text-xs bg-gray-300 text-gray-600 px-1 rounded">AAA</span>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            {:else if getEstadoDia(4) === 'actual'}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-green-600 z-10 flex items-center justify-center animate-pulse">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-green-600">6 Jun</span>
+                <div class="bg-gradient-to-r from-green-50 to-white p-3 rounded-lg shadow-lg border-l-4 border-green-500 ring-2 ring-green-200">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary flex items-center">
+                      Viernes 6 de junio
+                      <span class="ml-2 bg-green-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">HOY</span>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lucho Musical <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Recrear la escena de Los 80 <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {:else}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-purple-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">6 Jun</span>
+                <div class="bg-gradient-to-r from-purple-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-purple-400">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary">Viernes 6 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
+                      Hasta las 18:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Lucho Musical <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </span>
+                    <span class="px-3 py-1 text-xs bg-white rounded shadow-sm flex items-center">
+                      <span class="w-2 h-2 bg-red-600 rounded-full mr-1"></span>
+                      Recrear la escena de Los 80 <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {/if}
             
             <!-- Final -->
-            <div class="pl-20 relative">
-              <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
-                <div class="w-3 h-3 bg-white rounded-full"></div>
-              </div>
-              <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">7 Jun</span>
-              <div class="bg-gradient-to-r from-orange-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-orange-400">
-                <div class="flex justify-between items-center">
-                  <h4 class="font-bold text-primary">Sábado 7 de junio</h4>
-                  <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-                    Día Final
-                  </span>
+            {#if getEstadoDia(5) === 'pasado'}
+              <div class="pl-20 relative opacity-50">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-gray-400 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-gray-500">7 Jun</span>
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 p-3 rounded-lg shadow-sm border-l-4 border-gray-300">
+                  <div class="flex justify-between items-center">
+                    <h4 class="font-bold text-gray-600">Sábado 7 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-gray-200 text-gray-700">
+                      Día Final
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            {:else if getEstadoDia(5) === 'actual'}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-green-600 z-10 flex items-center justify-center animate-pulse">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6 text-green-600">7 Jun</span>
+                <div class="bg-gradient-to-r from-green-50 to-white p-3 rounded-lg shadow-lg border-l-4 border-green-500 ring-2 ring-green-200">
+                  <div class="flex justify-between items-center">
+                    <h4 class="font-bold text-primary flex items-center">
+                      Sábado 7 de junio
+                      <span class="ml-2 bg-green-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">HOY</span>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Día Final
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {:else}
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-7 top-1/2 -translate-y-1/2 text-xs font-bold text-right w-6">7 Jun</span>
+                <div class="bg-gradient-to-r from-orange-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-orange-400">
+                  <div class="flex justify-between items-center">
+                    <h4 class="font-bold text-primary">Sábado 7 de junio</h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                      Día Final
+                    </span>
+                  </div>
+                </div>
+              </div>
+            {/if}
           </div>
         </div>
       </div>
