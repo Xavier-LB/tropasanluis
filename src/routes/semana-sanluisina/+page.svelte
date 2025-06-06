@@ -84,13 +84,13 @@
         cuentero: { puntaje: 250, link: 'https://www.instagram.com/p/DKfpoKiP1hp/' },
         lienzo: { puntaje: -125, link: 'https://www.instagram.com/p/DKf0tqGAmmi/' },
         cityTour: { puntaje: 300, link: 'https://www.instagram.com/p/DKfoE4QvRJR' },
-        foto: { puntaje: null, link: 'https://www.instagram.com/p/DKiF0cNPfyP/' },
-        saludos: { puntaje: null, link: 'https://www.instagram.com/p/DKiM-XsP6Lk' },
+        foto: { puntaje: 1000, link: 'https://www.instagram.com/p/DKiF0cNPfyP/' },
+        saludos: { puntaje: 0, link: 'https://www.instagram.com/p/DKiM-XsP6Lk' },
         musical: { puntaje: null },
         escena80: { puntaje: null },
         brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKaij_jAxU3/' }
       },
-      total: 240
+      total: 1240
     },
     {
       nombre: 'BÚFALOS',
@@ -108,13 +108,13 @@
         cuentero: { puntaje: 750, link: 'https://www.instagram.com/p/DKfqpJQg7BI/' },
         lienzo: { puntaje: 1250, link: 'https://www.instagram.com/p/DKfrD4TAGv5/' },
         cityTour: { puntaje: 0, link: 'https://www.instagram.com/p/DKfq8_JghB5' },
-        foto: { puntaje: null, link: 'https://www.instagram.com/p/DKiOvEyvT0R/' },
-        saludos: { puntaje: null, link: 'https://www.instagram.com/p/DKiR2gyAjdb' },
+        foto: { puntaje: 1000, link: 'https://www.instagram.com/p/DKiOvEyvT0R/' },
+        saludos: { puntaje: 1155, link: 'https://www.instagram.com/p/DKiR2gyAjdb' },
         musical: { puntaje: null },
         escena80: { puntaje: null },
         brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKag7hRvR-z/' }
       },
-      total: 6475
+      total: 8630
     },
     {
       nombre: 'CASTORES',
@@ -132,13 +132,13 @@
         cuentero: { puntaje: 2000, link: 'https://www.instagram.com/p/DKfqoOvyjkK/' },
         lienzo: { puntaje: 300, link: 'https://www.instagram.com/p/DKfph9tP8Sy/' },
         cityTour: { puntaje: 1250, link: 'https://www.instagram.com/p/DKfnihtvW2x' },
-        foto: { puntaje: null, link: 'https://www.instagram.com/p/DKiA_ukvvD4/' },
-        saludos: { puntaje: null, link: 'https://www.instagram.com/p/DKiPUJ7gP-9' },
+        foto: { puntaje: 750, link: 'https://www.instagram.com/p/DKiA_ukvvD4/' },
+        saludos: { puntaje: 300, link: 'https://www.instagram.com/p/DKiPUJ7gP-9' },
         musical: { puntaje: null },
         escena80: { puntaje: null },
         brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKahLlAybTk/' }
       },
-      total: 10800,
+      total: 11850,
       lider: true
     },
     {
@@ -157,13 +157,13 @@
         cuentero: { puntaje: 0, link: 'https://www.instagram.com/p/DKfoeLDJell/' },
         lienzo: { puntaje: 2000, link: 'https://www.instagram.com/p/DKeiSsbOna7' },
         cityTour: { puntaje: 615, link: 'https://www.instagram.com/p/DKft8SCJZad' },
-        foto: { puntaje: null, link: 'https://www.instagram.com/p/DKh9VOZJQKt/' },
-        saludos: { puntaje: null, link: 'https://www.instagram.com/p/DKiSmskJEaV' },
+        foto: { puntaje: 300, link: 'https://www.instagram.com/p/DKh9VOZJQKt/' },
+        saludos: { puntaje: 620, link: 'https://www.instagram.com/p/DKiSmskJEaV' },
         musical: { puntaje: null },
         escena80: { puntaje: null },
         brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKZqh25tMPB/' }
       },
-      total: 5390
+      total: 6310
     },
     {
       nombre: 'TIGRES',
@@ -181,13 +181,13 @@
         cuentero: { puntaje: 1250, link: 'https://www.instagram.com/p/DKfl_GUvEKf/' },
         lienzo: { puntaje: 750, link: 'https://www.instagram.com/p/DKfT8eVvSRu' },
         cityTour: { puntaje: 2000, link: 'https://www.instagram.com/p/DKfmc-2vlfu' },
-        foto: { puntaje: null, link: 'https://www.instagram.com/p/DKht_lQAGiw/' },
-        saludos: { puntaje: null, link: 'https://www.instagram.com/p/DKiO8YDAXPh' },
+        foto: { puntaje: 100, link: 'https://www.instagram.com/p/DKht_lQAGiw/' },
+        saludos: { puntaje: 2000, link: 'https://www.instagram.com/p/DKiO8YDAXPh' },
         musical: { puntaje: null },
         escena80: { puntaje: null },
         brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKZgk5nAAGs/' }
       },
-      total: 8250
+      total: 10350
     }
   ];
 
@@ -221,6 +221,11 @@
       case "Lucho City Tour":
         return [
           { patrulla: "HALCONES", monto: -135, razon: "Retraso en la entrega" }
+        ];
+      case "Saludos":
+        return [
+          { patrulla: "BÚFALOS", monto: -95, razon: "Retraso en la entrega" },
+          { patrulla: "HALCONES", monto: -130, razon: "Retraso en la entrega" }
         ];
       default:
         return [];
@@ -867,8 +872,8 @@
               </div>
               
               <!-- Puntajes por prueba -->
-              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2 {patrulla.colors.text}">
-                {#each pruebas.slice(0, 6) as prueba}
+              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-2 {patrulla.colors.text}">
+                {#each pruebas as prueba}
                   {#if patrulla.puntajes[prueba.id].puntaje !== null}
                     <div class="{patrulla.colors.cardBg} rounded-md p-2 text-center relative">
                       <div class="text-xs {patrulla.colors.labelText} flex items-center justify-center gap-1">
