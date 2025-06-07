@@ -111,7 +111,7 @@
         foto: { puntaje: 1000, link: 'https://www.instagram.com/p/DKiOvEyvT0R/' },
         saludos: { puntaje: 1155, link: 'https://www.instagram.com/p/DKiR2gyAjdb' },
         musical: { puntaje: null },
-        escena80: { puntaje: null },
+        escena80: { puntaje: null, link: 'https://www.instagram.com/p/DKk0IskAjcv/' },
         brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKag7hRvR-z/' }
       },
       total: 8630
@@ -134,8 +134,8 @@
         cityTour: { puntaje: 1250, link: 'https://www.instagram.com/p/DKfnihtvW2x' },
         foto: { puntaje: 750, link: 'https://www.instagram.com/p/DKiA_ukvvD4/' },
         saludos: { puntaje: 300, link: 'https://www.instagram.com/p/DKiPUJ7gP-9' },
-        musical: { puntaje: null },
-        escena80: { puntaje: null },
+        musical: { puntaje: null, link: 'https://www.instagram.com/p/DKkyYtsvJrX/' },
+        escena80: { puntaje: null, link: 'https://www.instagram.com/p/DKk0BXXyxwg/' },
         brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKahLlAybTk/' }
       },
       total: 11850,
@@ -183,8 +183,8 @@
         cityTour: { puntaje: 2000, link: 'https://www.instagram.com/p/DKfmc-2vlfu' },
         foto: { puntaje: 100, link: 'https://www.instagram.com/p/DKht_lQAGiw/' },
         saludos: { puntaje: 2000, link: 'https://www.instagram.com/p/DKiO8YDAXPh' },
-        musical: { puntaje: null },
-        escena80: { puntaje: null },
+        musical: { puntaje: null, link: 'https://www.instagram.com/p/DKkvtdJvUbF' },
+        escena80: { puntaje: null, link: 'https://www.instagram.com/p/DKkurENPenl/' },
         brainRot: { puntaje: null, link: 'https://www.instagram.com/p/DKZgk5nAAGs/' }
       },
       total: 10350
