@@ -755,6 +755,9 @@
   // Variable para controlar el toggle de lugares a visitar
   let mostrarLugares = false;
 
+  // Variables para controlar el toggle de puntajes por patrulla
+  let mostrarPuntajes: { [key: string]: boolean } = {};
+
   /**
    * Determina el estado de un día en el cronograma considerando fecha y hora límite
    * @param {number} indiceDia - Índice del día (0-5)
@@ -846,51 +849,91 @@
     </h1>
 
     <!-- Tabla de Posiciones Actuales -->
-    <div class="mb-12 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-8">
-      <h2 class="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-red-800 to-orange-600 bg-clip-text text-transparent flex items-center justify-center">
+    <div class="mb-12 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-8">
+      <h2 class="text-3xl sm:text-4xl font-bold mb-6 sm:mb-8 text-center bg-gradient-to-r from-red-800 to-orange-600 bg-clip-text text-transparent flex items-center justify-center">
         🏆 Tabla de Posiciones Actuales
       </h2>
 
-      
-            <!-- Tabla de puntajes optimizada para móvil -->
-      <div class="space-y-3">
+      <!-- Tabla de puntajes compacta para móvil -->
+      <div class="space-y-3 sm:space-y-4">
         {#each patrullasOrdenadas as patrulla, index}
-          <div class="{patrulla.colors.bg} rounded-lg shadow-md overflow-hidden">
-            <div class="p-3">
-              <!-- Header de la patrulla -->
-              <div class="flex justify-between items-center mb-3">
-                <div class="flex items-center space-x-2">
-                  <span class="text-xl">{patrulla.emoji}</span>
-                  <h3 class="text-base font-bold {patrulla.colors.text}">{patrulla.nombre}</h3>
-                  {#if patrulla.lider}
-                    <span class="bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">🏆 1°</span>
-                  {/if}
+          <div class="{patrulla.colors.bg} rounded-xl shadow-md overflow-hidden">
+            <div class="p-4 sm:p-5">
+              <!-- Header compacto de la patrulla -->
+              <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-3 lg:space-y-0">
+                <div class="flex items-center justify-between lg:justify-start">
+                  <div class="flex items-center space-x-3">
+                    <span class="text-xl sm:text-2xl">{patrulla.emoji}</span>
+                    <div class="flex flex-col">
+                      <h3 class="text-base sm:text-lg font-bold {patrulla.colors.text}">{patrulla.nombre}</h3>
+                      <div class="text-xs sm:text-sm text-white opacity-75">
+                        Posición #{index + 1}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <!-- Botón toggle - visible en móvil -->
+                  <button
+                    class="lg:hidden p-2 rounded-full {patrulla.colors.cardBg} {patrulla.colors.text} hover:opacity-80 transition-all duration-200 transform {mostrarPuntajes[patrulla.nombre] ? 'rotate-180' : ''} flex-shrink-0"
+                    on:click={() => mostrarPuntajes[patrulla.nombre] = !mostrarPuntajes[patrulla.nombre]}
+                    aria-label="Toggle detalles de puntajes"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
                 </div>
-                <div class="{patrulla.lider ? 'bg-green-500 text-white' : 'bg-yellow-400 text-black'} px-3 py-1 rounded-lg font-bold text-base">
-                  {patrulla.total.toLocaleString()} pts
+                
+                <div class="flex justify-center lg:justify-end lg:flex-row lg:items-center lg:space-x-3">
+                  <div class="{patrulla.lider ? 'bg-green-500 text-white' : 'bg-yellow-400 text-black'} px-4 py-2 rounded-lg font-bold text-base sm:text-lg">
+                    {patrulla.total.toLocaleString()} pts
+                  </div>
+                  
+                  <!-- Botón toggle - visible en desktop -->
+                  <button
+                    class="hidden lg:block p-2 rounded-full {patrulla.colors.cardBg} {patrulla.colors.text} hover:opacity-80 transition-all duration-200 transform {mostrarPuntajes[patrulla.nombre] ? 'rotate-180' : ''} flex-shrink-0"
+                    on:click={() => mostrarPuntajes[patrulla.nombre] = !mostrarPuntajes[patrulla.nombre]}
+                    aria-label="Toggle detalles de puntajes"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
                 </div>
               </div>
               
-              <!-- Puntajes por prueba -->
-              <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-8 gap-2 {patrulla.colors.text}">
-                {#each pruebas as prueba}
-                  {#if patrulla.puntajes[prueba.id].puntaje !== null}
-                    <div class="{patrulla.colors.cardBg} rounded-md p-2 text-center relative">
-                      <div class="text-xs {patrulla.colors.labelText} flex items-center justify-center gap-1">
-                        <span>{prueba.nombre}</span>
-                        <span class="{getColorTipo(prueba.tipo)} font-bold">{prueba.tipo}</span>
-                      </div>
-                      <div class="font-semibold text-sm">{patrulla.puntajes[prueba.id].puntaje}</div>
-                    </div>
-                  {/if}
-                {/each}
-              </div>
+              <!-- Puntajes por prueba - colapsables -->
+              {#if mostrarPuntajes[patrulla.nombre]}
+                <div class="mt-4 pt-4 border-t border-white/20 animate-in slide-in-from-top duration-300">
+                  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3 {patrulla.colors.text}">
+                    {#each pruebas as prueba}
+                      {#if patrulla.puntajes[prueba.id].puntaje !== null}
+                        <div class="{patrulla.colors.cardBg} rounded-lg p-2 sm:p-3 text-center relative">
+                          <div class="text-xs sm:text-sm {patrulla.colors.labelText} flex flex-col items-center justify-center gap-1">
+                            <span class="leading-tight text-center">{prueba.nombre}</span>
+                            <span class="{getColorTipo(prueba.tipo)} font-bold text-xs">{prueba.tipo}</span>
+                          </div>
+                          <div class="font-semibold text-sm sm:text-base mt-2">{patrulla.puntajes[prueba.id].puntaje}</div>
+                        </div>
+                      {/if}
+                    {/each}
+                  </div>
+                </div>
+              {/if}
             </div>
           </div>
         {/each}
       </div>
 
-
+      <!-- Instrucción para expandir detalles -->
+      <div class="mt-6 text-center text-sm text-gray-600 px-4">
+        <p class="flex items-center justify-center gap-2 flex-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Toca la flecha para ver los puntajes detallados por prueba</span>
+        </p>
+      </div>
     </div>
 
     <div class="mb-12 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8">
