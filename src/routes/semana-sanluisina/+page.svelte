@@ -866,7 +866,7 @@
                     <span class="text-xl sm:text-2xl">{patrulla.emoji}</span>
                     <div class="flex flex-col">
                       <h3 class="text-base sm:text-lg font-bold {patrulla.colors.text}">{patrulla.nombre}</h3>
-                      <div class="text-xs sm:text-sm text-white opacity-75">
+                      <div class="text-xs sm:text-sm {patrulla.nombre === 'BÚFALOS' ? 'text-red-500' : 'text-white'} opacity-75">
                         Posición #{index + 1}
                       </div>
                     </div>
