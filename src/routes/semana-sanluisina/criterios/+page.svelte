@@ -712,13 +712,13 @@
                 <span class="font-bold text-blue-900">6,000 pts</span>
               </div>
               <div class="flex justify-between items-center p-3 bg-yellow-50 rounded-lg border border-yellow-200">
-                <span class="font-semibold text-yellow-800">B (2 pruebas)</span>
-                <span class="font-bold text-yellow-900">2,000 pts</span>
+                <span class="font-semibold text-yellow-800">B (4 pruebas)</span>
+                <span class="font-bold text-yellow-900">4,000 pts</span>
               </div>
               <div class="border-t-2 border-green-300 pt-3 mt-4">
                 <div class="flex justify-between items-center font-bold text-lg">
                   <span class="text-green-800">Subtotal Día Final:</span>
-                  <span class="text-green-900 text-xl">17,000 pts</span>
+                  <span class="text-green-900 text-xl">19,000 pts</span>
                 </div>
               </div>
             </div>
@@ -728,10 +728,10 @@
         <!-- Total Final -->
         <div class="mt-8 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl p-6 text-center shadow-lg">
           <h4 class="text-2xl font-bold mb-2">🏆 PUNTAJE MÁXIMO TOTAL</h4>
-          <div class="text-5xl font-black mb-2">40,000</div>
+          <div class="text-5xl font-black mb-2">42,000</div>
           <p class="text-green-100 text-lg">puntos para el campamento de verano</p>
           <div class="mt-4 text-sm text-green-100 bg-green-700/30 rounded-lg p-3">
-            <strong>Nota:</strong> Este es el puntaje máximo teórico si una patrulla gana todas las 23 pruebas en primer lugar.
+            <strong>Nota:</strong> Este es el puntaje máximo teórico si una patrulla gana todas las 25 pruebas en primer lugar.
           </div>
         </div>
 
@@ -755,9 +755,9 @@
               <div class="text-lg font-semibold text-blue-900">8,000 pts</div>
             </div>
             <div class="text-center p-4 bg-yellow-50 rounded-lg border border-yellow-200">
-              <div class="text-2xl font-bold text-yellow-600">2</div>
+              <div class="text-2xl font-bold text-yellow-600">4</div>
               <div class="text-sm text-yellow-800">Pruebas B</div>
-              <div class="text-lg font-semibold text-yellow-900">2,000 pts</div>
+              <div class="text-lg font-semibold text-yellow-900">4,000 pts</div>
             </div>
           </div>
         </div>
@@ -828,12 +828,12 @@
               <!-- Ejemplos rápidos -->
               <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                 <button 
-                  on:click={() => puntajeTotalSemana = 40000}
+                  on:click={() => puntajeTotalSemana = 42000}
                   class="p-4 bg-green-50 hover:bg-green-100 border border-green-200 rounded-lg transition-colors duration-200 text-center"
                 >
                   <div class="font-bold text-green-800">Máximo</div>
-                  <div class="text-sm text-green-600">40,000 pts</div>
-                  <div class="text-xs text-green-500">= 8,000 campamento</div>
+                  <div class="text-sm text-green-600">42,000 pts</div>
+                  <div class="text-xs text-green-500">= 8,400 campamento</div>
                 </button>
                 
                 <button 
@@ -864,7 +864,7 @@
                   Información importante:
                 </h5>
                 <ul class="text-sm text-blue-700 space-y-1">
-                  <li>• El puntaje máximo posible para el campamento es <strong>8,000 puntos</strong></li>
+                  <li>• El puntaje máximo posible para el campamento es <strong>8,400 puntos</strong></li>
                   <li>• Los puntajes negativos por no participación también se multiplican por 0.2</li>
                   <li>• El resultado se redondea al número entero más cercano</li>
                 </ul>
