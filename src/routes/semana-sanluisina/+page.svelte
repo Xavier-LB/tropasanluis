@@ -72,7 +72,7 @@
       nombre: 'ANTÍLOPES',
       emoji: '🦌',
       colors: {
-        bg: 'bg-gradient-to-r from-blue-600 to-blue-800',
+        bg: 'bg-gradient-to-r from-blue-600 to-blue-800 border-4 border-white',
         cardBg: 'bg-white/20',
         text: 'text-white',
         labelText: 'text-white/80'
@@ -96,7 +96,7 @@
       nombre: 'BÚFALOS',
       emoji: '🐃',
       colors: {
-        bg: 'bg-white border-l-8 border-red-600',
+        bg: 'bg-gradient-to-r from-white to-red-100 border-4 border-red-400',
         cardBg: 'bg-red-50 border border-red-200',
         text: 'text-black',
         labelText: 'text-red-500'
@@ -145,7 +145,7 @@
       nombre: 'HALCONES',
       emoji: '🦅',
       colors: {
-        bg: 'bg-gradient-to-r from-amber-800 to-amber-600',
+        bg: 'bg-gradient-to-r from-amber-800 to-amber-600 border-4 border-black',
         cardBg: 'bg-amber-200 border border-amber-300',
         text: 'text-black',
         labelText: 'text-amber-800'
@@ -169,7 +169,7 @@
       nombre: 'TIGRES',
       emoji: '🐅',
       colors: {
-        bg: 'bg-gradient-to-r from-purple-600 to-purple-800',
+        bg: 'bg-gradient-to-r from-purple-600 to-purple-800 border-4 border-white',
         cardBg: 'bg-white/20',
         text: 'text-white',
         labelText: 'text-white/80'
@@ -857,7 +857,19 @@
       <!-- Tabla de puntajes compacta para móvil -->
       <div class="space-y-3 sm:space-y-4">
         {#each patrullasOrdenadas as patrulla, index}
-          <div class="{patrulla.colors.bg} rounded-xl shadow-md overflow-hidden">
+          <div class="{patrulla.colors.bg} rounded-xl shadow-md relative">
+            <!-- Medalla de posición -->
+            <div class="absolute -top-3 -left-3 z-10">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full flex items-center justify-center text-sm sm:text-base font-bold shadow-lg border-3 border-white
+                {index === 0 ? 'bg-gradient-to-br from-yellow-400 to-yellow-600 text-yellow-900' : 
+                 index === 1 ? 'bg-gradient-to-br from-gray-300 to-gray-500 text-gray-800' :
+                 index === 2 ? 'bg-gradient-to-br from-amber-600 to-amber-800 text-amber-100' :
+                 index === 3 ? 'bg-gradient-to-br from-blue-400 to-blue-600 text-blue-900' :
+                 'bg-gradient-to-br from-purple-400 to-purple-600 text-purple-100'}">
+                #{index + 1}
+              </div>
+            </div>
+            
             <div class="p-4 sm:p-5">
               <!-- Header compacto de la patrulla -->
               <div class="flex flex-col lg:flex-row lg:justify-between lg:items-center space-y-3 lg:space-y-0">
@@ -866,9 +878,6 @@
                     <span class="text-xl sm:text-2xl">{patrulla.emoji}</span>
                     <div class="flex flex-col">
                       <h3 class="text-base sm:text-lg font-bold {patrulla.colors.text}">{patrulla.nombre}</h3>
-                      <div class="text-xs sm:text-sm {patrulla.nombre === 'BÚFALOS' ? 'text-red-500' : 'text-white'} opacity-75">
-                        Posición #{index + 1}
-                      </div>
                     </div>
                   </div>
                   
