@@ -19,8 +19,8 @@
    */
 
   // Tipos para TypeScript
-  type TipoPrueba = 'AAA' | 'AA' | 'A';
-  type PruebaId = 'promo' | 'doblaje' | 'furro' | 'cuentero' | 'lienzo' | 'cityTour' | 'foto' | 'saludos' | 'musical' | 'escena80' | 'brainRot';
+  type TipoPrueba = 'AAA' | 'AA' | 'A' | 'B';
+  type PruebaId = 'promo' | 'doblaje' | 'furro' | 'cuentero' | 'lienzo' | 'cityTour' | 'foto' | 'saludos' | 'musical' | 'escena80' | 'brainRot' | 'asistencia' | 'pruebaRelampago1' | 'pruebaRelampago2' | 'guatazoVikingo' | 'masterChef' | 'pasapalabra' | 'baileton' | 'pichanga' | 'imitaStaff' | 'caricaturaStaff' | 'selaLabeCante' | 'romantico';
   
   interface Prueba {
     id: PruebaId;
@@ -63,7 +63,20 @@
     { id: 'saludos', nombre: 'Saludos', tipo: 'AA' },
     { id: 'musical', nombre: 'Musical', tipo: 'AA' },
     { id: 'escena80', nombre: 'Escena 80', tipo: 'AAA' },
-    { id: 'brainRot', nombre: 'Brain Rot', tipo: 'A' }
+    { id: 'brainRot', nombre: 'Brain Rot', tipo: 'A' },
+    // Pruebas del día final
+    { id: 'asistencia', nombre: 'Asistencia', tipo: 'B' },
+    { id: 'pruebaRelampago1', nombre: 'P. Relámpago 1', tipo: 'B' },
+    { id: 'pruebaRelampago2', nombre: 'P. Relámpago 2', tipo: 'B' },
+    { id: 'guatazoVikingo', nombre: 'Guatazo Vikingo', tipo: 'AA' },
+    { id: 'masterChef', nombre: 'Master Chef', tipo: 'A' },
+    { id: 'pasapalabra', nombre: 'Pasapalabra', tipo: 'A' },
+    { id: 'baileton', nombre: 'Bailetón', tipo: 'AA' },
+    { id: 'pichanga', nombre: 'Pichanga', tipo: 'AAA' },
+    { id: 'imitaStaff', nombre: 'Imita Staff', tipo: 'A' },
+    { id: 'caricaturaStaff', nombre: 'Caricatura Staff', tipo: 'A' },
+    { id: 'selaLabeCante', nombre: 'Se la Sabe Cante', tipo: 'A' },
+    { id: 'romantico', nombre: 'Romántico', tipo: 'AA' }
   ];
 
   // Datos de las patrullas con sus puntajes
@@ -88,9 +101,22 @@
         saludos: { puntaje: 0, link: 'https://www.instagram.com/p/DKiM-XsP6Lk' },
         musical: { puntaje: -500 },
         escena80: { puntaje: -1000 },
-        brainRot: { puntaje: 300, link: 'https://www.instagram.com/p/DKaij_jAxU3/' }
+        brainRot: { puntaje: 300, link: 'https://www.instagram.com/p/DKaij_jAxU3/' },
+        // Pruebas del día final
+        asistencia: { puntaje: 1000 },
+        pruebaRelampago1: { puntaje: 1000 },
+        pruebaRelampago2: { puntaje: 1000 },
+        guatazoVikingo: { puntaje: 2000 },
+        masterChef: { puntaje: 0 },
+        pasapalabra: { puntaje: 1000 },
+        baileton: { puntaje: 1250 },
+        pichanga: { puntaje: 500 },
+        imitaStaff: { puntaje: 0 },
+        caricaturaStaff: { puntaje: 0 },
+        selaLabeCante: { puntaje: 100 },
+        romantico: { puntaje: 300 }
       },
-      total: 40
+      total: 8190
     },
     {
       nombre: 'BÚFALOS',
@@ -112,9 +138,22 @@
         saludos: { puntaje: 1155, link: 'https://www.instagram.com/p/DKiR2gyAjdb' },
         musical: { puntaje: -500 },
         escena80: { puntaje: 1000, link: 'https://www.instagram.com/p/DKk0IskAjcv/' },
-        brainRot: { puntaje: 100, link: 'https://www.instagram.com/p/DKag7hRvR-z/' }
+        brainRot: { puntaje: 100, link: 'https://www.instagram.com/p/DKag7hRvR-z/' },
+        // Pruebas del día final
+        asistencia: { puntaje: 0 },
+        pruebaRelampago1: { puntaje: null },
+        pruebaRelampago2: { puntaje: null },
+        guatazoVikingo: { puntaje: 2000 },
+        masterChef: { puntaje: 100 },
+        pasapalabra: { puntaje: 750 },
+        baileton: { puntaje: 2000 },
+        pichanga: { puntaje: 3000 },
+        imitaStaff: { puntaje: 1000 },
+        caricaturaStaff: { puntaje: 300 },
+        selaLabeCante: { puntaje: 300 },
+        romantico: { puntaje: 0 }
       },
-      total: 9230
+      total: 18680
     },
     {
       nombre: 'CASTORES',
@@ -134,11 +173,24 @@
         cityTour: { puntaje: 1250, link: 'https://www.instagram.com/p/DKfnihtvW2x' },
         foto: { puntaje: 750, link: 'https://www.instagram.com/p/DKiA_ukvvD4/' },
         saludos: { puntaje: 300, link: 'https://www.instagram.com/p/DKiPUJ7gP-9' },
-        musical: { puntaje: 1250, link: 'https://www.instagram.com/p/DKkyYtsvJrX/' },
+        musical: { puntaje: 0 },
         escena80: { puntaje: 3000, link: 'https://www.instagram.com/p/DKk0BXXyxwg/' },
-        brainRot: { puntaje: 750, link: 'https://www.instagram.com/p/DKahLlAybTk/' }
+        brainRot: { puntaje: 750, link: 'https://www.instagram.com/p/DKahLlAybTk/' },
+        // Pruebas del día final
+        asistencia: { puntaje: 0 },
+        pruebaRelampago1: { puntaje: null },
+        pruebaRelampago2: { puntaje: null },
+        guatazoVikingo: { puntaje: 300 },
+        masterChef: { puntaje: 1000 },
+        pasapalabra: { puntaje: 300 },
+        baileton: { puntaje: 300 },
+        pichanga: { puntaje: 1000 },
+        imitaStaff: { puntaje: 750 },
+        caricaturaStaff: { puntaje: 100 },
+        selaLabeCante: { puntaje: 100 },
+        romantico: { puntaje: 2000 }
       },
-      total: 16850,
+      total: 21450,
       lider: true
     },
     {
@@ -161,9 +213,22 @@
         saludos: { puntaje: 620, link: 'https://www.instagram.com/p/DKiSmskJEaV' },
         musical: { puntaje: -500 },
         escena80: { puntaje: -1000 },
-        brainRot: { puntaje: 750, link: 'https://www.instagram.com/p/DKZqh25tMPB/' }
+        brainRot: { puntaje: 750, link: 'https://www.instagram.com/p/DKZqh25tMPB/' },
+        // Pruebas del día final
+        asistencia: { puntaje: 0 },
+        pruebaRelampago1: { puntaje: null },
+        pruebaRelampago2: { puntaje: null },
+        guatazoVikingo: { puntaje: 750 },
+        masterChef: { puntaje: 300 },
+        pasapalabra: { puntaje: 100 },
+        baileton: { puntaje: 750 },
+        pichanga: { puntaje: 2000 },
+        imitaStaff: { puntaje: 300 },
+        caricaturaStaff: { puntaje: 1000 },
+        selaLabeCante: { puntaje: 1000 },
+        romantico: { puntaje: 750 }
       },
-      total: 5560
+      total: 12510
     },
     {
       nombre: 'TIGRES',
@@ -183,11 +248,24 @@
         cityTour: { puntaje: 2000, link: 'https://www.instagram.com/p/DKfmc-2vlfu' },
         foto: { puntaje: 100, link: 'https://www.instagram.com/p/DKht_lQAGiw/' },
         saludos: { puntaje: 2000, link: 'https://www.instagram.com/p/DKiO8YDAXPh' },
-        musical: { puntaje: 2000, link: 'https://www.instagram.com/p/DKkvtdJvUbF' },
+        musical: { puntaje: 0 },
         escena80: { puntaje: 2000, link: 'https://www.instagram.com/p/DKkurENPenl/' },
-        brainRot: { puntaje: 1000, link: 'https://www.instagram.com/p/DKZgk5nAAGs/' }
+        brainRot: { puntaje: 1000, link: 'https://www.instagram.com/p/DKZgk5nAAGs/' },
+        // Pruebas del día final
+        asistencia: { puntaje: 0 },
+        pruebaRelampago1: { puntaje: null },
+        pruebaRelampago2: { puntaje: null },
+        guatazoVikingo: { puntaje: 1250 },
+        masterChef: { puntaje: 750 },
+        pasapalabra: { puntaje: 0 },
+        baileton: { puntaje: 300 },
+        pichanga: { puntaje: 0 },
+        imitaStaff: { puntaje: 100 },
+        caricaturaStaff: { puntaje: 750 },
+        selaLabeCante: { puntaje: 750 },
+        romantico: { puntaje: 1250 }
       },
-      total: 15350
+      total: 18500
     }
   ];
 
@@ -288,7 +366,7 @@
 
   /**
    * Función para obtener el color del tipo de prueba
-   * @param {TipoPrueba} tipo - Tipo de prueba (AAA, AA, A)
+   * @param {TipoPrueba} tipo - Tipo de prueba (AAA, AA, A, B)
    * @returns {string} Clase CSS para el color
    */
   function getColorTipo(tipo: TipoPrueba): string {
@@ -296,6 +374,7 @@
       case 'AAA': return 'text-red-400';
       case 'AA': return 'text-yellow-400';
       case 'A': return 'text-green-400';
+      case 'B': return 'text-blue-400';
       default: return 'text-gray-400';
     }
   }
@@ -837,292 +916,9 @@
   </div>
 
   <div class="container mx-auto px-4 py-8 relative z-10">
-    <div class="mb-12 text-center">
-      <div class="mt-6 text-lg font-bold text-white bg-gradient-to-r from-red-800 via-orange-600 to-red-800 rounded-2xl px-8 py-4 inline-block shadow-lg transform hover:scale-105 transition-transform duration-300">
-        ⏰ Cuenta regresiva para el Día Final (Sábado 7 de Junio):<br>
-        <span class="text-3xl font-black tracking-wider">{tiempoSabado}</span>
-      </div>
-    </div>
-
     <h1 class="text-5xl font-bold mb-12 text-center bg-gradient-to-r from-red-800 to-orange-600 bg-clip-text text-transparent">
       Pruebas Semana San Luisina
     </h1>
-
-    <!-- Cronograma del día final -->
-    <section class="mb-16">
-      <h2 class="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-red-800 to-orange-600 bg-clip-text text-transparent">
-        Cronograma del Día Final
-      </h2>
-      
-      {#if mostrarPruebasFinal}
-        <!-- Timeline del día -->
-        <div class="mb-12 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6">
-          <h3 class="text-xl font-bold text-primary mb-4 flex items-center">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2z" />
-            </svg>
-            Cronograma del día
-          </h3>
-          
-          <div class="relative">
-            <!-- Línea de tiempo vertical -->
-            <div class="absolute left-16 top-0 h-full w-0.5 bg-gradient-to-b from-red-500 to-yellow-500"></div>
-            
-            <!-- Eventos -->
-            <div class="space-y-6 relative">
-              <!-- Bombonera -->
-              <div class="pl-20 relative">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
-                  <div class="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">11:00</span>
-                <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-red-400">
-                  <div class="flex justify-between items-center mb-2">
-                    <h4 class="font-bold text-primary">
-                      <span class="inline-flex items-center bg-red-100 text-red-800 px-2 py-0.5 rounded mr-2 text-xs">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        Bombonera
-                      </span>
-                      Actividades
-                    </h4>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                      11:00 - 12:00
-                    </span>
-                  </div>
-                  <div class="flex flex-wrap gap-1.5">
-                    <a href="#prueba-final-2" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
-                      Guatazo Vikingo <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                    </a>
-                    <a href="#prueba-final-3" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
-                      Lucho Master Chef <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
-                    </a>
-                    <a href="#prueba-final-4" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
-                      Pasapalabra <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
-                    </a>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="pl-20 relative">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
-                  <div class="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">12:00</span>
-                <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-red-400">
-                  <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-primary">
-                      <span class="inline-flex items-center bg-red-100 text-red-800 px-2 py-0.5 rounded mr-2 text-xs">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        Bombonera
-                      </span>
-                      <a href="#prueba-final-5" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
-                        Lucho Bailetón <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                      </a>
-                    </h4>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                      12:00 - 13:00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="pl-20 relative">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
-                  <div class="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">13:00</span>
-                <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-orange-400">
-                  <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-primary">
-                      <span class="inline-flex items-center bg-orange-100 text-orange-800 px-2 py-0.5 rounded mr-2 text-xs">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        Bombonera
-                      </span>
-                      <a href="#prueba-final-6" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
-                        Almuerzo
-                      </a>
-                    </h4>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
-                      13:00 - 14:00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Actividades paralelas -->
-              <div class="pl-20 relative">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
-                  <div class="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">14:00</span>
-                <div class="grid md:grid-cols-2 gap-3">
-                  <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-red-400">
-                    <div class="flex justify-between items-center mb-2">
-                      <h4 class="font-bold text-primary">
-                        <span class="inline-flex items-center bg-red-100 text-red-800 px-2 py-0.5 rounded mr-2 text-xs">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          Bombonera
-                        </span>
-                        <a href="#prueba-final-7" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
-                          Pichanga <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
-                        </a>
-                      </h4>
-                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                        14:00 - 17:00
-                      </span>
-                    </div>
-                  </div>
-                  <div class="bg-gradient-to-r from-blue-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-blue-400">
-                    <div class="flex justify-between items-center mb-2">
-                      <h4 class="font-bold text-primary">
-                        <span class="inline-flex items-center bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 text-xs">
-                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                          </svg>
-                          Auditorio
-                        </span>
-                        Actividades
-                      </h4>
-                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                        14:00 - 15:00
-                      </span>
-                    </div>
-                    <div class="flex flex-wrap gap-1.5">
-                      <a href="#prueba-final-8" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
-                        Imita a tu Staff <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
-                      </a>
-                      <a href="#prueba-final-9" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
-                        Caricaturiza a tu Staff <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="pl-20 relative">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
-                  <div class="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">15:00</span>
-                <div class="bg-gradient-to-r from-blue-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-blue-400 md:ml-[calc(50%+0.375rem)]">
-                  <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-primary">
-                      <span class="inline-flex items-center bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 text-xs">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        Auditorio
-                      </span>
-                      <a href="#prueba-final-10" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
-                        El que se la sabe cante <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
-                      </a>
-                    </h4>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                      15:00 - 15:30
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- Llegada de padres -->
-              <div class="pl-20 relative">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-green-600 z-10 flex items-center justify-center">
-                  <div class="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">16:00</span>
-                <div class="bg-gradient-to-r from-green-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-green-400">
-                  <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-primary flex items-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-                      </svg>
-                      Llegada de papás
-                    </h4>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                      Hora autorizada
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="pl-20 relative">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
-                  <div class="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">16:00</span>
-                <div class="bg-gradient-to-r from-blue-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-blue-400 md:ml-[calc(50%+0.375rem)]">
-                  <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-primary">
-                      <span class="inline-flex items-center bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 text-xs">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        Auditorio
-                      </span>
-                      <a href="#prueba-final-11" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
-                        Lucho Romántico <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
-                      </a>
-                    </h4>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
-                      16:00 - 17:00
-                    </span>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="pl-20 relative">
-                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
-                  <div class="w-3 h-3 bg-white rounded-full"></div>
-                </div>
-                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">17:00</span>
-                <div class="bg-gradient-to-r from-yellow-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-yellow-400">
-                  <div class="flex justify-between items-center">
-                    <h4 class="font-bold text-primary">
-                      <span class="inline-flex items-center bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded mr-2 text-xs">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                        Auditorio
-                      </span>
-                      <a href="#prueba-final-12" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
-                        Premiación <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
-                      </a>
-                    </h4>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
-                      Cierre del evento
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      {:else}
-        <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-12 text-center transform hover:scale-[1.02] transition-all duration-300">
-          <p class="text-3xl font-bold text-primary">Próximamente</p>
-          <p class="text-gray-500 mt-4 text-xl">El cronograma del día final será publicado el {fechaPublicacionPruebasFinal}</p>
-          <div class="mt-8">
-            <DiscreteTimer fechaStr={fechaPublicacionPruebasFinal} label="Tiempo restante para la publicación:" />
-          </div>
-        </div>
-      {/if}
-    </section>
 
     <!-- Tabla de Posiciones Actuales -->
     <div class="mb-12 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-4 sm:p-8">
@@ -1627,7 +1423,7 @@
               </div>
 
               {#if test.criteria && test.criteria.length > 0}
-                <div class="bg-gradient-to-r from-gray-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-300">
+                <div class="bg-gradient-to-r from-gray-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-blue-300 mb-6">
                   <h4 class="font-semibold mb-3 text-primary flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -1644,6 +1440,57 @@
                 </div>
               {/if}
 
+              <!-- Resultados por patrulla para pruebas del día final -->
+              {#if test.name === "Asistencia" || test.name === "Pruebas Relámpago" || test.name === "Guatazo Vikingo" || test.name === "Lucho Master Chef" || test.name === "Pasapalabra" || test.name === "Lucho Bailetón" || test.name === "Pichanga" || test.name === "Imita a tu Staff" || test.name === "Caricaturiza a tu Staff" || test.name === "El que se la sabe cante" || test.name === "Lucho Romántico"}
+                {@const pruebaKey = test.name === "Asistencia" ? "asistencia" : 
+                                  test.name === "Pruebas Relámpago" ? "pruebaRelampago1" :
+                                  test.name === "Guatazo Vikingo" ? "guatazoVikingo" :
+                                  test.name === "Lucho Master Chef" ? "masterChef" :
+                                  test.name === "Pasapalabra" ? "pasapalabra" :
+                                  test.name === "Lucho Bailetón" ? "baileton" :
+                                  test.name === "Pichanga" ? "pichanga" :
+                                  test.name === "Imita a tu Staff" ? "imitaStaff" :
+                                  test.name === "Caricaturiza a tu Staff" ? "caricaturaStaff" :
+                                  test.name === "El que se la sabe cante" ? "selaLabeCante" :
+                                  "romantico"}
+                {@const patrullasConPuntaje = patrullas.filter(p => p.puntajes[pruebaKey]?.puntaje !== null)}
+                {#if patrullasConPuntaje.length > 0}
+                  <div class="bg-gradient-to-r from-emerald-50 to-white rounded-lg p-4 shadow-sm border-l-4 border-emerald-300">
+                    <h4 class="font-semibold mb-3 text-primary flex items-center gap-2">
+                      <span class="text-2xl">🏆</span>
+                      Resultados por patrulla:
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                      {#each patrullasConPuntaje.sort((a, b) => (b.puntajes[pruebaKey]?.puntaje || 0) - (a.puntajes[pruebaKey]?.puntaje || 0)) as patrulla, index}
+                        {@const puntajeData = patrulla.puntajes[pruebaKey]}
+                        {#if puntajeData}
+                          <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-3 hover:shadow-md transition-shadow duration-200">
+                            <div class="flex items-center justify-between mb-2">
+                              <div class="flex items-center gap-2">
+                                <span class="text-lg">{patrulla.emoji}</span>
+                                <span class="font-semibold text-sm {patrulla.colors.text === 'text-white' ? 'text-gray-800' : patrulla.colors.text}">{patrulla.nombre}</span>
+                                {#if index === 0 && puntajeData.puntaje !== null && puntajeData.puntaje > 0}
+                                  <span class="text-yellow-500">👑</span>
+                                {/if}
+                              </div>
+                              {#if puntajeData.puntaje !== null}
+                                <span class="font-bold text-lg {(puntajeData.puntaje || 0) < 0 ? 'text-red-600' : (puntajeData.puntaje || 0) === 0 ? 'text-gray-500' : 'text-green-600'}">
+                                  {(puntajeData.puntaje || 0) >= 0 ? '+' : ''}{puntajeData.puntaje || 0} pts
+                                </span>
+                              {:else}
+                                  <span class="font-medium text-xs text-gray-400 italic">
+                                    Pendiente evaluación
+                                  </span>
+                              {/if}
+                            </div>
+                          </div>
+                        {/if}
+                      {/each}
+                    </div>
+                  </div>
+                {/if}
+              {/if}
+
 
             </div>
           {/each}
@@ -1652,6 +1499,282 @@
         <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-12 text-center transform hover:scale-[1.02] transition-all duration-300">
           <p class="text-3xl font-bold text-primary">Próximamente</p>
           <p class="text-gray-500 mt-4 text-xl">Las pruebas del día final serán publicadas el {fechaPublicacionPruebasFinal}</p>
+          <div class="mt-8">
+            <DiscreteTimer fechaStr={fechaPublicacionPruebasFinal} label="Tiempo restante para la publicación:" />
+          </div>
+        </div>
+      {/if}
+    </section>
+
+    <!-- Cronograma del día final -->
+    <section class="mb-16">
+      <h2 class="text-4xl font-bold mb-8 text-center bg-gradient-to-r from-red-800 to-orange-600 bg-clip-text text-transparent">
+        Cronograma del Día Final
+      </h2>
+      
+      {#if mostrarPruebasFinal}
+        <!-- Timeline del día -->
+        <div class="mb-12 bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl p-6">
+          <h3 class="text-xl font-bold text-primary mb-4 flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 002 2z" />
+            </svg>
+            Cronograma del día
+          </h3>
+          
+          <div class="relative">
+            <!-- Línea de tiempo vertical -->
+            <div class="absolute left-16 top-0 h-full w-0.5 bg-gradient-to-b from-red-500 to-yellow-500"></div>
+            
+            <!-- Eventos -->
+            <div class="space-y-6 relative">
+              <!-- Bombonera -->
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">11:00</span>
+                <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-red-400">
+                  <div class="flex justify-between items-center mb-2">
+                    <h4 class="font-bold text-primary">
+                      <span class="inline-flex items-center bg-red-100 text-red-800 px-2 py-0.5 rounded mr-2 text-xs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Bombonera
+                      </span>
+                      Actividades
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                      11:00 - 12:00
+                    </span>
+                  </div>
+                  <div class="flex flex-wrap gap-1.5">
+                    <a href="#prueba-final-2" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
+                      Guatazo Vikingo <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                    </a>
+                    <a href="#prueba-final-3" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
+                      Lucho Master Chef <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                    </a>
+                    <a href="#prueba-final-4" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
+                      Pasapalabra <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">12:00</span>
+                <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-red-400">
+                  <div class="flex justify-between items-center">
+                    <h4 class="font-bold text-primary">
+                      <span class="inline-flex items-center bg-red-100 text-red-800 px-2 py-0.5 rounded mr-2 text-xs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Bombonera
+                      </span>
+                      <a href="#prueba-final-5" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
+                        Lucho Bailetón <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                      </a>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                      12:00 - 13:00
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">13:00</span>
+                <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-orange-400">
+                  <div class="flex justify-between items-center">
+                    <h4 class="font-bold text-primary">
+                      <span class="inline-flex items-center bg-orange-100 text-orange-800 px-2 py-0.5 rounded mr-2 text-xs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Bombonera
+                      </span>
+                      <a href="#prueba-final-6" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
+                        Almuerzo
+                      </a>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-orange-100 text-orange-800">
+                      13:00 - 14:00
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Actividades paralelas -->
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">14:00</span>
+                <div class="grid md:grid-cols-2 gap-3">
+                  <div class="bg-gradient-to-r from-red-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-red-400">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-bold text-primary">
+                        <span class="inline-flex items-center bg-red-100 text-red-800 px-2 py-0.5 rounded mr-2 text-xs">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          Bombonera
+                        </span>
+                        <a href="#prueba-final-7" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
+                          Pichanga <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AAA</span>
+                        </a>
+                      </h4>
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
+                        14:00 - 17:00
+                      </span>
+                    </div>
+                  </div>
+                  <div class="bg-gradient-to-r from-blue-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-blue-400">
+                    <div class="flex justify-between items-center mb-2">
+                      <h4 class="font-bold text-primary">
+                        <span class="inline-flex items-center bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 text-xs">
+                          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                          </svg>
+                          Auditorio
+                        </span>
+                        Actividades
+                      </h4>
+                      <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                        14:00 - 15:00
+                      </span>
+                    </div>
+                    <div class="flex flex-wrap gap-1.5">
+                      <a href="#prueba-final-8" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
+                        Imita a tu Staff <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                      </a>
+                      <a href="#prueba-final-9" class="px-2 py-1 text-xs bg-white rounded shadow-sm hover:bg-blue-50 hover:text-blue-700 transition-colors duration-200 cursor-pointer flex items-center">
+                        Caricaturiza a tu Staff <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">15:00</span>
+                <div class="bg-gradient-to-r from-blue-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-blue-400 md:ml-[calc(50%+0.375rem)]">
+                  <div class="flex justify-between items-center">
+                    <h4 class="font-bold text-primary">
+                      <span class="inline-flex items-center bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 text-xs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Auditorio
+                      </span>
+                      <a href="#prueba-final-10" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
+                        El que se la sabe cante <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                      </a>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      15:00 - 15:30
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Llegada de padres -->
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-green-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">16:00</span>
+                <div class="bg-gradient-to-r from-green-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-green-400">
+                  <div class="flex justify-between items-center">
+                    <h4 class="font-bold text-primary flex items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                      </svg>
+                      Llegada de papás
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                      Hora autorizada
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">16:00</span>
+                <div class="bg-gradient-to-r from-blue-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-blue-400 md:ml-[calc(50%+0.375rem)]">
+                  <div class="flex justify-between items-center">
+                    <h4 class="font-bold text-primary">
+                      <span class="inline-flex items-center bg-blue-100 text-blue-800 px-2 py-0.5 rounded mr-2 text-xs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Auditorio
+                      </span>
+                      <a href="#prueba-final-11" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
+                        Lucho Romántico <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">AA</span>
+                      </a>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                      16:00 - 17:00
+                    </span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="pl-20 relative">
+                <div class="absolute left-0 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-red-600 z-10 flex items-center justify-center">
+                  <div class="w-3 h-3 bg-white rounded-full"></div>
+                </div>
+                <span class="absolute left-9 top-1/2 -translate-y-1/2 text-xs font-bold text-center bg-white px-1 rounded-full shadow-sm z-10">17:00</span>
+                <div class="bg-gradient-to-r from-yellow-50 to-white p-3 rounded-lg shadow-sm border-l-4 border-yellow-400">
+                  <div class="flex justify-between items-center">
+                    <h4 class="font-bold text-primary">
+                      <span class="inline-flex items-center bg-yellow-100 text-yellow-800 px-2 py-0.5 rounded mr-2 text-xs">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Auditorio
+                      </span>
+                      <a href="#prueba-final-12" class="hover:text-blue-700 transition-colors duration-200 cursor-pointer">
+                        Premiación <span class="ml-1 text-xs bg-red-100 text-red-800 px-1 rounded">A</span>
+                      </a>
+                    </h4>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-yellow-100 text-yellow-800">
+                      Cierre del evento
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {:else}
+        <div class="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-12 text-center transform hover:scale-[1.02] transition-all duration-300">
+          <p class="text-3xl font-bold text-primary">Próximamente</p>
+          <p class="text-gray-500 mt-4 text-xl">El cronograma del día final será publicado el {fechaPublicacionPruebasFinal}</p>
           <div class="mt-8">
             <DiscreteTimer fechaStr={fechaPublicacionPruebasFinal} label="Tiempo restante para la publicación:" />
           </div>
