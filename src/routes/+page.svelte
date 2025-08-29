@@ -287,26 +287,7 @@
       </div>
     </div>
 
-    <!-- Poster del Concurso Literario -->
-    <div class="max-w-4xl mx-auto mb-16">
-      <a href="/i-concurso-literario" class="block transform transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
-        <img 
-          src="/afiche-concurso-literario.jpeg" 
-          alt="I Concurso Literario Tropa San Luis" 
-          class="w-full h-auto rounded-2xl shadow-xl"
-        />
-      </a>
-    </div>
-
-    <!-- Botón Semana San Luisina -->
-    <div class="text-center mb-6">
-      <a href="/semana-sanluisina"
-         class="inline-block px-12 py-8 text-5xl font-extrabold text-white bg-gradient-to-r from-[#C1272D] via-orange-600 to-[#C1272D] rounded-3xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-orange-400/60 hover:rotate-1 animate-pulse border-4 border-white drop-shadow-lg relative overflow-hidden group"
-         style="letter-spacing: 0.05em; text-shadow: 0 4px 24px #0008;">
-        <span class="relative z-10">Semana San Luisina</span>
-        <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-      </a>
-    </div>
+    
     
     <!-- Botón Mapa de Campamentos -->
     <div class="max-w-4xl mx-auto mb-10 p-6 rounded-xl bg-gradient-to-br from-white/80 to-white/40 shadow-xl backdrop-blur-sm border border-white/50">
