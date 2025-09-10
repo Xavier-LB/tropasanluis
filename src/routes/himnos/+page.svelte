@@ -1,5 +1,6 @@
 <script lang="ts">
-  import { onMount } from 'svelte';
+  import { onMount, onDestroy, tick } from 'svelte';
+  import anticuraCho from '$lib/data/anticura.cho?raw';
 
   /**
    * Type definition for chord positioning data
@@ -19,6 +20,7 @@
     location: string;
     lyrics: string;
     chords: boolean;
+    chordSheet?: string;
     chordData?: ChordInfo[];
     youtubeLink?: string;
     spotifyLink?: string;
@@ -73,6 +75,7 @@ Sacar el hacha, el cáñamo y el bidón
 La tropa está en el lugar 
 Es la San Luis que empieza a trabajar.`,
       chords: true,
+      chordSheet: anticuraCho,
       composers: "Pablo Cáceres",
       chordData: [
         { line: 0, chord: "Re", position: 0 },
@@ -2120,6 +2123,310 @@ Pendejo weón.`,
   function getChordsForLine(chordData: ChordInfo[] | undefined, lineNumber: number): ChordInfo[] {
     return chordData?.filter(chord => chord.line === lineNumber) || [];
   }
+
+  // --- ChordSheetJS integration ---
+  let ChordProParser: any = null;
+  let HtmlDivFormatter: any = null;
+  const parsedChordSheets: Record<number, string> = {};
+
+  /**
+   * Parse a chord sheet (ChordPro or bracket style) to HTML using ChordSheetJS
+   * @param {string} sheet - Raw chord sheet text
+   * @returns {string} HTML
+   */
+  function formatChordSheet(sheet: string): string {
+    if (!ChordProParser || !HtmlDivFormatter) return '';
+    try {
+      const parser = new ChordProParser();
+      const song = parser.parse(sheet);
+      const formatter = new HtmlDivFormatter();
+      return formatter.format(song);
+    } catch (e) {
+      console.error('ChordSheetJS parse error', e);
+      return '';
+    }
+  }
+
+  /**
+   * Type describing a chord diagram shape for a 6-string instrument (EADGBE)
+   */
+  type ChordShape = {
+    /** Normalized chord name (e.g., "Am", "Fadd9") */
+    name: string;
+    /** Per-string positions from 6th to 1st string. -1 = mute, 0 = open, N = fret */
+    positions: number[]; // [E, A, D, G, B, e]
+    /** Base fret to display when using shapes above fret 1 */
+    baseFret?: number;
+  };
+
+  /** Map of default chord shapes keyed by normalized chord name */
+  const defaultChordShapes: Record<string, ChordShape> = {
+    C: { name: 'C', positions: [-1, 3, 2, 0, 1, 0] },
+    D: { name: 'D', positions: [-1, -1, 0, 2, 3, 2] },
+    E: { name: 'E', positions: [0, 2, 2, 1, 0, 0] },
+    F: { name: 'F', positions: [1, 3, 3, 2, 1, 1], baseFret: 1 },
+    G: { name: 'G', positions: [3, 2, 0, 0, 0, 3] },
+    A: { name: 'A', positions: [-1, 0, 2, 2, 2, 0] },
+    B: { name: 'B', positions: [-1, 2, 4, 4, 4, 2], baseFret: 2 },
+    Am: { name: 'Am', positions: [-1, 0, 2, 2, 1, 0] },
+    Dm: { name: 'Dm', positions: [-1, -1, 0, 2, 3, 1] },
+    Em: { name: 'Em', positions: [0, 2, 2, 0, 0, 0] },
+    Bm: { name: 'Bm', positions: [-1, 2, 4, 4, 3, 2], baseFret: 2 },
+    Fadd9: { name: 'Fadd9', positions: [1, 3, 3, 0, 1, 1], baseFret: 1 },
+  };
+
+  /** Spanish-to-letter chord name mapping and normalization rules */
+  const chordAliases: Record<string, string> = {
+    'do': 'C', 'dom': 'Cm', 'do m': 'Cm',
+    're': 'D', 'rem': 'Dm', 're m': 'Dm',
+    'mi': 'E', 'mim': 'Em', 'mi m': 'Em',
+    'fa': 'F', 'fam': 'Fm', 'fa m': 'Fm',
+    'sol': 'G','solm': 'Gm','sol m': 'Gm',
+    'la': 'A', 'lam': 'Am', 'la m': 'Am',
+    'si': 'B', 'sim': 'Bm', 'si m': 'Bm',
+    // Variantes vistas en datos
+    'sid': 'Bm',
+    'faad9': 'Fadd9'
+  };
+
+  // Modal and selection state
+  let showChordModal = false;
+  let selectedChordRaw: string | null = null;
+  let selectedChordNormalized: string | null = null;
+  // Editing removed
+  let positionsInput = '';
+  let baseFretInput: number = 1;
+  let vexContainerId = '';
+  let svguitarReady = false;
+
+  // Custom chord shapes, merged with persisted ones
+  let customChordShapes: Record<string, ChordShape> = {};
+
+  /**
+   * Normalize a chord name to a canonical form used for lookup.
+   * @param {string} name - The chord name as written in the lyrics
+   * @returns {string} Normalized chord name (e.g., "Lam" -> "Am")
+   */
+  function normalizeChordName(name: string): string {
+    const raw = name.trim();
+    const lower = raw.toLowerCase().replace(/\s+/g, '');
+    if (lower in chordAliases) return chordAliases[lower];
+
+    const baseMap: Record<string, string> = {
+      'do': 'C', 're': 'D', 'mi': 'E', 'fa': 'F', 'sol': 'G', 'la': 'A', 'si': 'B'
+    };
+    const m = lower.match(/^(do|re|mi|fa|sol|la|si)(m|ad9|madd9)?$/);
+    if (m) {
+      const base = baseMap[m[1]];
+      const qual = m[2];
+      if (!qual) return base;
+      if (qual === 'm') return base + 'm';
+      if (qual === 'ad9' || qual === 'madd9') return base + 'add9';
+    }
+    return raw[0]?.toUpperCase() + raw.slice(1);
+  }
+
+  /**
+   * Load custom chord shapes from localStorage.
+   * @returns {Record<string, ChordShape>} Loaded shapes or empty object.
+   */
+  function loadCustomChordShapes(): Record<string, ChordShape> {
+    try {
+      const raw = typeof localStorage !== 'undefined' ? localStorage.getItem('tropasanluis.customChords') : null;
+      if (!raw) return {};
+      const data = JSON.parse(raw) as Record<string, ChordShape>;
+      return data || {};
+    } catch {
+      return {};
+    }
+  }
+
+  /**
+   * Persist custom chord shapes to localStorage.
+   * @param {Record<string, ChordShape>} shapes - Shapes to persist
+   */
+  function persistCustomChordShapes(shapes: Record<string, ChordShape>): void {
+    try {
+      if (typeof localStorage === 'undefined') return;
+      localStorage.setItem('tropasanluis.customChords', JSON.stringify(shapes));
+    } catch {
+      // ignore
+    }
+  }
+
+  /**
+   * Get a chord shape by chord name, searching custom first then defaults.
+   * @param {string} chordName - The chord name as written in lyrics
+   * @returns {ChordShape | null} Matching shape or null
+   */
+  function getChordShape(chordName: string): ChordShape | null {
+    const normalized = normalizeChordName(chordName);
+    return customChordShapes[normalized] || defaultChordShapes[normalized] || null;
+  }
+
+  /**
+   * Determine an effective base fret that doesn't exceed the smallest fretted note.
+   * Ensures markers don't render above the chart when baseFret is too high.
+   * @param {number[]} positions - Per-string positions (-1 mute, 0 open, N fret)
+   * @param {number | undefined} baseFret - Suggested base fret
+   * @returns {number} Effective base fret (>=1)
+   */
+  function determineBaseFret(positions: number[], baseFret?: number): number {
+    const minPositive = positions
+      .filter((p) => typeof p === 'number' && p > 0)
+      .reduce((min, p) => (p < min ? p : min), Infinity);
+    const candidate = baseFret ?? 1;
+    const eff = Math.min(candidate, Number.isFinite(minPositive) ? minPositive : 1);
+    return Math.max(1, eff);
+  }
+
+  /** Convenience wrapper for template */
+  function determineBaseFretFromShape(shape: ChordShape): number {
+    return determineBaseFret(shape.positions, shape.baseFret);
+  }
+
+  /**
+   * Open the modal for a chord.
+   * @param {string} chordName - Raw chord clicked
+   */
+  function openChordModal(chordName: string): void {
+    selectedChordRaw = chordName;
+    selectedChordNormalized = normalizeChordName(chordName);
+    const shape = getChordShape(chordName);
+    if (shape) {
+      baseFretInput = shape.baseFret ?? 1;
+      positionsInput = shape.positions.join(' ');
+    } else {
+      baseFretInput = 1;
+      positionsInput = '';
+    }
+    vexContainerId = `chord-svg-${Math.random().toString(36).slice(2, 8)}`;
+    svguitarReady = false;
+    showChordModal = true;
+
+    // After modal becomes visible, render with SVGuitar if available
+    tick().then(async () => {
+      try {
+        const shapeNow = selectedChordNormalized ? getChordShape(selectedChordNormalized) : null;
+        if (!shapeNow) return;
+        const el = document.getElementById(vexContainerId);
+        if (!el) return;
+        const mod: any = await import('svguitar');
+        const SVGuitarChord = mod.SVGuitarChord || mod.default?.SVGuitarChord;
+        if (SVGuitarChord) {
+          const chart = new SVGuitarChord(`#${vexContainerId}`);
+          const fingers = shapeNow.positions.map((pos) => {
+            if (pos === -1) return 'x';
+            if (pos === 0) return 0;
+            return pos;
+          });
+          const effectiveBase = determineBaseFret(shapeNow.positions, shapeNow.baseFret);
+          const chordConfig = {
+            fingers,
+            position: effectiveBase
+          } as any;
+
+          chart
+            .configure({
+              tuning: ['E', 'A', 'D', 'G', 'B', 'E'],
+              fretCount: 5,
+              fretSpacing: 22,
+              stringSpacing: 22
+            })
+            .chord(chordConfig)
+            .draw();
+          svguitarReady = true;
+        }
+      } catch (e) {
+        // fallback to inline svg already in template
+      }
+    });
+  }
+
+  /** Close the chord modal */
+  function closeChordModal(): void {
+    showChordModal = false;
+  }
+
+  /** Handle ESC key to close the modal */
+  function handleKeydown(e: KeyboardEvent): void {
+    if (e.key === 'Escape' && showChordModal) {
+      e.preventDefault();
+      closeChordModal();
+    }
+  }
+
+  // parsePositions removed
+
+  // saveCustomChord removed
+
+  /**
+   * Document-level click handler to detect chord span clicks.
+   * @param {MouseEvent} event - Click event
+   */
+  function delegateChordClick(event: MouseEvent): void {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+    const chordEl = target.closest('.chord') as HTMLElement | null;
+    if (!chordEl) return;
+    event.preventDefault();
+    const chordFromAttr = (chordEl as HTMLElement).dataset?.chord;
+    const chordFromText = chordEl.textContent?.trim() || '';
+    const chordName = chordFromAttr || chordFromText;
+    if (chordName) {
+      openChordModal(chordName);
+    }
+  }
+
+  /**
+   * Handle backdrop click, only close when clicking the backdrop itself.
+   * @param {MouseEvent} event - Click event
+   */
+  function handleBackdropClick(event: MouseEvent): void {
+    if (event.currentTarget === event.target) {
+      closeChordModal();
+    }
+  }
+  
+  /**
+   * Keyboard handler for backdrop to support Enter/Space closing.
+   * @param {KeyboardEvent} e - Keyboard event
+   */
+  function handleBackdropKeydown(e: KeyboardEvent): void {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      closeChordModal();
+    }
+  }
+
+  onMount(() => {
+    customChordShapes = loadCustomChordShapes();
+    window.addEventListener('keydown', handleKeydown);
+    document.addEventListener('click', delegateChordClick);
+    // Lazy-load ChordSheetJS only in browser
+    import('chordsheetjs').then((mod: any) => {
+      ChordProParser = mod.ChordProParser || mod.default?.ChordProParser;
+      HtmlDivFormatter = mod.HtmlDivFormatter || mod.default?.HtmlDivFormatter;
+      // Pre-format any songs that provide chordSheet
+      songs.forEach((s, idx) => {
+        // @ts-ignore allow optional property without changing type
+        if ((s as any).chordSheet) {
+          // @ts-ignore
+          parsedChordSheets[idx] = formatChordSheet((s as any).chordSheet as string);
+        }
+      });
+    }).catch(() => {
+      // ignore load failure; fallback renderer remains
+    });
+  });
+
+  onDestroy(() => {
+    if (typeof window !== 'undefined' && typeof document !== 'undefined') {
+      window.removeEventListener('keydown', handleKeydown);
+      document.removeEventListener('click', delegateChordClick);
+    }
+  });
+
 </script>
 
 <svelte:head>
@@ -2156,6 +2463,8 @@ Pendejo weón.`,
       line-height: 1.2;
     }
     
+    /* Our fallback renderer uses .chord.
+       ChordSheetJS also emits .chord for chord tokens. Keep styles compatible. */
     .chord {
       position: absolute;
       top: -1.2em;
@@ -2164,6 +2473,107 @@ Pendejo weón.`,
       font-weight: bold;
       font-size: 0.85em;
     }
+    /* ChordPro HTML container */
+    .chordpro-html { 
+      white-space: pre-wrap; 
+      line-height: 1.6; 
+      word-break: normal; 
+      overflow-wrap: normal;
+      hyphens: none;
+      -webkit-hyphens: none;
+      -ms-hyphens: none;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    /* Common div-formatter structure: columns stack chord over lyrics and flow inline */
+    .chordpro-html .column, .chordpro-html .pair { display: inline-block; vertical-align: bottom; }
+    .chordpro-html .chord { position: static; top: auto; display: block; line-height: 1; color: #dc2626; font-weight: bold; }
+    .chordpro-html .lyrics { display: block; }
+    /* If formatter outputs direct children spans, keep them inline */
+    .chordpro-html .row > .chord, .chordpro-html .row > .lyrics { display: inline-block; vertical-align: bottom; margin-right: 0.15em; }
+    /* Space between logical sections (verse/chorus/bridge/paragraph) */
+    .chordpro-html .paragraph + .paragraph { margin-top: 1.25rem; }
+    .chordpro-html .verse { margin: 1rem 0; }
+    .chordpro-html .chorus { margin: 1.25rem 0; }
+    .chordpro-html .bridge { margin: 1.25rem 0; }
+    /* Hide ChordPro-rendered title heading */
+    .chordpro-html .title,
+    .chordpro-html .song-title,
+    .chordpro-html > h1:first-child,
+    .chordpro-html > h2:first-child { display: none; }
+    /* Mobile-first sizing and tap targets */
+    .chordpro-html { font-size: 0.95rem; }
+    .chordpro-html .chord { cursor: pointer; }
+    .chord { cursor: pointer; }
+    /* Fallback chord lines: allow horizontal scroll on small screens */
+    .chord-line { overflow-x: auto; -webkit-overflow-scrolling: touch; word-break: normal; overflow-wrap: normal; hyphens: none; }
+    /* Ensure no word breaking inside typical ChordPro spans */
+    .chordpro-html .lyrics, .chordpro-html span, .chordpro-html .row { word-break: normal; overflow-wrap: normal; hyphens: none; }
+    /* Scale up slightly on larger screens */
+    @media (min-width: 640px) {
+      .chordpro-html { font-size: 1rem; }
+    }
+    @media (min-width: 768px) {
+      .chordpro-html { font-size: 1.05rem; }
+    }
+    /* Modal styles */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 50;
+    }
+    .modal-card {
+      background: white;
+      width: 100%;
+      max-width: 520px;
+      margin: 0 0.75rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      overflow: hidden;
+      position: relative;
+      z-index: 1;
+    }
+    @media (min-width: 640px) {
+      .modal-card { margin: 0; }
+    }
+    .modal-overlay-button {
+      position: absolute;
+      inset: 0;
+      background: transparent;
+      border: none;
+      cursor: default;
+    }
+    .modal-header {
+      padding: 0.85rem 1rem;
+      background: #7f1d1d;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .modal-body {
+      padding: 1rem 1.25rem 1.25rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      min-height: 220px;
+      background: #fff;
+    }
+    .close-btn { background: transparent; border: none; color: white; font-size: 1.25rem; cursor: pointer; }
+    .field-label { font-size: 0.8rem; color: #374151; }
+    .input { width: 100%; border: 1px solid #d1d5db; padding: 0.5rem; border-radius: 0.375rem; }
+    .btn { display: inline-block; padding: 0.5rem 0.75rem; border-radius: 0.375rem; font-size: 0.875rem; }
+    .btn-primary { background: #dc2626; color: white; }
+    .btn-secondary { background: #f3f4f6; color: #111827; }
+    .btn + .btn { margin-left: 0.5rem; }
+    /* Diagram layout */
+    .diagram-wrap { width: 280px; max-width: 100%; margin: 0 auto; }
+    .diagram-title { font-size: 0.75rem; color: #6b7280; text-align: center; margin-bottom: 0; }
+    .loading { color: #6b7280; font-size: 0.875rem; text-align: center; }
   </style>
 </svelte:head>
 
@@ -2262,9 +2672,13 @@ Pendejo weón.`,
             {/if}
             
             <br>
+
             
-            
-            {#if song.chords}
+            {#if (parsedChordSheets[index])}
+              <div class="chordpro-html">
+                {@html parsedChordSheets[index]}
+              </div>
+            {:else if song.chords}
               {#each song.lyrics.split('\n') as line, lineIndex}
                 <div class="chord-line">
                   {@html renderChordLine(line, getChordsForLine(song.chordData, lineIndex))}
@@ -2279,4 +2693,72 @@ Pendejo weón.`,
     {/each}
   </div>
 </div>
+
+<!-- Aviso: el cancionero respeta el formato ChordPro -->
+<div class="max-w-4xl mx-auto pb-8">
+  <div class="mt-8 text-sm text-gray-600">
+    Nota: este cancionero respeta la estructura del formato ChordPro. Más información en 
+    <a href="https://www.chordpro.org/" target="_blank" rel="noopener noreferrer" class="underline text-red-700">chordpro.org</a>.
+  </div>
+  
+</div>
+
+{#if showChordModal}
+  <div class="modal-backdrop" role="dialog" aria-modal="true" aria-label="Diagrama de acorde">
+    <button type="button" class="modal-overlay-button" aria-label="Cerrar" on:click={closeChordModal}></button>
+    <div class="modal-card" role="document">
+      <div class="modal-header">
+        <div>
+          <div class="text-sm opacity-90">Acorde</div>
+          <div class="text-xl font-bold">{selectedChordRaw} {selectedChordNormalized && selectedChordNormalized !== selectedChordRaw ? `→ ${selectedChordNormalized}` : ''}</div>
+        </div>
+        <button class="close-btn" aria-label="Cerrar" on:click={closeChordModal}>×</button>
+      </div>
+      <div class="modal-body">
+        {#if selectedChordNormalized}
+          {#if getChordShape(selectedChordNormalized)}
+            {#key selectedChordNormalized}
+              {#await Promise.resolve(getChordShape(selectedChordNormalized)) then shape}
+                {#if shape}
+                  <div class="diagram-wrap mb-2">
+                    <!-- SVGuitar target container; hidden until ready to avoid espacio en blanco -->
+                    <div id={vexContainerId} class="mb-1" style={!svguitarReady ? 'display:none' : ''}></div>
+                    <!-- Fallback inline SVG diagram (only when SVGuitar not ready) -->
+                    {#if !svguitarReady}
+                      {#key `${shape.name}-${determineBaseFretFromShape(shape)}`}
+                        <svg viewBox="0 0 120 160" width="100%" height="160" aria-label={`Diagrama ${shape.name}`}>
+                          {#each [0,1,2,3,4,5] as s}
+                            <line x1={10 + s*22} y1={30} x2={10 + s*22} y2={140} stroke="#9ca3af" stroke-width="1" />
+                          {/each}
+                          {#each [0,1,2,3,4,5] as f}
+                            <line x1={10} y1={30 + f*22} x2={10 + 5*22} y2={30 + f*22} stroke={f===0 && determineBaseFretFromShape(shape) === 1 ? '#111827' : '#9ca3af'} stroke-width={f===0 && determineBaseFretFromShape(shape) === 1 ? 3 : 1} />
+                          {/each}
+                          {#if determineBaseFretFromShape(shape) > 1}
+                            <text x="0" y="50" font-size="10" fill="#374151">{determineBaseFretFromShape(shape)}fr</text>
+                          {/if}
+                          {#each shape.positions as pos, idx}
+                            {#if pos === -1}
+                              <text x={10 + idx*22} y="22" text-anchor="middle" font-size="12" fill="#374151">×</text>
+                            {:else if pos === 0}
+                              <circle cx={10 + idx*22} cy={22} r="4" fill="#fff" stroke="#111827" stroke-width="1" />
+                            {:else}
+                              <circle cx={10 + idx*22} cy={30 + (pos - (determineBaseFretFromShape(shape)) + 0.5)*22} r="6" fill="#111827" />
+                            {/if}
+                          {/each}
+                        </svg>
+                      {/key}
+                    {/if}
+                  </div>
+                {/if}
+              {/await}
+            {/key}
+          {:else}
+            <div class="text-sm text-gray-600 mb-3">No tenemos diagrama para este acorde.</div>
+          {/if}
+          
+        {/if}
+      </div>
+    </div>
+  </div>
+{/if}
     
