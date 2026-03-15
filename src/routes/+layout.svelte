@@ -122,10 +122,16 @@
           rel="noopener noreferrer" 
           class="px-3 py-1 border border-white/20 rounded-lg hover:underline hover:text-gray-200 transition"
         >Mapa</a>
-        <a 
-          href="/semana-sanluisina" 
-          class="{$page.url.pathname === '/semana-sanluisina' 
-            ? 'px-3 py-1 bg-[#A11F25] rounded-lg font-semibold hover:bg-[#8A1B20] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform' 
+        <a
+          href="/morse"
+          class="{$page.url.pathname === '/morse'
+            ? 'px-3 py-1 bg-[#A11F25] rounded-lg font-semibold hover:bg-[#8A1B20] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform'
+            : 'px-3 py-1 border border-white/20 rounded-lg hover:underline hover:text-gray-200 transition'}"
+        >Morse</a>
+        <a
+          href="/semana-sanluisina"
+          class="{$page.url.pathname === '/semana-sanluisina'
+            ? 'px-3 py-1 bg-[#A11F25] rounded-lg font-semibold hover:bg-[#8A1B20] transition-colors shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-transform'
             : 'px-3 py-1 border border-white/20 rounded-lg hover:underline hover:text-gray-200 transition'}"
         >Semana Sanluisina</a>
       </nav>
