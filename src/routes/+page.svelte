@@ -81,7 +81,7 @@
   <div class="max-w-2xl mx-auto">
     <img src="/logo-stl.svg" alt="Logo Tropa San Luis" class="w-24 h-24 md:w-28 md:h-28 mx-auto mb-6" />
     <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-tropa tracking-tight leading-tight">
-      Tropa San Luissssss
+      Tropa San Luis
     </h1>
     <div class="w-16 h-1 bg-tropa rounded-full mx-auto mt-4"></div>
     <p class="mt-5 text-lg md:text-xl text-stone-500 leading-relaxed max-w-lg mx-auto">
