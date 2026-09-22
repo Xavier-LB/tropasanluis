@@ -7,7 +7,7 @@
   export let label = '⏳ Tiempo restante:';
 
   let tiempo = '';
-  let intervalo: number;
+  let intervalo: ReturnType<typeof setInterval>;
   let fechaLimite: Date | null = null;
   let tiempoFinalizado = false;
 

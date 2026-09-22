@@ -29,7 +29,7 @@
   ];
 
   let currentIndex = 0;
-  let interval: number;
+  let interval: ReturnType<typeof setInterval>;
   let isPlaying = true;
 
   const next = () => {

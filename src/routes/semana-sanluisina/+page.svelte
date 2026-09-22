@@ -793,7 +793,7 @@
   // FECHA GENERAL DEL SABADO 7 DE JUNIO 2025, 00:00:00
   const fechaSabado = new Date('2025-06-07T10:30:00-03:00');
   let tiempoSabado = '';
-  let intervaloSabado: number;
+  let intervaloSabado: ReturnType<typeof setInterval>;
 
   function calcularTiempoRestante(fechaLimite: Date): string | null {
     const ahora = new Date();

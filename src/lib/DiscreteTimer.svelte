@@ -9,7 +9,7 @@
   export let customDate: string = ''; // Permite pasar una fecha específica en formato YYYY-MM-DDThh:mm:ss-TZ
 
   let tiempo = '';
-  let intervalo: number;
+  let intervalo: ReturnType<typeof setInterval>;
   let fechaLimite: Date | null = null;
   let tiempoFinalizado = false;
   let segundosRestantes = 0;
