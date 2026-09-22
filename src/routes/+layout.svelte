@@ -41,6 +41,7 @@
   const navItems = [
     { href: '/historia', label: 'Historia' },
     { href: '/himnos', label: 'Himnos' },
+    { href: '/sitios', label: 'Sitios' },
   ];
 
   const handleScroll = () => {

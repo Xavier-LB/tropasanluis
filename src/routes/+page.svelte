@@ -87,6 +87,12 @@
     <p class="mt-5 text-lg md:text-xl text-stone-500 leading-relaxed max-w-lg mx-auto">
       Explora nuestra página para conocer al Staff, las Patrullas, ver Fotos y descubrir nuestros Himnos.
     </p>
+    <a
+      href="/sitios"
+      class="mt-7 inline-flex min-h-12 items-center justify-center rounded-xl bg-tropa px-7 py-3 font-semibold text-white transition-colors hover:bg-tropa-dark focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-tropa"
+    >
+      Sitios
+    </a>
   </div>
 </section>
 
