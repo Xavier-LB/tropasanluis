@@ -216,7 +216,7 @@
   <div class="h-16 md:h-18"></div>
 
   <!-- Main Content -->
-  <main class="flex-grow max-w-7xl mx-auto px-4 lg:px-8 py-8 w-full">
+  <main class="flex-grow {$page.url.pathname === '/sitios' ? 'max-w-none' : 'max-w-7xl'} mx-auto px-4 lg:px-8 py-8 w-full">
     <slot />
   </main>
 

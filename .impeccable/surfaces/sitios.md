@@ -13,3 +13,10 @@ Se mantienen fichas completas, contactos, fuentes e historial de consulta.
 Sin hero de marketing, animación de entrada ni fotos inventadas. Rojo existente
 e Inter. Sin formulario de aportes ni botones de agregar, corregir o registrar.
 El ingreso de datos queda para una implementación futura por decisión de Xavier.
+
+Actualización 2026-09-23: mostrar todos los resultados sin paginación inicial,
+usar todo el ancho de la ventana y ofrecer descarga Excel/CSV de los resultados
+con campos completos y fuentes. Añadir electricidad, acceso de bus, contacto,
+enlaces directos a mapa/fotos/web y fecha de revisión documental. El aforo
+muestra su fecha de fuente cuando existe; revisar una ficha no equivale a
+confirmar su vigencia. No convertir el catálogo en una galería de imágenes.

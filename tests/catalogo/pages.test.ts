@@ -180,7 +180,7 @@ async function open(t: { after(fn: () => Promise<void>): void }, route: string, 
 		}
 	};
 }
-test('navegación dentro de /sitios sincroniza controles, resultados y límite sin revertir filtros locales', async (t) => {
+test('navegación dentro de /sitios sincroniza controles y todos los resultados sin revertir filtros locales', async (t) => {
 	const f = await open(t, '', '?q=puquio');
 	await f.load();
 	assert.equal(f.field('Buscar nombre').value, 'puquio');
@@ -195,12 +195,9 @@ test('navegación dentro de /sitios sincroniza controles, resultados y límite s
 	assert.match(f.w.document.querySelector('tr.site-row')?.textContent || '', /Puquio/i);
 	await f.navigate('/sitios');
 	assert.equal(f.field('Buscar nombre').value, '');
-	const more = f.w.document.querySelector('button.load-more');
-	more.click();
-	await f.settle();
-	assert.ok(f.w.document.querySelectorAll('tr.site-row').length > 20);
+	assert.equal(f.w.document.querySelectorAll('tr.site-row').length, seed.sites.length);
 	await f.navigate('/sitios?sort=capacity');
-	assert.equal(f.w.document.querySelectorAll('tr.site-row').length, 20);
+	assert.equal(f.w.document.querySelectorAll('tr.site-row').length, seed.sites.length);
 	assert.equal(f.field('Ordenar').value, 'capacity');
 	f.w.history.back();
 	await new Promise<void>((r) => f.w.addEventListener('popstate', () => r(), { once: true }));
@@ -227,7 +224,17 @@ test('ordenar desde una columna conserva filtros y excluir pendientes se refleja
 	await f.settle();
 	assert.equal(checkbox.checked, false);
 	assert.equal(new URL(f.w.location.href).searchParams.get('unknown'), '0');
-	assert.equal(f.w.document.querySelectorAll('tr.site-row').length, 1);
+	assert.equal(
+		f.w.document.querySelectorAll('tr.site-row').length,
+		seed.sites.filter(
+			(s) =>
+				s.capacity !== null &&
+				s.capacity >= 60 &&
+				s.accommodation !== 'cabanas' &&
+				s.water === 'si' &&
+				s.toilets === 'si'
+		).length
+	);
 	assert.match(f.w.document.querySelector('tr.site-row').textContent, /Puquio/);
 	assert.equal(
 		f.w.document.querySelector('th[aria-sort="descending"] button').textContent.trim(),
@@ -307,6 +314,35 @@ test('las rutas de consulta conservan contenido sin acciones de ingreso', async 
 			false
 		);
 	}
+});
+
+test('CSV descarga exactamente los resultados filtrados, con contactos y fuentes', async (t) => {
+	const f = await open(t, '', '?q=rucahue');
+	await f.load();
+	let downloaded: Blob | undefined;
+	let filename = '';
+	f.w.Blob = Blob;
+	f.w.URL.createObjectURL = (blob: Blob) => {
+		downloaded = blob;
+		return 'blob:catalog-test';
+	};
+	f.w.URL.revokeObjectURL = () => {};
+	f.w.HTMLAnchorElement.prototype.click = function () {
+		filename = this.download;
+	};
+	const button = Array.from(f.w.document.querySelectorAll('button')).find((n: any) =>
+		n.textContent.includes('Excel / CSV')
+	) as HTMLButtonElement;
+	assert.ok(button);
+	button.click();
+	await f.settle();
+	assert.match(filename, /^sitios-campamento-.*\.csv$/);
+	assert.ok(downloaded);
+	const csv = await downloaded.text();
+	assert.match(csv, /Camping Rucahue/);
+	assert.match(csv, /2023-12/);
+	assert.ok(!csv.includes('Hacienda Picarquín'));
+	assert.match(f.w.document.querySelector('[role="status"]').textContent, /1 lugares/);
 });
 
 test('un enlace antiguo de aportes vuelve al catálogo sin mostrar el formulario', async (t) => {

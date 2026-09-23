@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"version": "semilla-2026-09-23-presentaciones",
-	"updatedAt": "2026-09-23T12:35:30.000Z",
+	"version": "2026-09-23-investigacion-publica",
+	"updatedAt": "2026-09-23T21:35:00.000Z",
 	"sites": [
 		{
 			"id": "hacienda-picarquin",
@@ -22,10 +22,10 @@
 			"water": "sin-datos",
 			"toilets": "sin-datos",
 			"toiletCount": null,
-			"electricity": "sin-datos",
+			"electricity": "si",
 			"bus": "sin-datos",
-			"environments": [],
-			"tags": ["Cabañas"],
+			"environments": ["Piscina"],
+			"tags": ["Cabañas", "Bosque", "Senderos", "Mesas y bancas", "Quincho"],
 			"mapUrl": "",
 			"coordinates": null,
 			"distance": null,
@@ -37,6 +37,22 @@
 					"value": "https://www.picarquin.cl/",
 					"sourceId": "2024-SITIOS-2",
 					"public": true
+				},
+				{
+					"name": "Hacienda Picarquín",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56229989260",
+					"sourceId": "picarquin-directorio-web",
+					"public": true
+				},
+				{
+					"name": "Hacienda Picarquín",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "picarquin@picarquin.cl",
+					"sourceId": "picarquin-directorio-web",
+					"public": true
 				}
 			],
 			"links": [
@@ -44,6 +60,11 @@
 					"label": "Sitio web",
 					"url": "https://www.picarquin.cl/",
 					"kind": "web"
+				},
+				{
+					"label": "Fotos y antecedente del directorio",
+					"url": "https://www.campingchile.cl/libertador-bernardo-ohiggins/moztazal/hacienda-picarquin/",
+					"kind": "fotos"
 				}
 			],
 			"sources": [
@@ -66,6 +87,16 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-23",
 					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
+				},
+				{
+					"id": "picarquin-directorio-web",
+					"title": "CampingChile: Hacienda Picarquín",
+					"locator": "",
+					"type": "web",
+					"url": "https://www.campingchile.cl/libertador-bernardo-ohiggins/moztazal/hacienda-picarquin/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Directorio turístico sin fecha de actualización del contenido. No confundir aforo de visita diaria con campamento."
 				}
 			],
 			"fieldSources": {
@@ -75,16 +106,28 @@
 				"locality": ["2024-SITIOS-2", "presentacion-picarquin-2023"],
 				"description": ["2024-SITIOS-2"],
 				"accommodation": ["2024-SITIOS-2"],
-				"tags": ["2024-SITIOS-2"]
+				"tags": ["2024-SITIOS-2", "picarquin-directorio-web"],
+				"electricity": ["picarquin-directorio-web"],
+				"environments": ["picarquin-directorio-web"]
 			},
 			"observations": [
 				{
 					"field": "Distancia informada",
 					"value": "La presentación menciona 75 km de Santiago sin precisar punto de origen ni medición. No se incorpora a la distancia normalizada desde Plaza de Armas.",
 					"sourceId": "presentacion-picarquin-2023"
+				},
+				{
+					"field": "capacity",
+					"value": "El directorio agrupa hasta 10.000 personas entre campistas y visitas diarias. No acredita aforo exclusivo para pernoctar en carpas.",
+					"sourceId": "picarquin-directorio-web"
+				},
+				{
+					"field": "areaHa",
+					"value": "120 ha urbanizadas y 2.900 ha de quebradas. No se interpreta como superficie de carpas ni se suman áreas sin delimitación.",
+					"sourceId": "picarquin-directorio-web"
 				}
 			],
-			"notes": "",
+			"notes": "El directorio anuncia recepción de grupos de más de 25 personas. Capacidad de carpas, agua potable y servicios sanitarios del sector a confirmar directamente.",
 			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
@@ -477,13 +520,36 @@
 			"toiletCount": null,
 			"electricity": "sin-datos",
 			"bus": "sin-datos",
-			"environments": [],
-			"tags": ["Cabañas"],
+			"environments": ["Lago"],
+			"tags": ["Cabañas", "Mesas y bancas"],
 			"mapUrl": "",
 			"coordinates": null,
 			"distance": null,
-			"contacts": [],
-			"links": [],
+			"contacts": [
+				{
+					"name": "Chitakelindo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56997238007",
+					"sourceId": "chitakelindo-directorio",
+					"public": true
+				},
+				{
+					"name": "Chitakelindo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56987753918",
+					"sourceId": "chitakelindo-directorio",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Galería y servicios del recinto",
+					"url": "https://campingenchile.cl/camping/camping-chitakelindo-3417",
+					"kind": "fotos"
+				}
+			],
 			"sources": [
 				{
 					"id": "2024-SITIOS-8",
@@ -504,6 +570,16 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-22",
 					"note": "Antecedente de una planilla del grupo. La fecha del nombre del archivo no confirma la vigencia del dato. El original contiene notas internas y no se distribuye."
+				},
+				{
+					"id": "chitakelindo-directorio",
+					"title": "Camping en Chile: Chitakelindo",
+					"locator": "",
+					"type": "web",
+					"url": "https://campingenchile.cl/camping/camping-chitakelindo-3417",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Ficha pública con galería; no declara fecha de actualización de los servicios."
 				}
 			],
 			"fieldSources": {
@@ -513,12 +589,13 @@
 				"locality": ["2024-SITIOS-8", "2024-SITIOS-9"],
 				"description": ["2024-SITIOS-8", "2024-SITIOS-9"],
 				"accommodation": ["2024-SITIOS-8", "2024-SITIOS-9"],
-				"tags": ["2024-SITIOS-8", "2024-SITIOS-9"],
-				"notes": ["2024-SITIOS-8", "2024-SITIOS-9"]
+				"tags": ["2024-SITIOS-8", "2024-SITIOS-9", "chitakelindo-directorio"],
+				"notes": ["2024-SITIOS-8", "2024-SITIOS-9"],
+				"environments": ["chitakelindo-directorio"]
 			},
 			"observations": [],
-			"notes": "Modalidades reunidas por nombre y dirección. Operadores o sectores podrían ser distintos. Los baños descritos corresponden a cabañas; no acreditan baños para el sector de carpas.",
-			"reviewedAt": "2026-09-22",
+			"notes": "Modalidades reunidas por nombre y dirección. Operadores o sectores podrían ser distintos. Los baños descritos corresponden a cabañas; no acreditan baños para el sector de carpas.\nContactos publicados: +56997238007 para picnic y +56987753918 para cabañas; consultar por acampada de grupos. Las lagunas de vertiente no acreditan agua potable.",
+			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
 		},
@@ -606,17 +683,40 @@
 			"campAreaHa": null,
 			"areaNote": "",
 			"water": "sin-datos",
-			"toilets": "sin-datos",
+			"toilets": "si",
 			"toiletCount": null,
 			"electricity": "sin-datos",
 			"bus": "sin-datos",
 			"environments": [],
-			"tags": ["Cabañas"],
+			"tags": ["Cabañas", "Duchas"],
 			"mapUrl": "",
 			"coordinates": null,
 			"distance": null,
-			"contacts": [],
-			"links": [],
+			"contacts": [
+				{
+					"name": "Centro Turístico Los Tamarugos",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56993319219",
+					"sourceId": "tamarugos-web",
+					"public": true
+				},
+				{
+					"name": "Centro Turístico Los Tamarugos",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "los.tamarugos@gmail.com",
+					"sourceId": "tamarugos-web",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Fotos y descripción de las cabañas",
+					"url": "https://cabanastamarugos.cl/cabanas.html",
+					"kind": "fotos"
+				}
+			],
 			"sources": [
 				{
 					"id": "2024-SITIOS-11",
@@ -627,6 +727,16 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-22",
 					"note": "Antecedente de una planilla del grupo. La fecha del nombre del archivo no confirma la vigencia del dato. El original contiene notas internas y no se distribuye."
+				},
+				{
+					"id": "tamarugos-web",
+					"title": "Los Tamarugos: cabañas y contacto",
+					"locator": "",
+					"type": "web",
+					"url": "https://cabanastamarugos.cl/cabanas.html",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": ""
 				}
 			],
 			"fieldSources": {
@@ -635,12 +745,13 @@
 				"commune": ["2024-SITIOS-11"],
 				"locality": ["2024-SITIOS-11"],
 				"description": ["2024-SITIOS-11"],
-				"accommodation": ["2024-SITIOS-11"],
-				"tags": ["2024-SITIOS-11"]
+				"accommodation": ["2024-SITIOS-11", "tamarugos-web"],
+				"tags": ["2024-SITIOS-11", "tamarugos-web"],
+				"toilets": ["tamarugos-web"]
 			},
 			"observations": [],
-			"notes": "",
-			"reviewedAt": "2026-09-22",
+			"notes": "El sitio oficial muestra unidades para 2 a 6 huéspedes con baño y ducha. No acredita camping ni capacidad total de un grupo; no se suman camas a capacidad de carpas.",
+			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
 		},
@@ -662,11 +773,19 @@
 			"areaNote": "Las fuentes informan 20 y 25 ha. Superficie total pendiente de confirmar.",
 			"water": "si",
 			"toilets": "si",
-			"toiletCount": null,
-			"electricity": "sin-datos",
+			"toiletCount": 6,
+			"electricity": "si",
 			"bus": "sin-datos",
 			"environments": ["Playa"],
-			"tags": ["Bosque", "Fogón", "Agua caliente"],
+			"tags": [
+				"Bosque",
+				"Fogón",
+				"Agua caliente",
+				"Duchas",
+				"Lavaderos",
+				"Mesas y bancas",
+				"Sombra"
+			],
 			"mapUrl": "https://maps.app.goo.gl/wTNWkK31md4bAoXT7",
 			"coordinates": {
 				"lat": -32.7238762,
@@ -693,6 +812,11 @@
 				}
 			],
 			"links": [
+				{
+					"label": "Fotos e instalaciones: presentación pública revisada",
+					"url": "https://new.express.adobe.com/webpage/GLJ6ZBpTREO25",
+					"kind": "fotos"
+				},
 				{
 					"label": "Instagram",
 					"url": "https://www.instagram.com/lafkencamping/",
@@ -734,6 +858,16 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-22",
 					"note": "Coordenadas del punto enlazado. No certifican el portón de acceso ni condiciones para buses."
+				},
+				{
+					"id": "lafken-presentacion-publica-2026",
+					"title": "Parque Camping Lafken: presentación pública",
+					"locator": "",
+					"type": "web",
+					"url": "https://new.express.adobe.com/webpage/GLJ6ZBpTREO25",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Enlace anunciado por el camping en una publicación del 22 de agosto, visto en BUSCO MI CAMPAMENTO. La presentación pública no declara fecha de actualización."
 				}
 			],
 			"fieldSources": {
@@ -745,12 +879,23 @@
 				"accommodation": ["2024-SITIOS-12", "avanzada-Primavera (Grupo)-4"],
 				"areaNote": ["2024-SITIOS-12", "avanzada-Primavera (Grupo)-4"],
 				"water": ["2024-SITIOS-12", "avanzada-Primavera (Grupo)-4"],
-				"toilets": ["2024-SITIOS-12", "avanzada-Primavera (Grupo)-4"],
+				"toilets": [
+					"2024-SITIOS-12",
+					"avanzada-Primavera (Grupo)-4",
+					"lafken-presentacion-publica-2026"
+				],
 				"environments": ["2024-SITIOS-12", "avanzada-Primavera (Grupo)-4"],
-				"tags": ["2024-SITIOS-12", "avanzada-Primavera (Grupo)-4"],
+				"tags": [
+					"2024-SITIOS-12",
+					"avanzada-Primavera (Grupo)-4",
+					"lafken-presentacion-publica-2026"
+				],
 				"notes": ["2024-SITIOS-12", "avanzada-Primavera (Grupo)-4"],
 				"coordinates": ["mapa-lafken"],
-				"distance": ["mapa-lafken"]
+				"distance": ["mapa-lafken"],
+				"toiletCount": ["lafken-presentacion-publica-2026"],
+				"electricity": ["lafken-presentacion-publica-2026"],
+				"areaHa": ["lafken-presentacion-publica-2026"]
 			},
 			"observations": [
 				{
@@ -762,10 +907,15 @@
 					"field": "Superficie total",
 					"value": "25 hectáreas",
 					"sourceId": "avanzada-Primavera (Grupo)-4"
+				},
+				{
+					"field": "areaHa",
+					"value": "La presentación pública revisada anuncia 20 hectáreas. Persisten otras cifras en antecedentes; no se da por resuelta la discrepancia.",
+					"sourceId": "lafken-presentacion-publica-2026"
 				}
 			],
-			"notes": "La referencia informa frente de mar; el acceso efectivo a playa y su uso deben confirmarse.",
-			"reviewedAt": "2026-09-22",
+			"notes": "La referencia informa frente de mar; el acceso efectivo a playa y su uso deben confirmarse.\nPresentación pública: 16 sitios y 6 baños con ducha caliente. Electricidad solo en algunos sitios; el número de parcelas no acredita capacidad de personas. Playa El Tebo a menos de 15 minutos a pie.",
+			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
 		},
@@ -1045,9 +1195,9 @@
 			"id": "el-puquio",
 			"name": "Centro Recreacional El Puquio",
 			"aliases": [],
-			"region": "Por confirmar",
-			"commune": "",
-			"locality": "",
+			"region": "Valparaíso",
+			"commune": "El Tabo",
+			"locality": "Alto Chépica",
 			"description": "Terreno para acampar con acceso a estero, letrinas y tanques de agua potable.",
 			"accommodation": "carpas",
 			"kind": "rustico",
@@ -1060,15 +1210,30 @@
 			"water": "si",
 			"toilets": "si",
 			"toiletCount": null,
-			"electricity": "sin-datos",
+			"electricity": "si",
 			"bus": "sin-datos",
 			"environments": ["Estero"],
 			"tags": [],
 			"mapUrl": "https://maps.app.goo.gl/rxDeTfSZ4P7pr4jd9",
 			"coordinates": null,
 			"distance": null,
-			"contacts": [],
-			"links": [],
+			"contacts": [
+				{
+					"name": "Centro Recreacional El Puquio",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56949038649",
+					"sourceId": "puquio-directorio-web",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha pública con fotos",
+					"url": "https://www.campingchile.cl/valparaiso/el-tabo/camping-fundo-el-puquio/",
+					"kind": "fotos"
+				}
+			],
 			"sources": [
 				{
 					"id": "2024-SITIOS-17",
@@ -1079,11 +1244,21 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-22",
 					"note": "Antecedente de una planilla del grupo. La fecha del nombre del archivo no confirma la vigencia del dato. El original contiene notas internas y no se distribuye."
+				},
+				{
+					"id": "puquio-directorio-web",
+					"title": "CampingChile: Camping Fundo El Puquio",
+					"locator": "",
+					"type": "web",
+					"url": "https://www.campingchile.cl/valparaiso/el-tabo/camping-fundo-el-puquio/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Directorio público sin fecha de actualización. Enlaza al Centro Recreacional El Puquio."
 				}
 			],
 			"fieldSources": {
 				"name": ["2024-SITIOS-17"],
-				"region": ["2024-SITIOS-17"],
+				"region": ["2024-SITIOS-17", "puquio-directorio-web"],
 				"description": ["2024-SITIOS-17"],
 				"accommodation": ["2024-SITIOS-17"],
 				"kind": ["2024-SITIOS-17"],
@@ -1092,11 +1267,14 @@
 				"water": ["2024-SITIOS-17"],
 				"toilets": ["2024-SITIOS-17"],
 				"environments": ["2024-SITIOS-17"],
-				"notes": ["2024-SITIOS-17"]
+				"notes": ["2024-SITIOS-17"],
+				"commune": ["puquio-directorio-web"],
+				"locality": ["puquio-directorio-web"],
+				"electricity": ["puquio-directorio-web"]
 			},
 			"observations": [],
-			"notes": "Baños de tipo letrina. La fuente menciona fuego permitido, sujeto a condiciones y restricciones vigentes.",
-			"reviewedAt": "2026-09-22",
+			"notes": "Baños de tipo letrina. La fuente menciona fuego permitido, sujeto a condiciones y restricciones vigentes.\nLa capacidad histórica de 300 personas sigue pendiente de confirmación actual. El directorio informa conexión eléctrica; confirmar disponibilidad en el sector scout.",
+			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
 		},
@@ -1333,16 +1511,16 @@
 			"capacity": null,
 			"capacityNote": "",
 			"lodgingCapacity": null,
-			"areaHa": 1.5,
+			"areaHa": null,
 			"campAreaHa": null,
-			"areaNote": "",
+			"areaNote": "Planilla: 1,5 ha; directorio: 1,47 ha. Confirmar superficie.",
 			"water": "sin-datos",
-			"toilets": "sin-datos",
+			"toilets": "si",
 			"toiletCount": null,
-			"electricity": "sin-datos",
+			"electricity": "si",
 			"bus": "sin-datos",
 			"environments": ["Lago"],
-			"tags": [],
+			"tags": ["Bosque", "Duchas", "Lavaderos", "Mesas y bancas", "Quincho"],
 			"mapUrl": "https://maps.app.goo.gl/NWQZjBHUR7aZa5J67",
 			"coordinates": {
 				"lat": -39.5659309,
@@ -1358,8 +1536,23 @@
 				"calculatedAt": "2026-09-22",
 				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-71.9970573,-39.5659309?overview=false&steps=false"
 			},
-			"contacts": [],
-			"links": [],
+			"contacts": [
+				{
+					"name": "Camping Victoria",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56955392206",
+					"sourceId": "victoria-directorio",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha pública del camping",
+					"url": "https://www.campingchile.cl/los-rios/panguipulli/camping-victoria/",
+					"kind": "web"
+				}
+			],
 			"sources": [
 				{
 					"id": "avanzada-Verano-4",
@@ -1380,6 +1573,16 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-22",
 					"note": "Coordenadas del punto enlazado. No certifican el portón de acceso ni condiciones para buses."
+				},
+				{
+					"id": "victoria-directorio",
+					"title": "CampingChile: Camping Victoria, Panguipulli",
+					"locator": "",
+					"type": "web",
+					"url": "https://www.campingchile.cl/los-rios/panguipulli/camping-victoria/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Coinciden nombre, comuna y teléfono anunciado por el lugar. La ficha no declara fecha de actualización."
 				}
 			],
 			"fieldSources": {
@@ -1389,15 +1592,30 @@
 				"locality": ["avanzada-Verano-4"],
 				"description": ["avanzada-Verano-4"],
 				"accommodation": ["avanzada-Verano-4"],
-				"areaHa": ["avanzada-Verano-4"],
+				"areaHa": ["avanzada-Verano-4", "victoria-directorio"],
 				"environments": ["avanzada-Verano-4"],
 				"notes": ["avanzada-Verano-4"],
 				"coordinates": ["mapa-victoria-conaripe"],
-				"distance": ["mapa-victoria-conaripe"]
+				"distance": ["mapa-victoria-conaripe"],
+				"toilets": ["victoria-directorio"],
+				"electricity": ["victoria-directorio"],
+				"areaNote": ["victoria-directorio"],
+				"tags": ["victoria-directorio"]
 			},
-			"observations": [],
-			"notes": "Superficie convertida desde 15.000 m². La cercanía al lago no implica acceso directo desde el predio.",
-			"reviewedAt": "2026-09-22",
+			"observations": [
+				{
+					"field": "areaHa",
+					"value": "Planilla: 15.000 m² (1,5 ha).",
+					"sourceId": "avanzada-Verano-4"
+				},
+				{
+					"field": "areaHa",
+					"value": "Directorio: 14.700 m² (1,47 ha). Puede ser una diferencia de redondeo; pendiente de confirmación.",
+					"sourceId": "victoria-directorio"
+				}
+			],
+			"notes": "Superficie convertida desde 15.000 m². La cercanía al lago no implica acceso directo desde el predio.\nEl directorio informa 15 sitios para carpas; no equivale a un aforo de personas. Baños compartidos y duchas.",
+			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
 		},
@@ -2452,7 +2670,7 @@
 			"toiletCount": null,
 			"electricity": "sin-datos",
 			"bus": "sin-datos",
-			"environments": [],
+			"environments": ["Piscina", "Estero"],
 			"tags": ["Duchas", "Lavaderos"],
 			"mapUrl": "",
 			"coordinates": null,
@@ -2463,6 +2681,11 @@
 					"label": "Sitio oficial del parque",
 					"url": "https://www.espaciomallinco.cl/",
 					"kind": "web"
+				},
+				{
+					"label": "Galería y servicios del parque",
+					"url": "https://campingenchile.cl/camping/parque-espacio-mallinco-3810",
+					"kind": "fotos"
 				}
 			],
 			"sources": [
@@ -2485,6 +2708,16 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-23",
 					"note": "Perfil institucional público del parque. La dirección Los Acacios 11 coincide con la presentación de otoño 2025."
+				},
+				{
+					"id": "mallinco-directorio",
+					"title": "Camping en Chile: Parque Espacio Mallinco",
+					"locator": "",
+					"type": "web",
+					"url": "https://campingenchile.cl/camping/parque-espacio-mallinco-3810",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Ficha pública con galería; confirmar cuáles actividades se incluyen al acampar."
 				}
 			],
 			"fieldSources": {
@@ -2497,7 +2730,8 @@
 				"toilets": ["presentacion-penaflor-2025"],
 				"tags": ["presentacion-penaflor-2025"],
 				"description": ["presentacion-penaflor-2025"],
-				"notes": ["presentacion-penaflor-2025"]
+				"notes": ["presentacion-penaflor-2025"],
+				"environments": ["mallinco-directorio"]
 			},
 			"observations": [],
 			"notes": "La presentación contempla transporte de ida en bus. Cupos, superficie disponible para campamento y acceso del bus por confirmar.",
@@ -2936,6 +3170,3681 @@
 			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
+		},
+		{
+			"id": "parque-oasis-isla-maipo",
+			"name": "Parque Oasis",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Isla de Maipo",
+			"locality": "Las Parcelas 31-B",
+			"description": "Camping registrado en la guía de Sernatur para Isla de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "sin-datos",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": [],
+			"mapUrl": "https://maps.app.goo.gl/jjFFgAnfeRuWT4bg8",
+			"coordinates": {
+				"lat": -33.7170906,
+				"lon": -70.9088308,
+				"precision": "aproximada",
+				"sourceUrl": "https://maps.app.goo.gl/jjFFgAnfeRuWT4bg8"
+			},
+			"distance": {
+				"roadKm": 51,
+				"straightKm": 39,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9088308,-33.7170906?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Parque Oasis",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56228193016",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Parque Oasis",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "contacto@parqueoasis.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.parqueoasis.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 6: Parque Oasis",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/jjFFgAnfeRuWT4bg8",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9088308,-33.7170906?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "Camping en el sector Villita. El aforo del restaurante no corresponde a capacidad para acampar.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "el-trebol-isla-maipo",
+			"name": "Camping El Trébol",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Isla de Maipo",
+			"locality": "Las Parcelas 31-A",
+			"description": "Camping registrado en la guía de Sernatur para Isla de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": 15,
+			"campAreaHa": null,
+			"areaNote": "15 ha del recinto; superficie exclusiva para carpas no informada.",
+			"water": "sin-datos",
+			"toilets": "sin-datos",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": ["Duchas", "Mesas y bancas", "Almacén"],
+			"mapUrl": "https://maps.app.goo.gl/ciTmctNbhuRSXNxU8",
+			"coordinates": {
+				"lat": -33.7183325,
+				"lon": -70.9108573,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/ciTmctNbhuRSXNxU8"
+			},
+			"distance": {
+				"roadKm": 51,
+				"straightKm": 39,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9108573,-33.7183325?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping El Trébol",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56995188393",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping El Trébol",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "info@campingeltrebol.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.campingeltrebol.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 8: Camping El Trébol",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/ciTmctNbhuRSXNxU8",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9108573,-33.7183325?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"areaHa": ["sernatur-rm-guia"],
+				"areaNote": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "valtyer-isla-maipo",
+			"name": "Camping Valtyer",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Isla de Maipo",
+			"locality": "Camino Santa Inés 1720",
+			"description": "Camping registrado en la guía de Sernatur para Isla de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": ["Duchas", "Almacén"],
+			"mapUrl": "https://maps.app.goo.gl/k3WG8uxtzDtWhXGX9",
+			"coordinates": {
+				"lat": -33.732123,
+				"lon": -70.8753987,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/k3WG8uxtzDtWhXGX9"
+			},
+			"distance": {
+				"roadKm": 57,
+				"straightKm": 39,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.8753987,-33.732123?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping Valtyer",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56936942712",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping Valtyer",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "valtyer@gmail.com",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.valtyer.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 11: Camping Valtyer",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/k3WG8uxtzDtWhXGX9",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.8753987,-33.732123?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"toilets": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "millantu-isla-maipo",
+			"name": "Camping Millantú",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Isla de Maipo",
+			"locality": "Av. Talagante s/n, km 6",
+			"description": "Camping registrado en la guía de Sernatur para Isla de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": ["Bosque", "Duchas", "Mesas y bancas"],
+			"mapUrl": "https://maps.app.goo.gl/YesbiWCuidX1mKbr8",
+			"coordinates": {
+				"lat": -33.7183857,
+				"lon": -70.9247854,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/YesbiWCuidX1mKbr8"
+			},
+			"distance": {
+				"roadKm": 50,
+				"straightKm": 40,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9247854,-33.7183857?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping Millantú",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56992230383",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping Millantú",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "contacto@campingmillantu.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.campingmillantu.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 12: Camping Millantú",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/YesbiWCuidX1mKbr8",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9247854,-33.7183857?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"water": ["sernatur-rm-guia"],
+				"toilets": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "laguna-del-maipo",
+			"name": "Camping Laguna del Maipo",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Isla de Maipo",
+			"locality": "Av. Jaime Guzmán 5165",
+			"description": "Camping registrado en la guía de Sernatur para Isla de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "sin-datos",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": [],
+			"mapUrl": "https://maps.app.goo.gl/oVGFjovJ6dKfPAYj7",
+			"coordinates": {
+				"lat": -33.7195886,
+				"lon": -70.9210615,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/oVGFjovJ6dKfPAYj7"
+			},
+			"distance": {
+				"roadKm": 50,
+				"straightKm": 40,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9210615,-33.7195886?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping Laguna del Maipo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56993502300",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping Laguna del Maipo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "reservas@lagunadelmaipo.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.lagunadelmaipo.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 13: Camping Laguna del Maipo",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/oVGFjovJ6dKfPAYj7",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9210615,-33.7195886?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"electricity": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "el-eden-isla-maipo",
+			"name": "Camping El Edén",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Isla de Maipo",
+			"locality": "La Villita, calle Crucero",
+			"description": "Camping registrado en la guía de Sernatur para Isla de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": ["Duchas", "Mesas y bancas"],
+			"mapUrl": "https://maps.app.goo.gl/rfqNE9f5PuiX73eUA",
+			"coordinates": {
+				"lat": -33.7728353,
+				"lon": -70.9063485,
+				"precision": "aproximada",
+				"sourceUrl": "https://maps.app.goo.gl/rfqNE9f5PuiX73eUA"
+			},
+			"distance": {
+				"roadKm": 58,
+				"straightKm": 44,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9063485,-33.7728353?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping El Edén",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56945299443",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.centroturisticocampingeleden.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 14: Camping El Edén",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/rfqNE9f5PuiX73eUA",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9063485,-33.7728353?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"toilets": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "La guía indica Crucero 488. Confirmar acceso al reservar.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "los-puentes-isla-maipo",
+			"name": "Camping Los Puentes",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Isla de Maipo",
+			"locality": "Camino Las Parcelas, parcela 24",
+			"description": "Camping registrado en la guía de Sernatur para Isla de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Piscina", "Río"],
+			"tags": ["Bosque", "Duchas", "Mesas y bancas", "Almacén"],
+			"mapUrl": "https://maps.app.goo.gl/myXLm1MLUXChVYJs6",
+			"coordinates": {
+				"lat": -33.7149172,
+				"lon": -70.889021,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/myXLm1MLUXChVYJs6"
+			},
+			"distance": {
+				"roadKm": 53,
+				"straightKm": 38,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.889021,-33.7149172?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping Los Puentes",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56947491242",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping Los Puentes",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "leogonzalco@gmail.com",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.campinglospuentes.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 15: Camping Los Puentes",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/myXLm1MLUXChVYJs6",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.889021,-33.7149172?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"toilets": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "Río Maipo en el entorno; no se acredita acceso para baño.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "la-isla-cajon-maipo",
+			"name": "Camping La Isla",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "San José de Maipo",
+			"locality": "Fundo El Toyo, ruta G-27, km 36",
+			"description": "Camping registrado en la guía de Sernatur para San José de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": ["Duchas", "Agua caliente", "Quincho"],
+			"mapUrl": "https://maps.app.goo.gl/768nKU1VnndAutiw8",
+			"coordinates": {
+				"lat": -33.6331816,
+				"lon": -70.3592436,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/768nKU1VnndAutiw8"
+			},
+			"distance": {
+				"roadKm": 54,
+				"straightKm": 35,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.3592436,-33.6331816?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping La Isla",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56977333459",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.campinglaisla.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 16: Camping La Isla",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/768nKU1VnndAutiw8",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.3592436,-33.6331816?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"electricity": ["sernatur-rm-guia"],
+				"toilets": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "cascada-de-las-animas",
+			"name": "Cascada de las Ánimas",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "San José de Maipo",
+			"locality": "Camino al Volcán 31087, San Alfonso",
+			"description": "Camping registrado en la guía de Sernatur para San José de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "sin-datos",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Río", "Piscina"],
+			"tags": ["Senderos"],
+			"mapUrl": "https://maps.app.goo.gl/XK3jxyYy7ffHxe8NA",
+			"coordinates": {
+				"lat": -33.7307668,
+				"lon": -70.314923,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/XK3jxyYy7ffHxe8NA"
+			},
+			"distance": {
+				"roadKm": 65,
+				"straightKm": 45,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.314923,-33.7307668?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Cascada de las Ánimas",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56225829430",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Cascada de las Ánimas",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "info@cascadadelasanimas.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.cascadadelasanimas.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 17: Cascada de las Ánimas",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/XK3jxyYy7ffHxe8NA",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.314923,-33.7307668?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "pata-del-diablo",
+			"name": "Camping La Pata del Diablo",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "San José de Maipo",
+			"locality": "Camino El Toyo, ruta G-27, km 40",
+			"description": "Camping registrado en la guía de Sernatur para San José de Maipo.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "sin-datos",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Río", "Piscina"],
+			"tags": ["Quincho", "Senderos"],
+			"mapUrl": "https://maps.app.goo.gl/HtvmW4Aoig1brMTo6",
+			"coordinates": {
+				"lat": -33.6027996,
+				"lon": -70.3950236,
+				"precision": "aproximada",
+				"sourceUrl": "https://maps.app.goo.gl/HtvmW4Aoig1brMTo6"
+			},
+			"distance": {
+				"roadKm": 48,
+				"straightKm": 30,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.3950236,-33.6027996?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping La Pata del Diablo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56977312575",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping La Pata del Diablo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "fundo@toyo.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.instagram.com/patadeldiablo2024/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 19: Camping La Pata del Diablo",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/HtvmW4Aoig1brMTo6",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.3950236,-33.6027996?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"electricity": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "parque-almendro",
+			"name": "Camping Parque Almendro",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "San José de Maipo",
+			"locality": "Camino al Volcán 38713, km 53, Boyenar",
+			"description": "Camping registrado en la guía de Sernatur para San José de Maipo.",
+			"accommodation": "mixto",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "sin-datos",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": ["Cabañas"],
+			"mapUrl": "https://maps.app.goo.gl/UzUhEEkfK8W7cBPR8",
+			"coordinates": {
+				"lat": -33.7716319,
+				"lon": -70.2686765,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/UzUhEEkfK8W7cBPR8"
+			},
+			"distance": {
+				"roadKm": 73,
+				"straightKm": 51,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.2686765,-33.7716319?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping Parque Almendro",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56931073812",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping Parque Almendro",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "info@parquealmendro.com",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.parquealmendro.com/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 20: Camping Parque Almendro",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/UzUhEEkfK8W7cBPR8",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.2686765,-33.7716319?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "los-nogales-roan-jase",
+			"name": "Los Nogales de Roan Jase",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "San José de Maipo",
+			"locality": "Camino al Volcán 29238, El Melocotón Alto",
+			"description": "Camping registrado en la guía de Sernatur para San José de Maipo.",
+			"accommodation": "mixto",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Cabañas"],
+			"mapUrl": "https://maps.app.goo.gl/KHsmhAM4rjsxryvg6",
+			"coordinates": {
+				"lat": -33.716847,
+				"lon": -70.3308021,
+				"precision": "aproximada",
+				"sourceUrl": "https://maps.app.goo.gl/KHsmhAM4rjsxryvg6"
+			},
+			"distance": {
+				"roadKm": 63,
+				"straightKm": 43,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.3308021,-33.716847?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Los Nogales de Roan Jase",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56977092798",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Los Nogales de Roan Jase",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "roanjase@hotmail.com",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.roanjase.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 21: Los Nogales de Roan Jase",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/KHsmhAM4rjsxryvg6",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.3308021,-33.716847?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"water": ["sernatur-rm-guia"],
+				"toilets": ["sernatur-rm-guia"],
+				"electricity": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "el-sauce-cajon-maipo",
+			"name": "Camping El Sauce",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "San José de Maipo",
+			"locality": "Estero El Sauce, El Toyo",
+			"description": "Camping registrado en la guía de Sernatur para San José de Maipo.",
+			"accommodation": "mixto",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Río", "Estero"],
+			"tags": ["Duchas", "Quincho", "Cabañas"],
+			"mapUrl": "https://maps.app.goo.gl/PweHQBwXYvNQ1nSu6",
+			"coordinates": {
+				"lat": -33.673763,
+				"lon": -70.3482439,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/PweHQBwXYvNQ1nSu6"
+			},
+			"distance": {
+				"roadKm": 59,
+				"straightKm": 38,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.3482439,-33.673763?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping El Sauce",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56934243018",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping El Sauce",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "info@campingelsauce.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.campingelsauce.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 22: Camping El Sauce",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/PweHQBwXYvNQ1nSu6",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.3482439,-33.673763?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"electricity": ["sernatur-rm-guia"],
+				"toilets": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "Electricidad disponible solo en parte de los sitios.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "laguna-esmeralda",
+			"name": "Laguna Esmeralda",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Melipilla",
+			"locality": "Parcela Laguna Esmeralda s/n",
+			"description": "Camping registrado en la guía de Sernatur para Melipilla.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "La guía menciona una laguna de 11 ha, no la superficie del predio ni del camping.",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Lago"],
+			"tags": ["Sombra", "Mesas y bancas"],
+			"mapUrl": "https://maps.app.goo.gl/xM5HaHihQiTsAPmH6",
+			"coordinates": {
+				"lat": -33.647103,
+				"lon": -71.268,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/xM5HaHihQiTsAPmH6"
+			},
+			"distance": {
+				"roadKm": 79,
+				"straightKm": 62,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-71.268,-33.647103?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Laguna Esmeralda",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56994753601",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Laguna Esmeralda",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "contacto@lagunaesmeralda.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.lagunaesmeralda.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 26: Laguna Esmeralda",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/xM5HaHihQiTsAPmH6",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-71.268,-33.647103?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"toilets": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"areaNote": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "pintue-aculeo",
+			"name": "Camping Pintué",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Paine",
+			"locality": "Laguna de Aculeo s/n",
+			"description": "Camping registrado en la guía de Sernatur para Paine.",
+			"accommodation": "mixto",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "sin-datos",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Lago", "Piscina"],
+			"tags": ["Cabañas"],
+			"mapUrl": "https://maps.app.goo.gl/baQvCuWcR8xjSphT9",
+			"coordinates": {
+				"lat": -33.8477538,
+				"lon": -70.8875938,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/baQvCuWcR8xjSphT9"
+			},
+			"distance": {
+				"roadKm": 68,
+				"straightKm": 51,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.8875938,-33.8477538?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping Pintué",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56947325500",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping Pintué",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "laguna@pintue.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.pintue.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 27: Camping Pintué",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/baQvCuWcR8xjSphT9",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.8875938,-33.8477538?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "los-alamos-aculeo",
+			"name": "Camping Los Álamos, Aculeo",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Paine",
+			"locality": "Hijuela 3-1, Rangue, Laguna de Aculeo",
+			"description": "Camping registrado en la guía de Sernatur para Paine.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": 6,
+			"campAreaHa": null,
+			"areaNote": "60.000 m² del recinto equivalen a 6 ha. Área de acampada no informada.",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": ["Duchas", "Agua caliente", "Mesas y bancas"],
+			"mapUrl": "https://maps.app.goo.gl/ZjLAaoo5mtTN4XQN9",
+			"coordinates": {
+				"lat": -33.8374857,
+				"lon": -70.9447254,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/ZjLAaoo5mtTN4XQN9"
+			},
+			"distance": {
+				"roadKm": 74,
+				"straightKm": 52,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9447254,-33.8374857?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping Los Álamos, Aculeo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56992752581",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping Los Álamos, Aculeo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "turismolosalamos@gmail.com",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.turismolosalamos.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 28: Camping Los Álamos, Aculeo",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/ZjLAaoo5mtTN4XQN9",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9447254,-33.8374857?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"areaHa": ["sernatur-rm-guia"],
+				"areaNote": ["sernatur-rm-guia"],
+				"toilets": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "pantanal-aculeo",
+			"name": "Camping Pantanal, Rangue",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Paine",
+			"locality": "Piedra de Molino, sitio 11, Rangue",
+			"description": "Camping registrado en la guía de Sernatur para Paine.",
+			"accommodation": "mixto",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "La fuente no informa capacidad total de personas en carpas.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "sin-datos",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Lago", "Piscina"],
+			"tags": ["Quincho", "Cabañas"],
+			"mapUrl": "https://maps.app.goo.gl/eN5mRrHmDu2VyBam6",
+			"coordinates": {
+				"lat": -33.8484541,
+				"lon": -70.9442997,
+				"precision": "predio",
+				"sourceUrl": "https://maps.app.goo.gl/eN5mRrHmDu2VyBam6"
+			},
+			"distance": {
+				"roadKm": 72,
+				"straightKm": 53,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Ruta de automóvil OSRM / OpenStreetMap, sin tráfico. Línea recta calculada entre coordenadas.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9442997,-33.8484541?overview=false&steps=false"
+			},
+			"contacts": [
+				{
+					"name": "Camping Pantanal, Rangue",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56982172907",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				},
+				{
+					"name": "Camping Pantanal, Rangue",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "contacto@pantanal.cl",
+					"sourceId": "sernatur-rm-guia",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Web o perfil publicado en la guía",
+					"url": "https://www.instagram.com/campingpantanal/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "sernatur-rm-guia",
+					"title": "Sernatur: guía de camping de la Región Metropolitana",
+					"locator": "Página 29: Camping Pantanal, Rangue",
+					"type": "web",
+					"url": "https://disfrutasantiago.cl/wp-content/uploads/2025/01/Campings-RM_v12.pdf",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "PDF alojado en carpeta 2025/01. No declara fecha de vigencia de cada ficha. Revisión documental, sin contacto con el recinto."
+				},
+				{
+					"id": "mapa-publico-sernatur",
+					"title": "Mapa enlazado en la guía pública Sernatur",
+					"locator": "",
+					"type": "web",
+					"url": "https://maps.app.goo.gl/eN5mRrHmDu2VyBam6",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Punto publicado del establecimiento o dirección aproximada. No certifica acceso vehicular ni para buses."
+				},
+				{
+					"id": "ruta-osrm",
+					"title": "OSRM / OpenStreetMap: ruta desde Plaza de Armas",
+					"locator": "",
+					"type": "web",
+					"url": "https://router.project-osrm.org/route/v1/driving/-70.6506,-33.4372;-70.9442997,-33.8484541?overview=false&steps=false",
+					"sourceDate": "2026-09-23",
+					"checkedAt": "2026-09-23",
+					"note": "Estimación de automóvil sin tráfico al punto publicado. No valida acceso de bus ni estado del camino. Se descartan rutas con ajuste de punto superior a 1 km."
+				}
+			],
+			"fieldSources": {
+				"name": ["sernatur-rm-guia"],
+				"region": ["sernatur-rm-guia"],
+				"commune": ["sernatur-rm-guia"],
+				"locality": ["sernatur-rm-guia"],
+				"accommodation": ["sernatur-rm-guia"],
+				"environments": ["sernatur-rm-guia"],
+				"tags": ["sernatur-rm-guia"],
+				"mapUrl": ["sernatur-rm-guia"],
+				"coordinates": ["mapa-publico-sernatur"],
+				"distance": ["ruta-osrm"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "rucahue-conaripe",
+			"name": "Camping Rucahue",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe, Av. Costanera 451",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 70,
+			"capacityNote": "70 personas, según listado municipal de diciembre de 2023. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Lago", "Playa"],
+			"tags": ["Sombra", "Mesas y bancas", "Lavaderos", "Agua caliente", "Quincho"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Rucahue",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56985803840",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Rucahue",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "oriedemann@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=1",
+					"kind": "web"
+				},
+				{
+					"label": "Sitio del camping",
+					"url": "https://campingrucahue.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 1: Camping Rucahue",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				},
+				{
+					"id": "rucahue-web",
+					"title": "Camping Rucahue: instalaciones y servicios",
+					"locator": "",
+					"type": "web",
+					"url": "https://campingrucahue.cl/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "La portada conserva la referencia Verano 2023. No asumir actualización de todos los datos a 2026."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023", "rucahue-web"],
+				"toilets": ["panguipulli-camping-2023", "rucahue-web"],
+				"electricity": ["panguipulli-camping-2023", "rucahue-web"],
+				"tags": ["panguipulli-camping-2023", "rucahue-web"],
+				"environments": ["panguipulli-camping-2023", "rucahue-web"]
+			},
+			"observations": [],
+			"notes": "Publica 19 sitios de unos 45 m². No se convierten en superficie total ni en un aforo calculado. Playa próxima, sin acreditar orilla propia.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "cordillera-conaripe",
+			"name": "Camping Cordillera",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe, Av. Costanera s/n",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 80,
+			"capacityNote": "Rango publicado: 80–85 personas (diciembre de 2023). El filtro utiliza 80, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Agua caliente"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Cordillera",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56998219388",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Cordillera",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "reservascampingcordillera@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=1",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 1: Camping Cordillera",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "arena-y-sol-conaripe",
+			"name": "Camping Arena y Sol",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe, Av. Costanera s/n",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "Fuentes municipales discrepan: PDF 12-2023 (125 personas) y ficha web sin fecha (120). Confirmar aforo antes de filtrar por capacidad.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Lago", "Playa"],
+			"tags": ["Agua caliente", "Quincho", "Mesas y bancas", "Duchas"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Arena y Sol",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56993310014",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Arena y Sol",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "campingarenaysol@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=1",
+					"kind": "web"
+				},
+				{
+					"label": "Fotos y servicios del directorio municipal",
+					"url": "https://sietelagos.cl/sturisticos/camping-arena-y-sol/",
+					"kind": "fotos"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 1: Camping Arena y Sol",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				},
+				{
+					"id": "panguipulli-ficha-web",
+					"title": "Turismo municipal: ficha del establecimiento",
+					"locator": "",
+					"type": "web",
+					"url": "https://sietelagos.cl/sturisticos/camping-arena-y-sol/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Ficha accesible al revisar. No declara cuándo se actualizó su capacidad."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"capacityNote": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"water": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"toilets": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"electricity": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"tags": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"environments": ["panguipulli-camping-2023", "panguipulli-ficha-web"]
+			},
+			"observations": [
+				{
+					"field": "capacity",
+					"value": "125 personas, según listado municipal de diciembre de 2023. Confirmar vigencia y recepción de un grupo único.",
+					"sourceId": "panguipulli-camping-2023"
+				},
+				{
+					"field": "capacity",
+					"value": "Ficha web municipal sin fecha de actualización: 120 personas.",
+					"sourceId": "panguipulli-ficha-web"
+				}
+			],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "el-cristo-conaripe",
+			"name": "Camping El Cristo",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe a Pucura km 1, Puente Seco",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 100,
+			"capacityNote": "Rango publicado: 100–120 personas (diciembre de 2023). El filtro utiliza 100, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": [],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping El Cristo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56961083041",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=1",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 1: Camping El Cristo",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "la-ruca-dona-teo",
+			"name": "La Ruca de Doña Teo",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe a Pucura km 1, Puente Seco",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 250,
+			"capacityNote": "250 personas, según listado municipal de diciembre de 2023. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Agua caliente", "Quincho", "Mesas y bancas"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "La Ruca de Doña Teo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56997826955",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "La Ruca de Doña Teo",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "litamanrov@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=1",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 1: La Ruca de Doña Teo",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "los-copihues-traitraico",
+			"name": "Camping Los Copihues",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe a Traitraico km 3",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 100,
+			"capacityNote": "Rango publicado: 100–120 personas (diciembre de 2023). El filtro utiliza 100, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Agua caliente", "Fogón"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Los Copihues",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56988696574",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Los Copihues",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "marisol.garrido.a@hotmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=1",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 1: Camping Los Copihues",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "nisoleufu",
+			"name": "Ecocamping Ñisoleufu",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe a Panguipulli km 4",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 250,
+			"capacityNote": "Rango publicado: 250–300 personas (diciembre de 2023). El filtro utiliza 250, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Agua caliente"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Ecocamping Ñisoleufu",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56956279390",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Ecocamping Ñisoleufu",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "jeazocar@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=1",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 1: Ecocamping Ñisoleufu",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "inalafquen-traitraico",
+			"name": "Camping Inalafquen",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe a Traitraico km 6",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 150,
+			"capacityNote": "Rango publicado: 150–200 personas (diciembre de 2023). El filtro utiliza 150, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Duchas"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Inalafquen",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56988696574",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Inalafquen",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "marisol.garrido.a@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=2",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 2: Camping Inalafquen",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "refugio-del-guerrero",
+			"name": "Camping Refugio del Guerrero",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe a Liquiñe km 7, Culán",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "Fuentes municipales discrepan: PDF 12-2023 (100 personas) y ficha web sin fecha (80). Confirmar aforo antes de filtrar por capacidad.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Duchas", "Agua caliente", "Mesas y bancas", "Quincho"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Refugio del Guerrero",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56956145511",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Refugio del Guerrero",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "refugiodelguerreroconaripe@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=2",
+					"kind": "web"
+				},
+				{
+					"label": "Fotos y servicios del directorio municipal",
+					"url": "https://sietelagos.cl/sturisticos/camping-refugio-del-guerrero/",
+					"kind": "fotos"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 2: Camping Refugio del Guerrero",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				},
+				{
+					"id": "panguipulli-ficha-web",
+					"title": "Turismo municipal: ficha del establecimiento",
+					"locator": "",
+					"type": "web",
+					"url": "https://sietelagos.cl/sturisticos/camping-refugio-del-guerrero/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Ficha accesible al revisar. No declara cuándo se actualizó su capacidad."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"capacityNote": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"water": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"toilets": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"electricity": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"tags": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [
+				{
+					"field": "capacity",
+					"value": "100 personas, según listado municipal de diciembre de 2023. Confirmar vigencia y recepción de un grupo único.",
+					"sourceId": "panguipulli-camping-2023"
+				},
+				{
+					"field": "capacity",
+					"value": "Ficha web municipal sin fecha de actualización: 80 personas.",
+					"sourceId": "panguipulli-ficha-web"
+				}
+			],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "el-roi-conaripe",
+			"name": "Camping El Roí",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe a Pucura km 10,5",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 80,
+			"capacityNote": "Rango publicado: 80–100 personas (diciembre de 2023). El filtro utiliza 80, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Duchas", "Agua caliente"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping El Roí",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56994519812",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping El Roí",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "bayeracevedo@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=2",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 2: Camping El Roí",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "el-viajero-conaripe",
+			"name": "Camping El Viajero",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Coñaripe a Los Cajones km 12",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 70,
+			"capacityNote": "Rango publicado: 70–80 personas (diciembre de 2023). El filtro utiliza 70, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Río"],
+			"tags": ["Duchas", "Agua caliente", "Quincho"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping El Viajero",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56974226926",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping El Viajero",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "gloriapavezv@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=2",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 2: Camping El Viajero",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "lofkoyam-liquine",
+			"name": "Camping Lofkoyam",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Liquiñe, ruta internacional Carirriñe s/n",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 160,
+			"capacityNote": "160 personas, según listado municipal de diciembre de 2023. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Duchas", "Quincho"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Lofkoyam",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56983619487",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Lofkoyam",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "neldatrafipan@yahoo.es",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=2",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 2: Camping Lofkoyam",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "chanlelfu-punahue",
+			"name": "Camping Chanlelfú, Punahue",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Ruta Choshuenco a Neltume, Punahue s/n",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 100,
+			"capacityNote": "100 personas, según listado municipal de diciembre de 2023. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Duchas", "Agua caliente", "Fogón", "Mesas y bancas", "Senderos"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Chanlelfú, Punahue",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56999485455",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Chanlelfú, Punahue",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "armandoaltamirano1951@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=3",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 3: Camping Chanlelfú, Punahue",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "rio-chan-chan",
+			"name": "Camping Río Chan Chan",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Cruce Lago Neltume a Liquiñe km 1,9",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 120,
+			"capacityNote": "Rango publicado: 120–150 personas (diciembre de 2023). El filtro utiliza 120, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Río"],
+			"tags": [],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Río Chan Chan",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56994170943",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Río Chan Chan",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "camping.chanchan@outlook.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=3",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 3: Camping Río Chan Chan",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "el-bosque-panguipulli",
+			"name": "Camping El Bosque, Panguipulli",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Padre Sigisfredo 241",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 40,
+			"capacityNote": "Ficha municipal web: 40 personas. Compatible con el rango histórico de 30–40. Confirmar vigencia con el lugar.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Lago"],
+			"tags": ["Agua caliente", "Duchas"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping El Bosque, Panguipulli",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56983061071",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping El Bosque, Panguipulli",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "esteban.lagos.reyes@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=4",
+					"kind": "web"
+				},
+				{
+					"label": "Fotos y servicios del directorio municipal",
+					"url": "https://sietelagos.cl/sturisticos/camping-el-bosque/",
+					"kind": "fotos"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 4: Camping El Bosque, Panguipulli",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				},
+				{
+					"id": "panguipulli-ficha-web",
+					"title": "Turismo municipal: ficha del establecimiento",
+					"locator": "",
+					"type": "web",
+					"url": "https://sietelagos.cl/sturisticos/camping-el-bosque/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Ficha accesible al revisar. No declara cuándo se actualizó su capacidad."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"capacityNote": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"water": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"toilets": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"electricity": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"tags": ["panguipulli-camping-2023", "panguipulli-ficha-web"],
+				"environments": ["panguipulli-camping-2023", "panguipulli-ficha-web"]
+			},
+			"observations": [
+				{
+					"field": "capacity",
+					"value": "Rango publicado: 30–40 personas (diciembre de 2023). El filtro utiliza 30, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+					"sourceId": "panguipulli-camping-2023"
+				},
+				{
+					"field": "capacity",
+					"value": "Ficha web municipal sin fecha de actualización: 40 personas.",
+					"sourceId": "panguipulli-ficha-web"
+				}
+			],
+			"notes": "El lago Panguipulli está próximo al camping; no se acredita orilla propia.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "llancalafquen",
+			"name": "Agrocamping Llancalafquén",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Panguipulli a Chauquén km 2",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 70,
+			"capacityNote": "Rango publicado: 70–80 personas (diciembre de 2023). El filtro utiliza 70, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Mesas y bancas"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Agrocamping Llancalafquén",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56981231434",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Agrocamping Llancalafquén",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "damaris859@hotmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=4",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 4: Agrocamping Llancalafquén",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "gerber-chauquen",
+			"name": "Camping Gerber",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Panguipulli a Chauquén km 5",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 80,
+			"capacityNote": "80 personas, según listado municipal de diciembre de 2023. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Agua caliente", "Quincho", "Mesas y bancas"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Gerber",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56932278965",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Gerber",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "campinggerber.cl@gmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=4",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 4: Camping Gerber",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "somolafquen-coihueco",
+			"name": "Camping Somolafquén",
+			"aliases": [],
+			"region": "Los Ríos",
+			"commune": "Panguipulli",
+			"locality": "Panguipulli a Choshuenco km 17, Coihueco",
+			"description": "Antecedente del directorio municipal de campings de Panguipulli.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": 60,
+			"capacityNote": "Rango publicado: 60–75 personas (diciembre de 2023). El filtro utiliza 60, extremo inferior del rango. Confirmar vigencia y recepción de un grupo único.",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "no",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Agua caliente"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Somolafquén",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56999967530",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				},
+				{
+					"name": "Camping Somolafquén",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "david-ayulef@hotmail.com",
+					"sourceId": "panguipulli-camping-2023",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha en directorio municipal (PDF)",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf#page=4",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "panguipulli-camping-2023",
+					"title": "Municipalidad de Panguipulli: Camping y Picnic",
+					"locator": "Página 4: Camping Somolafquén",
+					"type": "web",
+					"url": "https://sietelagos.cl/wp-content/uploads/2024/01/CAMPING-Y-PICNIC-2024.pdf",
+					"sourceDate": "2023-12",
+					"checkedAt": "2026-09-23",
+					"note": "El pie del PDF indica ACT. 12-2023. Aforo y servicios históricos publicados; requieren confirmación del establecimiento para la temporada actual."
+				}
+			],
+			"fieldSources": {
+				"name": ["panguipulli-camping-2023"],
+				"region": ["panguipulli-camping-2023"],
+				"commune": ["panguipulli-camping-2023"],
+				"locality": ["panguipulli-camping-2023"],
+				"accommodation": ["panguipulli-camping-2023"],
+				"capacity": ["panguipulli-camping-2023"],
+				"capacityNote": ["panguipulli-camping-2023"],
+				"water": ["panguipulli-camping-2023"],
+				"toilets": ["panguipulli-camping-2023"],
+				"electricity": ["panguipulli-camping-2023"],
+				"tags": ["panguipulli-camping-2023"],
+				"environments": ["panguipulli-camping-2023"]
+			},
+			"observations": [],
+			"notes": "",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "refugio-de-tuniche",
+			"name": "El Refugio de Tuniche",
+			"aliases": [],
+			"region": "O’Higgins",
+			"commune": "Las Cabras",
+			"locality": "",
+			"description": "Recinto que publica camping, cabañas y servicios para scouts.",
+			"accommodation": "mixto",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "sin-datos",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Piscina"],
+			"tags": ["Cabañas"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "El Refugio de Tuniche",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "correo",
+					"value": "contacto@elrefugiotuniche.cl",
+					"sourceId": "tuniche-web",
+					"public": true
+				},
+				{
+					"name": "El Refugio de Tuniche",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56971376329",
+					"sourceId": "tuniche-portada",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Fotos del recinto y cabañas",
+					"url": "https://elrefugiotuniche.cl/",
+					"kind": "fotos"
+				}
+			],
+			"sources": [
+				{
+					"id": "tuniche-web",
+					"title": "El Refugio de Tuniche: servicios",
+					"locator": "",
+					"type": "web",
+					"url": "https://elrefugiotuniche.cl/about.html",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": ""
+				},
+				{
+					"id": "tuniche-portada",
+					"title": "El Refugio de Tuniche: contacto y fotografías",
+					"locator": "",
+					"type": "web",
+					"url": "https://elrefugiotuniche.cl/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": ""
+				}
+			],
+			"fieldSources": {
+				"name": ["tuniche-web"],
+				"region": ["tuniche-web"],
+				"commune": ["tuniche-web"],
+				"locality": ["tuniche-web"],
+				"accommodation": ["tuniche-web"],
+				"environments": ["tuniche-web"],
+				"tags": ["tuniche-web"]
+			},
+			"observations": [],
+			"notes": "El lago Rapel se anuncia a unos 20 minutos; no se registra como acceso directo al lago. Capacidad, agua potable y baños del sector de carpas pendientes.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
+		},
+		{
+			"id": "playa-cau-cau",
+			"name": "Camping Playa Cau Cau",
+			"aliases": [],
+			"region": "Valparaíso",
+			"commune": "Puchuncaví",
+			"locality": "Horcón",
+			"description": "Camping en Horcón, con puestos individuales y servicios comunes.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Playa"],
+			"tags": ["Duchas"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Playa Cau Cau",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56945837888",
+					"sourceId": "caucau-web",
+					"public": true
+				},
+				{
+					"name": "Camping Playa Cau Cau",
+					"role": "Contacto publicado del establecimiento",
+					"kind": "telefono",
+					"value": "+56988135560",
+					"sourceId": "caucau-web",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Galería del camping",
+					"url": "https://campingplayacaucau.cl/galeria-de-fotos/",
+					"kind": "fotos"
+				},
+				{
+					"label": "Web del lugar",
+					"url": "https://campingplayacaucau.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "caucau-web",
+					"title": "Camping Playa Cau Cau: servicios y contacto",
+					"locator": "",
+					"type": "web",
+					"url": "https://campingplayacaucau.cl/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": ""
+				}
+			],
+			"fieldSources": {
+				"name": ["caucau-web"],
+				"region": ["caucau-web"],
+				"commune": ["caucau-web"],
+				"locality": ["caucau-web"],
+				"accommodation": ["caucau-web"],
+				"toilets": ["caucau-web"],
+				"electricity": ["caucau-web"],
+				"environments": ["caucau-web"],
+				"tags": ["caucau-web"]
+			},
+			"observations": [],
+			"notes": "La playa se anuncia a 8 minutos a pie. El recinto se presenta como tranquilo y sin fiestas; confirmar actividades y fogones scout. Agua potable y aforo no informados.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "informado"
 		}
 	],
 	"visits": [

@@ -13,7 +13,7 @@ const site = (id: string) => seed.sites.find((s) => s.id === id)!;
 const filter = (patch: Partial<typeof defaults>) => ({ ...defaults, tags: [], ...patch });
 
 test('la carga inicial conserva lugares, referencias únicas y estados históricos', () => {
-	assert.equal(seed.sites.length, 37);
+	assert.equal(seed.sites.length, 74);
 	assert.equal(seed.visits.length, 84);
 	assert.equal(seed.visits.filter((v) => v.status === 'cancelado').length, 1);
 	assert.equal(seed.visits.filter((v) => v.status === 'realizado').length, 74);
@@ -47,7 +47,11 @@ test('desconocido y baños en construcción no se anuncian como servicios dispon
 		)
 	);
 	assert.equal(matchSite(site('el-puquio'), strict).matches, true);
-	assert.equal(matchSite(site('el-puquio'), { ...strict, electricity: 'si' }).matches, false);
+	assert.equal(
+		matchSite({ ...site('el-puquio'), electricity: 'sin-datos' }, { ...strict, electricity: 'si' })
+			.matches,
+		false
+	);
 });
 test('superficies contradictorias y de acampada se conservan pendientes', () => {
 	assert.equal(site('lafken').areaHa, null);
@@ -66,8 +70,8 @@ test('superficies contradictorias y de acampada se conservan pendientes', () => 
 	);
 });
 test('distancia por carretera no se sustituye silenciosamente por línea recta', () => {
-	assert.equal(seed.sites.filter((s) => s.coordinates).length, 14);
-	assert.equal(seed.sites.filter((s) => s.distance?.roadKm !== null && s.distance).length, 9);
+	assert.equal(seed.sites.filter((s) => s.coordinates).length, 31);
+	assert.equal(seed.sites.filter((s) => s.distance?.roadKm !== null && s.distance).length, 26);
 	const s = site('lago-algormaz');
 	assert.equal(matchSite(s, filter({ maxDistance: '2000', unknown: false })).matches, false);
 	assert.equal(

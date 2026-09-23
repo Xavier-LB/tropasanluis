@@ -9,6 +9,7 @@
 		ArrowUp,
 		SlidersHorizontal,
 		Share2,
+		Download,
 		X
 	} from 'lucide-svelte';
 	import seed from '$lib/catalog/seed';
@@ -22,12 +23,12 @@
 		type Filters
 	} from '$lib/catalog/search';
 	import { fetchCatalog } from '$lib/catalog/api';
+	import { catalogCsv } from '$lib/catalog/export';
 	import NumberField from '$lib/catalog/NumberField.svelte';
 	let catalog = seed as Catalog;
 	let filters: Filters = readFilters($page.url.searchParams);
 	let filterUrl = $page.url;
-	let limit = 20,
-		sharing = '',
+	let sharing = '',
 		updateError = '';
 	let filtersOpen = false;
 	const labels: Record<string, string> = {
@@ -57,7 +58,6 @@
 	$: if ($page.url !== filterUrl) {
 		filterUrl = $page.url;
 		filters = readFilters($page.url.searchParams);
-		limit = 20;
 	}
 	$: catalogueQuery = filtersQuery(filters);
 	$: results = searchSites(catalog.sites, filters);
@@ -65,7 +65,6 @@
 	$: pendingCount = results.filter((r) => r.pending.length).length;
 	$: filterCount = active.length + filters.tags.length;
 	function syncUrl() {
-		limit = 20;
 		const q = filtersQuery(filters);
 		return goto('/sitios' + (q ? '?' + q : ''), {
 			replaceState: true,
@@ -89,6 +88,17 @@
 	function sortBy(sort: string) {
 		filters = { ...filters, sort };
 		syncUrl();
+	}
+	function download() {
+		const url = URL.createObjectURL(
+			new Blob([catalogCsv(results.map((r) => r.site))], { type: 'text/csv;charset=utf-8' })
+		);
+		const a = document.createElement('a');
+		a.href = url;
+		a.download = `sitios-campamento-${catalog.updatedAt.slice(0, 10)}.csv`;
+		a.click();
+		setTimeout(() => URL.revokeObjectURL(url), 1000);
+		sharing = `CSV descargado: ${results.length} lugares con los filtros y el orden actuales.`;
 	}
 	async function share() {
 		await syncUrl();
@@ -305,10 +315,17 @@
 					><option value="reviewed">Revisión reciente</option></select
 				></label
 			>
+			<button
+				type="button"
+				on:click={download}
+				disabled={!results.length}
+				title="Todos los campos de los resultados actuales, con fuentes y contactos"
+				><Download size={16} aria-hidden="true" />Excel / CSV</button
+			>
 		</div>
 		<p class="table-note" id="table-note">
-			S/d: sin datos. Servicios y capacidad por confirmar con el lugar. Distancia {filters.distanceMode ===
-			'straight'
+			S/d: sin datos. Aforos y servicios según fuentes, algunos de 2023; confirmar vigencia con el
+			lugar. Distancia {filters.distanceMode === 'straight'
 				? 'en línea recta'
 				: 'estimada por carretera'} desde Plaza de Armas.
 		</p>
@@ -391,12 +408,18 @@
 								>Agua<span class="column-unit">potable</span></th
 							>
 							<th scope="col" class="service-column">Baños</th>
+							<th scope="col" class="service-column">Electricidad</th>
+							<th scope="col" class="service-column">Acceso bus</th>
 							<th scope="col" class="tags-column">Entorno / etiquetas</th>
-							<th scope="col" class="file-column"><span class="sr-only">Ficha completa</span></th>
+							<th scope="col" class="contact-column">Contacto público</th>
+							<th scope="col" class="links-column">Enlaces</th>
+							<th scope="col" class="date-column"
+								>Revisión<span class="column-unit">documental</span></th
+							>
 						</tr></thead
 					>
 					<tbody
-						>{#each results.slice(0, limit) as { site, pending } (site.id)}
+						>{#each results as { site, pending } (site.id)}
 							{@const distance =
 								filters.distanceMode === 'straight'
 									? site.distance?.straightKm
@@ -408,6 +431,14 @@
 								...site.tags
 							].join(' · ')}
 							{@const href = `/sitios/${site.id}${catalogueQuery ? `?${catalogueQuery}` : ''}`}
+							{@const contact =
+								site.contacts.find((c) => c.kind === 'telefono') ||
+								site.contacts.find((c) => c.kind === 'correo')}
+							{@const photo = site.links.find((l) => l.kind === 'fotos')}
+							{@const web = site.links.find((l) => l.kind === 'web')}
+							{@const capacityDate = site.sources.find(
+								(s) => site.fieldSources.capacity?.includes(s.id) && s.sourceDate
+							)?.sourceDate}
 							<tr class="site-row">
 								<th scope="row" class="name-column"
 									><a class="site-name" {href}>{site.name}</a>{#if pending.length}<span
@@ -424,12 +455,19 @@
 								<td class="numeric" class:no-data={distance == null}
 									>{distance == null ? 'S/d' : formatNumber(distance)}</td
 								>
-								<td class="numeric" class:no-data={site.capacity === null}
+								<td
+									class="numeric"
+									class:no-data={site.capacity === null}
+									title={site.capacityNote || undefined}
 									>{site.capacity === null
 										? site.accommodation === 'cabanas'
 											? 'Cabañas'
-											: 'S/d'
-										: formatNumber(site.capacity)}</td
+											: site.observations.some((o) => o.field === 'capacity')
+												? 'Revisar'
+												: 'S/d'
+										: formatNumber(site.capacity)}{#if site.capacity !== null && capacityDate}<span
+											class="cell-secondary">ref. {capacityDate}</span
+										>{/if}</td
 								>
 								<td
 									class="numeric"
@@ -453,13 +491,48 @@
 												? 'En obra'
 												: 'S/d'}</td
 								>
+								{#each [site.electricity, site.bus] as service}<td
+										class:service-yes={service === 'si'}
+										class:no-data={service === 'sin-datos'}
+										>{service === 'si' ? 'Sí' : service === 'no' ? 'No' : 'S/d'}</td
+									>{/each}
 								<td class="tags-column"
 									><span class="table-tags" title={tags}>{tags || 'S/d'}</span></td
 								>
-								<td class="file-column"
-									><a class="file-link" {href} aria-label={`Ver ficha de ${site.name}`}
-										><ArrowRight size={17} aria-hidden="true" /></a
-									></td
+								<td class="contact-column"
+									>{#if contact}<a
+											class="table-contact"
+											href={(contact.kind === 'telefono' ? 'tel:' : 'mailto:') + contact.value}
+											>{contact.value}</a
+										>{:else}<span class="no-data">S/d</span>{/if}</td
+								>
+								<td class="links-column"
+									><div class="row-links">
+										{#if site.mapUrl}<a
+												href={site.mapUrl}
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label={`Mapa de ${site.name}`}>Mapa</a
+											>{/if}
+										{#if photo}<a
+												href={photo.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label={`Fotos de ${site.name}`}>Fotos</a
+											>{/if}
+										{#if web}<a
+												href={web.url}
+												target="_blank"
+												rel="noopener noreferrer"
+												aria-label={`Web de ${site.name}`}>Web</a
+											>{/if}
+										<a {href} aria-label={`Ver ficha de ${site.name}`}
+											>Ficha<ArrowRight size={13} aria-hidden="true" /></a
+										>
+									</div></td
+								>
+								<td class="date-column"
+									><time datetime={site.reviewedAt}>{site.reviewedAt}</time></td
 								>
 							</tr>
 						{/each}</tbody
@@ -468,10 +541,9 @@
 			</div>
 		{/if}
 		<div class="table-footer">
-			<span>Mostrando {Math.min(limit, results.length)} de {results.length}</span
-			>{#if results.length > limit}<button class="load-more" on:click={() => (limit += 20)}
-					>Mostrar más lugares ({results.length - limit} restantes)</button
-				>{/if}
+			<span
+				>Todos los resultados: {results.length} de {catalog.sites.length} sitios del catálogo</span
+			>
 			<button class="quiet" on:click={share}
 				><Share2 size={16} aria-hidden="true" />Compartir búsqueda</button
 			><a href="/sitios/guia">Cómo se mantienen los datos</a>

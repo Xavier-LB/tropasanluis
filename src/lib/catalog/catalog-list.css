@@ -103,6 +103,7 @@
 	display: flex;
 	align-items: center;
 	gap: 16px;
+	flex-wrap: wrap;
 	margin: 12px 0 4px;
 }
 .catalog-list .result-count {
@@ -133,7 +134,10 @@
 	margin: 8px 0 12px;
 }
 .catalog-list .scroll-hint {
-	display: none;
+	display: block;
+	font-size: 0.75rem;
+	color: var(--muted);
+	margin: 0 0 8px;
 }
 .catalog-list .mobile-label {
 	display: none;
@@ -152,7 +156,7 @@
 }
 .catalog-list .site-table {
 	width: 100%;
-	min-width: 1100px;
+	min-width: 1710px;
 	border-spacing: 0;
 	border-collapse: separate;
 	table-layout: fixed;
@@ -218,13 +222,38 @@
 	width: 85px;
 }
 .catalog-list .service-column {
-	width: 80px;
+	width: 100px;
 }
 .catalog-list .tags-column {
 	width: 175px;
 }
 .catalog-list .file-column {
 	width: 54px;
+}
+.catalog-list .contact-column {
+	width: 145px;
+}
+.catalog-list .links-column {
+	width: 225px;
+}
+.catalog-list .date-column {
+	width: 110px;
+	white-space: nowrap;
+}
+.catalog-list .row-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0 8px;
+}
+.catalog-list .row-links a,
+.catalog-list .table-contact {
+	display: inline-flex;
+	align-items: center;
+	min-height: 44px;
+	gap: 3px;
+}
+.catalog-list .row-links a {
+	min-width: 36px;
 }
 .catalog-list .site-row > * {
 	background: #fff;
