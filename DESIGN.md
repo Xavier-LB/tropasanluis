@@ -123,7 +123,6 @@ components:
   notice:
     backgroundColor: "{colors.notice}"
     textColor: "{colors.muted}"
-    typography: "{typography.label}"
     rounded: "{rounded.field}"
     padding: "14px 16px"
 ---
@@ -152,142 +151,107 @@ su código; no se consideran verificadas visualmente.
 
 ## Colors
 
-La paleta combina el rojo de la marca con neutros cálidos y claros. Los valores
-normativos están en el frontmatter; no se incorpora una paleta secundaria decorativa.
+El rojo Tropa (`primary`) conserva la marca en cabecera, acciones, vínculos y foco.
+Su variante oscura (`primary-dark`) corresponde al pie existente y al hover del
+botón principal. Navegación y filtros seleccionados usan rojos suaves con texto
+oscuro. No se incorpora una paleta secundaria decorativa.
 
-### Primary
-
-- **Rojo Tropa** (`primary`): cabecera existente, vínculos, botón principal, foco y selección de controles.
-- **Rojo Tropa oscuro** (`primary-dark`): pie del sitio y hover de la acción principal.
-- **Rojos suaves de selección** (`nav-selected`, `chip-selected`): separan navegación activa y filtros seleccionados. Sus textos y bordes tienen tokens propios.
-
-### Neutral
-
-- **Fondo del sitio** (`page`): conserva el color Stone 50 de Tailwind en su formato OKLCH original.
-- **Superficie blanca** (`surface`): campos, botones secundarios y panel de contacto.
-- **Tinta y texto secundario** (`ink`, `muted`): distinguen contenido principal de contexto, rótulos y procedencia.
-- **Líneas y bordes de campo** (`line`, `field-border`): separan filas y hacen visibles los controles.
-- **Paneles y avisos** (`panel`, `notice`): fondo suave para filtros y explicaciones.
-- **Etiquetas** (`tag`): datos breves que acompañan un lugar.
-
-El texto pendiente usa `pending-ink`; los avisos de error y recepción usan las
-familias `error` y `success`. El mensaje escrito lleva el significado del estado.
-Las rampas del sidecar son muestras tonales derivadas para el panel de diseño;
-no añaden colores aprobados a la implementación.
+Los neutros cálidos separan fondo (`page`, Stone 50 en su OKLCH original), campos
+blancos (`surface`), texto (`ink`, `muted`), líneas y paneles. Los estados usan las
+familias `error` y `success`, siempre acompañadas de texto. `pending-ink` señala
+datos pendientes. Los valores normativos están en el frontmatter. Las rampas del
+sidecar son muestras derivadas para el panel, no colores adicionales implementados.
 
 ## Typography
 
-**Display Font:** Inter, con la pila de respaldo indicada en el frontmatter.
-**Body Font:** la misma familia. No se incorpora una segunda familia ni una mono.
+**Display Font:** Inter, con la pila de respaldo del frontmatter.
+**Body Font:** la misma familia; no se añade otra familia ni una mono.
 
-La jerarquía procede del peso y el tamaño. El catálogo usa títulos compactos y
-texto con interlineado amplio; no utiliza texto en mayúsculas como recurso general.
+La jerarquía usa tamaño y peso: `display` para títulos de página, `headline` para
+secciones, `title` para subtítulos, `body` para lectura, `label` para campos y
+`metadata` para datos breves. Los títulos principales bajan a (2rem) hasta (900px)
+y a (1.8rem) hasta (500px). Los nombres enlazados de resultados usan (1.22rem).
+Las introducciones miden hasta (65ch), las descripciones de resultados hasta
+(70ch) y la lectura explicativa hasta (72ch).
 
-- **Display:** título de página del catálogo. Baja a (2rem) hasta (900px), y a (1.8rem) hasta (500px).
-- **Headline:** secciones de la ficha y del formulario.
-- **Title:** subtítulos. Los nombres enlazados de resultados tienen una variante de (1.22rem).
-- **Body:** descripción y lectura general. Las introducciones miden hasta (65ch), las descripciones de resultados hasta (70ch) y los textos explicativos hasta (72ch).
-- **Label / Button:** etiquetas y acciones, con pesos diferenciados.
-- **Metadata:** rótulos breves de datos, etiquetas y procedencia. No reemplaza al tamaño de lectura general.
-
-Los pesos intermedios del CSS, incluido (750) y (650), se documentan tal como están
-implementados. La carga actual de Inter solicita pesos (400), (500), (600), (700)
-y (800); no se asume una fuente variable adicional.
+Los pesos (750) y (650) se registran tal como están en CSS; la carga actual de
+Inter solicita (400), (500), (600), (700) y (800), sin asumir otra fuente variable.
 
 ## Layout
 
-El marco compartido usa un contenedor máximo de (80rem), márgenes automáticos,
-laterales de (16px) que pasan a (32px) desde (1024px), y espacio vertical principal
-de (32px). La cabecera fija conserva el escudo y el nombre; el contenido reserva
-su altura. El menú de escritorio aparece desde (1024px); bajo ese ancho se usa
-el menú móvil existente.
+El marco compartido tiene máximo de (80rem), márgenes automáticos y laterales de
+(16px), ampliados a (32px) desde (1024px). La cabecera fija conserva su espacio
+reservado. La navegación global pasa a escritorio desde (1024px).
 
-En el catálogo, la búsqueda ocupa todo el ancho. La zona de trabajo usa una
-columna de filtros de (260px) y una columna de resultados flexible. Los resultados
-son filas separadas por líneas. Las fichas de detalle usan contenido flexible y
-una columna lateral de (290px), separadas por (38px). El formulario tiene un máximo
-de (760px) y dos columnas con separación de (19px).
+El catálogo presenta búsqueda a todo el ancho, filtros de (260px) y resultados
+flexibles, separados por el espacio `workspace`. El detalle combina contenido
+flexible y lateral de (290px), con separación de (38px). El formulario tiene un
+máximo de (760px) y dos columnas separadas por (19px).
 
-Hasta (900px), búsqueda y detalle pasan a una columna, con separación de (24px),
-y los filtros se abren mediante un control desplegable. El contenido de filtros
-usa dos columnas; hasta (500px) pasa a una. En ese último ancho los cuatro datos
-resumidos de cada lugar pasan a dos columnas y el formulario queda en una columna.
-La navegación local y las acciones pueden envolver en varias líneas.
+Hasta (900px), catálogo y detalle usan una columna; los filtros se despliegan y
+sus campos ocupan dos columnas. Hasta (500px), filtros y formulario pasan a una
+columna, y los cuatro datos resumidos pasan a dos. Navegación local y acciones
+pueden envolver. Las filas de detalle reservan (160px) al rótulo, o (115px) hasta
+(500px). Los contactos y enlaces largos pueden partirse sin desbordar.
 
-Las filas de datos del detalle mantienen rótulo y valor: la columna de rótulo es
-(160px), o (115px) hasta (500px). Los textos largos y enlaces de contacto pueden
-partirse sin desbordar. La composición específica y su comportamiento se mantienen
-en `.impeccable/surfaces/sitios.md`.
+La composición específica se conserva en `.impeccable/surfaces/sitios.md`.
 
 ## Elevation & Depth
 
-El catálogo es plano: no aplica sombras a resultados, filtros, controles ni paneles.
-La profundidad se expresa con fondo, borde y separación. El marco existente sí
-usa sombra bajo la cabecera, reforzada al desplazar la página. Esa excepción no
-convierte las filas del catálogo en tarjetas elevadas. El sidecar conserva la
-sombra y las transiciones del marco por separado de los componentes del catálogo.
+El catálogo es plano: usa fondos, bordes y separación, sin sombras en sus
+resultados, campos o paneles. El marco existente sí proyecta una sombra bajo la
+cabecera, reforzada al desplazar la página; el sidecar conserva esa excepción.
 
-Las transiciones de botones del catálogo duran (150ms) y afectan fondo y borde.
-`prefers-reduced-motion` elimina transiciones dentro del catálogo. La cabecera
-mantiene su comportamiento previo de ocultarse al bajar y aparecer al subir;
-no se extiende esa animación al contenido.
+Los botones del catálogo transicionan fondo y borde en (150ms).
+`prefers-reduced-motion` elimina sus transiciones. La cabecera mantiene su
+comportamiento previo de ocultarse al bajar y aparecer al subir; no se aplica
+esa animación al contenido.
 
 ## Shapes
 
-Campos y navegación usan la curva pequeña `field`; botones usan `button` y
-paneles `panel`. Las etiquetas compactas usan `tag`. Se conservan bordes finos de
-(1px), sin contornos decorativos. Los resultados son filas abiertas, sin radio ni
-fondo individual. El estado vacío usa un borde discontinuo y radio de (9px).
+Campos y navegación usan `field`; botones, `button`; paneles, `panel`; y etiquetas
+compactas, `tag`. Los bordes son de (1px). Los resultados son filas abiertas, sin
+fondo individual ni radio. El estado vacío usa borde discontinuo y radio de (9px).
 
 ## Components
 
 ### Buttons
 
-La acción principal tiene rojo de marca, texto blanco y hover oscuro. El botón
-secundario tiene fondo blanco y borde visible. La variante discreta usa texto rojo
-y fondo transparente. Todas conservan altura mínima de (44px), incluido
-“Limpiar”, los preajustes de personas y los filtros seleccionados.
-
-El foco visible es un contorno rojo de (2px), separado (3px). Durante el envío,
-los botones deshabilitados tienen opacidad (0.6) y cursor de espera. No se define
-una animación adicional de pulsación.
+La acción principal usa rojo y texto blanco, la secundaria blanco y borde, y la
+discreta texto rojo. La altura mínima es (44px), incluidos “Limpiar”, los
+preajustes y los filtros seleccionados. El foco tiene contorno rojo de (2px) y
+separación de (3px). Los botones deshabilitados usan opacidad (0.6).
 
 ### Chips
 
-Los filtros activos son botones con fondo rojo suave, borde y una cruz acompañada
-por nombre accesible. Las etiquetas descriptivas son texto compacto sin acción,
-con fondo neutro. No se debe confundir su tamaño visual con un área táctil.
+Los filtros activos son botones de rojo suave con cruz y nombre accesible.
+Las etiquetas descriptivas son texto neutro compacto sin acción.
 
 ### Cards / Containers
 
-El panel de filtros agrupa campos con fondo neutro y borde. El panel de contacto
-usa blanco y borde, con espaciado interno que baja a (18px) en móvil estrecho.
-Los avisos informativos usan fondo neutro sin sombra; los estados de error y éxito
-agregan borde y color semántico. Los resultados mantienen título, ubicación,
-descripción, datos, etiquetas y procedencia en una fila de lectura vertical.
+Filtros: panel neutro con borde. Contactos: blanco con borde y espaciado interno
+que baja a (18px) en móvil estrecho. Avisos: fondo neutro sin sombra, con variantes
+semánticas de error y recepción. Resultados: filas con título, ubicación,
+descripción, datos, etiquetas y procedencia.
 
 ### Inputs / Fields
 
-Campos blancos con borde visible, altura mínima de (44px), etiqueta encima y
-ayuda debajo cuando corresponde. La búsqueda tiene altura mínima de (52px) y un
-icono de lupa; el textarea parte de (130px) y permite ajustar su altura.
-Los checkboxes miden (19px), dentro de etiquetas interactivas de al menos (44px)
-de alto. Se conserva el mismo contorno de foco que los botones.
+Campos blancos con etiqueta persistente, borde y altura mínima de (44px).
+La búsqueda mide al menos (52px), con lupa. El textarea parte de (130px) y permite
+ajustar su altura. Los checkboxes de (19px) viven en etiquetas interactivas de
+al menos (44px) de alto. Todos comparten el foco visible de los botones.
 
 ### Navigation
 
-La navegación global mantiene la cabecera roja y los elementos del sitio.
-La navegación local usa texto secundario, fondo rojo suave para la sección activa,
-altura mínima de (44px), y una línea inferior. En la ficha, el vínculo de retorno
-conserva los filtros transportados en la URL. Los títulos y “Ver ficha” llevan la
-misma consulta de búsqueda al detalle.
+Se conserva la cabecera roja global. La navegación local usa texto secundario,
+selección roja suave, altura mínima de (44px) y línea inferior. Los enlaces a
+fichas transportan los filtros en la URL; “Volver al catálogo” los conserva.
 
 ### Data rows and status
 
-Las parejas de rótulo y valor se alinean en columnas, con la procedencia en texto
-secundario bajo el dato cuando está disponible. Los estados “Por confirmar” y
-“Sin información” se escriben explícitamente. El aviso de recepción del formulario
-solo aparece después de la respuesta real de guardado.
+Rótulo y valor se alinean en columnas, con procedencia secundaria cuando existe.
+“Por confirmar” y “Sin información” se escriben explícitamente. El formulario
+solo confirma recepción después de una respuesta real de guardado.
 
 ## Do's and Don'ts
 
