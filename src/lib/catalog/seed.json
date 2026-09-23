@@ -1,7 +1,7 @@
 {
 	"schemaVersion": 1,
-	"version": "semilla-2026-09-22",
-	"updatedAt": "2026-09-22",
+	"version": "semilla-2026-09-23-presentaciones",
+	"updatedAt": "2026-09-23T12:35:30.000Z",
 	"sites": [
 		{
 			"id": "hacienda-picarquin",
@@ -56,20 +56,36 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-22",
 					"note": "Antecedente de una planilla del grupo. La fecha del nombre del archivo no confirma la vigencia del dato. El original contiene notas internas y no se distribuye."
+				},
+				{
+					"id": "presentacion-picarquin-2023",
+					"title": "Picarquín 2023.pdf",
+					"locator": "Páginas 4 y 8",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
 				}
 			],
 			"fieldSources": {
 				"name": ["2024-SITIOS-2"],
 				"region": ["2024-SITIOS-2"],
 				"commune": ["2024-SITIOS-2"],
-				"locality": ["2024-SITIOS-2"],
+				"locality": ["2024-SITIOS-2", "presentacion-picarquin-2023"],
 				"description": ["2024-SITIOS-2"],
 				"accommodation": ["2024-SITIOS-2"],
 				"tags": ["2024-SITIOS-2"]
 			},
-			"observations": [],
+			"observations": [
+				{
+					"field": "Distancia informada",
+					"value": "La presentación menciona 75 km de Santiago sin precisar punto de origen ni medición. No se incorpora a la distancia normalizada desde Plaza de Armas.",
+					"sourceId": "presentacion-picarquin-2023"
+				}
+			],
 			"notes": "",
-			"reviewedAt": "2026-09-22",
+			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
 		},
@@ -192,7 +208,7 @@
 		{
 			"id": "cosvac-el-tabito",
 			"name": "Cabañas COSVAC El Tabito",
-			"aliases": [],
+			"aliases": ["Cabañas El Tabito"],
 			"region": "Valparaíso",
 			"commune": "El Tabo",
 			"locality": "Av. Central 53, El Tabito",
@@ -206,12 +222,12 @@
 			"campAreaHa": null,
 			"areaNote": "",
 			"water": "sin-datos",
-			"toilets": "sin-datos",
+			"toilets": "si",
 			"toiletCount": null,
-			"electricity": "sin-datos",
+			"electricity": "si",
 			"bus": "sin-datos",
 			"environments": [],
-			"tags": ["Cabañas"],
+			"tags": ["Cabañas", "Agua caliente"],
 			"mapUrl": "",
 			"coordinates": null,
 			"distance": null,
@@ -227,22 +243,45 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-22",
 					"note": "Antecedente de una planilla del grupo. La fecha del nombre del archivo no confirma la vigencia del dato. El original contiene notas internas y no se distribuye."
+				},
+				{
+					"id": "presentacion-tabito-2023",
+					"title": "El Tabito 2023.pdf y .docx",
+					"locator": "PDF, páginas 4, 5 y 8; copia equivalente en Word",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
+				},
+				{
+					"id": "presentacion-tabo-2026",
+					"title": "El Tabo 2026.pptx",
+					"locator": "Diapositivas 5 y 7",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
 				}
 			],
 			"fieldSources": {
 				"name": ["2024-SITIOS-5"],
 				"region": ["2024-SITIOS-5"],
 				"commune": ["2024-SITIOS-5"],
-				"locality": ["2024-SITIOS-5"],
+				"locality": ["2024-SITIOS-5", "presentacion-tabito-2023"],
 				"description": ["2024-SITIOS-5"],
 				"accommodation": ["2024-SITIOS-5"],
 				"areaHa": ["2024-SITIOS-5"],
-				"tags": ["2024-SITIOS-5"],
-				"notes": ["2024-SITIOS-5"]
+				"tags": ["2024-SITIOS-5", "presentacion-tabo-2026"],
+				"notes": ["2024-SITIOS-5", "presentacion-tabo-2026"],
+				"aliases": ["presentacion-tabito-2023"],
+				"toilets": ["presentacion-tabo-2026"],
+				"electricity": ["presentacion-tabo-2026"]
 			},
 			"observations": [],
-			"notes": "El número de cabañas y la capacidad total del recinto están por confirmar.",
-			"reviewedAt": "2026-09-22",
+			"notes": "Las presentaciones de 2023 y 2026 muestran el mismo conjunto de cabañas. La de 2026 informa baños, agua caliente, luz y enchufes. Agua potable, número de cabañas y capacidad total por confirmar. El traslado en bus planificado no certifica su acceso hasta las cabañas.",
+			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
 		},
@@ -500,7 +539,7 @@
 			"campAreaHa": null,
 			"areaNote": "",
 			"water": "sin-datos",
-			"toilets": "sin-datos",
+			"toilets": "si",
 			"toiletCount": null,
 			"electricity": "sin-datos",
 			"bus": "sin-datos",
@@ -521,6 +560,16 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-22",
 					"note": "Antecedente de una planilla del grupo. La fecha del nombre del archivo no confirma la vigencia del dato. El original contiene notas internas y no se distribuye."
+				},
+				{
+					"id": "presentacion-melipilla-2024",
+					"title": "PPT otoño 2024.pdf",
+					"locator": "Páginas 1, 11 y 12",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": "2024-04-20",
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
 				}
 			],
 			"fieldSources": {
@@ -531,11 +580,12 @@
 				"description": ["2024-SITIOS-10"],
 				"accommodation": ["2024-SITIOS-10"],
 				"tags": ["2024-SITIOS-10"],
-				"notes": ["2024-SITIOS-10"]
+				"notes": ["2024-SITIOS-10", "presentacion-melipilla-2024"],
+				"toilets": ["presentacion-melipilla-2024"]
 			},
 			"observations": [],
-			"notes": "La fuente advierte barro con lluvia y electricidad alejada del lugar de acampada. Acceso de bus y servicios por confirmar.",
-			"reviewedAt": "2026-09-22",
+			"notes": "La presentación de otoño 2024 informa baños químicos para ese campamento; confirmar que estén disponibles en una nueva reserva. La planilla advierte barro con lluvia y electricidad alejada del lugar de acampada. Transporte en bus contemplado, acceso hasta el sector de carpas por confirmar.",
+			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
 		},
@@ -1122,16 +1172,28 @@
 			"areaHa": 18,
 			"campAreaHa": null,
 			"areaNote": "La planilla describe 12 ha de campo y 6 ha de bosque; no son 18 ha de superficie plana para carpas.",
-			"water": "sin-datos",
+			"water": "si",
 			"toilets": "si",
 			"toiletCount": null,
 			"electricity": "sin-datos",
 			"bus": "sin-datos",
 			"environments": ["Río", "Piscina"],
-			"tags": ["Bosque", "Fogón"],
+			"tags": ["Bosque", "Fogón", "Lavaderos"],
 			"mapUrl": "https://maps.app.goo.gl/36xuSJqQSP7tKzr27",
-			"coordinates": null,
-			"distance": null,
+			"coordinates": {
+				"lat": -34.038084,
+				"lon": -70.590432,
+				"precision": "aproximada",
+				"sourceUrl": ""
+			},
+			"distance": {
+				"roadKm": null,
+				"straightKm": 67.0,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Distancia geodésica (haversine) a la coordenada indicada en la fuente. Sin estimación por carretera.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": ""
+			},
 			"contacts": [],
 			"links": [],
 			"sources": [
@@ -1144,6 +1206,16 @@
 					"sourceDate": null,
 					"checkedAt": "2026-09-22",
 					"note": "Antecedente de una planilla del grupo. La fecha del nombre del archivo no confirma la vigencia del dato. El original contiene notas internas y no se distribuye."
+				},
+				{
+					"id": "presentacion-codegua-2025",
+					"title": "Codegua 2025.pptx",
+					"locator": "Diapositiva 8",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
 				}
 			],
 			"fieldSources": {
@@ -1154,14 +1226,17 @@
 				"accommodation": ["2024-SITIOS-19"],
 				"areaHa": ["2024-SITIOS-19"],
 				"areaNote": ["2024-SITIOS-19"],
-				"toilets": ["2024-SITIOS-19"],
+				"toilets": ["2024-SITIOS-19", "presentacion-codegua-2025"],
 				"environments": ["2024-SITIOS-19"],
-				"tags": ["2024-SITIOS-19"],
-				"notes": ["2024-SITIOS-19"]
+				"tags": ["2024-SITIOS-19", "presentacion-codegua-2025"],
+				"notes": ["2024-SITIOS-19", "presentacion-codegua-2025"],
+				"water": ["presentacion-codegua-2025"],
+				"coordinates": ["presentacion-codegua-2025"],
+				"distance": ["presentacion-codegua-2025"]
 			},
 			"observations": [],
-			"notes": "La capacidad y potabilidad no están confirmadas en esta ficha. No se deducen desde el tamaño del predio.",
-			"reviewedAt": "2026-09-22",
+			"notes": "La presentación de invierno 2025 informa agua potable, baños y lavaderos, y contempla transporte en bus. Capacidad y acceso del bus hasta el sector de acampada por confirmar.",
+			"reviewedAt": "2026-09-23",
 			"verifiedAt": null,
 			"status": "por-confirmar"
 		},
@@ -2250,6 +2325,617 @@
 			"reviewedAt": "2026-09-22",
 			"verifiedAt": null,
 			"status": "por-confirmar"
+		},
+		{
+			"id": "parque-callejones",
+			"name": "Parque Campo Escuela Callejones",
+			"aliases": [],
+			"region": "O’Higgins",
+			"commune": "Codegua",
+			"locality": "Camino Real 20, sector Callejones",
+			"description": "Parque escuela scout con sectores para campamentos. Las presentaciones de otoño 2023 y 2026 describen el mismo recinto.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "",
+			"lodgingCapacity": null,
+			"areaHa": 19,
+			"campAreaHa": null,
+			"areaNote": "Superficie total informada en la presentación de 2023; no corresponde necesariamente a superficie habilitada para carpas.",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Lavaderos"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Parque Campo Escuela Callejones",
+					"role": "Canal comercial publicado; vigencia por confirmar",
+					"kind": "telefono",
+					"value": "+56961684301",
+					"sourceId": "web-callejones-contacto",
+					"public": true
+				},
+				{
+					"name": "Parque Campo Escuela Callejones",
+					"role": "Canal comercial publicado; vigencia por confirmar",
+					"kind": "correo",
+					"value": "contacto@callejones.cl",
+					"sourceId": "web-callejones-contacto",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Sitio oficial",
+					"url": "https://callejones.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "presentacion-callejones-2023",
+					"title": "Callejones 2023.pptx",
+					"locator": "Diapositivas 11 y 15",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
+				},
+				{
+					"id": "presentacion-callejones-2026",
+					"title": "Callejones 2026.pptx",
+					"locator": "Diapositivas 10 a 12",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
+				},
+				{
+					"id": "web-callejones-contacto",
+					"title": "Parque Callejones: sitio oficial",
+					"locator": "Contacto del establecimiento",
+					"type": "web",
+					"url": "https://callejones.cl/lota/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Página pública de una actividad de 2022. Contactos publicados por el parque, cuya vigencia debe confirmarse."
+				}
+			],
+			"fieldSources": {
+				"name": ["presentacion-callejones-2023"],
+				"region": ["presentacion-callejones-2023"],
+				"commune": ["presentacion-callejones-2023", "web-callejones-contacto"],
+				"locality": ["presentacion-callejones-2023"],
+				"areaHa": ["presentacion-callejones-2023"],
+				"areaNote": ["presentacion-callejones-2023"],
+				"accommodation": ["presentacion-callejones-2023"],
+				"description": ["presentacion-callejones-2023"],
+				"water": ["presentacion-callejones-2026"],
+				"toilets": ["presentacion-callejones-2026"],
+				"electricity": ["presentacion-callejones-2026"],
+				"tags": ["presentacion-callejones-2026"],
+				"notes": ["presentacion-callejones-2026"],
+				"contacts": ["web-callejones-contacto"]
+			},
+			"observations": [],
+			"notes": "La presentación de 2026 informa agua potable, baños, lavaderos y enchufes. Contempla llegar en tren a Graneros y caminar aproximadamente media hora. Capacidad máxima y acceso de bus al predio por confirmar.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "por-confirmar"
+		},
+		{
+			"id": "parque-mallinco",
+			"name": "Parque Mallinco",
+			"aliases": [],
+			"region": "Metropolitana",
+			"commune": "Peñaflor",
+			"locality": "Los Acacios 11, parcela 11",
+			"description": "Parque en Peñaflor identificado por la dirección de la presentación de otoño 2025. Se informan agua potable, baños, duchas y lavaderos.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Duchas", "Lavaderos"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [],
+			"links": [
+				{
+					"label": "Sitio oficial del parque",
+					"url": "https://www.espaciomallinco.cl/",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "presentacion-penaflor-2025",
+					"title": "Peñaflor 2025.pptx",
+					"locator": "Diapositivas 7 y 8",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
+				},
+				{
+					"id": "web-mallinco-identidad",
+					"title": "Parque Mallinco: perfil institucional",
+					"locator": "Dirección del parque",
+					"type": "web",
+					"url": "https://cl.linkedin.com/company/mallinco",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Perfil institucional público del parque. La dirección Los Acacios 11 coincide con la presentación de otoño 2025."
+				}
+			],
+			"fieldSources": {
+				"name": ["presentacion-penaflor-2025", "web-mallinco-identidad"],
+				"region": ["presentacion-penaflor-2025"],
+				"commune": ["presentacion-penaflor-2025"],
+				"locality": ["presentacion-penaflor-2025", "web-mallinco-identidad"],
+				"accommodation": ["presentacion-penaflor-2025"],
+				"water": ["presentacion-penaflor-2025"],
+				"toilets": ["presentacion-penaflor-2025"],
+				"tags": ["presentacion-penaflor-2025"],
+				"description": ["presentacion-penaflor-2025"],
+				"notes": ["presentacion-penaflor-2025"]
+			},
+			"observations": [],
+			"notes": "La presentación contempla transporte de ida en bus. Cupos, superficie disponible para campamento y acceso del bus por confirmar.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "por-confirmar"
+		},
+		{
+			"id": "los-quillayes-tome",
+			"name": "Camping Los Quillayes de Tomé",
+			"aliases": [],
+			"region": "Biobío",
+			"commune": "Tomé",
+			"locality": "",
+			"description": "Sitio privado con acceso al río Rafael. La presentación de verano 2024 informa 18 hectáreas, agua potable, baños, duchas frías y lavaderos.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "",
+			"lodgingCapacity": null,
+			"areaHa": 18,
+			"campAreaHa": null,
+			"areaNote": "Superficie del sitio informada en la presentación de 2024. Superficie útil para carpas por confirmar.",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Río"],
+			"tags": ["Duchas", "Lavaderos"],
+			"mapUrl": "",
+			"coordinates": {
+				"lat": -36.59527777777778,
+				"lon": -72.84205555555555,
+				"precision": "aproximada",
+				"sourceUrl": ""
+			},
+			"distance": {
+				"roadKm": null,
+				"straightKm": 403.9,
+				"origin": "Plaza de Armas de Santiago",
+				"method": "Distancia geodésica (haversine) a la coordenada indicada en la fuente. Sin estimación por carretera.",
+				"calculatedAt": "2026-09-23",
+				"sourceUrl": ""
+			},
+			"contacts": [],
+			"links": [],
+			"sources": [
+				{
+					"id": "presentacion-quillayes-2024",
+					"title": "Quillayes de Tomé 2024.pdf",
+					"locator": "Páginas 4 a 8",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
+				}
+			],
+			"fieldSources": {
+				"name": ["presentacion-quillayes-2024"],
+				"region": ["presentacion-quillayes-2024"],
+				"commune": ["presentacion-quillayes-2024"],
+				"areaHa": ["presentacion-quillayes-2024"],
+				"areaNote": ["presentacion-quillayes-2024"],
+				"water": ["presentacion-quillayes-2024"],
+				"toilets": ["presentacion-quillayes-2024"],
+				"electricity": ["presentacion-quillayes-2024"],
+				"accommodation": ["presentacion-quillayes-2024"],
+				"environments": ["presentacion-quillayes-2024"],
+				"tags": ["presentacion-quillayes-2024"],
+				"description": ["presentacion-quillayes-2024"],
+				"notes": ["presentacion-quillayes-2024"],
+				"coordinates": ["presentacion-quillayes-2024"],
+				"distance": ["presentacion-quillayes-2024"]
+			},
+			"observations": [],
+			"notes": "Electricidad informada en administración, no en todas las zonas de carpas. La presentación contempla transporte en bus. No confundir con campings del mismo nombre en otras comunas.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "por-confirmar"
+		},
+		{
+			"id": "las-nalcas-rupanco",
+			"name": "Camping Las Nalcas, Lago Rupanco",
+			"aliases": [],
+			"region": "Los Lagos",
+			"commune": "Puerto Octay",
+			"locality": "Puerto Rico, Lago Rupanco",
+			"description": "Camping en Puerto Rico, junto al lago Rupanco. La presentación de verano 2026 informa baños, lavaderos y agua potable.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": null,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": ["Lago"],
+			"tags": ["Lavaderos"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Las Nalcas, Lago Rupanco",
+					"role": "Canal comercial publicado; vigencia por confirmar",
+					"kind": "telefono",
+					"value": "+56941269680",
+					"sourceId": "web-las-nalcas",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Ficha pública y fotos",
+					"url": "https://campingenchile.cl/categoria/camping/camping-las-nalcas%2C-puerto-rico-lago-rupanco/4559",
+					"kind": "fotos"
+				}
+			],
+			"sources": [
+				{
+					"id": "presentacion-rupanco-2026",
+					"title": "Rupanco 2026.pptx",
+					"locator": "Diapositivas 3 y 4",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Antecedente de una presentación del grupo. Describe lo informado o planificado en esa fecha; no acredita una inspección actual. El original privado no se distribuye."
+				},
+				{
+					"id": "web-las-nalcas",
+					"title": "Camping en Chile: Las Nalcas, Puerto Rico Lago Rupanco",
+					"locator": "Ficha pública del camping",
+					"type": "web",
+					"url": "https://campingenchile.cl/categoria/camping/camping-las-nalcas%2C-puerto-rico-lago-rupanco/4559",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Directorio público consultado para contrastar identidad y contacto comercial. Reconfirmar condiciones con el camping."
+				}
+			],
+			"fieldSources": {
+				"name": ["presentacion-rupanco-2026"],
+				"region": ["presentacion-rupanco-2026"],
+				"commune": ["presentacion-rupanco-2026"],
+				"locality": ["presentacion-rupanco-2026", "web-las-nalcas"],
+				"water": ["presentacion-rupanco-2026"],
+				"toilets": ["presentacion-rupanco-2026"],
+				"accommodation": ["presentacion-rupanco-2026"],
+				"environments": ["presentacion-rupanco-2026"],
+				"tags": ["presentacion-rupanco-2026"],
+				"description": ["presentacion-rupanco-2026"],
+				"notes": ["presentacion-rupanco-2026"],
+				"contacts": ["web-las-nalcas"]
+			},
+			"observations": [],
+			"notes": "Capacidad y superficie habilitada por confirmar. La presentación contempla transporte en bus; no acredita el acceso final de un bus al sector de acampada.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "por-confirmar"
+		},
+		{
+			"id": "el-trauco-ensenada",
+			"name": "Camping El Trauco",
+			"aliases": [],
+			"region": "Los Lagos",
+			"commune": "Puerto Varas",
+			"locality": "Ensenada, Ruta 225, km 43",
+			"description": "Camping en Ensenada, a orillas del lago Llanquihue. La propuesta CAMVER informa ocho baños y cuatro duchas con agua caliente.",
+			"accommodation": "carpas",
+			"kind": "equipado",
+			"capacity": null,
+			"capacityNote": "",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "si",
+			"toilets": "si",
+			"toiletCount": 8,
+			"electricity": "si",
+			"bus": "sin-datos",
+			"environments": ["Lago", "Playa"],
+			"tags": ["Duchas", "Agua caliente"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping El Trauco",
+					"role": "Canal comercial publicado; vigencia por confirmar",
+					"kind": "telefono",
+					"value": "+56965040147",
+					"sourceId": "web-trauco-contacto",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Fotos y servicios",
+					"url": "https://campingenchile.cl/camping/camping-el-trauco-3539",
+					"kind": "fotos"
+				},
+				{
+					"label": "Instagram del camping",
+					"url": "https://www.instagram.com/camping_el_trauco/",
+					"kind": "fotos"
+				}
+			],
+			"sources": [
+				{
+					"id": "propuesta-camver-2026",
+					"title": "Presentación Opción CAMVER.pptx",
+					"locator": "Diapositivas 2, 3 y 6",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": "2025-10-08",
+					"checkedAt": "2026-09-23",
+					"note": "Propuesta de alternativas para verano 2026, compartida en octubre de 2025. No acredita un campamento realizado por Tropa San Luis. Original privado no distribuido."
+				},
+				{
+					"id": "web-trauco-servicios",
+					"title": "Camping en Chile: El Trauco",
+					"locator": "Ficha pública de servicios",
+					"type": "web",
+					"url": "https://campingenchile.cl/camping/camping-el-trauco-3539",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Directorio público consultado. Servicios informados, vigencia por confirmar."
+				},
+				{
+					"id": "web-trauco-contacto",
+					"title": "CampingChile: El Trauco",
+					"locator": "Contacto comercial publicado",
+					"type": "web",
+					"url": "https://www.campingchile.cl/los-lagos/puerto-varas/camping-el-trauco/",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Directorio público: coincide con el contacto incluido en la propuesta CAMVER."
+				}
+			],
+			"fieldSources": {
+				"name": ["propuesta-camver-2026"],
+				"region": ["propuesta-camver-2026"],
+				"commune": ["propuesta-camver-2026"],
+				"locality": ["propuesta-camver-2026", "web-trauco-servicios"],
+				"accommodation": ["propuesta-camver-2026"],
+				"kind": ["propuesta-camver-2026"],
+				"toilets": ["propuesta-camver-2026"],
+				"toiletCount": ["propuesta-camver-2026"],
+				"tags": ["propuesta-camver-2026"],
+				"description": ["propuesta-camver-2026"],
+				"notes": ["propuesta-camver-2026"],
+				"water": ["web-trauco-servicios"],
+				"electricity": ["web-trauco-servicios"],
+				"environments": ["web-trauco-servicios"],
+				"contacts": ["web-trauco-contacto"]
+			},
+			"observations": [],
+			"notes": "El reglamento fotografiado en la propuesta limita las fogatas a parrillas de la administración y prohíbe parlantes. Confirmar reglas y disponibilidad para grupos.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "por-confirmar"
+		},
+		{
+			"id": "el-molino-puerto-octay",
+			"name": "Camping El Molino, Puerto Octay",
+			"aliases": [],
+			"region": "Los Lagos",
+			"commune": "Puerto Octay",
+			"locality": "Costanera Pichi Juan 125",
+			"description": "Camping de Puerto Octay. La propuesta CAMVER informa seis baños y seis duchas con agua caliente.",
+			"accommodation": "carpas",
+			"kind": "equipado",
+			"capacity": null,
+			"capacityNote": "",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": 6,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Duchas", "Agua caliente"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping El Molino, Puerto Octay",
+					"role": "Canal comercial publicado; vigencia por confirmar",
+					"kind": "telefono",
+					"value": "+56995450667",
+					"sourceId": "web-turismo-puerto-octay",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Directorio municipal",
+					"url": "https://munipuertoctay.cl/conoce-octay.html",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "propuesta-camver-molino-2026",
+					"title": "Presentación Opción CAMVER.pptx",
+					"locator": "Diapositivas 7 a 11",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": "2025-10-08",
+					"checkedAt": "2026-09-23",
+					"note": "Propuesta de alternativas para verano 2026, compartida en octubre de 2025. No acredita un campamento realizado por Tropa San Luis. Original privado no distribuido."
+				},
+				{
+					"id": "web-turismo-puerto-octay",
+					"title": "Municipalidad de Puerto Octay: servicios de alojamiento",
+					"locator": "Camping El Molino y Camping Club de Pesca y Caza",
+					"type": "web",
+					"url": "https://munipuertoctay.cl/conoce-octay.html",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Directorio municipal público consultado. Los contactos publicados difieren de los teléfonos privados de la propuesta; no se mezclan."
+				}
+			],
+			"fieldSources": {
+				"name": ["propuesta-camver-molino-2026"],
+				"region": ["propuesta-camver-molino-2026"],
+				"commune": ["propuesta-camver-molino-2026"],
+				"accommodation": ["propuesta-camver-molino-2026"],
+				"kind": ["propuesta-camver-molino-2026"],
+				"toilets": ["propuesta-camver-molino-2026"],
+				"toiletCount": ["propuesta-camver-molino-2026"],
+				"tags": ["propuesta-camver-molino-2026"],
+				"description": ["propuesta-camver-molino-2026"],
+				"notes": ["propuesta-camver-molino-2026"],
+				"locality": ["web-turismo-puerto-octay"],
+				"contacts": ["web-turismo-puerto-octay"]
+			},
+			"observations": [],
+			"notes": "Tarifa de referencia en la propuesta recibida en octubre de 2025: $7.000 por persona y noche. No es una cotización vigente. Capacidad máxima por confirmar.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "por-confirmar"
+		},
+		{
+			"id": "pesca-caza-centinela",
+			"name": "Camping Club de Pesca y Caza, Centinela",
+			"aliases": [],
+			"region": "Los Lagos",
+			"commune": "Puerto Octay",
+			"locality": "Km 3,5, península de Centinela",
+			"description": "Camping del sector Centinela de Puerto Octay. La propuesta CAMVER informa seis baños y seis duchas con agua caliente.",
+			"accommodation": "carpas",
+			"kind": "por-confirmar",
+			"capacity": null,
+			"capacityNote": "",
+			"lodgingCapacity": null,
+			"areaHa": null,
+			"campAreaHa": null,
+			"areaNote": "",
+			"water": "sin-datos",
+			"toilets": "si",
+			"toiletCount": 6,
+			"electricity": "sin-datos",
+			"bus": "sin-datos",
+			"environments": [],
+			"tags": ["Duchas", "Agua caliente"],
+			"mapUrl": "",
+			"coordinates": null,
+			"distance": null,
+			"contacts": [
+				{
+					"name": "Camping Club de Pesca y Caza, Centinela",
+					"role": "Canal comercial publicado; vigencia por confirmar",
+					"kind": "telefono",
+					"value": "+56994434838",
+					"sourceId": "web-turismo-puerto-octay",
+					"public": true
+				}
+			],
+			"links": [
+				{
+					"label": "Directorio municipal",
+					"url": "https://munipuertoctay.cl/conoce-octay.html",
+					"kind": "web"
+				}
+			],
+			"sources": [
+				{
+					"id": "propuesta-camver-centinela-2026",
+					"title": "Presentación Opción CAMVER.pptx",
+					"locator": "Diapositivas 12 a 15",
+					"type": "archivo",
+					"url": "",
+					"sourceDate": "2025-10-08",
+					"checkedAt": "2026-09-23",
+					"note": "Propuesta de alternativas para verano 2026, compartida en octubre de 2025. No acredita un campamento realizado por Tropa San Luis. Original privado no distribuido."
+				},
+				{
+					"id": "web-turismo-puerto-octay",
+					"title": "Municipalidad de Puerto Octay: servicios de alojamiento",
+					"locator": "Camping El Molino y Camping Club de Pesca y Caza",
+					"type": "web",
+					"url": "https://munipuertoctay.cl/conoce-octay.html",
+					"sourceDate": null,
+					"checkedAt": "2026-09-23",
+					"note": "Directorio municipal público consultado. Los contactos publicados difieren de los teléfonos privados de la propuesta; no se mezclan."
+				}
+			],
+			"fieldSources": {
+				"name": ["propuesta-camver-centinela-2026", "web-turismo-puerto-octay"],
+				"region": ["propuesta-camver-centinela-2026"],
+				"commune": ["propuesta-camver-centinela-2026"],
+				"accommodation": ["propuesta-camver-centinela-2026"],
+				"toilets": ["propuesta-camver-centinela-2026"],
+				"toiletCount": ["propuesta-camver-centinela-2026"],
+				"tags": ["propuesta-camver-centinela-2026"],
+				"description": ["propuesta-camver-centinela-2026"],
+				"notes": ["propuesta-camver-centinela-2026"],
+				"locality": ["web-turismo-puerto-octay"],
+				"contacts": ["web-turismo-puerto-octay"]
+			},
+			"observations": [],
+			"notes": "La propuesta recibida en octubre de 2025 menciona $4.000 por noche para grupos de más de 60 personas y $4.500 para menos de 60. No define el caso de exactamente 60 ni acredita capacidad máxima. Tarifas históricas por reconfirmar.",
+			"reviewedAt": "2026-09-23",
+			"verifiedAt": null,
+			"status": "por-confirmar"
 		}
 	],
 	"visits": [
@@ -3131,13 +3817,13 @@
 		},
 		{
 			"id": "historia-74",
-			"siteId": null,
+			"siteId": "los-quillayes-tome",
 			"place": "Quillayes de Tomé",
 			"group": "Tropa San Luis",
 			"date": "2024",
 			"status": "realizado",
 			"people": null,
-			"notes": "Campamento de verano del historial público. Período: 2024. Predio exacto por identificar.",
+			"notes": "Campamento de verano realizado según el historial público. El predio se identifica con la presentación Quillayes de Tomé 2024, que programaba del 13 al 23 de enero. Las fechas exactas de asistencia y número de participantes están por confirmar.",
 			"sourceUrl": "https://tropasanluis.cl/historia",
 			"public": true
 		},
@@ -3151,6 +3837,114 @@
 			"people": null,
 			"notes": "Campamento de verano del historial público. Período: 2025. Predio exacto por identificar.",
 			"sourceUrl": "https://tropasanluis.cl/historia",
+			"public": true
+		},
+		{
+			"id": "presentacion-parque-callejones-2023-04-28",
+			"siteId": "parque-callejones",
+			"place": "Parque Campo Escuela Callejones",
+			"group": "Tropa San Luis",
+			"date": "2023-04-28",
+			"status": "por-confirmar",
+			"people": null,
+			"notes": "Campamento de otoño programado del 2023-04-28 al 2023-05-01, según Callejones 2023.pptx. Realización y asistencia por confirmar; la presentación es de planificación.",
+			"sourceUrl": "",
+			"public": true
+		},
+		{
+			"id": "presentacion-cosvac-el-tabito-2023-07-12",
+			"siteId": "cosvac-el-tabito",
+			"place": "Cabañas COSVAC El Tabito",
+			"group": "Tropa San Luis",
+			"date": "2023-07-12",
+			"status": "por-confirmar",
+			"people": null,
+			"notes": "Campamento de invierno programado del 2023-07-12 al 2023-07-16, según El Tabito 2023.pdf y .docx. Realización y asistencia por confirmar; la presentación es de planificación.",
+			"sourceUrl": "",
+			"public": true
+		},
+		{
+			"id": "presentacion-hacienda-picarquin-2023-10-26",
+			"siteId": "hacienda-picarquin",
+			"place": "Hacienda Picarquín",
+			"group": "Tropa San Luis",
+			"date": "2023-10-26",
+			"status": "por-confirmar",
+			"people": null,
+			"notes": "Campamento de primavera programado del 2023-10-26 al 2023-10-28, según Picarquín 2023.pdf. Realización y asistencia por confirmar; la presentación es de planificación.",
+			"sourceUrl": "",
+			"public": true
+		},
+		{
+			"id": "presentacion-airsoft-ranger-camp-2024-05-17",
+			"siteId": "airsoft-ranger-camp",
+			"place": "Airsoft Ranger Camp",
+			"group": "Tropa San Luis",
+			"date": "2024-05-17",
+			"status": "por-confirmar",
+			"people": null,
+			"notes": "Campamento de otoño programado del 2024-05-17 al 2024-05-20, según PPT otoño 2024.pdf. Realización y asistencia por confirmar; la presentación es de planificación.",
+			"sourceUrl": "",
+			"public": true
+		},
+		{
+			"id": "presentacion-parque-mallinco-2025-05-01",
+			"siteId": "parque-mallinco",
+			"place": "Parque Mallinco",
+			"group": "Tropa San Luis",
+			"date": "2025-05-01",
+			"status": "por-confirmar",
+			"people": null,
+			"notes": "Campamento de otoño programado del 2025-05-01 al 2025-05-03, según Peñaflor 2025.pptx. Realización y asistencia por confirmar; la presentación es de planificación.",
+			"sourceUrl": "",
+			"public": true
+		},
+		{
+			"id": "presentacion-ketrawe-2025-08-14",
+			"siteId": "ketrawe",
+			"place": "Ketrawe Campo Vivo",
+			"group": "Tropa San Luis",
+			"date": "2025-08-14",
+			"status": "por-confirmar",
+			"people": null,
+			"notes": "Campamento de invierno programado del 2025-08-14 al 2025-08-16, según Codegua 2025.pptx. Realización y asistencia por confirmar; la presentación es de planificación.",
+			"sourceUrl": "",
+			"public": true
+		},
+		{
+			"id": "presentacion-las-nalcas-rupanco-2026-01-09",
+			"siteId": "las-nalcas-rupanco",
+			"place": "Camping Las Nalcas, Lago Rupanco",
+			"group": "Tropa San Luis",
+			"date": "2026-01-09",
+			"status": "por-confirmar",
+			"people": null,
+			"notes": "Campamento de verano programado del 2026-01-09 al 2026-01-21, según Rupanco 2026.pptx. Realización y asistencia por confirmar; la presentación es de planificación.",
+			"sourceUrl": "",
+			"public": true
+		},
+		{
+			"id": "presentacion-parque-callejones-2026-05-21",
+			"siteId": "parque-callejones",
+			"place": "Parque Campo Escuela Callejones",
+			"group": "Tropa San Luis",
+			"date": "2026-05-21",
+			"status": "por-confirmar",
+			"people": null,
+			"notes": "Campamento de otoño programado del 2026-05-21 al 2026-05-23, según Callejones 2026.pptx. Realización y asistencia por confirmar; la presentación es de planificación.",
+			"sourceUrl": "",
+			"public": true
+		},
+		{
+			"id": "presentacion-cosvac-el-tabito-2026-08-21",
+			"siteId": "cosvac-el-tabito",
+			"place": "Cabañas COSVAC El Tabito",
+			"group": "Tropa San Luis",
+			"date": "2026-08-21",
+			"status": "por-confirmar",
+			"people": null,
+			"notes": "Campamento de invierno programado del 2026-08-21 al 2026-08-23, según El Tabo 2026.pptx. Realización y asistencia por confirmar; la presentación es de planificación.",
+			"sourceUrl": "",
 			"public": true
 		}
 	]

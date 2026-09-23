@@ -6,7 +6,15 @@ La sección `/sitios` usa una carga revisada en `src/lib/catalog/seed.json` y ac
 
 30 lugares, procedentes de 33 filas de las listas 2024 y avanzada. Quilches, Lafken y Chitakelindo conservan varias referencias en una sola ficha. Lafken mantiene el conflicto 20/25 ha sin asignar una superficie arbitraria. 75 registros del historial de verano, incluyendo una suspensión; la localidad de un campamento no acredita un predio exacto. Los originales y el volcado antiguo de Facebook se conservan fuera de este repositorio público.
 
-Las fechas de revisión indican cuándo ordenamos el dato, no una inspección del lugar. Las distancias parten de Plaza de Armas de Santiago: 12 coordenadas de referencias originales y 9 rutas estimadas de automóvil con OSRM/OSM. Los casos sin ruta mantienen solo línea recta, explícitamente separada. Ninguna estimación certifica acceso de bus. Fuentes pendientes: listas más antiguas, Word y publicaciones de Facebook.
+Las fechas de revisión indican cuándo ordenamos el dato, no una inspección del lugar. Las distancias parten de Plaza de Armas de Santiago: 14 coordenadas de referencias originales y 9 rutas estimadas de automóvil con OSRM/OSM. Los casos sin ruta mantienen solo línea recta, explícitamente separada. Ninguna estimación certifica acceso de bus. Fuentes pendientes: listas más antiguas, Word y publicaciones de Facebook.
+
+### Presentaciones incorporadas el 23 de septiembre de 2026
+
+El catálogo contiene ahora **37 sitios y 84 antecedentes de campamentos**. Se agregaron Callejones, Mallinco, Los Quillayes de Tomé, Las Nalcas de Rupanco, El Trauco, El Molino de Puerto Octay y Club de Pesca y Caza de Centinela. Se enriquecieron Ketrawe, COSVAC El Tabito, Picarquín y Airsoft Ranger Camp sin crear fichas duplicadas.
+
+Las presentaciones aportan nueve planes con realización **por confirmar**. El verano 2024 de Los Quillayes se asoció al historial existente; no se duplicó ni se inventaron asistentes. Se conservan 74 campamentos realizados y una suspensión del historial original. La tarifa para grupos de más de 60 personas no acredita capacidad máxima. Las áreas de croquis sin confirmar no se incorporan como superficies medidas.
+
+Cada dato conserva su documento y página o diapositiva de procedencia. Los contactos comerciales nuevos se contrastaron con páginas públicas; las tarjetas personales, conversaciones y originales con datos de participantes permanecen fuera de este repositorio.
 
 ## Actualización para responsables
 

@@ -13,12 +13,13 @@ const site = (id: string) => seed.sites.find((s) => s.id === id)!;
 const filter = (patch: Partial<typeof defaults>) => ({ ...defaults, tags: [], ...patch });
 
 test('la carga inicial conserva lugares, referencias únicas y estados históricos', () => {
-	assert.equal(seed.sites.length, 30);
-	assert.equal(seed.visits.length, 75);
+	assert.equal(seed.sites.length, 37);
+	assert.equal(seed.visits.length, 84);
 	assert.equal(seed.visits.filter((v) => v.status === 'cancelado').length, 1);
-	assert.ok(seed.visits.every((v) => v.siteId === null));
+	assert.equal(seed.visits.filter((v) => v.status === 'realizado').length, 74);
+	assert.equal(seed.visits.filter((v) => v.status === 'por-confirmar').length, 9);
 	const rows = seed.sites.flatMap((s) =>
-		s.sources.filter((r) => r.type === 'archivo').map((r) => r.id)
+		s.sources.filter((r) => /^(2024-SITIOS-|avanzada-)/.test(r.id)).map((r) => r.id)
 	);
 	assert.equal(rows.length, 33);
 	assert.equal(new Set(rows).size, 33);
@@ -65,7 +66,7 @@ test('superficies contradictorias y de acampada se conservan pendientes', () => 
 	);
 });
 test('distancia por carretera no se sustituye silenciosamente por línea recta', () => {
-	assert.equal(seed.sites.filter((s) => s.coordinates).length, 12);
+	assert.equal(seed.sites.filter((s) => s.coordinates).length, 14);
 	assert.equal(seed.sites.filter((s) => s.distance?.roadKm !== null && s.distance).length, 9);
 	const s = site('lago-algormaz');
 	assert.equal(matchSite(s, filter({ maxDistance: '2000', unknown: false })).matches, false);
@@ -73,6 +74,44 @@ test('distancia por carretera no se sustituye silenciosamente por línea recta',
 		matchSite(s, filter({ maxDistance: '2000', distanceMode: 'straight', unknown: false })).matches,
 		true
 	);
+});
+test('las presentaciones no convierten planes, tarifas ni buses contratados en capacidad acreditada', () => {
+	const plans = seed.visits.filter((v) => v.id.startsWith('presentacion-'));
+	assert.equal(plans.length, 9);
+	assert.ok(plans.every((v) => v.status === 'por-confirmar' && v.people === null));
+	assert.equal(site('pesca-caza-centinela').capacity, null);
+	assert.match(site('pesca-caza-centinela').notes, /más de 60 personas/);
+	for (const id of ['parque-callejones', 'parque-mallinco', 'las-nalcas-rupanco', 'ketrawe']) {
+		assert.equal(site(id).capacity, null);
+		assert.equal(site(id).bus, 'sin-datos');
+	}
+	assert.equal(site('las-nalcas-rupanco').areaHa, null);
+});
+test('los documentos repetidos enriquecen la ficha y relacionan el historial existente', () => {
+	const tabito = site('cosvac-el-tabito');
+	assert.ok(tabito.sources.some((s) => s.id === 'presentacion-tabito-2023'));
+	assert.ok(tabito.sources.some((s) => s.id === 'presentacion-tabo-2026'));
+	assert.equal(tabito.water, 'sin-datos');
+	assert.equal(tabito.capacity, null);
+	assert.equal(site('ketrawe').water, 'si');
+	const quillayes = seed.visits.filter((v) => v.siteId === 'los-quillayes-tome');
+	assert.equal(quillayes.length, 1);
+	assert.equal(quillayes[0].id, 'historia-74');
+	assert.equal(quillayes[0].status, 'realizado');
+	assert.equal(quillayes[0].date, '2024');
+	assert.equal(site('los-quillayes-tome').campAreaHa, null);
+	assert.equal(site('los-quillayes-tome').distance?.roadKm, null);
+});
+test('los nuevos contactos tienen respaldo web y no proceden de las tarjetas privadas', () => {
+	for (const s of seed.sites.filter((s) => s.sources.some((r) => r.checkedAt === '2026-09-23'))) {
+		for (const contact of s.contacts.filter((c) => c.kind !== 'web')) {
+			const source = s.sources.find((r) => r.id === contact.sourceId)!;
+			assert.equal(source.type, 'web');
+			assert.ok(source.url.startsWith('https://'));
+		}
+	}
+	assert.equal(site('el-molino-puerto-octay').contacts[0].value, '+56995450667');
+	assert.equal(site('pesca-caza-centinela').contacts[0].value, '+56994434838');
 });
 test('filtros compartibles, búsqueda sin tildes, etiquetas y nulos al final', () => {
 	const f = filter({
