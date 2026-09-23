@@ -11,25 +11,14 @@ import seed from '../../src/lib/catalog/seed';
 const { JSDOM } = createRequire(import.meta.url)('jsdom');
 const kit = resolve('node_modules/@sveltejs/kit/src/runtime');
 let bundle: string;
-const draftKey = 'tropa-sitios-aporte-v1';
-const savedForm = {
-	id: '11111111-1111-4111-8111-111111111111',
-	type: 'correccion',
-	siteId: seed.sites[0].id,
-	name: 'Nombre corregido',
-	region: 'Maule',
-	locality: 'Localidad corregida',
-	content: 'Corrección pendiente de envío',
-	contributor: 'Revisión sintética',
-	email: 'privado@example.com',
-	permission: true
-};
 before(async () => {
 	const result = await build({
 		stdin: {
 			contents: `
 import Catalog from './src/routes/sitios/+page.svelte';
-import Contribution from './src/routes/sitios/aportar/+page.svelte';
+import History from './src/routes/sitios/historial/+page.svelte';
+import Guide from './src/routes/sitios/guia/+page.svelte';
+import { load as retiredForm } from './src/routes/sitios/aportar/+page.ts';
 import Detail from './src/routes/sitios/[id]/+page.svelte';
 import Root from './tests/catalogo/fixtures/Router.svelte';
 import { start as startRouter, goto } from '${kit}/client/client.js';
@@ -49,10 +38,12 @@ export const start = () => startRouter({
  nodes: [
   async () => ({}), async () => ({}),
   async () => ({ component: Catalog }),
-  async () => ({ component: Contribution }),
-  async () => ({ component: Detail })
+  async () => ({ universal: { load: retiredForm } }),
+  async () => ({ component: Detail }),
+  async () => ({ component: History }),
+  async () => ({ component: Guide })
  ],
- dictionary: { '/sitios': [2], '/sitios/aportar': [3], '/sitios/[id]': [4] },
+ dictionary: { '/sitios': [2], '/sitios/aportar': [3], '/sitios/historial': [5], '/sitios/guia': [6], '/sitios/[id]': [4] },
  server_loads: [], matchers: {},
  hooks: { reroute: () => {}, handleError: ({ error }) => { throw error; } }
 }, document.body);
@@ -115,12 +106,7 @@ export const start = () => startRouter({
 	});
 	bundle = result.outputFiles[0].text;
 });
-async function open(
-	t: { after(fn: () => Promise<void>): void },
-	route: string,
-	query = '',
-	draft?: object
-) {
+async function open(t: { after(fn: () => Promise<void>): void }, route: string, query = '') {
 	const dom = new JSDOM('', {
 		url: `https://tropasanluis.cl/sitios${route ? '/' + route : ''}${query}`,
 		runScripts: 'outside-only',
@@ -131,6 +117,8 @@ async function open(
 	w.HTMLElement.prototype.scrollIntoView = () => {};
 	w.Request = Request;
 	w.Response = Response;
+	w.TextEncoder = TextEncoder;
+	w.TextDecoder = TextDecoder;
 	w.SVGAElement = w.SVGElement;
 	w.IntersectionObserver = class {
 		observe() {}
@@ -145,7 +133,6 @@ async function open(
 	}[] = [];
 	w.fetch = (_url: string, options?: RequestInit) =>
 		new Promise((respond, reject) => requests.push({ options, respond, reject }));
-	if (draft) w.localStorage.setItem(draftKey, JSON.stringify(draft));
 	w.eval(bundle);
 	await w.CatalogoTest.start();
 	const settle = async () => {
@@ -175,18 +162,11 @@ async function open(
 		);
 		await settle();
 	};
-	const submit = async () => {
-		w.document
-			.querySelector('form')!
-			.dispatchEvent(new w.Event('submit', { bubbles: true, cancelable: true }));
-		await settle();
-	};
 	return {
 		w,
 		requests,
 		field,
 		edit,
-		submit,
 		settle,
 		load: async (catalog = seed) => {
 			requests
@@ -200,88 +180,6 @@ async function open(
 		}
 	};
 }
-const draft = (form = savedForm) => ({ savedAt: Date.now(), form });
-
-test('recargar sitio/tipo recupera el borrador coincidente, su ID y los datos privados', async (t) => {
-	const f = await open(t, 'aportar', `?sitio=${savedForm.siteId}&tipo=correccion`, draft());
-	assert.equal(f.field('Qué información').value, savedForm.content);
-	assert.equal(f.field('Correo').value, savedForm.email);
-	assert.equal((f.field('Tengo autorización') as HTMLInputElement).checked, false);
-	await f.edit('Qué información', 'Corrección ampliada');
-	const stored = JSON.parse(f.w.localStorage.getItem(draftKey)).form;
-	assert.equal(stored.id, savedForm.id);
-	assert.equal(stored.siteId, savedForm.siteId);
-	assert.equal(stored.type, savedForm.type);
-});
-
-test('restaurar correcciones no aplica defaults del sitio ni antes ni después del fetch', async (t) => {
-	for (const query of ['', `?sitio=${savedForm.siteId}&tipo=correccion`]) {
-		const f = await open(t, 'aportar', query, draft());
-		for (const loaded of [false, true]) {
-			if (loaded) await f.load();
-			assert.equal(f.field('Nombre del lugar').value, savedForm.name);
-			assert.equal(f.field('Región').value, savedForm.region);
-			assert.equal(f.field('Comuna o localidad').value, savedForm.locality);
-		}
-	}
-});
-
-test('borradores ajenos o vencidos no contaminan un enlace nuevo', async (t) => {
-	for (const saved of [
-		draft({ ...savedForm, siteId: seed.sites[1].id }),
-		draft({ ...savedForm, type: 'visita' }),
-		{ ...draft(), savedAt: Date.now() - 8 * 86400000 }
-	]) {
-		const f = await open(t, 'aportar', `?sitio=${savedForm.siteId}&tipo=correccion`, saved);
-		assert.equal(f.field('Nombre del lugar').value, seed.sites[0].name);
-		assert.equal(f.field('Qué información').value, '');
-		await f.edit('Qué información', 'Aporte nuevo');
-		assert.notEqual(JSON.parse(f.w.localStorage.getItem(draftKey)).form.id, savedForm.id);
-	}
-});
-
-test('sitio que solo existe en el catálogo vivo se precarga al resolver el fetch', async (t) => {
-	const site = {
-		...seed.sites[0],
-		id: 'solo-vivo',
-		name: 'Lugar nuevo',
-		region: 'Maule' as const,
-		locality: 'Localidad nueva'
-	};
-	const f = await open(t, 'aportar', '?sitio=solo-vivo&tipo=correccion');
-	await f.load({ ...seed, sites: [...seed.sites, site] });
-	assert.equal(f.field('Ya existe').value, site.id);
-	assert.equal(f.field('Nombre del lugar').value, site.name);
-	assert.equal(f.field('Región').value, site.region);
-	assert.equal(f.field('Comuna o localidad').value, site.locality);
-});
-
-test('fetch tardío respeta ediciones y borradores de sitios solo vivos', async (t) => {
-	const site = {
-		...seed.sites[0],
-		id: 'solo-vivo',
-		name: 'Lugar nuevo',
-		region: 'Maule' as const,
-		locality: 'Localidad nueva'
-	};
-	const catalog = { ...seed, sites: [...seed.sites, site] };
-	const f = await open(t, 'aportar', '?sitio=solo-vivo&tipo=correccion');
-	await f.edit('Nombre del lugar', 'Nombre editado durante la carga');
-	await f.load(catalog);
-	assert.equal(f.field('Nombre del lugar').value, 'Nombre editado durante la carga');
-	assert.equal(f.field('Comuna o localidad').value, site.locality);
-	const restored = await open(
-		t,
-		'aportar',
-		'?sitio=solo-vivo&tipo=correccion',
-		draft({ ...savedForm, siteId: site.id })
-	);
-	await restored.load(catalog);
-	assert.equal(restored.field('Nombre del lugar').value, savedForm.name);
-	assert.equal(restored.field('Región').value, savedForm.region);
-	assert.equal(restored.field('Comuna o localidad').value, savedForm.locality);
-});
-
 test('navegación dentro de /sitios sincroniza controles, resultados y límite sin revertir filtros locales', async (t) => {
 	const f = await open(t, '', '?q=puquio');
 	await f.load();
@@ -397,129 +295,24 @@ test('abrir ficha y Back restaura filtros, resultados y URL con el historial rea
 	}
 });
 
-test('409 conserva el aporte, renueva su referencia y permite reenviar sin perder el borrador', async (t) => {
-	const f = await open(t, 'aportar', '', draft());
+test('las rutas de consulta conservan contenido sin acciones de ingreso', async (t) => {
+	for (const route of ['', 'las-nalcas-rupanco', 'historial', 'guia']) {
+		const f = await open(t, route);
+		if (route !== 'guia') await f.load();
+		assert.ok(f.w.document.querySelector('h1')?.textContent);
+		assert.equal(f.w.document.querySelector('a[href*="/aportar"]'), null);
+		assert.equal(f.w.document.querySelector('input[type="email"], textarea'), null);
+		assert.equal(
+			f.requests.some((r) => r.options?.method === 'POST'),
+			false
+		);
+	}
+});
+
+test('un enlace antiguo de aportes vuelve al catálogo sin mostrar el formulario', async (t) => {
+	const f = await open(t, 'aportar', '?tipo=visita&sitio=las-nalcas-rupanco');
 	await f.load();
-	f.field('Tengo autorización').click();
-	await f.submit();
-	const sent = f.requests.at(-1)!;
-	const original = JSON.parse(sent.options!.body as string);
-	assert.equal(original.id, savedForm.id);
-	sent.respond({
-		ok: false,
-		status: 409,
-		json: async () => ({ error: 'Referencia en conflicto' })
-	});
-	await f.settle();
-	const recovered = JSON.parse(f.w.localStorage.getItem(draftKey)).form;
-	assert.notEqual(recovered.id, original.id);
-	assert.match(recovered.id, /^[0-9a-f]{8}-(?:[0-9a-f]{4}-){3}[0-9a-f]{12}$/);
-	assert.equal(recovered.content, original.content);
-	assert.equal(recovered.email, original.email);
-	assert.equal(f.field('Qué información').value, original.content);
-	assert.match(
-		f.w.document.querySelector('[role="alert"]').textContent,
-		/referencia nueva.*Vuelve a enviarlo/
-	);
-	await f.submit();
-	const retry = f.requests.at(-1)!;
-	assert.deepEqual(JSON.parse(retry.options!.body as string), { ...original, id: recovered.id });
-	// Una confirmación perdida mantiene el ID para que el siguiente intento sea idempotente.
-	retry.reject(new Error('Sin conexión'));
-	await f.settle();
-	assert.equal(JSON.parse(f.w.localStorage.getItem(draftKey)).form.id, recovered.id);
-	await f.submit();
-	const last = f.requests.at(-1)!;
-	assert.deepEqual(JSON.parse(last.options!.body as string), { ...original, id: recovered.id });
-	last.respond({ ok: true, json: async () => ({ id: recovered.id, status: 'pendiente' }) });
-	await f.settle();
-	assert.equal(f.w.localStorage.getItem(draftKey), null);
-	assert.match(f.w.document.body.textContent, /Tu aporte quedó recibido/);
-});
-
-test('el envío pendiente bloquea todos los campos y tipos; tras un error permite editar y reintentar', async (t) => {
-	for (const type of ['sitio', 'texto', 'correccion', 'visita']) {
-		const f = await open(t, 'aportar', '', {
-			savedAt: Date.now(),
-			form: { ...savedForm, type, visitDate: '2026', group: 'Grupo sintético' }
-		});
-		await f.load();
-		f.field('Tengo autorización').click();
-		await f.submit();
-		const sent = f.requests.at(-1)!;
-		assert.equal(sent.options?.method, 'POST');
-		for (const node of f.w.document.querySelectorAll('input, select, textarea, button')) {
-			assert.ok(node.matches(':disabled'), `${type}: ${node.outerHTML}`);
-		}
-		const count = f.requests.length;
-		await f.submit();
-		assert.equal(f.requests.length, count, 'no envía dos veces mientras está pendiente');
-		sent.respond({ ok: false, status: 503, json: async () => ({ error: 'Reintenta más tarde' }) });
-		await f.settle();
-		const stored = JSON.parse(f.w.localStorage.getItem(draftKey)).form;
-		assert.equal(stored.id, savedForm.id);
-		assert.equal(stored.content, savedForm.content);
-		assert.equal(f.w.document.querySelectorAll(':disabled').length, 0);
-		await f.edit(
-			type === 'texto' ? 'Pega el texto' : 'Qué información',
-			'Contenido ampliado después del error'
-		);
-		assert.equal(
-			JSON.parse(f.w.localStorage.getItem(draftKey)).form.content,
-			'Contenido ampliado después del error'
-		);
-		await f.submit();
-		const retry = f.requests.at(-1)!;
-		assert.equal(
-			JSON.parse(retry.options!.body as string).content,
-			'Contenido ampliado después del error'
-		);
-		retry.respond({ ok: true, json: async () => ({ id: savedForm.id, status: 'pendiente' }) });
-		await f.settle();
-		assert.equal(f.w.localStorage.getItem(draftKey), null);
-		assert.match(f.w.document.body.textContent, /Tu aporte quedó recibido/);
-	}
-});
-
-test('el catálogo vivo refresca defaults intactos de sitios del seed y respeta ediciones por campo', async (t) => {
-	const original = seed.sites[0];
-	const live = {
-		...original,
-		name: 'Nombre vigente',
-		region: 'Maule' as const,
-		locality: 'Localidad vigente'
-	};
-	const catalog = { ...seed, sites: seed.sites.map((s) => (s.id === live.id ? live : s)) };
-	const fields = [
-		['Nombre del lugar', 'name', original.name],
-		['Región', 'region', original.region],
-		['Comuna o localidad', 'locality', original.locality || original.commune]
-	] as const;
-	for (const edited of [null, ...fields]) {
-		const f = await open(t, 'aportar', `?sitio=${original.id}&tipo=correccion`);
-		if (edited) {
-			await f.edit(edited[0], edited[1] === 'region' ? 'Biobío' : 'Valor editado');
-			// Volver a escribir el valor original también es una decisión del usuario.
-			await f.edit(edited[0], edited[2]);
-		}
-		await f.load(catalog);
-		for (const [label, key, initial] of fields) {
-			const expected = edited?.[1] === key ? initial : live[key];
-			assert.equal(f.field(label).value, expected);
-			assert.equal(JSON.parse(f.w.localStorage.getItem(draftKey)).form[key], expected);
-		}
-	}
-	const restored = await open(
-		t,
-		'aportar',
-		`?sitio=${original.id}&tipo=correccion`,
-		draft({
-			...savedForm,
-			name: original.name,
-			region: original.region,
-			locality: original.locality || original.commune
-		})
-	);
-	await restored.load(catalog);
-	for (const [label, , initial] of fields) assert.equal(restored.field(label).value, initial);
+	assert.equal(f.w.location.pathname, '/sitios');
+	assert.ok(f.w.document.querySelector('#site-search'));
+	assert.equal(f.w.document.querySelector('input[type="email"], textarea'), null);
 });

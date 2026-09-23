@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { Search, Plus } from 'lucide-svelte';
+	import { Search } from 'lucide-svelte';
 	import seed from '$lib/catalog/seed';
 	import type { Catalog } from '$lib/catalog/model';
 	import { normalize } from '$lib/catalog/search';
@@ -36,9 +36,6 @@
 		<h1>Los lugares donde hemos estado</h1>
 		<p>Historial de campamentos y experiencias compartidas por los grupos.</p>
 	</div>
-	<a class="button primary" href="/sitios/aportar?tipo=visita"
-		><Plus size={18} aria-hidden="true" />Registrar visita</a
-	>
 </header>
 <p class="notice">
 	Las primeras {seed.visits.length} referencias provienen del historial de verano de la tropa. Muchas
@@ -83,9 +80,6 @@
 				</p>
 				<p class="muted">{v.notes}</p>
 				{#if v.siteId}<a href={`/sitios/${v.siteId}`}>Ver ficha del lugar</a
-					>{:else if v.status !== 'cancelado'}<a
-						href={`/sitios/aportar?tipo=correccion&nombre=${encodeURIComponent(v.place)}`}
-						>Aportar la ubicación del predio</a
 					>{/if}{#if v.sourceUrl}<span class="small">
 						· <a href={v.sourceUrl} target="_blank" rel="noopener noreferrer">Fuente</a></span
 					>{/if}

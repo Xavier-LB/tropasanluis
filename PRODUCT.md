@@ -9,12 +9,12 @@ web
 ## Users
 
 Dirigentes de la Tropa San Luis y otros grupos scout que preparan campamentos.
-Necesitan consultar y aportar datos también desde un celular.
+Necesitan consultar datos también desde un celular.
 
 ## Product Purpose
 
 Reunir información dispersa en una ficha por lugar, conservar la procedencia y
-permitir buscar, corregir y registrar experiencias sin volver a empezar una lista.
+permitir comparar sitios y consultar antecedentes para preparar campamentos.
 
 ## Operating Context
 
@@ -25,9 +25,11 @@ La web existente usa SvelteKit y Netlify; el catálogo vive en `/sitios`.
 ## Capabilities and Constraints
 
 Filtros combinables de región, distancia desde Santiago, personas, hectáreas,
-servicios y etiquetas. Ingreso por formulario o texto de publicación. Las fuentes
-y sus fechas se conservan; desconocido no significa no. Aportes pendientes pasan
-por revisión. El historial de asistencia no establece capacidad máxima.
+servicios y etiquetas. Las fuentes y sus fechas se conservan; desconocido no
+significa no. El historial de asistencia no establece capacidad máxima.
+Por decisión de Xavier del 2026-09-23, la web es solo de consulta: sin formularios
+para agregar sitios, corregir datos o registrar visitas. El ingreso de nuevos
+datos se implementará más adelante.
 No reservas, cobros, mensajes automáticos ni rastreo periódico en esta versión.
 Se conserva la marca y el marco de navegación existentes. La consulta debe ser
 compacta, tipo planilla, con filas comparables y filtros accesibles. Las fichas
@@ -35,7 +37,7 @@ conservan el detalle; en celular la tabla permite desplazamiento horizontal.
 
 ## Open Decisions
 
-Política detallada de cuentas de otros grupos y futuros moderadores. No se crean
+Futuro sistema de ingreso de sitios, cuentas y revisión. No se crean
 credenciales de producción nuevas: mantenimiento mediante acceso Netlify existente.
 Origen de distancia elegido para la primera versión: Plaza de Armas de Santiago,
 siempre visible y distinguido de la ubicación real de salida de cada grupo.

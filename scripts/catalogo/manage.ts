@@ -11,7 +11,8 @@ import {
 import { tmpdir } from 'node:os';
 import { basename, dirname, join, resolve, sep } from 'node:path';
 import seed from '../../src/lib/catalog/seed';
-import { catalogSchema, contributionSchema } from '../../src/lib/catalog/model';
+import { catalogSchema } from '../../src/lib/catalog/model';
+import { z } from 'zod';
 import { publish, restore, type Archive } from './workflow';
 
 // Usa la sesión de Netlify CLI del operador. No crea ni guarda credenciales.
@@ -121,7 +122,7 @@ try {
 			!decision.note.trim()
 		)
 			throw new Error('La revisión requiere estado publicado/descartado y una nota.');
-		const uuid = contributionSchema.shape.id.parse(decision.id);
+		const uuid = z.string().uuid().parse(decision.id);
 		const key = `pendientes/${uuid}`;
 		const original = get(inbox, key);
 		if (!original || typeof original !== 'object') throw new Error('No existe ese aporte.');

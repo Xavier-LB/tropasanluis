@@ -1,6 +1,6 @@
 # Catálogo de sitios
 
-La sección `/sitios` usa una carga revisada en `src/lib/catalog/seed.json` y actualizaciones persistentes en Netlify Blobs. Se puede buscar sin iniciar sesión. Los aportes entran a una bandeja privada y nunca cambian directamente las fichas públicas.
+La sección `/sitios` usa una carga revisada en `src/lib/catalog/seed.json` y actualizaciones persistentes en Netlify Blobs. Se puede buscar sin iniciar sesión. Por decisión de Xavier del 2026-09-23, la sección es solo de consulta. Se retiraron el formulario y las acciones de agregar, corregir y registrar visitas. El ingreso de datos se implementará más adelante.
 
 ## Fuentes iniciales
 
@@ -22,13 +22,12 @@ Requiere Node 22, Yarn y Netlify CLI, con la sesión **existente** de un adminis
 
 ```sh
 netlify link --id f79a89e9-a3d3-45a4-8214-dae956ba6ee7
-yarn catalogo bandeja /ruta/privada/aportes.json
 yarn catalogo exportar /ruta/privada/catalogo.json
 ```
 
 Revisar una fuente a la vez. Buscar duplicados por nombre, comuna, mapa y referencias. Un mismo contacto no basta para fusionar predios. Editar el catálogo exportado conservando su `version`; el validador rechaza referencias rotas, IDs repetidos, enlaces inseguros y campos ajenos al esquema. No copiar correos de aportantes, dirigentes, texto completo de grupos privados ni notas internas. Publicar contactos comerciales solo con fuente pública o autorización documentada. Guardar cada fuente y relacionarla con sus campos en `fieldSources`. Preservar discrepancias en `observations` y dejar el campo normalizado en `null` cuando no se resuelvan.
 
-Para publicar una visita, verificar que `shareVisit` sea verdadero y que su estado/fecha reflejen lo que efectivamente ocurrió. La cifra de asistentes nunca reemplaza la capacidad del sitio. Las visitas privadas permanecen en la bandeja. Las publicaciones pegadas no se extraen automáticamente: se revisa su contenido antes de generar una ficha.
+Las visitas publicadas deben tener autorización para compartir y reflejar lo que efectivamente ocurrió. La cifra de asistentes nunca reemplaza la capacidad del sitio.
 
 ```sh
 yarn catalogo publicar /ruta/privada/catalogo.json
@@ -37,13 +36,20 @@ yarn catalogo versiones
 
 La publicación valida, conserva instantáneas de antes/después, comprueba que la versión exportada siga vigente, escribe y vuelve a leer para confirmar. La web consulta cambios al abrir la sección; caché de hasta 30 segundos. Usar **un responsable publicando a la vez**: el CLI no ofrece una transacción de comparación y escritura; las comprobaciones detectan cambios comunes, pero no sustituyen un bloqueo transaccional. Las instantáneas permiten recuperar todas las versiones guardadas.
 
-Registrar la decisión en un JSON privado, con `id` del aporte, `status` (`publicado` o `descartado`) y `note`. Marcar `publicado` solo después de verificar la ficha resultante:
+### Archivo de aportes anteriores
+
+La función pública acepta únicamente `GET`; los nuevos envíos reciben `405`.
+La antigua ruta `/sitios/aportar` redirige a `/sitios`. No hay formulario ni
+almacenamiento de nuevos borradores en el navegador.
+
+No se eliminaron los datos existentes en Netlify Blobs. Las herramientas internas
+`bandeja` y `revisar` se conservan solo para recuperar o gestionar registros
+anteriores con la cuenta administradora. No son un sistema público de ingreso:
 
 ```sh
+yarn catalogo bandeja /ruta/privada/aportes-anteriores.json
 yarn catalogo revisar /ruta/privada/decision.json
 ```
-
-Se conserva el aporte original y el estado anterior de cada revisión. Consultar también el panel privado Netlify Blobs. No abrir esta bandeja a visitantes.
 
 ## Respaldos y restauración
 
@@ -53,11 +59,11 @@ Exportar antes de editar. `versiones/<version>/antes` y `.../despues` contienen 
 yarn catalogo restaurar versiones/IDENTIFICADOR/antes VERSION_ACTUAL
 ```
 
-Un redeploy conserva las actualizaciones de Blobs. Si no hay catálogo persistente, la función sirve la carga inicial de Git. Si falla el servicio, la web muestra la carga incluida y avisa; el formulario conserva su borrador y no anuncia recepción hasta que el servidor la confirme. El borrador local caduca a los siete días.
+Un redeploy conserva las actualizaciones de Blobs. Si no hay catálogo persistente, la función sirve la carga inicial de Git. Si falla el servicio, el catálogo muestra la carga incluida y avisa.
 
 ## Almacenamiento y pruebas
 
-Producción: `sitios-catalogo-v1` (datos públicos y versiones), `sitios-aportes-v1` (datos privados). Previews usan nombres separados. No incluir exportaciones ni aportes en `static/` o en Git público. Las entradas públicas se validan con Zod y se renderizan como texto; no se interpreta HTML recibido.
+Producción: `sitios-catalogo-v1` (datos públicos y versiones), `sitios-aportes-v1` (archivo privado de aportes anteriores, sin nuevos envíos). Previews usan nombres separados. No incluir exportaciones ni aportes en `static/` o en Git público. Los datos del catálogo se validan con Zod y se renderizan como texto; no se interpreta HTML recibido.
 
 ```sh
 yarn test:catalogo

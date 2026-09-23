@@ -1,4 +1,4 @@
-# Catálogo: búsqueda, ficha y aportes
+# Catálogo: búsqueda, fichas e historial
 
 Modo Operate. Se extiende la sección aprobada dentro de la web existente.
 Preferencia explícita de Xavier: compacto, tipo lista o Excel, técnico y práctico.
@@ -9,6 +9,7 @@ Escritorio: filtros frecuentes en barra horizontal; secundarios desplegables.
 Celular: búsqueda visible y filtros desplegables; tabla con desplazamiento
 horizontal, nombre fijo e indicación visible. Controles de al menos 44 px.
 S/d significa sin datos; la tabla respeta la medición y superficie seleccionadas.
-Se mantienen fichas completas, contactos, fuentes, aportes e historial.
+Se mantienen fichas completas, contactos, fuentes e historial de consulta.
 Sin hero de marketing, animación de entrada ni fotos inventadas. Rojo existente
-e Inter. El formulario confirma recepción solo después del almacenamiento real.
+e Inter. Sin formulario de aportes ni botones de agregar, corregir o registrar.
+El ingreso de datos queda para una implementación futura por decisión de Xavier.

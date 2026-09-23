@@ -159,18 +159,6 @@ export function searchSites(sites: Site[], f: Filters) {
 			return a.site.name.localeCompare(b.site.name, 'es');
 		});
 }
-export function candidates(sites: Site[], name: string, locality: string) {
-	const words = normalize(name)
-		.split(/\s+/)
-		.filter((w) => w.length > 3 && !['camping', 'sitio', 'campamento', 'centro'].includes(w));
-	return sites
-		.filter(
-			(s) =>
-				words.some((w) => normalize(s.name + ' ' + s.aliases.join(' ')).includes(w)) ||
-				(locality.length > 4 && normalize(s.locality) === normalize(locality))
-		)
-		.slice(0, 5);
-}
 export const stateLabel = (value: string) =>
 	({
 		si: 'Informado',

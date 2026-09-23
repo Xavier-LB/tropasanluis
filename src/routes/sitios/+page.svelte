@@ -7,7 +7,6 @@
 		ArrowRight,
 		ArrowDown,
 		ArrowUp,
-		Plus,
 		SlidersHorizontal,
 		Share2,
 		X
@@ -120,12 +119,6 @@
 <div class="catalog-list">
 	<header class="list-heading">
 		<h1>Sitios de campamento</h1>
-		<div class="actions">
-			<a class="button primary" href="/sitios/aportar"
-				><Plus size={16} aria-hidden="true" /><span class="desktop-label">Aportar un lugar</span
-				><span class="mobile-label">Aportar</span></a
-			>
-		</div>
 	</header>
 	{#if sharing}<p class="list-message" role="status">{sharing}</p>{/if}
 	{#if updateError}<p class="notice">{updateError}</p>{/if}

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
-	import { ArrowLeft, ExternalLink, MapPin, Plus } from 'lucide-svelte';
+	import { ArrowLeft, ExternalLink, MapPin } from 'lucide-svelte';
 	import seed from '$lib/catalog/seed';
 	import type { Catalog, Site } from '$lib/catalog/model';
 	import { fetchCatalog } from '$lib/catalog/api';
@@ -51,11 +51,6 @@
 		<div>
 			<h1>{site.name}</h1>
 			<p>{[site.locality, site.commune, site.region].filter(Boolean).join(' · ')}</p>
-		</div>
-		<div class="actions">
-			<a class="button" href={`/sitios/aportar?tipo=correccion&sitio=${site.id}`}
-				>Corregir o completar</a
-			>
 		</div>
 	</header>
 	<p class="measure">{site.description}</p>
@@ -189,9 +184,7 @@
 						</article>{/each}{:else}<p class="muted">
 						Aún no hay visitas vinculadas a este predio. El historial general conserva las salidas
 						cuyo lugar exacto falta identificar.
-					</p>{/if}<a class="button" href={`/sitios/aportar?tipo=visita&sitio=${site.id}`}
-					><Plus size={17} aria-hidden="true" />Registrar una visita</a
-				>
+					</p>{/if}
 			</section>
 			<section class="detail-section" id="fuentes">
 				<h2>De dónde vienen los datos</h2>
@@ -238,7 +231,7 @@
 					</p>{:else}<p class="muted">
 						Falta confirmar un contacto que podamos compartir públicamente.
 					</p>
-					<a href={`/sitios/aportar?tipo=correccion&sitio=${site.id}`}>Aportar un contacto</a>{/if}
+				{/if}
 			</div>
 			{#if site.links.length}<section class="detail-section" style="margin-top:25px">
 					<h2>Fotos y enlaces</h2>

@@ -161,7 +161,7 @@ Este documento describe el marco compartido y los patrones implementados en `/si
 Extracción basada en `src/app.css`, `src/routes/+layout.svelte`,
 `src/lib/catalog/catalog.css` y las rutas de `/sitios`. Las capturas de
 `.impeccable/review/` documentan el primer encuadre de escritorio, móvil, ficha,
-formulario y filtros abiertos. Las zonas fuera de esas capturas se describen por
+filtros abiertos y el antiguo formulario, retirado el 2026-09-23. Las zonas fuera de esas capturas se describen por
 su código; no se consideran verificadas visualmente.
 
 ## Colors
@@ -207,8 +207,7 @@ nombre: (220px), o (155px) bajo (760px). En celular solo búsqueda y botón de
 filtros están abiertos inicialmente. No se transforma la tabla en tarjetas.
 
 El detalle combina contenido flexible y lateral de (290px), con separación de
-(38px), y pasa a una columna hasta (900px). El formulario tiene máximo de (760px)
-y dos columnas, o una hasta (500px). Las filas de detalle reservan (160px) al
+(38px), y pasa a una columna hasta (900px). Las filas de detalle reservan (160px) al
 rótulo, o (115px) hasta (500px). Los contactos largos no desbordan.
 
 La composición específica se conserva en `.impeccable/surfaces/sitios.md`.
@@ -271,15 +270,15 @@ Rótulo y valor se alinean en columnas, con procedencia secundaria cuando existe
 En las fichas se escribe “Por confirmar” o “Sin información”. La tabla usa
 “S/d”, definido junto a ella, y distingue “Revisar”, “En obra”, “Sí” y “No”.
 La columna de distancia respeta carretera o línea recta sin sustitución silenciosa;
-la superficie muestra hectáreas totales o de acampada según el filtro. El formulario
-solo confirma recepción después de una respuesta real de guardado.
+la superficie muestra hectáreas totales o de acampada según el filtro. El catálogo
+es solo de consulta; no ofrece formularios ni acciones de ingreso.
 
 ## Do's and Don'ts
 
 ### Do:
 - Do conservar el escudo, el rojo y la tipografía del sitio existente.
 - Do mantener rótulos visibles, foco de teclado y controles de catálogo de al menos 44 px de alto.
-- Do usar textos explícitos para distinguir un dato informado, uno desconocido y un aporte pendiente.
+- Do usar textos explícitos para distinguir un dato informado y uno desconocido.
 - Do mantener la separación por líneas y los anchos de lectura del catálogo.
 
 ### Don't:

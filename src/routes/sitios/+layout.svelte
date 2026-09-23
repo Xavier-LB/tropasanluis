@@ -14,11 +14,6 @@
 			aria-current={$page.url.pathname === '/sitios/historial' ? 'page' : undefined}
 			>Campamentos y visitas</a
 		>
-		<a
-			href="/sitios/aportar"
-			aria-current={$page.url.pathname === '/sitios/aportar' ? 'page' : undefined}
-			>Aportar un dato</a
-		>
 	</nav>
 	<slot />
 </div>
