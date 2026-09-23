@@ -294,15 +294,15 @@ test('navegación dentro de /sitios sincroniza controles, resultados y límite s
 	assert.equal(f.field('Buscar nombre').value, 'puquio');
 	await f.navigate('/sitios?q=puquio&people=60');
 	assert.equal(f.field('Personas').value, '60');
-	assert.match(f.w.document.querySelector('article.result')?.textContent || '', /Puquio/i);
+	assert.match(f.w.document.querySelector('tr.site-row')?.textContent || '', /Puquio/i);
 	await f.navigate('/sitios');
 	assert.equal(f.field('Buscar nombre').value, '');
 	const more = f.w.document.querySelector('button.load-more');
 	more.click();
 	await f.settle();
-	assert.ok(f.w.document.querySelectorAll('article.result').length > 20);
+	assert.ok(f.w.document.querySelectorAll('tr.site-row').length > 20);
 	await f.navigate('/sitios?sort=capacity');
-	assert.equal(f.w.document.querySelectorAll('article.result').length, 20);
+	assert.equal(f.w.document.querySelectorAll('tr.site-row').length, 20);
 	assert.equal(f.field('Ordenar').value, 'capacity');
 	f.w.history.back();
 	await new Promise<void>((r) => f.w.addEventListener('popstate', () => r(), { once: true }));
@@ -312,6 +312,29 @@ test('navegación dentro de /sitios sincroniza controles, resultados y límite s
 	await new Promise<void>((r) => f.w.addEventListener('popstate', () => r(), { once: true }));
 	await f.settle();
 	assert.equal(f.field('Ordenar').value, 'capacity');
+});
+
+test('ordenar desde una columna conserva filtros y excluir pendientes se refleja en la URL', async (t) => {
+	const f = await open(t, '', '?people=60&water=si&toilets=si');
+	await f.load();
+	const header = Array.from(f.w.document.querySelectorAll('thead button')).find(
+		(node: any) => node.textContent.trim() === 'Personas'
+	) as HTMLButtonElement;
+	header.click();
+	await f.settle();
+	assert.equal(f.field('Ordenar').value, 'capacity');
+	assert.equal(new URL(f.w.location.href).searchParams.get('people'), '60');
+	const checkbox = f.field('Incluir datos pendientes') as HTMLInputElement;
+	checkbox.click();
+	await f.settle();
+	assert.equal(checkbox.checked, false);
+	assert.equal(new URL(f.w.location.href).searchParams.get('unknown'), '0');
+	assert.equal(f.w.document.querySelectorAll('tr.site-row').length, 1);
+	assert.match(f.w.document.querySelector('tr.site-row').textContent, /Puquio/);
+	assert.equal(
+		f.w.document.querySelector('th[aria-sort="descending"] button').textContent.trim(),
+		'Personas'
+	);
 });
 
 test('abrir ficha y Back restaura filtros, resultados y URL con el historial real de SvelteKit', async (t) => {
@@ -328,7 +351,7 @@ test('abrir ficha y Back restaura filtros, resultados y URL con el historial rea
 	assert.equal(f.w.history.length, historyLength, 'editar filtros reemplaza la entrada actual');
 	assert.ok(f.w.history.state['sveltekit:history']);
 	assert.ok(f.w.history.state['sveltekit:navigation']);
-	const link = f.w.document.querySelector('article.result h3 a');
+	const link = f.w.document.querySelector('tr.site-row a.site-name');
 	assert.ok(link);
 	const detailUrl = link.href;
 	assert.equal(new URL(detailUrl).search, new URL(filteredUrl).search);

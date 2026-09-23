@@ -2,7 +2,16 @@
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import { goto } from '$app/navigation';
-	import { Search, ArrowRight, Plus, SlidersHorizontal, Share2, X } from 'lucide-svelte';
+	import {
+		Search,
+		ArrowRight,
+		ArrowDown,
+		ArrowUp,
+		Plus,
+		SlidersHorizontal,
+		Share2,
+		X
+	} from 'lucide-svelte';
 	import seed from '$lib/catalog/seed';
 	import { REGIONS, TAGS, ENVIRONMENTS, type Catalog } from '$lib/catalog/model';
 	import {
@@ -21,7 +30,7 @@
 	let limit = 20,
 		sharing = '',
 		updateError = '';
-	let filtersOpen = true;
+	let filtersOpen = false;
 	const labels: Record<string, string> = {
 		q: 'Búsqueda',
 		region: 'Región',
@@ -78,6 +87,10 @@
 		filters = { ...filters, people: filters.people === people ? '' : people };
 		syncUrl();
 	}
+	function sortBy(sort: string) {
+		filters = { ...filters, sort };
+		syncUrl();
+	}
 	async function share() {
 		await syncUrl();
 		try {
@@ -88,10 +101,6 @@
 		}
 	}
 	onMount(() => {
-		const media = matchMedia('(min-width:901px)');
-		filtersOpen = media.matches;
-		const resize = () => (filtersOpen = media.matches);
-		media.addEventListener('change', resize);
 		fetchCatalog()
 			.then((c) => (catalog = c))
 			.catch(
@@ -99,7 +108,6 @@
 					(updateError =
 						'Mostramos la última carga incluida en la web. No pudimos consultar cambios más recientes.')
 			);
-		return () => media.removeEventListener('change', resize);
 	});
 </script>
 
@@ -109,85 +117,84 @@
 		content="Lugares para campamentos scout en Chile. Busca por región, capacidad, hectáreas, agua potable, baños y distancia desde Santiago."
 	/></svelte:head
 >
-<header class="intro">
-	<div>
-		<h1>Encuentra el próximo campamento</h1>
-		<p>Lugares reunidos por la Tropa San Luis, para compartir entre grupos scout.</p>
-	</div>
-	<div class="actions">
-		<a class="button primary" href="/sitios/aportar"
-			><Plus size={18} aria-hidden="true" />Aportar un lugar</a
-		>
-	</div>
-</header>
-<div class="searchbar">
-	<Search size={20} aria-hidden="true" /><label class="sr-only" for="site-search"
-		>Buscar nombre, localidad o característica</label
-	><input
-		id="site-search"
-		type="search"
-		placeholder="Busca un lugar, comuna o característica…"
-		bind:value={filters.q}
-		on:input={() => queueMicrotask(syncUrl)}
-	/>
-</div>
-{#if updateError}<p class="notice">{updateError}</p>{/if}
-<div class="workspace">
+<div class="catalog-list">
+	<header class="list-heading">
+		<h1>Sitios de campamento</h1>
+		<div class="actions">
+			<a class="button primary" href="/sitios/aportar"
+				><Plus size={16} aria-hidden="true" /><span class="desktop-label">Aportar un lugar</span
+				><span class="mobile-label">Aportar</span></a
+			>
+		</div>
+	</header>
+	{#if sharing}<p class="list-message" role="status">{sharing}</p>{/if}
+	{#if updateError}<p class="notice">{updateError}</p>{/if}
 	<form
 		on:submit|preventDefault={syncUrl}
-		on:input={() => queueMicrotask(syncUrl)}
+		on:input={(event) => {
+			if (event.target instanceof HTMLInputElement && event.target.type !== 'checkbox')
+				queueMicrotask(syncUrl);
+		}}
 		on:change={() => queueMicrotask(syncUrl)}
+		class:filters-expanded={filtersOpen}
 		aria-label="Filtrar lugares"
 	>
-		<details class="filters" bind:open={filtersOpen}>
-			<summary
-				><span
-					><SlidersHorizontal
-						size={17}
-						style="display:inline;vertical-align:middle;margin-right:6px"
-						aria-hidden="true"
-					/>Filtros {filterCount ? `(${filterCount})` : ''}</span
-				><span class="small muted">Abrir / cerrar</span></summary
-			>
-			<div class="filter-fields">
-				<div class="filter-title">
-					<h2>Tu campamento</h2>
-					<button class="quiet" type="button" on:click={clear}>Limpiar</button>
-				</div>
-				<label
-					>Región<select bind:value={filters.region}
-						><option value="">Todas las regiones</option>{#each REGIONS as r}<option value={r}
-								>{r}</option
-							>{/each}</select
-					></label
+		<div class="filter-toolbar">
+			<label class="search-field" for="site-search"
+				>Buscar nombre, localidad o característica
+				<span class="search-input"
+					><Search size={17} aria-hidden="true" /><input
+						id="site-search"
+						type="search"
+						placeholder="Nombre, comuna, característica…"
+						bind:value={filters.q}
+					/></span
 				>
+			</label>
+			<label
+				>Región<select bind:value={filters.region}
+					><option value="">Todas las regiones</option>{#each REGIONS as r}<option value={r}
+							>{r}</option
+						>{/each}</select
+				></label
+			>
+			<NumberField label="Personas para acampar" placeholder="Mínimo" bind:value={filters.people} />
+			<NumberField
+				label="Distancia desde Santiago"
+				placeholder="Máximo km"
+				bind:value={filters.maxDistance}
+			/>
+			<button
+				class="filter-toggle"
+				type="button"
+				aria-expanded={filtersOpen}
+				aria-controls="extra-filters"
+				on:click={() => (filtersOpen = !filtersOpen)}
+				><SlidersHorizontal size={16} aria-hidden="true" /><span class="desktop-label"
+					>Más filtros</span
+				><span class="mobile-label">Filtros{filterCount ? ` (${filterCount})` : ''}</span></button
+			>
+			<button class="quiet" type="button" on:click={clear}>Limpiar</button>
+		</div>
+		<div id="extra-filters" hidden={!filtersOpen}>
+			<div class="extra-fields">
 				<div>
-					<NumberField
-						label="Personas para acampar"
-						placeholder="Sin mínimo"
-						bind:value={filters.people}
-					/>
+					<span class="field-label">Grupos habituales</span>
 					<div class="presets">
 						{#each ['60', '300', '400'] as n}<button
 								type="button"
 								aria-pressed={filters.people === n}
-								on:click={() => preset(n)}>{n}</button
+								on:click={() => preset(n)}>{n} pers.</button
 							>{/each}
 					</div>
 				</div>
-				<div>
-					<NumberField
-						label="Distancia desde Santiago"
-						placeholder="Máximo de km"
-						bind:value={filters.maxDistance}
-					/><label class="small" style="margin-top:8px"
-						>Medición<select bind:value={filters.distanceMode}
-							><option value="road">Por carretera (estimada)</option><option value="straight"
-								>En línea recta</option
-							></select
-						></label
-					><span class="hint">Desde Plaza de Armas. El acceso final debe confirmarse.</span>
-				</div>
+				<label
+					>Medición de distancia<select bind:value={filters.distanceMode}
+						><option value="road">Por carretera (estimada)</option><option value="straight"
+							>En línea recta</option
+						></select
+					></label
+				>
 				<div>
 					<label
 						>Superficie<select bind:value={filters.areaScope}
@@ -196,7 +203,7 @@
 							></select
 						></label
 					>
-					<div class="range" style="margin-top:8px">
+					<div class="range">
 						<NumberField
 							label="Desde"
 							placeholder="ha"
@@ -226,68 +233,78 @@
 						><option value="no">Sin baños</option></select
 					></label
 				>
-				<details class="full">
-					<summary>Más filtros y etiquetas</summary>
-					<div class="filter-fields">
-						<label
-							>Tipo de lugar<select bind:value={filters.kind}
-								><option value="">Todos</option><option value="rustico">Rústico</option><option
-									value="equipado">Equipado</option
-								><option value="mixto">Mixto</option></select
-							></label
-						>
-						<label
-							>Alojamiento<select bind:value={filters.accommodation}
-								><option value="">Todos</option><option value="carpas">Carpas</option><option
-									value="cabanas">Cabañas / refugios</option
-								></select
-							></label
-						>
-						<label
-							>Entorno acuático<select bind:value={filters.environment}
-								><option value="">Cualquiera</option>{#each ENVIRONMENTS as e}<option>{e}</option
-									>{/each}</select
-							></label
-						>
-						<label
-							>Electricidad<select bind:value={filters.electricity}
-								><option value="">Sin preferencia</option><option value="si"
-									>Con electricidad</option
-								><option value="no">Sin electricidad</option></select
-							></label
-						>
-						<label
-							>Acceso de bus al predio<select bind:value={filters.bus}
-								><option value="">Sin preferencia</option><option value="si">Informado</option
-								><option value="no">Sin acceso</option></select
-							></label
-						>
-						<fieldset style="border:0;padding:0">
-							<legend style="font-size:.9rem;font-weight:600">Características</legend>
-							<div class="tag-options">
-								{#each TAGS as tag}<label class="check"
-										><input type="checkbox" value={tag} bind:group={filters.tags} />{tag}</label
-									>{/each}
-							</div>
-						</fieldset>
-					</div>
-				</details>
-				<label class="check full"
-					><input type="checkbox" bind:checked={filters.unknown} />Incluir lugares con datos
-					pendientes</label
+				<label
+					>Tipo de lugar<select bind:value={filters.kind}
+						><option value="">Todos</option><option value="rustico">Rústico</option><option
+							value="equipado">Equipado</option
+						><option value="mixto">Mixto</option></select
+					></label
+				>
+				<label
+					>Alojamiento<select bind:value={filters.accommodation}
+						><option value="">Todos</option><option value="carpas">Carpas</option><option
+							value="cabanas">Cabañas / refugios</option
+						></select
+					></label
+				>
+				<label
+					>Entorno acuático<select bind:value={filters.environment}
+						><option value="">Cualquiera</option>{#each ENVIRONMENTS as e}<option>{e}</option
+							>{/each}</select
+					></label
+				>
+				<label
+					>Electricidad<select bind:value={filters.electricity}
+						><option value="">Sin preferencia</option><option value="si">Con electricidad</option
+						><option value="no">Sin electricidad</option></select
+					></label
+				>
+				<label
+					>Acceso de bus al predio<select bind:value={filters.bus}
+						><option value="">Sin preferencia</option><option value="si">Informado</option><option
+							value="no">Sin acceso</option
+						></select
+					></label
 				>
 			</div>
-		</details>
+			<fieldset class="extra-tags">
+				<legend>Características</legend>
+				<div class="tag-options">
+					{#each TAGS as tag}<label class="check"
+							><input type="checkbox" value={tag} bind:group={filters.tags} />{tag}</label
+						>{/each}
+				</div>
+			</fieldset>
+			<label class="check"
+				><input type="checkbox" bind:checked={filters.unknown} />Incluir datos pendientes</label
+			>
+		</div>
 	</form>
+	{#if filterCount}<div class="chips" aria-label="Filtros activos">
+			{#each active as [key, label]}<button
+					type="button"
+					on:click={() => remove(key)}
+					aria-label={`Quitar filtro ${label}`}
+					>{label}: {values[String(filters[key as keyof Filters])] ||
+						filters[key as keyof Filters]}<X size={13} aria-hidden="true" /></button
+				>{/each}
+			{#each filters.tags as tag}<button
+					type="button"
+					on:click={() => {
+						filters = { ...filters, tags: filters.tags.filter((t) => t !== tag) };
+						syncUrl();
+					}}
+					aria-label={`Quitar etiqueta ${tag}`}>{tag}<X size={13} aria-hidden="true" /></button
+				>{/each}
+		</div>{/if}
 	<section aria-label="Resultados de búsqueda">
-		<div class="results-header">
-			<div>
+		<div class="table-toolbar">
+			<div class="result-count">
 				<h2 aria-live="polite">{results.length} {results.length === 1 ? 'lugar' : 'lugares'}</h2>
-				{#if pendingCount && filterCount}<span class="small muted"
-						>{results.length - pendingCount} con los datos buscados · {pendingCount} por confirmar</span
+				{#if pendingCount && filterCount}<span class="muted">{pendingCount} por confirmar</span
 					>{/if}
 			</div>
-			<label
+			<label class="table-sort"
 				>Ordenar<select bind:value={filters.sort} on:change={syncUrl}
 					><option value="name">Nombre</option><option value="distance">Menor distancia</option
 					><option value="capacity">Mayor capacidad</option><option value="area"
@@ -296,121 +313,175 @@
 				></label
 			>
 		</div>
-		{#if filterCount}<div class="chips" aria-label="Filtros activos">
-				{#each active as [key, label]}<button
-						type="button"
-						on:click={() => remove(key)}
-						aria-label={`Quitar filtro ${label}`}
-						>{label}: {values[String(filters[key as keyof Filters])] ||
-							filters[key as keyof Filters]}<X size={13} aria-hidden="true" /></button
-					>{/each}{#each filters.tags as tag}<button
-						type="button"
-						on:click={() => {
-							filters = { ...filters, tags: filters.tags.filter((t) => t !== tag) };
-							syncUrl();
-						}}
-						aria-label={`Quitar etiqueta ${tag}`}>{tag}<X size={13} aria-hidden="true" /></button
-					>{/each}
-			</div>{/if}
-		<p class="notice">
-			Son antecedentes para empezar a buscar. La capacidad, el agua potable y los baños deben
-			confirmarse con cada lugar.
+		<p class="table-note" id="table-note">
+			S/d: sin datos. Servicios y capacidad por confirmar con el lugar. Distancia {filters.distanceMode ===
+			'straight'
+				? 'en línea recta'
+				: 'estimada por carretera'} desde Plaza de Armas.
 		</p>
-		{#if results.length === 0}<div class="empty">
+		<p class="scroll-hint">Desliza la tabla para ver más columnas. El nombre queda fijo.</p>
+		{#if results.length === 0}
+			<div class="empty">
 				<h2>No hay lugares con esta combinación</h2>
-				<p>
-					Prueba ampliar la región o incluir datos pendientes. Todavía estamos completando las
-					fichas.
-				</p>
+				<p>Prueba ampliar la región o incluir datos pendientes.</p>
 				<button on:click={clear}>Limpiar filtros</button>
-			</div>{/if}
-		{#each results.slice(0, limit) as { site, pending } (site.id)}
-			<article class="result">
-				<div class="result-head">
-					<div>
-						<h3>
-							<a href={`/sitios/${site.id}${catalogueQuery ? `?${catalogueQuery}` : ''}`}
-								>{site.name}</a
-							>
-						</h3>
-						<div class="location">{[site.commune, site.region].filter(Boolean).join(' · ')}</div>
-					</div>
-					{#if site.distance}<span class="badge"
-							>{filters.distanceMode !== 'straight' && site.distance.roadKm !== null
-								? `${formatNumber(site.distance.roadKm)} km por carretera`
-								: `${formatNumber(site.distance.straightKm)} km en línea recta`}</span
-						>{/if}
-				</div>
-				<p class="result-description">{site.description}</p>
-				<dl class="facts">
-					<div>
-						<dt>Personas en carpas</dt>
-						<dd>
-							{site.capacity
-								? `${formatNumber(site.capacity)} aprox.`
-								: site.accommodation === 'cabanas'
-									? 'Solo cabañas / refugios'
-									: 'Por confirmar'}
-						</dd>
-					</div>
-					<div>
-						<dt>Superficie total</dt>
-						<dd>
-							{site.areaHa
-								? `${formatNumber(site.areaHa)} ha`
-								: site.areaNote
-									? 'Dato por revisar'
-									: 'Por confirmar'}
-						</dd>
-					</div>
-					<div>
-						<dt>Agua potable</dt>
-						<dd>
-							{site.water === 'si'
-								? 'Informada'
-								: site.water === 'no'
-									? 'No disponible'
-									: 'Por confirmar'}
-						</dd>
-					</div>
-					<div>
-						<dt>Baños</dt>
-						<dd>
-							{site.toilets === 'si'
-								? 'Informados'
-								: site.toilets === 'no'
-									? 'No disponibles'
-									: site.toilets === 'en-construccion'
-										? 'En construcción'
-										: 'Por confirmar'}
-						</dd>
-					</div>
-				</dl>
-				{#if site.environments.length || site.tags.length}<div class="tags">
-						{#each [...site.environments, ...site.tags].slice(0, 6) as tag}<span class="tag"
-								>{tag}</span
-							>{/each}
-					</div>{/if}
-				{#if pending.length}<p class="pending">
-						Falta confirmar para esta búsqueda: {pending.join(', ')}.
-					</p>{/if}
-				<div class="result-footer">
-					<span
-						>{site.sources.length}
-						{site.sources.length === 1 ? 'fuente' : 'fuentes'} · Vigencia por confirmar</span
-					><a href={`/sitios/${site.id}${catalogueQuery ? `?${catalogueQuery}` : ''}`}
-						>Ver ficha<ArrowRight size={16} aria-hidden="true" /></a
+			</div>
+		{:else}
+			<!-- Scrollable region must be keyboard-focusable for arrow-key scrolling. -->
+			<!-- svelte-ignore a11y_no_noninteractive_tabindex -->
+			<div
+				class="table-scroll"
+				role="region"
+				aria-label="Tabla de sitios, desplazable"
+				tabindex="0"
+				aria-describedby="table-note"
+			>
+				<table class="site-table">
+					<caption class="sr-only"
+						>Sitios de campamento. Abre el nombre de un lugar para ver contactos, fuentes, fotos y
+						antecedentes.</caption
 					>
-				</div>
-			</article>{/each}
-		{#if results.length > limit}<button class="load-more" on:click={() => (limit += 20)}
-				>Mostrar más lugares ({results.length - limit} restantes)</button
-			>{/if}
-		<div class="actions" style="margin-top:26px">
+					<thead
+						><tr>
+							<th
+								scope="col"
+								class="name-column"
+								aria-sort={filters.sort === 'name' ? 'ascending' : undefined}
+								><button class:sorted={filters.sort === 'name'} on:click={() => sortBy('name')}
+									>Lugar{#if filters.sort === 'name'}<ArrowUp
+											size={14}
+											aria-hidden="true"
+										/>{/if}</button
+								></th
+							>
+							<th scope="col" class="place-column">Comuna / región</th>
+							<th
+								scope="col"
+								class="number-column"
+								aria-sort={filters.sort === 'distance' ? 'ascending' : undefined}
+								><button
+									class:sorted={filters.sort === 'distance'}
+									on:click={() => sortBy('distance')}
+									>Km{#if filters.sort === 'distance'}<ArrowUp
+											size={14}
+											aria-hidden="true"
+										/>{/if}</button
+								></th
+							>
+							<th
+								scope="col"
+								class="number-column"
+								aria-sort={filters.sort === 'capacity' ? 'descending' : undefined}
+								><button
+									class:sorted={filters.sort === 'capacity'}
+									on:click={() => sortBy('capacity')}
+									>Personas{#if filters.sort === 'capacity'}<ArrowDown
+											size={14}
+											aria-hidden="true"
+										/>{/if}</button
+								><span class="column-unit">en carpas</span></th
+							>
+							<th
+								scope="col"
+								class="number-column"
+								aria-sort={filters.sort === 'area' ? 'descending' : undefined}
+								><button class:sorted={filters.sort === 'area'} on:click={() => sortBy('area')}
+									>Ha{#if filters.sort === 'area'}<ArrowDown
+											size={14}
+											aria-hidden="true"
+										/>{/if}</button
+								><span class="column-unit"
+									>{filters.areaScope === 'camp' ? 'acampada' : 'totales'}</span
+								></th
+							>
+							<th scope="col" class="service-column"
+								>Agua<span class="column-unit">potable</span></th
+							>
+							<th scope="col" class="service-column">Baños</th>
+							<th scope="col" class="tags-column">Entorno / etiquetas</th>
+							<th scope="col" class="file-column"><span class="sr-only">Ficha completa</span></th>
+						</tr></thead
+					>
+					<tbody
+						>{#each results.slice(0, limit) as { site, pending } (site.id)}
+							{@const distance =
+								filters.distanceMode === 'straight'
+									? site.distance?.straightKm
+									: site.distance?.roadKm}
+							{@const area = filters.areaScope === 'camp' ? site.campAreaHa : site.areaHa}
+							{@const tags = [
+								...(site.kind !== 'por-confirmar' ? [values[site.kind]] : []),
+								...site.environments,
+								...site.tags
+							].join(' · ')}
+							{@const href = `/sitios/${site.id}${catalogueQuery ? `?${catalogueQuery}` : ''}`}
+							<tr class="site-row">
+								<th scope="row" class="name-column"
+									><a class="site-name" {href}>{site.name}</a>{#if pending.length}<span
+											class="row-pending"
+											title={`Falta confirmar: ${pending.join(', ')}`}
+											>Datos pendientes<span class="sr-only">: {pending.join(', ')}</span></span
+										>{/if}</th
+								>
+								<td class="place-column"
+									><span>{site.commune || site.locality || 'S/d'}</span><span class="cell-secondary"
+										>{site.region}</span
+									></td
+								>
+								<td class="numeric" class:no-data={distance == null}
+									>{distance == null ? 'S/d' : formatNumber(distance)}</td
+								>
+								<td class="numeric" class:no-data={site.capacity === null}
+									>{site.capacity === null
+										? site.accommodation === 'cabanas'
+											? 'Cabañas'
+											: 'S/d'
+										: formatNumber(site.capacity)}</td
+								>
+								<td
+									class="numeric"
+									class:no-data={area === null}
+									title={area === null && site.areaNote ? site.areaNote : undefined}
+									>{area === null ? (site.areaNote ? 'Revisar' : 'S/d') : formatNumber(area)}</td
+								>
+								<td
+									class:service-yes={site.water === 'si'}
+									class:no-data={site.water === 'sin-datos'}
+									>{site.water === 'si' ? 'Sí' : site.water === 'no' ? 'No' : 'S/d'}</td
+								>
+								<td
+									class:service-yes={site.toilets === 'si'}
+									class:no-data={site.toilets === 'sin-datos'}
+									>{site.toilets === 'si'
+										? 'Sí'
+										: site.toilets === 'no'
+											? 'No'
+											: site.toilets === 'en-construccion'
+												? 'En obra'
+												: 'S/d'}</td
+								>
+								<td class="tags-column"
+									><span class="table-tags" title={tags}>{tags || 'S/d'}</span></td
+								>
+								<td class="file-column"
+									><a class="file-link" {href} aria-label={`Ver ficha de ${site.name}`}
+										><ArrowRight size={17} aria-hidden="true" /></a
+									></td
+								>
+							</tr>
+						{/each}</tbody
+					>
+				</table>
+			</div>
+		{/if}
+		<div class="table-footer">
+			<span>Mostrando {Math.min(limit, results.length)} de {results.length}</span
+			>{#if results.length > limit}<button class="load-more" on:click={() => (limit += 20)}
+					>Mostrar más lugares ({results.length - limit} restantes)</button
+				>{/if}
 			<button class="quiet" on:click={share}
-				><Share2 size={17} aria-hidden="true" />Compartir búsqueda</button
-			><a class="button quiet" href="/sitios/guia">Cómo se mantienen los datos</a>
+				><Share2 size={16} aria-hidden="true" />Compartir búsqueda</button
+			><a href="/sitios/guia">Cómo se mantienen los datos</a>
 		</div>
-		{#if sharing}<p class="small muted" role="status">{sharing}</p>{/if}
 	</section>
 </div>

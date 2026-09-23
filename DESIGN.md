@@ -21,6 +21,11 @@ colors:
   chip-selected-border: "#e9c3c6"
   tag: "#f4f3f1"
   pending-ink: "#865321"
+  table-stripe: "#f8f7f5"
+  table-hover: "#f4eaea"
+  table-line: "#e5e2de"
+  table-header-line: "#b9b3ad"
+  filter-open-border: "#ca767b"
   error: "#fff0f0"
   error-ink: "#9a2025"
   error-border: "#e3b2b5"
@@ -55,6 +60,16 @@ typography:
     fontFamily: "Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif"
     fontSize: "0.925rem"
     fontWeight: 650
+  table-heading:
+    fontSize: "1.5rem"
+  table-heading-mobile:
+    fontSize: "1.25rem"
+  table-count:
+    fontSize: "0.9375rem"
+  table-body:
+    fontSize: "0.8125rem"
+  table-secondary:
+    fontSize: "0.6875rem"
   metadata:
     fontFamily: "Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, sans-serif"
     fontSize: "0.75rem"
@@ -170,9 +185,9 @@ sidecar son muestras derivadas para el panel, no colores adicionales implementad
 La jerarquía usa tamaño y peso: `display` para títulos de página, `headline` para
 secciones, `title` para subtítulos, `body` para lectura, `label` para campos y
 `metadata` para datos breves. Los títulos principales bajan a (2rem) hasta (900px)
-y a (1.8rem) hasta (500px). Los nombres enlazados de resultados usan (1.22rem).
-Las introducciones miden hasta (65ch), las descripciones de resultados hasta
-(70ch) y la lectura explicativa hasta (72ch).
+y a (1.8rem) hasta (500px). El índice de sitios tiene una excepción compacta: título de (1.5rem), o
+(1.25rem) en celular, tabla de (0.8125rem) y metadatos de (0.6875rem). Usa números
+tabulares. Las introducciones miden hasta (65ch) y la lectura hasta (72ch).
 
 Los pesos (750) y (650) se registran tal como están en CSS; la carga actual de
 Inter solicita (400), (500), (600), (700) y (800), sin asumir otra fuente variable.
@@ -183,16 +198,18 @@ El marco compartido tiene máximo de (80rem), márgenes automáticos y laterales
 (16px), ampliados a (32px) desde (1024px). La cabecera fija conserva su espacio
 reservado. La navegación global pasa a escritorio desde (1024px).
 
-El catálogo presenta búsqueda a todo el ancho, filtros de (260px) y resultados
-flexibles, separados por el espacio `workspace`. El detalle combina contenido
-flexible y lateral de (290px), con separación de (38px). El formulario tiene un
-máximo de (760px) y dos columnas separadas por (19px).
+El índice del catálogo usa una tabla a todo el ancho y una barra horizontal de
+búsqueda, región, personas y distancia. Los filtros secundarios se despliegan.
+Las filas miden aproximadamente (57px); controles y enlaces mantienen (44px).
+La tabla tiene encabezado y primera columna fijos, ancho mínimo de (1100px) y
+un área desplazable de hasta (70vh), accesible también por teclado. Columna del
+nombre: (220px), o (155px) bajo (760px). En celular solo búsqueda y botón de
+filtros están abiertos inicialmente. No se transforma la tabla en tarjetas.
 
-Hasta (900px), catálogo y detalle usan una columna; los filtros se despliegan y
-sus campos ocupan dos columnas. Hasta (500px), filtros y formulario pasan a una
-columna, y los cuatro datos resumidos pasan a dos. Navegación local y acciones
-pueden envolver. Las filas de detalle reservan (160px) al rótulo, o (115px) hasta
-(500px). Los contactos y enlaces largos pueden partirse sin desbordar.
+El detalle combina contenido flexible y lateral de (290px), con separación de
+(38px), y pasa a una columna hasta (900px). El formulario tiene máximo de (760px)
+y dos columnas, o una hasta (500px). Las filas de detalle reservan (160px) al
+rótulo, o (115px) hasta (500px). Los contactos largos no desbordan.
 
 La composición específica se conserva en `.impeccable/surfaces/sitios.md`.
 
@@ -210,8 +227,8 @@ esa animación al contenido.
 ## Shapes
 
 Campos y navegación usan `field`; botones, `button`; paneles, `panel`; y etiquetas
-compactas, `tag`. Los bordes son de (1px). Los resultados son filas abiertas, sin
-fondo individual ni radio. El estado vacío usa borde discontinuo y radio de (9px).
+compactas, `tag`. Los bordes son de (1px). La tabla usa bandas alternas neutras y radio exterior de (5px), con
+fondo de fila distinto al pasar el mouse o enfocar un enlace. El estado vacío usa borde discontinuo y radio de (9px).
 
 ## Components
 
@@ -231,13 +248,14 @@ Las etiquetas descriptivas son texto neutro compacto sin acción.
 
 Filtros: panel neutro con borde. Contactos: blanco con borde y espaciado interno
 que baja a (18px) en móvil estrecho. Avisos: fondo neutro sin sombra, con variantes
-semánticas de error y recepción. Resultados: filas con título, ubicación,
-descripción, datos, etiquetas y procedencia.
+semánticas de error y recepción. Resultados: tabla comparativa con acceso a la
+ficha para descripción, contactos, fuentes, fotos y antecedentes.
 
 ### Inputs / Fields
 
 Campos blancos con etiqueta persistente, borde y altura mínima de (44px).
-La búsqueda mide al menos (52px), con lupa. El textarea parte de (130px) y permite
+La búsqueda histórica mide al menos (52px), con lupa; la búsqueda del índice
+compacto mide (44px). Sus campos móviles usan (16px) para evitar zoom al editar. El textarea parte de (130px) y permite
 ajustar su altura. Los checkboxes de (19px) viven en etiquetas interactivas de
 al menos (44px) de alto. Todos comparten el foco visible de los botones.
 
@@ -250,7 +268,10 @@ fichas transportan los filtros en la URL; “Volver al catálogo” los conserva
 ### Data rows and status
 
 Rótulo y valor se alinean en columnas, con procedencia secundaria cuando existe.
-“Por confirmar” y “Sin información” se escriben explícitamente. El formulario
+En las fichas se escribe “Por confirmar” o “Sin información”. La tabla usa
+“S/d”, definido junto a ella, y distingue “Revisar”, “En obra”, “Sí” y “No”.
+La columna de distancia respeta carretera o línea recta sin sustitución silenciosa;
+la superficie muestra hectáreas totales o de acampada según el filtro. El formulario
 solo confirma recepción después de una respuesta real de guardado.
 
 ## Do's and Don'ts

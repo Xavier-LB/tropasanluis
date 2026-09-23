@@ -29,7 +29,9 @@ servicios y etiquetas. Ingreso por formulario o texto de publicación. Las fuent
 y sus fechas se conservan; desconocido no significa no. Aportes pendientes pasan
 por revisión. El historial de asistencia no establece capacidad máxima.
 No reservas, cobros, mensajes automáticos ni rastreo periódico en esta versión.
-Se conserva la marca y el marco de navegación existentes.
+Se conserva la marca y el marco de navegación existentes. La consulta debe ser
+compacta, tipo planilla, con filas comparables y filtros accesibles. Las fichas
+conservan el detalle; en celular la tabla permite desplazamiento horizontal.
 
 ## Open Decisions
 
