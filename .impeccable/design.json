@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-23T00:54:09.050514+00:00",
+  "title": "Design System: Tropa San Luis",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Rojo Tropa",
+        "tonalRamp": [
+          "oklch(0.150 0.1892 24.97)",
+          "oklch(0.264 0.1892 24.97)",
+          "oklch(0.379 0.1892 24.97)",
+          "oklch(0.493 0.1892 24.97)",
+          "oklch(0.607 0.1892 24.97)",
+          "oklch(0.721 0.1892 24.97)",
+          "oklch(0.836 0.1892 24.97)",
+          "oklch(0.950 0.1892 24.97)"
+        ]
+      },
+      "primary-dark": {
+        "role": "primary",
+        "displayName": "Rojo Tropa oscuro",
+        "tonalRamp": [
+          "oklch(0.150 0.1652 24.60)",
+          "oklch(0.264 0.1652 24.60)",
+          "oklch(0.379 0.1652 24.60)",
+          "oklch(0.493 0.1652 24.60)",
+          "oklch(0.607 0.1652 24.60)",
+          "oklch(0.721 0.1652 24.60)",
+          "oklch(0.836 0.1652 24.60)",
+          "oklch(0.950 0.1652 24.60)"
+        ]
+      },
+      "page": {
+        "role": "neutral",
+        "displayName": "Page",
+        "tonalRamp": [
+          "oklch(0.150 0.0010 106.42)",
+          "oklch(0.264 0.0010 106.42)",
+          "oklch(0.379 0.0010 106.42)",
+          "oklch(0.493 0.0010 106.42)",
+          "oklch(0.607 0.0010 106.42)",
+          "oklch(0.721 0.0010 106.42)",
+          "oklch(0.836 0.0010 106.42)",
+          "oklch(0.950 0.0010 106.42)"
+        ]
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface",
+        "tonalRamp": [
+          "oklch(0.150 0.0000 89.88)",
+          "oklch(0.264 0.0000 89.88)",
+          "oklch(0.379 0.0000 89.88)",
+          "oklch(0.493 0.0000 89.88)",
+          "oklch(0.607 0.0000 89.88)",
+          "oklch(0.721 0.0000 89.88)",
+          "oklch(0.836 0.0000 89.88)",
+          "oklch(0.950 0.0000 89.88)"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink",
+        "tonalRamp": [
+          "oklch(0.150 0.0063 34.30)",
+          "oklch(0.264 0.0063 34.30)",
+          "oklch(0.379 0.0063 34.30)",
+          "oklch(0.493 0.0063 34.30)",
+          "oklch(0.607 0.0063 34.30)",
+          "oklch(0.721 0.0063 34.30)",
+          "oklch(0.836 0.0063 34.30)",
+          "oklch(0.950 0.0063 34.30)"
+        ]
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted",
+        "tonalRamp": [
+          "oklch(0.150 0.0096 73.64)",
+          "oklch(0.264 0.0096 73.64)",
+          "oklch(0.379 0.0096 73.64)",
+          "oklch(0.493 0.0096 73.64)",
+          "oklch(0.607 0.0096 73.64)",
+          "oklch(0.721 0.0096 73.64)",
+          "oklch(0.836 0.0096 73.64)",
+          "oklch(0.950 0.0096 73.64)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line",
+        "tonalRamp": [
+          "oklch(0.150 0.0081 73.74)",
+          "oklch(0.264 0.0081 73.74)",
+          "oklch(0.379 0.0081 73.74)",
+          "oklch(0.493 0.0081 73.74)",
+          "oklch(0.607 0.0081 73.74)",
+          "oklch(0.721 0.0081 73.74)",
+          "oklch(0.836 0.0081 73.74)",
+          "oklch(0.950 0.0081 73.74)"
+        ]
+      },
+      "field-border": {
+        "role": "neutral",
+        "displayName": "Field border",
+        "tonalRamp": [
+          "oklch(0.150 0.0091 56.26)",
+          "oklch(0.264 0.0091 56.26)",
+          "oklch(0.379 0.0091 56.26)",
+          "oklch(0.493 0.0091 56.26)",
+          "oklch(0.607 0.0091 56.26)",
+          "oklch(0.721 0.0091 56.26)",
+          "oklch(0.836 0.0091 56.26)",
+          "oklch(0.950 0.0091 56.26)"
+        ]
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Placeholder",
+        "tonalRamp": [
+          "oklch(0.150 0.0116 58.07)",
+          "oklch(0.264 0.0116 58.07)",
+          "oklch(0.379 0.0116 58.07)",
+          "oklch(0.493 0.0116 58.07)",
+          "oklch(0.607 0.0116 58.07)",
+          "oklch(0.721 0.0116 58.07)",
+          "oklch(0.836 0.0116 58.07)",
+          "oklch(0.950 0.0116 58.07)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Panel",
+        "tonalRamp": [
+          "oklch(0.150 0.0046 78.30)",
+          "oklch(0.264 0.0046 78.30)",
+          "oklch(0.379 0.0046 78.30)",
+          "oklch(0.493 0.0046 78.30)",
+          "oklch(0.607 0.0046 78.30)",
+          "oklch(0.721 0.0046 78.30)",
+          "oklch(0.836 0.0046 78.30)",
+          "oklch(0.950 0.0046 78.30)"
+        ]
+      },
+      "notice": {
+        "role": "neutral",
+        "displayName": "Notice",
+        "tonalRamp": [
+          "oklch(0.150 0.0046 78.30)",
+          "oklch(0.264 0.0046 78.30)",
+          "oklch(0.379 0.0046 78.30)",
+          "oklch(0.493 0.0046 78.30)",
+          "oklch(0.607 0.0046 78.30)",
+          "oklch(0.721 0.0046 78.30)",
+          "oklch(0.836 0.0046 78.30)",
+          "oklch(0.950 0.0046 78.30)"
+        ]
+      },
+      "hover": {
+        "role": "neutral",
+        "displayName": "Hover",
+        "tonalRamp": [
+          "oklch(0.150 0.0013 106.42)",
+          "oklch(0.264 0.0013 106.42)",
+          "oklch(0.379 0.0013 106.42)",
+          "oklch(0.493 0.0013 106.42)",
+          "oklch(0.607 0.0013 106.42)",
+          "oklch(0.721 0.0013 106.42)",
+          "oklch(0.836 0.0013 106.42)",
+          "oklch(0.950 0.0013 106.42)"
+        ]
+      },
+      "nav-selected": {
+        "role": "primary",
+        "displayName": "Nav selected",
+        "tonalRamp": [
+          "oklch(0.150 0.0175 17.47)",
+          "oklch(0.264 0.0175 17.47)",
+          "oklch(0.379 0.0175 17.47)",
+          "oklch(0.493 0.0175 17.47)",
+          "oklch(0.607 0.0175 17.47)",
+          "oklch(0.721 0.0175 17.47)",
+          "oklch(0.836 0.0175 17.47)",
+          "oklch(0.950 0.0175 17.47)"
+        ]
+      },
+      "nav-selected-ink": {
+        "role": "primary",
+        "displayName": "Nav selected ink",
+        "tonalRamp": [
+          "oklch(0.150 0.1573 24.65)",
+          "oklch(0.264 0.1573 24.65)",
+          "oklch(0.379 0.1573 24.65)",
+          "oklch(0.493 0.1573 24.65)",
+          "oklch(0.607 0.1573 24.65)",
+          "oklch(0.721 0.1573 24.65)",
+          "oklch(0.836 0.1573 24.65)",
+          "oklch(0.950 0.1573 24.65)"
+        ]
+      },
+      "chip-selected": {
+        "role": "primary",
+        "displayName": "Chip selected",
+        "tonalRamp": [
+          "oklch(0.150 0.0186 13.39)",
+          "oklch(0.264 0.0186 13.39)",
+          "oklch(0.379 0.0186 13.39)",
+          "oklch(0.493 0.0186 13.39)",
+          "oklch(0.607 0.0186 13.39)",
+          "oklch(0.721 0.0186 13.39)",
+          "oklch(0.836 0.0186 13.39)",
+          "oklch(0.950 0.0186 13.39)"
+        ]
+      },
+      "chip-selected-ink": {
+        "role": "primary",
+        "displayName": "Chip selected ink",
+        "tonalRamp": [
+          "oklch(0.150 0.1482 22.99)",
+          "oklch(0.264 0.1482 22.99)",
+          "oklch(0.379 0.1482 22.99)",
+          "oklch(0.493 0.1482 22.99)",
+          "oklch(0.607 0.1482 22.99)",
+          "oklch(0.721 0.1482 22.99)",
+          "oklch(0.836 0.1482 22.99)",
+          "oklch(0.950 0.1482 22.99)"
+        ]
+      },
+      "chip-selected-border": {
+        "role": "primary",
+        "displayName": "Chip selected border",
+        "tonalRamp": [
+          "oklch(0.150 0.0435 12.67)",
+          "oklch(0.264 0.0435 12.67)",
+          "oklch(0.379 0.0435 12.67)",
+          "oklch(0.493 0.0435 12.67)",
+          "oklch(0.607 0.0435 12.67)",
+          "oklch(0.721 0.0435 12.67)",
+          "oklch(0.836 0.0435 12.67)",
+          "oklch(0.950 0.0435 12.67)"
+        ]
+      },
+      "tag": {
+        "role": "neutral",
+        "displayName": "Tag",
+        "tonalRamp": [
+          "oklch(0.150 0.0029 84.56)",
+          "oklch(0.264 0.0029 84.56)",
+          "oklch(0.379 0.0029 84.56)",
+          "oklch(0.493 0.0029 84.56)",
+          "oklch(0.607 0.0029 84.56)",
+          "oklch(0.721 0.0029 84.56)",
+          "oklch(0.836 0.0029 84.56)",
+          "oklch(0.950 0.0029 84.56)"
+        ]
+      },
+      "pending-ink": {
+        "displayName": "Pending ink",
+        "tonalRamp": [
+          "oklch(0.150 0.0935 61.70)",
+          "oklch(0.264 0.0935 61.70)",
+          "oklch(0.379 0.0935 61.70)",
+          "oklch(0.493 0.0935 61.70)",
+          "oklch(0.607 0.0935 61.70)",
+          "oklch(0.721 0.0935 61.70)",
+          "oklch(0.836 0.0935 61.70)",
+          "oklch(0.950 0.0935 61.70)"
+        ]
+      },
+      "error": {
+        "displayName": "Error",
+        "tonalRamp": [
+          "oklch(0.150 0.0162 17.44)",
+          "oklch(0.264 0.0162 17.44)",
+          "oklch(0.379 0.0162 17.44)",
+          "oklch(0.493 0.0162 17.44)",
+          "oklch(0.607 0.0162 17.44)",
+          "oklch(0.721 0.0162 17.44)",
+          "oklch(0.836 0.0162 17.44)",
+          "oklch(0.950 0.0162 17.44)"
+        ]
+      },
+      "error-ink": {
+        "displayName": "Error ink",
+        "tonalRamp": [
+          "oklch(0.150 0.1575 24.44)",
+          "oklch(0.264 0.1575 24.44)",
+          "oklch(0.379 0.1575 24.44)",
+          "oklch(0.493 0.1575 24.44)",
+          "oklch(0.607 0.1575 24.44)",
+          "oklch(0.721 0.1575 24.44)",
+          "oklch(0.836 0.1575 24.44)",
+          "oklch(0.950 0.1575 24.44)"
+        ]
+      },
+      "error-border": {
+        "displayName": "Error border",
+        "tonalRamp": [
+          "oklch(0.150 0.0572 14.30)",
+          "oklch(0.264 0.0572 14.30)",
+          "oklch(0.379 0.0572 14.30)",
+          "oklch(0.493 0.0572 14.30)",
+          "oklch(0.607 0.0572 14.30)",
+          "oklch(0.721 0.0572 14.30)",
+          "oklch(0.836 0.0572 14.30)",
+          "oklch(0.950 0.0572 14.30)"
+        ]
+      },
+      "success": {
+        "displayName": "Success",
+        "tonalRamp": [
+          "oklch(0.150 0.0109 149.86)",
+          "oklch(0.264 0.0109 149.86)",
+          "oklch(0.379 0.0109 149.86)",
+          "oklch(0.493 0.0109 149.86)",
+          "oklch(0.607 0.0109 149.86)",
+          "oklch(0.721 0.0109 149.86)",
+          "oklch(0.836 0.0109 149.86)",
+          "oklch(0.950 0.0109 149.86)"
+        ]
+      },
+      "success-ink": {
+        "displayName": "Success ink",
+        "tonalRamp": [
+          "oklch(0.150 0.0723 152.09)",
+          "oklch(0.264 0.0723 152.09)",
+          "oklch(0.379 0.0723 152.09)",
+          "oklch(0.493 0.0723 152.09)",
+          "oklch(0.607 0.0723 152.09)",
+          "oklch(0.721 0.0723 152.09)",
+          "oklch(0.836 0.0723 152.09)",
+          "oklch(0.950 0.0723 152.09)"
+        ]
+      },
+      "success-border": {
+        "displayName": "Success border",
+        "tonalRamp": [
+          "oklch(0.150 0.0420 152.97)",
+          "oklch(0.264 0.0420 152.97)",
+          "oklch(0.379 0.0420 152.97)",
+          "oklch(0.493 0.0420 152.97)",
+          "oklch(0.607 0.0420 152.97)",
+          "oklch(0.721 0.0420 152.97)",
+          "oklch(0.836 0.0420 152.97)",
+          "oklch(0.950 0.0420 152.97)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Títulos de página del catálogo."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de sección del catálogo."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Subtítulos; el nombre enlazado del resultado tiene su propia variante."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Lectura general del catálogo."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Etiquetas visibles sobre campos y navegación local."
+      },
+      "button": {
+        "displayName": "Button",
+        "purpose": "Acciones del catálogo."
+      },
+      "metadata": {
+        "displayName": "Metadata",
+        "purpose": "Datos breves y procedencia."
+      }
+    },
+    "shadows": [
+      {
+        "name": "site-header-rest",
+        "value": "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
+        "purpose": "Sombra de la cabecera existente en reposo; el catálogo no usa sombras."
+      },
+      {
+        "name": "site-header-scrolled",
+        "value": "0 20px 25px -5px rgb(193 39 45 / 0.3), 0 8px 10px -6px rgb(193 39 45 / 0.3)",
+        "purpose": "Sombra xl con el color Tropa al 30% al desplazar la cabecera existente."
+      }
+    ],
+    "motion": [
+      {
+        "name": "catalog-controls",
+        "value": "background-color 0.15s, border-color 0.15s",
+        "purpose": "Botones del catálogo; desactivada con prefers-reduced-motion."
+      },
+      {
+        "name": "site-header",
+        "value": "all 300ms cubic-bezier(0.4, 0, 0.2, 1)",
+        "purpose": "Movimiento del marco existente al bajar o subir la página."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "catalog-narrow-max",
+        "value": "500px"
+      },
+      {
+        "name": "catalog-collapse-max",
+        "value": "900px"
+      },
+      {
+        "name": "catalog-columns-min",
+        "value": "901px"
+      },
+      {
+        "name": "site-md-min",
+        "value": "48rem"
+      },
+      {
+        "name": "site-desktop-nav-min",
+        "value": "64rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Acción principal",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Variante implementada en el catálogo; conserva altura mínima y foco visible.",
+      "html": "<button type=\"button\" class=\"ds-button-primary\">Aportar un lugar</button>",
+      "css": ".ds-button-primary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:9px 16px;border:1px solid #a8a29e;border-radius:8px;font-size:.925rem;font-weight:650;line-height:1.6;cursor:pointer;text-decoration:none;transition:background-color .15s,border-color .15s;font-family:var(--font-sans, Inter, system-ui, sans-serif);background:var(--color-tropa, #C1272D);border-color:var(--color-tropa, #C1272D);color:#fff;}.ds-button-primary:hover{background:var(--color-tropa-dark, #A11F25);border-color:var(--color-tropa-dark, #A11F25);}.ds-button-primary:focus-visible{outline:2px solid var(--color-tropa, #C1272D);outline-offset:3px;}.ds-button-primary:disabled{opacity:.6;cursor:wait;}@media(prefers-reduced-motion:reduce){.ds-button-primary{transition:none;}}"
+    },
+    {
+      "name": "Acción secundaria",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Variante implementada en el catálogo; conserva altura mínima y foco visible.",
+      "html": "<button type=\"button\" class=\"ds-button-secondary\">Corregir o completar</button>",
+      "css": ".ds-button-secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:9px 16px;border:1px solid #a8a29e;border-radius:8px;font-size:.925rem;font-weight:650;line-height:1.6;cursor:pointer;text-decoration:none;transition:background-color .15s,border-color .15s;font-family:var(--font-sans, Inter, system-ui, sans-serif);background:#fff;color:#292524;}.ds-button-secondary:hover{background:#f5f5f4;border-color:#78716c;}.ds-button-secondary:focus-visible{outline:2px solid var(--color-tropa, #C1272D);outline-offset:3px;}.ds-button-secondary:disabled{opacity:.6;cursor:wait;}@media(prefers-reduced-motion:reduce){.ds-button-secondary{transition:none;}}"
+    },
+    {
+      "name": "Acción discreta",
+      "kind": "button",
+      "refersTo": "button-quiet",
+      "description": "Variante implementada en el catálogo; conserva altura mínima y foco visible.",
+      "html": "<button type=\"button\" class=\"ds-button-quiet\">Limpiar</button>",
+      "css": ".ds-button-quiet{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:9px 16px;border:1px solid #a8a29e;border-radius:8px;font-size:.925rem;font-weight:650;line-height:1.6;cursor:pointer;text-decoration:none;transition:background-color .15s,border-color .15s;font-family:var(--font-sans, Inter, system-ui, sans-serif);background:transparent;border-color:transparent;color:var(--color-tropa, #C1272D);padding-inline:7px;}.ds-button-quiet:hover{background:#f5f5f4;border-color:#78716c;}.ds-button-quiet:focus-visible{outline:2px solid var(--color-tropa, #C1272D);outline-offset:3px;}.ds-button-quiet:disabled{opacity:.6;cursor:wait;}@media(prefers-reduced-motion:reduce){.ds-button-quiet{transition:none;}}"
+    },
+    {
+      "name": "Campo de texto",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Etiqueta persistente, borde visible y foco rojo.",
+      "html": "<label class=\"ds-field\">Nombre del lugar<input placeholder=\"Nombre o referencia para reconocerlo\" /></label>",
+      "css": ".ds-field{display:block;font-size:.9rem;font-weight:600;color:#292524;font-family:var(--font-sans, Inter, system-ui, sans-serif);}.ds-field input{display:block;width:100%;min-height:44px;margin-top:5px;border:1px solid #a8a29e;border-radius:7px;background:#fff;color:#292524;padding:9px 11px;font:inherit;line-height:1.4;caret-color:var(--color-tropa, #C1272D);}.ds-field input::placeholder{color:#78716c}.ds-field input:focus-visible{outline:2px solid var(--color-tropa, #C1272D);outline-offset:3px;}"
+    },
+    {
+      "name": "Navegación del catálogo",
+      "kind": "nav",
+      "refersTo": "subnav-item",
+      "description": "Sección activa con fondo rojo suave; los vínculos envuelven al reducir ancho.",
+      "html": "<nav class=\"ds-subnav\" aria-label=\"Sitios de campamento\"><a href=\"/sitios\" aria-current=\"page\">Catálogo</a><a href=\"/sitios/historial\">Campamentos y visitas</a><a href=\"/sitios/aportar\">Aportar un dato</a></nav>",
+      "css": ".ds-subnav{display:flex;gap:5px;flex-wrap:wrap;border-bottom:1px solid #dedad5;padding-bottom:15px;font-family:var(--font-sans, Inter, system-ui, sans-serif);}.ds-subnav a{display:inline-flex;align-items:center;min-height:44px;padding:8px 12px;border-radius:7px;color:#57534e;font-weight:600;font-size:.9rem;line-height:1.6;text-decoration:none}.ds-subnav a[aria-current=\"page\"]{background:#f4e4e4;color:#981e23}.ds-subnav a:hover{background:#f0eeeb}.ds-subnav a:focus-visible{outline:2px solid var(--color-tropa, #C1272D);outline-offset:3px;}@media(max-width:500px){.ds-subnav{gap:0}.ds-subnav a{padding:8px 10px;font-size:.85rem}}"
+    },
+    {
+      "name": "Filtro seleccionado",
+      "kind": "chip",
+      "refersTo": "chip-selected",
+      "description": "Botón para quitar un filtro; su etiqueta accesible explica la acción.",
+      "html": "<button class=\"ds-chip\" type=\"button\" aria-label=\"Quitar filtro Agua potable\">Agua potable: Sí<svg width=\"13\" height=\"13\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" aria-hidden=\"true\"><path d=\"M18 6 6 18M6 6l12 12\"/></svg></button>",
+      "css": ".ds-chip{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:9px 16px;border:1px solid #a8a29e;border-radius:8px;font-size:.925rem;font-weight:650;line-height:1.6;cursor:pointer;text-decoration:none;transition:background-color .15s,border-color .15s;font-family:var(--font-sans, Inter, system-ui, sans-serif);background:#f5e4e5;color:#912027;border-color:#e9c3c6;font-size:.8rem;padding:5px 9px}.ds-chip:focus-visible{outline:2px solid var(--color-tropa, #C1272D);outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-chip{transition:none}}"
+    },
+    {
+      "name": "Etiqueta descriptiva",
+      "kind": "chip",
+      "refersTo": "tag",
+      "description": "Dato breve sin interacción; no simula un botón.",
+      "html": "<span class=\"ds-tag\">Bosque</span>",
+      "css": ".ds-tag{display:inline-flex;align-items:center;padding:3px 8px;border:1px solid #dedad5;border-radius:5px;font-size:.75rem;line-height:1.6;color:#57534e;background:#f4f3f1;font-family:var(--font-sans, Inter, system-ui, sans-serif);}"
+    },
+    {
+      "name": "Panel de contacto",
+      "kind": "card",
+      "refersTo": "contact-panel",
+      "description": "Contenedor blanco plano, con borde y título; el contenido real proviene de la ficha.",
+      "html": "<aside class=\"ds-contact\"><h2>Contacto del lugar</h2><p>Por confirmar</p></aside>",
+      "css": ".ds-contact{padding:22px;background:#fff;border:1px solid #dedad5;border-radius:10px;color:#292524;font-size:1rem;line-height:1.6;font-family:var(--font-sans, Inter, system-ui, sans-serif);}.ds-contact h2{font-size:1.35rem;line-height:1.3;font-weight:750;margin:0 0 1rem}.ds-contact p{margin:0;color:#57534e}@media(max-width:500px){.ds-contact{padding:18px}}"
+    },
+    {
+      "name": "Aviso informativo",
+      "kind": "custom",
+      "refersTo": "notice",
+      "description": "Contexto de lectura en una superficie neutra sin elevación.",
+      "html": "<p class=\"ds-notice\">La capacidad, el agua potable y los baños deben confirmarse con cada lugar.</p>",
+      "css": ".ds-notice{padding:14px 16px;background:#f1efec;border-radius:7px;margin:18px 0;color:#57534e;font-size:.9rem;line-height:1.6;font-family:var(--font-sans, Inter, system-ui, sans-serif);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "La identidad existente de Tropa San Luis",
+    "overview": "La marca se sostiene en el escudo existente, el rojo Tropa y la familia Inter. El catálogo mantiene ese marco y presenta datos con texto oscuro, superficies claras, bordes discretos y acciones reconocibles. No establece una identidad visual nueva.\n\nEste documento describe el marco compartido y los patrones implementados en `/sitios`. Los tamaños y componentes de catálogo se aplican dentro de esa sección; no constituyen una auditoría ni una normalización del resto de las páginas.",
+    "keyCharacteristics": [
+      "Rojo de marca para navegación, vínculos y acciones principales.",
+      "Inter en títulos, texto y controles.",
+      "Superficies claras, separación por líneas y esquinas suavemente redondeadas.",
+      "Información legible y estados expresados también con texto."
+    ],
+    "rules": [],
+    "dos": [
+      "Do conservar el escudo, el rojo y la tipografía del sitio existente.",
+      "Do mantener rótulos visibles, foco de teclado y controles de catálogo de al menos 44 px de alto.",
+      "Do usar textos explícitos para distinguir un dato informado, uno desconocido y un aporte pendiente.",
+      "Do mantener la separación por líneas y los anchos de lectura del catálogo."
+    ],
+    "donts": [
+      "Don't sustituir la identidad existente por otra paleta, tipografía o logotipo sin una decisión explícita.",
+      "Don't agregar sombras o animaciones de entrada a los resultados del catálogo.",
+      "Don't convertir etiquetas informativas pequeñas en controles sin ampliar su área interactiva.",
+      "Don't ilustrar sitios del catálogo con fotografías inventadas."
+    ]
+  }
+}

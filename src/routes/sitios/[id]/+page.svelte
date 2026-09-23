@@ -5,10 +5,11 @@
 	import seed from '$lib/catalog/seed';
 	import type { Catalog, Site } from '$lib/catalog/model';
 	import { fetchCatalog } from '$lib/catalog/api';
-	import { formatNumber } from '$lib/catalog/search';
+	import { formatNumber, filtersQuery, readFilters } from '$lib/catalog/search';
 	let catalog = seed as Catalog,
 		loading = true,
 		error = '';
+	$: returnQuery = filtersQuery(readFilters($page.url.searchParams));
 	$: site = catalog.sites.find((s) => s.id === $page.params.id);
 	$: visits = catalog.visits
 		.filter((v) => v.siteId === $page.params.id)
@@ -42,7 +43,9 @@
 		content={site?.description || 'Ficha de un sitio de campamento scout.'}
 	/></svelte:head
 >
-<a class="back" href="/sitios"><ArrowLeft size={17} aria-hidden="true" />Volver al catálogo</a>
+<a class="back" href={`/sitios${returnQuery ? `?${returnQuery}` : ''}`}
+	><ArrowLeft size={17} aria-hidden="true" />Volver al catálogo</a
+>
 {#if site}
 	<header class="intro">
 		<div>

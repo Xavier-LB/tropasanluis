@@ -51,6 +51,7 @@
 		filters = readFilters($page.url.searchParams);
 		limit = 20;
 	}
+	$: catalogueQuery = filtersQuery(filters);
 	$: results = searchSites(catalog.sites, filters);
 	$: active = Object.entries(labels).filter(([k]) => Boolean(filters[k as keyof Filters]));
 	$: pendingCount = results.filter((r) => r.pending.length).length;
@@ -327,7 +328,11 @@
 			<article class="result">
 				<div class="result-head">
 					<div>
-						<h3><a href={`/sitios/${site.id}`}>{site.name}</a></h3>
+						<h3>
+							<a href={`/sitios/${site.id}${catalogueQuery ? `?${catalogueQuery}` : ''}`}
+								>{site.name}</a
+							>
+						</h3>
 						<div class="location">{[site.commune, site.region].filter(Boolean).join(' · ')}</div>
 					</div>
 					{#if site.distance}<span class="badge"
@@ -393,7 +398,9 @@
 					<span
 						>{site.sources.length}
 						{site.sources.length === 1 ? 'fuente' : 'fuentes'} · Vigencia por confirmar</span
-					><a href={`/sitios/${site.id}`}>Ver ficha<ArrowRight size={16} aria-hidden="true" /></a>
+					><a href={`/sitios/${site.id}${catalogueQuery ? `?${catalogueQuery}` : ''}`}
+						>Ver ficha<ArrowRight size={16} aria-hidden="true" /></a
+					>
 				</div>
 			</article>{/each}
 		{#if results.length > limit}<button class="load-more" on:click={() => (limit += 20)}

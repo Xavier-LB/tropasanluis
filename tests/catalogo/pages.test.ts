@@ -160,7 +160,9 @@ async function open(
 	await settle();
 	const field = (label: string): HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement => {
 		const labels = Array.from(w.document.querySelectorAll('label')) as HTMLLabelElement[];
-		const matched = labels.find((l) => l.textContent?.replace(/\s+/g, ' ').trim().startsWith(label));
+		const matched = labels.find((l) =>
+			l.textContent?.replace(/\s+/g, ' ').trim().startsWith(label)
+		);
 		const node = matched?.control;
 		assert.ok(node, `Campo: ${label}`);
 		return node as HTMLInputElement;
@@ -329,6 +331,7 @@ test('abrir ficha y Back restaura filtros, resultados y URL con el historial rea
 	const link = f.w.document.querySelector('article.result h3 a');
 	assert.ok(link);
 	const detailUrl = link.href;
+	assert.equal(new URL(detailUrl).search, new URL(filteredUrl).search);
 	const click = new f.w.MouseEvent('click', { bubbles: true, cancelable: true, button: 0 });
 	// JSDOM no asigna which=1 al clic principal, que es lo que usa el router de Kit.
 	Object.defineProperty(click, 'which', { value: 1 });
@@ -338,6 +341,11 @@ test('abrir ficha y Back restaura filtros, resultados y URL con el historial rea
 	assert.equal(f.w.location.href, detailUrl);
 	assert.equal(f.w.document.querySelector('#site-search'), null, 'la ficha desmonta el catálogo');
 	assert.equal(f.w.history.length, historyLength + 1);
+	assert.equal(
+		f.w.document.querySelector('a.back').href,
+		filteredUrl,
+		'el regreso explícito conserva filtros'
+	);
 	for (let visit = 0; visit < 2; visit++) {
 		const back = new Promise<void>((r) =>
 			f.w.addEventListener('popstate', () => r(), { once: true })
